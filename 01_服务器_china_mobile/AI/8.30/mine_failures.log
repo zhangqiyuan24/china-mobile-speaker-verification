@@ -1,0 +1,7 @@
+[ok] main_eres_0db_raw: FN率=8.39% 最惨说话人=06207(45.6%) 头号混淆对=06987|08102(516)
+[ok] main_eres_0db_fe: FN率=4.92% 最惨说话人=06851(43.1%) 头号混淆对=06993|08107(556)
+[ok] main_eres_m5db_raw: FN率=11.05% 最惨说话人=06851(43.1%) 头号混淆对=06974|08099(509)
+[ok] main_eres_m5db_fe: FN率=5.55% 最惨说话人=06851(44.4%) 头号混淆对=06993|08107(566)
+[ok] scene_ov2cn_fe: FN率=16.64% 最惨说话人=06832(67.7%) 头号混淆对=06993|08107(551)
+[ok] scene_ov3cn_fe: FN率=18.42% 最惨说话人=06842(75.7%) 头号混淆对=06993|08099(553)
+[mine-failures done] /data/home/ligangrui/china_mobile/AI/8.30/failures/failures.json

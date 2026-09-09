@@ -1,0 +1,29 @@
+[fusion] combo_root=/home/ligangrui/china_mobile/AI/8.21/exp/proto_robust/eval/combo
+[fusion] trials=1378206  enrol=16401  weights(raw)=[0.3, 0.5, 0.7]
+
+===== noise_0db =====
+  方案                               EER%      相对基线
+  raw 路（原始带噪）                    7.6911      8.3%
+  enh 路（前端->模型）                  7.5000     10.6%
+  plain 融合 w_raw=0.3             7.3976     11.8%
+  plain 融合 w_raw=0.5             7.4005     11.8%
+  plain 融合 w_raw=0.7             7.4986     10.6%
+  znorm 融合 w_raw=0.3（参考）         7.3974     11.8%
+  znorm 融合 w_raw=0.5（参考）         7.4002     11.8%
+  znorm 融合 w_raw=0.7（参考）         7.4991     10.6%
+  --> 最优：znorm 融合 w_raw=0.3（参考）  EER=7.3974%（基线 8.3911，相对 -11.8%）
+
+===== noise_m5db =====
+  方案                               EER%      相对基线
+  raw 路（原始带噪）                    9.8781     10.7%
+  enh 路（前端->模型）                  9.5085     14.0%
+  plain 融合 w_raw=0.3             9.3995     15.0%
+  plain 融合 w_raw=0.5             9.4295     14.7%
+  plain 融合 w_raw=0.7             9.5511     13.6%
+  znorm 融合 w_raw=0.3（参考）         9.3997     15.0%
+  znorm 融合 w_raw=0.5（参考）         9.4300     14.7%
+  znorm 融合 w_raw=0.7（参考）         9.5525     13.6%
+  --> 最优：plain 融合 w_raw=0.3  EER=9.3995%（基线 11.0557，相对 -15.0%）
+
+[fusion] 说明：plain 融合 = 同一模型两路 cosine 的线性组合，部署时对 test 侧过两次模型即可；
+        znorm 为传递式操作（用到当批分数分布）仅作参考。融合是否计入验收口径需与老师确认。

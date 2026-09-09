@@ -1,0 +1,12 @@
+{"name": "raw_clean", "n_trials": 1378206, "n_target": 211400, "n_nontarget": 1166806, "EER": 5.081, "EER_thr": 0.2266, "minDCF(p=0.01)": 0.4717, "minDCF_thr": 0.42867}
+[done] raw_clean -> /data/home/ligangrui/china_mobile/AI/8.27/exp/analysis_21/raw_clean
+[ref] clean EER 工作点阈值 = 0.2266
+{"name": "raw_noise_0db", "n_trials": 1378206, "n_target": 211400, "n_nontarget": 1166806, "EER": 7.614, "EER_thr": 0.18863, "minDCF(p=0.01)": 0.5942, "minDCF_thr": 0.41567, "fixed_thr": 0.2266, "FAR@fixed": 4.274, "FRR@fixed": 11.746}
+[done] raw_noise_0db -> /data/home/ligangrui/china_mobile/AI/8.27/exp/analysis_21/raw_noise_0db
+{"name": "raw_noise_m5db", "n_trials": 1378206, "n_target": 211400, "n_nontarget": 1166806, "EER": 9.7147, "EER_thr": 0.16754, "minDCF(p=0.01)": 0.649, "minDCF_thr": 0.41387, "fixed_thr": 0.2266, "FAR@fixed": 3.939, "FRR@fixed": 17.245}
+[done] raw_noise_m5db -> /data/home/ligangrui/china_mobile/AI/8.27/exp/analysis_21/raw_noise_m5db
+{"name": "frontend_noise_0db", "n_trials": 1378206, "n_target": 211400, "n_nontarget": 1166806, "EER": 5.4673, "EER_thr": 0.20665, "minDCF(p=0.01)": 0.5142, "minDCF_thr": 0.40928, "fixed_thr": 0.2266, "FAR@fixed": 3.997, "FRR@fixed": 7.071}
+[done] frontend_noise_0db -> /data/home/ligangrui/china_mobile/AI/8.27/exp/analysis_21/frontend_noise_0db
+{"name": "frontend_noise_m5db", "n_trials": 1378206, "n_target": 211400, "n_nontarget": 1166806, "EER": 6.4613, "EER_thr": 0.19134, "minDCF(p=0.01)": 0.5608, "minDCF_thr": 0.40634, "fixed_thr": 0.2266, "FAR@fixed": 3.697, "FRR@fixed": 9.979}
+[done] frontend_noise_m5db -> /data/home/ligangrui/china_mobile/AI/8.27/exp/analysis_21/frontend_noise_m5db
+[all done] /data/home/ligangrui/china_mobile/AI/8.27/exp/analysis_21

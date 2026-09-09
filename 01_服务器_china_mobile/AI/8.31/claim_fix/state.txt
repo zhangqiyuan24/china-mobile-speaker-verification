@@ -1,0 +1,7 @@
+[08-31 17:23] 三臂已发：base评测+A=10%(GPU0) B=30%(GPU1) C=30%+反拉(GPU2)；GPU3留空
+[08-31 22:12] dose2 守望器已布：GPU0->asym20（等asym10）、GPU1->asym15（等asym30）
+[08-31 22:40] 官方claim链守望器已布：GPU2->asym30、GPU3->asym50ap
+[08-31 23:24] 守望器自匹配死锁修复：直发 asym20(G0)/asym15(G1)/官方asym30(G2)/官方asym50ap(G3)
+[09-01 08:06] v6点火 tag=mix40i30 imp=0.30 mix=0.40 GPU=0
+[09-01 08:06] v6点火 tag=mix40i50 imp=0.50 mix=0.40 GPU=1
+[09-01 08:06] 官方判定=大幅未过(asym30 claimFE 9.12/10.98、asym50ap 8.48/10.32 vs 线5.86/7.76)→四卡齐发 v6双臂 mix40i30/mix40i50 + 剂量延伸 asym50纯/asym70

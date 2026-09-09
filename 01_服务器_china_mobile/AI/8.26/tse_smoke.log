@@ -1,0 +1,9 @@
+[labels] 90000 utts / 9900 spks
+Traceback (most recent call last):
+  File "train_tse.py", line 284, in <module>
+    main()
+  File "train_tse.py", line 163, in main
+    emb_npz = np.load(os.path.join(cfg["paths"]["exp_dir"], "spk_embs.npz"),
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/numpy/lib/npyio.py", line 405, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: '/data/home/ligangrui/china_mobile/AI/8.26/exp/tse_smoke/spk_embs.npz'

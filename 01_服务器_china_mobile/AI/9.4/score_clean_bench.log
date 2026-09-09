@@ -1,0 +1,17 @@
+[09:38:55] start redimnet2 1s
+[09:38:55] start eres2net 1s
+[09:38:55] start ecapa 3s
+[09:38:55] start ecapa 5s
+[09:38:55] start eres2net 3s
+[09:38:55] start eres2net 5s
+[09:38:55] start redimnet2 3s
+[09:38:55] start redimnet2 5s
+[09:38:58] done  redimnet2 5s rc=1
+[09:38:59] done  redimnet2 1s rc=1
+[09:38:59] done  redimnet2 3s rc=1
+[10:43:58] done  ecapa 3s rc=0
+[10:44:51] done  ecapa 5s rc=0
+[10:45:08] done  eres2net 3s rc=0
+[10:45:37] done  eres2net 1s rc=0
+[10:46:01] done  eres2net 5s rc=0
+ALL_DONE

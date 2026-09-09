@@ -1,0 +1,3 @@
+[wait] 2026-08-26 00:48:48 等 soup5 评测退出...
+[wait] 2026-08-26 01:34:49 GPU1 已空, 启动 ECAPA 线
+[wait] 2026-08-26 01:34:51 ECAPA 管线接管完毕(见 ecapa_pipeline.log)

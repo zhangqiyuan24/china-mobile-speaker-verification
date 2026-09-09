@@ -1,0 +1,24 @@
+# config_channel_aug.toml — 8.21 鲁棒配方 + 信道/设备域增强（8.24 备用弹药②）
+# 与 config_proto_90k.toml 同构；唯一差异 = 训练时 ChannelAug 信道扰动
+
+[paths]
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+proto_npz = "../8.21/exp/prototypes/prototypes.npz"
+data_dir_820 = "../8.22/exp/data_90k/data"
+exp_dir = "exp/channel_aug_90k"
+rir_list = "exp/channel_aug/rir_list.txt"
+
+[data]
+seed = 2026
+
+[model]
+embedding_size = 512
+m_channels = 64
+margin = 0.2
+scale = 32.0
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557

@@ -1,0 +1,30 @@
+[v8d-3s start] Wed 02 Sep 2026 07:39:24 PM CST
+[v8d_ecapa_noise_0db_3s] EER = 6.1033
+[v8d_eres_noise_0db_3s] EER = 4.7490
+[v8d_b6_noise_0db_3s] EER = 7.3882
+[v8d_ecapa_noise_m5db_3s] EER = 6.9206
+[v8d_eres_noise_m5db_3s] EER = 5.4413
+[v8d_b6_noise_m5db_3s] EER = 9.3539
+[① 3s 三后端完] Wed 02 Sep 2026 09:59:14 PM CST
+[② 换域增强 start] Wed 02 Sep 2026 09:59:14 PM CST
+[nd_v8d_eres_music_0db] EER = 5.4551
+[nd_v8d_eres_music_m5db] EER = 6.8207
+[nd_v8d_eres_speech_0db] EER = 6.3852
+[nd_v8d_eres_speech_m5db] EER = 8.9622
+[nd_v8d_eres_soundbible_0db] EER = 4.8330
+[nd_v8d_eres_soundbible_m5db] EER = 5.4192
+
+===== v8d 3s 轴 + 换域汇总 =====
+v8d_b6_noise_0db_3s: EER = 7.3882
+v8d_b6_noise_m5db_3s: EER = 9.3539
+v8d_ecapa_noise_0db_3s: EER = 6.1033
+v8d_ecapa_noise_m5db_3s: EER = 6.9206
+v8d_eres_noise_0db_3s: EER = 4.7490
+v8d_eres_noise_m5db_3s: EER = 5.4413
+nd_v8d_eres_music_0db: EER = 5.4551
+nd_v8d_eres_music_m5db: EER = 6.8207
+nd_v8d_eres_soundbible_0db: EER = 4.8330
+nd_v8d_eres_soundbible_m5db: EER = 5.4192
+nd_v8d_eres_speech_0db: EER = 6.3852
+nd_v8d_eres_speech_m5db: EER = 8.9622
+[v8d-3s+nd done] Thu 03 Sep 2026 01:37:46 AM CST

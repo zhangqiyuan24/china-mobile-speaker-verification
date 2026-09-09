@@ -1,0 +1,11 @@
+[labels] 90000 utts / 9900 spks (来自 train_utts.csv)
+[labels] 均匀抽样 -> 8 条
+[frontend] init from /home/ligangrui/china_mobile/AI/8.18/exp/spk_preserve/checkpoint_epoch10.tar
+[verifier] frozen soup3 = /home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/checkpoints/checkpoint_soup3.tar
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[train] 8 样本, 2 steps/epoch x 1 epochs, lambda_ce=1.0, lambda_spk=0.0
+[ep1] saved -> /home/ligangrui/china_mobile/AI/8.25/exp/spk_voiceid/checkpoint_epoch1.tar
+[done] VoiceID 式前端微调结束

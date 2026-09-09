@@ -1,0 +1,86 @@
+# E2-proto：prototype 初始化 classifier 的多条件鲁棒微调（对照 AI/8.20）
+#
+# 与 8.20 唯一的方法差异：CosineClassifier 不再随机初始化，改用 pretrained
+# ERes2Net 提取的 clean speaker prototype 初始化。其余超参（1:1:1 / batch /
+# accum / lr / AAM / 冻结范围 / epoch 数）与 8.20 完全一致，保证干净对照。
+#
+# 路径为相对本文件的路径（服务器上 AI/8.21 与 code/ 平级）
+
+[paths]
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+# prototype 语料来源之一：全量训练 scp（utt_id 相对路径）
+clean_scp = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/data_for_train/all_wav.scp"
+noise_train_list = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_train_freesound.txt"
+noise_test_list = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_test_freesound.txt"
+trials = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/data_for_test/clean/3s/trials_cross_device"
+# pretrained ERes2Net-large（只读；prototype 必须且只能用它提）
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+# 复用 8.20 已生成的数据（train_utts.csv / noise_train.txt / val_bench / val_trials）
+# —— 本目录不重跑 prepare_multicond_data.py，不重复落盘
+data_dir_820 = "../8.20/exp/robust/data"
+# 本目录输出（checkpoint / val_history / 组合评测）
+exp_dir = "exp/proto_robust"
+proto_dir = "exp/prototypes"
+
+[data]
+seed = 2026                 # 与 8.20 相同（裁剪/选噪随机种子，可复现）
+
+[prototype]
+# 每个训练说话人最多用多少条 clean 语句构造 prototype（不足则用其全部）
+utts_per_spk = 8
+# 语料来源：
+#   full_scp  = 从 all_wav.scp（64 万条）里按说话人等间隔选，每人可拿到 8 条（推荐）
+#   train_csv = 只用 30k 训练清单，每人约 3 条（数据不足时退化行为）
+source = "full_scp"
+# 提取时确定性居中裁剪（与 AS-Norm cohort 相同策略；随机裁剪会让 prototype 不可复现）
+crop_seconds = 3.0
+# 提取 batch：共享卡（GPU 3 只剩 ~2.7G）用 8；独占卡可 32 提速
+batch_size = 8
+# 训练前诊断用的探针说话人数（每人 1 条 clean，取未参与 prototype 的语句）
+probe_speakers = 256
+
+[model]
+embedding_size = 512
+m_channels = 64
+margin = 0.2
+scale = 32.0
+
+[training]
+batch_size = 96            # 与 8.20 相同；共享显卡用 --batch-size 12 --accum 8
+accum = 1
+epochs = 8                 # 正式训练（方案 5~10）
+sanity_epochs = 3
+lr = 2e-5                  # 固定（方案 1e-5~2e-5），prototype 轮不改
+weight_decay = 5e-5
+num_workers = 8
+amp = false
+val_batch_size = 24
+clean_degradation_max = 1.0
+log_every = 50
+
+# ---- 预留接口（本轮全部关闭，仅实现不启用）----
+# Option A：classifier-only warmup：前 N 个 optimizer step 只更新 classifier
+# （body 组 lr 置 0；AdamW 动量仍会累积，属已知无害副作用）。0 = 关闭
+head_warmup_steps = 0
+# Option B：分组学习率：classifier 用独立 lr。0 = 关闭（全部用上面的 lr）
+# 注意：启用即突破"统一 lr<=2e-5"约束，需老师同意后只用 --head-lr 覆盖
+head_lr = 0.0
+
+# 官方基线（results_summary.csv, eres2net 3s）
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+# 8.18 speaker-preserve 前端单独作用时的实测（组合评测对照用）
+noise_0db_frontend_only = 7.7902
+noise_m5db_frontend_only = 9.9186
+# -30% 目标：0dB ≤ 5.874, -5dB ≤ 7.739
+
+# 8.20 sanity（random init, batch12×accum8）实测 epoch1 —— 本轮对照基准
+[compare.random_init_ep1]
+clean_eer = 4.00
+noise0_eer = 11.00
+noise5_eer = 16.50
+train_loss = 15.0546
+train_acc = 0.0168
+# 随机初始化理论值：top1 ≈ 1/9900 ≈ 0.01%；初始 AAM loss ≈ ln(9900)+32*0.2 ≈ 15.6

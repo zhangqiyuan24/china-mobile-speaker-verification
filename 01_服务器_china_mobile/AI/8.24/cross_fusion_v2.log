@@ -1,0 +1,26 @@
+[load] trials ...
+trials: 1378206
+
+===== noise_0db =====
+  单路 821_raw  EER=7.6911%
+  单路 821_fe   EER=7.5000%
+  单路 30k_fe   EER=7.7914%
+  跳过 30k_raw （/home/ligangrui/china_mobile/AI/8.22/exp/matched_robust/eval）
+  单路 90k_raw  EER=8.1959%
+  单路 90k_fe   EER=7.9319%
+  单路 soup_raw EER=7.7124%
+  单路 soup_fe  EER=7.5104%
+  uniform z 融合(821_raw+821_fe+30k_fe+90k_raw+90k_fe+soup_raw+soup_fe) EER=7.2904%
+  grid 最优 EER=7.2049%  (0.25*821_raw+0.25*821_fe+0.25*30k_fe+0.25*90k_fe)  相对基线 -14.1%
+
+===== noise_m5db =====
+  单路 821_raw  EER=9.8784%
+  单路 821_fe   EER=9.5085%
+  单路 30k_fe   EER=9.7834%
+  单路 30k_raw  EER=10.1244%
+  单路 90k_raw  EER=10.2786%
+  单路 90k_fe   EER=9.8391%
+  单路 soup_raw EER=9.8121%
+  单路 soup_fe  EER=9.4516%
+  uniform z 融合(821_raw+821_fe+30k_fe+30k_raw+90k_raw+90k_fe+soup_raw+soup_fe) EER=9.2280%
+  grid 最优 EER=9.1533%  (0.25*821_raw+0.25*821_fe+0.25*30k_fe+0.25*90k_fe)  相对基线 -17.2%

@@ -1,0 +1,19 @@
+== 读 trials 与抽样 ==
+targets=211400 sampled_nontarget=30000
+enrol 嵌入 16401
+
+===== noise_0db =====
+raw=16401 fe=16401 claim=27389
+[自检2] FE 余弦 vs 官方 score: 200/200 对齐
+[自检1] 官方全文复算 EER=4.8921 (官方 4.892)
+raw=8.3667  oracleFE=4.8767  claimFE=10.7216 CI95=[10.533,10.932]
+nontarget 分数中位: raw=0.0437 oracle=0.0466 claim=0.1292
+
+===== noise_m5db =====
+raw=16401 fe=16401 claim=27389
+[自检2] FE 余弦 vs 官方 score: 200/200 对齐
+[自检1] 官方全文复算 EER=5.5633 (官方 5.5634)
+raw=11.0867  oracleFE=5.5333  claimFE=12.8500 CI95=[12.677,13.090]
+nontarget 分数中位: raw=0.0408 oracle=0.0447 claim=0.1390
+
+[done] claim_summary.json

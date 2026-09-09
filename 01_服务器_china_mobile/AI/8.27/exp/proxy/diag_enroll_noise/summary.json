@@ -1,0 +1,36 @@
+{
+  "ckpt": "/data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v3_ns05duraug_r5/checkpoint_best.tar",
+  "seed": 20260901,
+  "rows": {
+    "clean": {
+      "noise_0db_fe": 1.8068181818181817,
+      "noise_0db_raw": 5.5,
+      "noise_m5db_fe": 3.7386363636363633,
+      "noise_m5db_raw": 13.0
+    },
+    "snr15": {
+      "noise_0db_fe": 2.477272727272727,
+      "noise_0db_raw": 6.0,
+      "noise_m5db_fe": 4.215909090909091,
+      "noise_m5db_raw": 12.761363636363637
+    },
+    "snr10": {
+      "noise_0db_fe": 2.2613636363636362,
+      "noise_0db_raw": 6.238636363636363,
+      "noise_m5db_fe": 4.0,
+      "noise_m5db_raw": 12.238636363636363
+    },
+    "snr5": {
+      "noise_0db_fe": 2.522727272727273,
+      "noise_0db_raw": 7.238636363636363,
+      "noise_m5db_fe": 4.738636363636363,
+      "noise_m5db_raw": 12.238636363636363
+    },
+    "snr0": {
+      "noise_0db_fe": 4.5,
+      "noise_0db_raw": 9.0,
+      "noise_m5db_fe": 6.238636363636363,
+      "noise_m5db_raw": 12.715909090909092
+    }
+  }
+}

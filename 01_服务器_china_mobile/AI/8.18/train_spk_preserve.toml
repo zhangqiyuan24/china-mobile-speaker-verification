@@ -1,0 +1,61 @@
+# Speaker Information Preservation fine-tuning 配置
+# FullSubNet+ 降噪 + Frozen ERes2Net speaker consistency
+
+[paths]
+# 3D-Speaker sv-ecapa 目录（clean 训练数据 + noise 刭分 + ERes2Net checkpoint）
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+# FullSubNet+ 代码根目录
+fullsubnet_root = "../8.17/code"
+# FullSubNet+ checkpoint
+fullsubnet_ckpt = "../8.17/models/best_model.tar"
+# ERes2Net-large checkpoint
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+# 输出目录
+exp_dir = "exp/spk_preserve"
+
+[acoustics]
+sr = 16000
+n_fft = 512
+win_length = 512
+hop_length = 256
+
+[dataset]
+# clean 训练数据（scp 格式：utt_id wav_path，脚本会自动转纯路径列表）
+clean_scp = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/data_for_train/all_wav.scp"
+# MUSAN 训练噪声（每行一个 wav 路径）
+noise_list = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_train_freesound.txt"
+# 噪声 test 列表（仅用于校验隔离，训练不使用）
+noise_test_list = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_test_freesound.txt"
+# 正式训练从全量 clean 中等间隔均匀抽取的条数（0 = 用全量；sanity 模式走 --sanity-samples）
+max_train_samples = 30000
+# 只训练 0 dB 和 -5 dB
+snr_range = [0, -5]
+reverb_proportion = 0.0
+sub_sample_length = 3.0   # 每段 3 秒
+batch_size = 4
+num_workers = 4
+
+[model]
+# FullSubNet+ 结构参数（与 pretrained checkpoint 对应）
+sb_num_neighbors = 15
+fb_num_neighbors = 0
+num_freqs = 257
+look_ahead = 2
+sequence_model = "LSTM"
+fb_output_activate_function = "ReLU"
+sb_output_activate_function = false
+channel_attention_model = "TSSE"
+fb_model_hidden_size = 512
+sb_model_hidden_size = 384
+norm_type = "offline_laplace_norm"
+num_groups_in_drop_band = 2
+kersize = [3, 5, 10]
+subband_num = 1
+
+[training]
+lr = 0.00001           # 1e-5
+epochs = 10
+lambda_spk = 0.5
+num_epochs_sanity = 3  # sanity run 用
+seed = 2026
+device = "cuda:0"      # DDP 启动时会被 local_rank 覆盖

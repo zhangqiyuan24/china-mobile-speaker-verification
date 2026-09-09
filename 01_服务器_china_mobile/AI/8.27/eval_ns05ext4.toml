@@ -1,0 +1,14 @@
+# eval_ns05ext4.toml — ns05ext ep4 官方单次评测（8.27 夜，预声明 <6.64 触发）
+# 与 eval_ns05ep3.toml 同构；exp_dir 隔离；raw/enrol 缓存自 8.24 soup5 拷入。
+
+[paths]
+sv_ecapa = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+eres2net_ckpt = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+exp_dir = "exp/official_ns05ext4"
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+noise_0db_frontend_only = 7.7902
+noise_m5db_frontend_only = 9.9186

@@ -1,0 +1,24 @@
+# 音频数据(体积大,用 scripts/download_data.sh 重新获取)
+*.wav
+*.flac
+*.mp3
+*.m4a
+
+# 模型权重与中间产物(不入库;可由训练脚本重新生成)
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.safetensors
+*.ark
+*.npz
+*.npy
+*.score
+
+# 归档与缓存
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+__pycache__/
+.ipynb_checkpoints/

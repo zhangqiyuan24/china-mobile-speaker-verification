@@ -1,0 +1,42 @@
+[r5-3s start] Sat 29 Aug 2026 02:04:16 PM CST
+[r5_ecapa_noise_0db_3s] EER = 6.3195
+[r5_eres_noise_0db_3s] EER = 4.8920
+[r5_b6_noise_0db_3s] EER = 7.5842
+[raw_ecapa_noise_0db_1s] EER = 24.5132
+[raw_b6_noise_0db_1s] 
+[raw_ecapa_noise_0db_5s] EER = 10.3638
+[raw_b6_noise_0db_5s] 
+[r5_ecapa_noise_m5db_3s] EER = 7.1296
+[r5_eres_noise_m5db_3s] EER = 5.5634
+[r5_b6_noise_m5db_3s] EER = 9.3484
+[raw_ecapa_noise_m5db_1s] EER = 27.4650
+[raw_b6_noise_m5db_1s] 
+[raw_ecapa_noise_m5db_5s] EER = 13.3732
+[raw_b6_noise_m5db_5s] 
+
+===== r5 终评·3s 轴 + raw 补格汇总 =====
+r5_b6_noise_0db_1s: EER = 18.3562
+r5_b6_noise_0db_3s: EER = 7.5842
+r5_b6_noise_0db_5s: EER = 7.1990
+r5_b6_noise_m5db_1s: EER = 20.7559
+r5_b6_noise_m5db_3s: EER = 9.3484
+r5_ecapa_noise_0db_1s: EER = 18.3500
+r5_ecapa_noise_0db_3s: EER = 6.3195
+r5_ecapa_noise_0db_5s: EER = 5.7399
+r5_ecapa_noise_m5db_1s: EER = 19.5918
+r5_ecapa_noise_m5db_3s: EER = 7.1296
+r5_eres_noise_0db_1s: EER = 13.5680
+r5_eres_noise_0db_3s: EER = 4.8920
+r5_eres_noise_0db_5s: EER = 4.4324
+r5_eres_noise_m5db_1s: EER = 14.7439
+r5_eres_noise_m5db_3s: EER = 5.5634
+r5_eres_noise_m5db_5s: 
+raw_b6_noise_0db_1s: 
+raw_b6_noise_0db_5s: 
+raw_b6_noise_m5db_1s: 
+raw_b6_noise_m5db_5s: 
+raw_ecapa_noise_0db_1s: EER = 24.5132
+raw_ecapa_noise_0db_5s: EER = 10.3638
+raw_ecapa_noise_m5db_1s: EER = 27.4650
+raw_ecapa_noise_m5db_5s: EER = 13.3732
+[r5-3s done] Sat 29 Aug 2026 06:47:54 PM CST

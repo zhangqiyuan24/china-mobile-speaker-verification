@@ -1,0 +1,36 @@
+{
+  "checkpoint": "/data/home/ligangrui/china_mobile/AI/8.24/exp/proto_robust_90k/checkpoints/checkpoint_best.tar",
+  "results": {
+    "raw": {
+      "noise_0db": {
+        "eer": 8.3036,
+        "mindcf": 0.632
+      },
+      "noise_m5db": {
+        "eer": 10.5278,
+        "mindcf": 0.6878
+      },
+      "clean": {
+        "eer": 5.5081,
+        "mindcf": 0.5082
+      }
+    },
+    "frontend": {
+      "noise_0db": {
+        "eer": 8.0757,
+        "mindcf": 0.6274
+      },
+      "noise_m5db": {
+        "eer": 10.1769,
+        "mindcf": 0.6844
+      }
+    }
+  },
+  "baseline": {
+    "clean": 5.8248,
+    "noise_0db": 8.3911,
+    "noise_m5db": 11.0557,
+    "noise_0db_frontend_only": 7.7902,
+    "noise_m5db_frontend_only": 9.9186
+  }
+}

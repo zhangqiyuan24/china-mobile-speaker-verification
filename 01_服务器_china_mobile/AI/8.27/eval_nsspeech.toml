@@ -1,0 +1,17 @@
+# eval_nsspeech.toml — nsspeech（人声噪声池训练臂）一次性假设检验官方评测（8.27 傍晚布防）
+# 判定规则修正记录：原预声明"ep3 hard<6.64→官方"不适配——本臂训练噪声为人声
+# （noise_speech_mix 852 条），hard proxy 为 freesound 环境噪声集，域正好相反，
+# proxy 无法检验"人声训练治人声测试"假设。改为假设检验式一次性官方（无论好坏都报）。
+# 后端 soup5，前端 = tse_v3_nsspeech/checkpoint_best.tar 增强产物。
+
+[paths]
+sv_ecapa = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+eres2net_ckpt = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+exp_dir = "exp/official_nsspeech"
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+noise_0db_frontend_only = 7.7902
+noise_m5db_frontend_only = 9.9186

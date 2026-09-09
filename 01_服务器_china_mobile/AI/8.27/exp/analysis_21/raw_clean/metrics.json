@@ -1,0 +1,10 @@
+{
+  "name": "raw_clean",
+  "n_trials": 1378206,
+  "n_target": 211400,
+  "n_nontarget": 1166806,
+  "EER": 5.081,
+  "EER_thr": 0.2266,
+  "minDCF(p=0.01)": 0.4717,
+  "minDCF_thr": 0.42867
+}

@@ -1,0 +1,58 @@
+{
+  "best_k": 200,
+  "table": {
+    "100": {
+      "metrics": {
+        "clean": {
+          "eer": 1.749999999999996,
+          "mindcf": 0.1375
+        },
+        "0db": {
+          "eer": 6.499999999999995,
+          "mindcf": 0.2925
+        },
+        "m5db": {
+          "eer": 10.499999999999998,
+          "mindcf": 0.4625000000000001
+        }
+      },
+      "noise_sum": 16.999999999999993
+    },
+    "200": {
+      "metrics": {
+        "clean": {
+          "eer": 1.749999999999996,
+          "mindcf": 0.125
+        },
+        "0db": {
+          "eer": 6.25,
+          "mindcf": 0.285
+        },
+        "m5db": {
+          "eer": 10.25,
+          "mindcf": 0.45999999999999996
+        }
+      },
+      "noise_sum": 16.5
+    },
+    "300": {
+      "metrics": {
+        "clean": {
+          "eer": 1.749999999999996,
+          "mindcf": 0.1075
+        },
+        "0db": {
+          "eer": 6.499999999999995,
+          "mindcf": 0.28
+        },
+        "m5db": {
+          "eer": 10.25,
+          "mindcf": 0.4675
+        }
+      },
+      "noise_sum": 16.749999999999993
+    }
+  },
+  "checkpoint": "/data/home/ligangrui/china_mobile/AI/8.21/exp/proto_robust/checkpoints/checkpoint_best.tar",
+  "cohort_dir": "/data/home/ligangrui/china_mobile/AI/8.21/exp/proto_robust/eval/asnorm/cohort"
+}

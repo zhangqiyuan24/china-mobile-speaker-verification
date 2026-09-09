@@ -1,0 +1,19 @@
+[① 抽样] Mon 31 Aug 2026 01:54:12 PM CST
+[skip] 已有 claim_groups.json
+[② claim 增强] Mon 31 Aug 2026 01:54:12 PM CST
+[增强完成] Mon 31 Aug 2026 02:32:54 PM CST
+[③ 官方提嵌入] Mon 31 Aug 2026 02:32:54 PM CST
+  noise_0db: 27389 条
+  noise_m5db: 27389 条
+[④ 分析] Mon 31 Aug 2026 03:02:31 PM CST
+== 读 trials 与抽样 ==
+targets=211400 sampled_nontarget=30000
+Traceback (most recent call last):
+  File "/data/home/ligangrui/china_mobile/AI/8.31/claim_retest/analyze_claim.py", line 203, in <module>
+    main()
+  File "/data/home/ligangrui/china_mobile/AI/8.31/claim_retest/analyze_claim.py", line 98, in main
+    enrol = read_scp_dir(ENROL_DIR)
+  File "/data/home/ligangrui/china_mobile/AI/8.31/claim_retest/analyze_claim.py", line 53, in read_scp_dir
+    vecs[key] = np.frombuffer(fh.read(4 * dim), dtype="<f4").copy()
+ValueError: buffer size must be a multiple of element size
+[all done] Mon 31 Aug 2026 03:02:41 PM CST

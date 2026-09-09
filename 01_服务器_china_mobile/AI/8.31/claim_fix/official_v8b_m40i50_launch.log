@@ -1,0 +1,16 @@
+[① 选ckpt] Wed 02 Sep 2026 03:24:41 PM CST
+  ckpt=/data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v8_v8b_m40i50/checkpoint_epoch1.tar (proxy-claim 最优 ep=1)
+[② 全集oracle增强] Wed 02 Sep 2026 03:24:41 PM CST
+[③ 冒认claim增强] Wed 02 Sep 2026 03:50:05 PM CST
+[④ 提嵌入] Wed 02 Sep 2026 04:29:37 PM CST
+[⑤ 分析] Wed 02 Sep 2026 05:17:12 PM CST
+targets=211400 sampled_nontarget=30000
+
+===== noise_0db ===== raw=16401 fe=16401 claim=27389
+  raw=8.3667 oracleFE=4.7914 claimFE=11.4233 CI95=[11.263,11.630] nt_med={'raw': 0.043661847710609436, 'oracle': 0.04549381509423256, 'claim': 0.14047753810882568}
+
+===== noise_m5db ===== raw=16401 fe=16401 claim=27389
+  raw=11.0867 oracleFE=5.4801 claimFE=13.4939 CI95=[13.280,13.694] nt_med={'raw': 0.04081098735332489, 'oracle': 0.04416363313794136, 'claim': 0.14825285971164703}
+
+[done] /data/home/ligangrui/china_mobile/AI/8.31/claim_fix/official_v8b_m40i50/summary.json
+[done v8b_m40i50] Wed 02 Sep 2026 05:17:40 PM CST

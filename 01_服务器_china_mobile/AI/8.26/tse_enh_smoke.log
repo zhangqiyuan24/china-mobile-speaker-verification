@@ -1,0 +1,14 @@
+[enrol] clean wav 16401
+  [enrol-emb] 0/1
+[cond] 1 个说话人注册嵌入(512, L2)
+[tse] 8.18 权重装载: 缺 4 键(全部 film.*, 零初始化恒等)
+[tse] 装载 exp/tse/checkpoint_epoch1.tar(epoch=1)
+[noise_0db] 8 条带噪待增强
+  [enhance] 已完成 0，待处理 8
+  [enhance] 组 0/1
+  [enhance] 本轮完成 8
+[noise_m5db] 8 条带噪待增强
+  [enhance] 已完成 0，待处理 8
+  [enhance] 组 0/1
+  [enhance] 本轮完成 8
+[done] 增强产物 -> exp/tse/enhanced_smoke/noise_0db noise_m5db

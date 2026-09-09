@@ -1,0 +1,53 @@
+# VoiceID 式前端二轮微调配置（8.25）
+# FullSubNet+ 从 8.18 spk_preserve 的 e10 继续训(叠加), 验证器换成 soup3
+# 损失: L_se(cIRM MSE) + lambda_ce * AAM-CE(enhanced, spk label)
+
+[paths]
+sv_ecapa = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+fullsubnet_root = "/home/ligangrui/china_mobile/AI/8.17/code"
+# 从 8.18 已微调的 e10 起步(说话人保持能力继承), 而非原始 pretrained
+fullsubnet_ckpt = "/home/ligangrui/china_mobile/AI/8.18/exp/spk_preserve/checkpoint_epoch10.tar"
+# 冻结验证器 = soup3(当前最优), 8.18 用的原始 eres2net_large 弱得多
+verifier_ckpt = "/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/checkpoints/checkpoint_soup3.tar"
+proto_npz = "/home/ligangrui/china_mobile/AI/8.21/exp/prototypes/prototypes.npz"
+data_dir_820 = "/home/ligangrui/china_mobile/AI/8.22/exp/data_90k/data"
+exp_dir = "/home/ligangrui/china_mobile/AI/8.25/exp/spk_voiceid"
+
+[acoustics]
+sr = 16000
+n_fft = 512
+win_length = 512
+hop_length = 256
+
+[dataset]
+# 数据源 = data_dir_820/train_utts.csv(自带绝对路径+标签), 无需 clean_scp
+noise_list = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_train_freesound.txt"
+noise_test_list = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_test_freesound.txt"
+max_train_samples = 30000
+snr_range = [0, -5]
+sub_sample_length = 3.0
+batch_size = 4
+num_workers = 6
+
+[model]
+sb_num_neighbors = 15
+fb_num_neighbors = 0
+num_freqs = 257
+look_ahead = 2
+sequence_model = "LSTM"
+fb_output_activate_function = "ReLU"
+sb_output_activate_function = false
+channel_attention_model = "TSSE"
+fb_model_hidden_size = 512
+sb_model_hidden_size = 384
+norm_type = "offline_laplace_norm"
+num_groups_in_drop_band = 2
+kersize = [3, 5, 10]
+subband_num = 1
+
+[training]
+lr = 0.00001
+epochs = 6
+lambda_ce = 1.0
+lambda_spk = 0.0        # 可选: 加回余弦保持项
+seed = 2026

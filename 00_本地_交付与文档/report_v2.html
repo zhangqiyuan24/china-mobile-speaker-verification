@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>多条件中文声纹识别与噪声鲁棒性增强 · 技术报告 v2</title>
+<style>
+  @page { size: A4; margin: 17mm 15mm 19mm 15mm; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-sizing: border-box; }
+  body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; font-size: 10.5pt; line-height: 1.7; color: #222; margin: 0; }
+  h1 { font-size: 17pt; color: #1F3864; border-bottom: 2.5px solid #2F5496; padding-bottom: 5px; margin: 26px 0 12px; page-break-after: avoid; }
+  h1.chapter { page-break-before: always; }
+  h2 { font-size: 13pt; color: #2F5496; margin: 18px 0 8px; page-break-after: avoid; }
+  h3 { font-size: 11.5pt; color: #44546A; margin: 13px 0 6px; page-break-after: avoid; }
+  p { margin: 6px 0; text-align: justify; orphans: 3; widows: 3; }
+  .cover { text-align: center; padding-top: 150px; page-break-after: always; }
+  .cover .title { font-size: 26pt; font-weight: bold; color: #1F3864; margin: 18px 0 6px; }
+  .cover .subtitle { font-size: 15pt; color: #2F5496; margin-bottom: 60px; }
+  .cover .meta { font-size: 12pt; color: #44546A; line-height: 2.2; margin-top: 90px; }
+  .cover .rule { width: 60%; height: 3px; background: #2F5496; margin: 26px auto; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 4px; font-size: 9.3pt; page-break-inside: avoid; }
+  th { background: #2F5496; color: #fff; padding: 5px 7px; border: 1px solid #9DB3D5; font-weight: 600; }
+  td { padding: 4.5px 7px; border: 1px solid #C9D6EA; }
+  tr:nth-child(even) td { background: #F2F6FC; }
+  td.hl { font-weight: bold; color: #C00000; }
+  td.good { font-weight: bold; color: #2E7D32; }
+  .tabcap { text-align: center; font-size: 9pt; color: #595959; margin: 14px 0 4px; page-break-after: avoid; }
+  .figcap { text-align: center; font-size: 9pt; color: #595959; margin: 4px 0 14px; }
+  .refs { font-size: 9.5pt; line-height: 2.0; color: #333; text-align: left; margin-top: 8px; }
+  .figwrap { text-align: center; page-break-inside: avoid; margin: 10px 0 2px; }
+  .figwrap img { max-width: 96%; }
+  .formula { font-family: "Cambria Math", "Times New Roman", serif; font-size: 11.5pt; text-align: center; margin: 10px 0; color: #1F3864; }
+  .note { background: #FFF7E0; border-left: 4px solid #BF9000; padding: 8px 12px; margin: 10px 0; font-size: 9.8pt; }
+  .key { background: #EAF0FA; border-left: 4px solid #2F5496; padding: 8px 12px; margin: 10px 0; font-size: 9.8pt; }
+  .warn { background: #FDECEC; border-left: 4px solid #C00000; padding: 8px 12px; margin: 10px 0; font-size: 9.8pt; }
+  .small { font-size: 9pt; color: #595959; }
+  tr.dim td { color: #6B7280; }
+  tr.dim td.hl { color: #C00000; }
+  .rmwrap { page-break-inside: avoid; }
+  .rm { display: flex; gap: 7px; align-items: stretch; text-align: left; }
+  .rmcol { flex: 1; min-width: 0; }
+  .rmarrow { align-self: center; font-size: 15pt; font-weight: bold; color: #2F5496; }
+  .rmhead { color: #fff; font-weight: 600; font-size: 9pt; text-align: center; border-radius: 4px; padding: 2.5px 6px; margin-bottom: 6px; }
+  .rmbox { border: 1px solid #C9D6EA; border-left: 3.5px solid #2F5496; border-radius: 5px; padding: 5px 8px; font-size: 8.6pt; line-height: 1.5; margin-bottom: 6px; background: #FCFCFD; }
+  .rmbox.fail { border-left-color: #C00000; color: #555; }
+  .rmbox.new { border-left-color: #2F5496; background: #F3F7FD; }
+  .rmbox.step { border-left-color: #2F5496; }
+  .rmbox.final { border-left-color: #2E7D32; background: #F2F9F3; font-weight: 600; color: #1B5E20; }
+  .rms { display: block; color: #595959; font-weight: 400; font-size: 8.2pt; }
+  .rmv { color: #C00000; font-weight: 600; }
+  .rmnote { font-size: 8.2pt; color: #595959; border-top: 1px dashed #C9D6EA; padding-top: 4px; }
+  ul, ol { margin: 5px 0 5px 22px; padding: 0; }
+  li { margin: 3px 0; orphans: 2; widows: 2; }
+  .toc { font-size: 10.5pt; line-height: 1.9; }
+  sup, sub { font-size: 7.5pt; }
+  .badge { display: inline-block; background: #2F5496; color: #fff; border-radius: 3px; padding: 0 7px; font-size: 9pt; margin-right: 5px; }
+</style>
+</head>
+<body>
+
+<!-- ================= 封面 ================= -->
+<div class="cover">
+  <div style="font-size:13pt;color:#44546A;">中国移动研究项目 · 子课题一</div>
+  <div class="rule"></div>
+  <div class="title">多条件中文声纹识别<br>与噪声鲁棒性增强</div>
+  <div class="subtitle">技 术 报 告(扩充版 V2)</div>
+  <div style="font-size:11pt;color:#595959;">—— 面向智能终端的开集声纹验证:注册条件化目标说话人提取 ——</div>
+  <div class="meta">
+    张启元(中国科学院大学)<br>
+    中国移动研究项目 · 子课题一<br>
+    2026 年 9 月 7 日(修订版)
+  </div>
+</div>
+
+<!-- ================= 目录 ================= -->
+<h1>目录</h1>
+<div class="toc">
+<b>摘要</b><br>
+<b>小组成员与分工</b><br>
+1&nbsp;&nbsp;任务背景与验收要求<br>
+2&nbsp;&nbsp;声纹识别与语音增强技术基础<br>
+3&nbsp;&nbsp;评测体系与基线<br>
+4&nbsp;&nbsp;研究历程与路线演进<br>
+5&nbsp;&nbsp;交付方法:模型、损失与训练<br>
+6&nbsp;&nbsp;主线实验结果<br>
+7&nbsp;&nbsp;消融实验<br>
+8&nbsp;&nbsp;大、小模型与协同方案比较<br>
+9&nbsp;&nbsp;局限性分析<br>
+10&nbsp;&nbsp;总结与展望<br>
+<b>未来职业规划</b><br>
+参考文献<br>
+附录 A&nbsp;&nbsp;模型参数量普查;&nbsp;&nbsp;附录 B&nbsp;&nbsp;实验产物索引;&nbsp;&nbsp;附录 C&nbsp;&nbsp;部署口径(claim)分析与局限性
+</div>
+
+<!-- ================= 摘要 ================= -->
+<h1>摘要</h1>
+<p>本报告面向 AI 眼镜、车载座舱等中文智能终端的开集声纹验证需求,解决低信噪比(0 dB、-5 dB)单说话人噪声下的说话人确认(EER)退化问题。我们从 3D-Speaker 中文数据出发建立了说话人隔离、开集验证、阈值冻结的统一评测体系,校准了三个量级的基线骨干(ECAPA-TDNN 20.8M、ERes2Net-large 29.1M、ReDimNet2-B6 12.7M),并先后排除了"冻结式后端微调"(配方迭代后增益 -8%~-16%,距 30% 达标线仍差约一倍)与"通用降噪前端"(负增益)两条自然路线;由"通用降噪抹平说话人身份特征"的负增益机理出发,提出<b>注册条件化目标说话人提取前端</b>:以注册语音的声纹嵌入通过特征级仿射调制(SpeakerFiLM)注入 FullSubNet+ 降噪网络,使其"只提取注册说话人",并配合说话人保持损失、难负原型抑制损失、判别分类损失与随机时长增强的四级迭代训练。</p>
+<p><b>最终交付(验收口径):</b>主力后端 ERes2Net-large 在 0 dB/-5 dB 的 EER 由 8.39%/11.06% 降至 <b>4.89%/5.56%</b>,相对未增强骨干降幅 <b>-41.7% / -49.7%</b>,大幅超过"降幅 ≥30%"的验收线;经典后端 ECAPA-TDNN 同步达到 -43.3% / -50.3%;轻量后端 ReDimNet2-B6 为 -23.7% / -28.2%。clean 语音无退化,非人声噪声域(music、音效)增益 -39% 以上全额迁移,混响 -20.0%、2-3 人重叠 -15.0%~-35.2%,1s/3s/5s 短语音全轴改善。</p>
+<p class="small" style="margin-top:2px;">评测口径定义与部署口径(claim)分析见<b>附录 C</b>。</p>
+
+<!-- ================= 小组成员与分工 ================= -->
+<h1 class="chapter">小组成员与分工</h1>
+<p>子课题一由 2 名成员协作完成,按<b>"可复现评测基座 + 鲁棒算法主线"双支柱</b>分工:数据与评测基座保证每个结论可追溯、可复现;算法主线保证每个决策都有官方口径的单次实测支撑。两人每周周报对齐进度,关键实验交叉校验。</p>
+<table>
+<tr><th style="width:18%">成员</th><th style="width:22%">分工方向</th><th>主要工作</th></tr>
+<tr>
+  <td><b>张启元</b>(中国科学院大学)</td>
+  <td>算法与实验主线</td>
+  <td>子课题需求分解与达标路线设计;训练/评测环境与自动化管线搭建;鲁棒方案设计与四轮迭代(冻结微调 → 通用降噪 → 注册条件化 TSE 前端);三后端全量实验与官方终评;失败案例挖掘、ROC/DET 分析;技术报告与汇报材料。</td>
+</tr>
+<tr>
+  <td><b>邓姣姣</b></td>
+  <td>数据与评测支撑</td>
+  <td>多条件测试数据协议制定(8 种声学条件派生,注册/trial 协议统一);单说话人噪声与多人重叠数据合成(SNR/TIR 元数据记录);三重数据泄漏检查(说话人/MD5/同源切片);统一评测脚本 evaluate.py(EER、minDCF、ROC/DET、固定阈值 FAR/FRR);鲁棒性文献调研(2024-2026 五类技术路线)。</td>
+</tr>
+</table>
+
+<!-- ================= 1 任务背景 ================= -->
+<h1 class="chapter">1&nbsp;&nbsp;任务背景与验收要求</h1>
+<h2>1.1 任务目标</h2>
+<p>依据《任务书》(任务.xlsx),子课题一的目标是:面向 AI 眼镜、车载座舱等智能终端,提升中文声纹识别在低信噪比和复杂声学条件下的稳定性。与"固定人员名单的闭集分类"不同,任务明确采用<b>开集声纹验证</b>:测试阶段的目标说话人不出现在训练集中,仅凭注册语音建立声纹模板;每条试验由"目标身份 + 测试语音"组成,同时包含本人试验与非本人试验。</p>
+<h2>1.2 数据与协议规定</h2>
+<ul>
+  <li>以 <b>3D-Speaker 中文数据</b><sup>[8]</sup>为主验收集(训练集 190 GB、579,003 条;测试集 240 人、18,782 条),VoxCeleb 仅用于预训练;</li>
+  <li>训练/验证/测试<b>按说话人互不重叠</b>划分,禁止同源切片跨集合泄漏;</li>
+  <li>固定注册语音数量/时长、测试时长(1s、3s、5s)、正负试验清单与比例;<b>判定阈值只能在验证集确定,测试集冻结</b>,不得重新调参;</li>
+  <li><b>主验收基线 = 骨干的未增强原版</b>("采用其他骨干时,还需与该骨干的未增强版本进行同条件比较"),且基线不得使用前端增强、噪声鲁棒训练、域适配或后端校准等改进;</li>
+  <li>测试场景:干净语音;单说话人噪声(SNR = -5 dB、0 dB);回声/混响(记录 RIR/T60);2-3 人重叠(记录 TIR);跨设备;短语音。</li>
+</ul>
+<h2>1.3 验收指标</h2>
+<table>
+<tr><th style="width:16%">层级</th><th>指标</th><th style="width:34%">本课题结果</th></tr>
+<tr><td>挑战目标</td><td>单说话人噪声(-5 dB、0 dB 两档)EER 均 ≤ 0.5%</td><td class="hl">未冲击(差距数量级,预期内)</td></tr>
+<tr><td class="good">达标目标</td><td>(基线EER − 改进EER) ÷ 基线EER × 100%,两档均 <b>≥ 30%</b></td><td class="good">主力 -41.7% / -49.7%;经典 -43.3% / -50.3% ✅</td></tr>
+<tr><td>其他场景</td><td>不设统一硬阈值,分项报告 EER、minDCF、ROC/DET、固定阈值 FAR/FRR,禁止合并均值替代分项</td><td class="good">全部分项报告(第 6 章)</td></tr>
+<tr><td>交付物</td><td>模型、权重、训练/评测代码、对比分析报告、失败案例</td><td class="good">全部产出(附录 B)</td></tr>
+</table>
+<div class="key"><b>口径说明:</b>达标线按任务书以"未增强骨干"为基线逐后端对照——这正是第 6 章交付大表的构成方式;即使改按子课题文本中出现的"统一 ECAPA-TDNN 基线"口径(0dB/-5dB 为 11.15%/14.36%,达标线 7.805%/10.052%),主力后端交付值 4.89%/5.56% 依然大幅过线,结论对两种口径均稳健。</div>
+
+<!-- ================= 2 技术基础 ================= -->
+<h1 class="chapter">2&nbsp;&nbsp;声纹识别与语音增强技术基础</h1>
+<p>本章给出理解后续各章所需的最小背景:开集声纹验证的流程与指标(2.1、2.2)、三个基线骨干(2.3)、作为前端骨干的 FullSubNet+(2.4),以及本课题核心思想依托的目标说话人提取与 FiLM 条件化(2.5)。已熟悉这些内容的读者可直接跳至第 3 章。</p>
+<h2>2.1 开集声纹验证的流程</h2>
+<p>声纹识别分为<b>闭集辨认</b>(从固定名单中分类"是谁")与<b>开集验证</b>(判断一句测试语音"是不是声称的那个人")。本课题采用后者,完整流程为:</p>
+<ol>
+  <li><b>注册(enrollment):</b>说话人提供若干条注册语音,经嵌入提取器 <i>f</i>(·) 映射为定长声纹嵌入,聚合为该说话人的<b>注册模板</b> <i>e</i><sub>enr</sub>;</li>
+  <li><b>验证(verification):</b>测试语音 <i>x</i><sub>t</sub> 同样映射为嵌入 <i>e</i><sub>t</sub>,与注册模板做<b>余弦相似度</b>打分:</li>
+</ol>
+<div class="formula">score(x<sub>t</sub>, e<sub>enr</sub>) = cos( f(x<sub>t</sub>), e<sub>enr</sub> ) = f(x<sub>t</sub>) · e<sub>enr</sub> / ( ‖f(x<sub>t</sub>)‖ · ‖e<sub>enr</sub>‖ )</div>
+<p>判决:score ≥ 阈值 θ 判为目标(target,本人),否则判为非目标(nontarget,他人)。每条"测试语音 × 声称身份"组合称为一条 <b>trial</b>;开集测试集由目标 trial 与非目标 trial 按固定比例构成(本课题官方清单 1,378,206 条,目标 : 非目标 = 1 : 5.5,构建方式见 3.2)。</p>
+<p>两条关键约束:<b>"开集"意味着测试说话人不出现在训练集中</b>——系统必须只凭注册语音建立模板,这是声纹验证与说话人分类的本质区别;<b>阈值只能在验证集上确定、测试集冻结</b>——否则相当于依据测试数据反馈调整系统参数,造成信息泄漏与评估失真(任务书明确规定,见 1.2)。</p>
+<h2>2.2 性能指标:EER、minDCF 与工作点</h2>
+<p>给定阈值 θ,记目标 trial 的分数分布为"真认分布"、非目标为"冒认分布",定义两类错误率:</p>
+<div class="formula">FAR(θ) = P(score ≥ θ | 非目标)&nbsp;&nbsp;(错误接受率),&nbsp;&nbsp;&nbsp;&nbsp;FRR(θ) = P(score &lt; θ | 目标)&nbsp;&nbsp;(错误拒绝率)</div>
+<p>θ 调低则 FAR 升、FRR 降,反之亦然——两类错误单调反向,单点错误率不能概括系统优劣。本报告采用四种互补指标:</p>
+<ul>
+  <li><b>EER(等错误率):</b>使 FAR(θ) = FRR(θ) 的共同错误率,对应 ROC 曲线与对角线的交点。EER 不依赖阈值选择、越低越好,是最常用的单值指标。例:主力后端 0 dB 3s 档 EER 从 8.39 降至 4.89(第 6 章),即错误率近乎减半。</li>
+  <li><b>ROC / DET 曲线:</b>全阈值范围内 FAR–FRR 的完整轨迹。DET 图将两轴作<b>正态概率刻度</b>变换,使分数近似高斯时曲线接近直线、尾部分布差异被放大,便于比较低错误率区域(本报告图 5/6)。</li>
+  <li><b>minDCF(最小检测代价函数):</b>NIST 评测定义的代价在全部阈值上取最小:</li>
+</ul>
+<div class="formula">C<sub>det</sub>(θ) = C<sub>miss</sub> · P<sub>miss</sub>(θ) · P<sub>tar</sub> + C<sub>fa</sub> · P<sub>fa</sub>(θ) · (1 − P<sub>tar</sub>),&nbsp;&nbsp;&nbsp;&nbsp;minDCF = min<sub>θ</sub> C<sub>det</sub>(θ) / ( C<sub>miss</sub> · P<sub>tar</sub> )</div>
+<p>官方口径取 P<sub>tar</sub>=0.01、C<sub>miss</sub>=C<sub>fa</sub>=1:目标先验仅 1% 意味着部署中非目标请求远多于目标,minDCF 因此对<b>低误报区域</b>的分数分布远比 EER 敏感。本课题主力 0 dB 格 minDCF 从 0.628 降至 0.515(−18%),显著小于 EER 的 −41.7%,正是这个原因(表 8)。</p>
+<ul>
+  <li><b>固定工作点:</b>FAR=5% 处的 FRR、FRR=5% 处的 FAR,直接对应部署运维的漏放行/误告警水平。例:主力 0 dB 格 FRR@FAR5% 从 12.46 降至 4.77、FAR@FRR5% 从 14.98 降至 4.77(表 8)。</li>
+</ul>
+<h2>2.3 三个基线骨干</h2>
+<p>本课题在同一协议下对比三个量级的说话人嵌入提取器(全部输出定长嵌入,按 2.1 的余弦打分验证):</p>
+<ul>
+  <li><b>ECAPA-TDNN(20.8M)</b><sup>[2]</sup>:经典架构。TDNN 帧级卷积叠加 SE-Res2Block 通道注意力,经多重注意力统计池化聚合为句子级嵌入;久经验证的工业界事实标准之一,本课题作"经典后端"对照。</li>
+  <li><b>ERes2Net-large(29.1M)</b><sup>[7]</sup>:Res2Net 分层残差分支 + 局部/全局特征融合,在 3D-Speaker 中文数据<sup>[8]</sup>上训练;<b>本课题主验收靶子</b>(基线锚点见表 1)。</li>
+  <li><b>ReDimNet2-B6(12.7M):</b>端侧轻量架构,以 12.7M 参数在部分协议反超大模型;用于考察前端增益在轻量后端的迁移(第 7.4 节)。</li>
+</ul>
+<p>三骨干参数量差约 2.3 倍,恰好覆盖"端侧—经典—旗舰"三档,构成"大小模型比较"(第 8 章)的实验基础。</p>
+<h2>2.4 语音增强骨干:FullSubNet+</h2>
+<p>FullSubNet+<sup>[4]</sup> 是在 FullSubNet<sup>[3]</sup> 基础上改进的全带-子带融合单通道语音增强网络。输入 16 kHz 语音经 STFT(帧长 512、帧移 256)得 257 维复数频谱 <i>Y</i>(t, f),网络估计一个<b>复数理想比例掩码</b>(complex Ideal Ratio Mask, cIRM)<i>M</i>(t, f),与带噪谱相乘重建增强语音:</p>
+<div class="formula">Ŝ(t, f) = M(t, f) ⊙ Y(t, f)</div>
+<p>结构上,<b>全带模型</b>(LSTM,隐层 512)以整谱为输入,建模全局噪声上下文;<b>子带模型</b>(LSTM,隐层 384)以每个频带及其相邻 15 个频带为输入,建模局部谱细节;二者逐层互喂、互补长短。前瞻仅 2 帧、整体近因果,满足实时性;参数 8.68M,是"因果、实时、小参数量"约束下的合理选择。</p>
+<div class="warn"><b>关键背景:</b>该网络的训练目标(掩码逼近干净语音)内嵌了"保留<b>所有</b>语音、去除<b>非语音</b>"的先验。当噪声本身就是<b>另一个说话人</b>时,这一先验恰好与声纹任务冲突——第 4.2 节"负增益"结论的根因即在于此,并直接导向 2.5 的条件化方案。</div>
+<h2>2.5 目标说话人提取(TSE)与 FiLM 条件化</h2>
+<p><b>目标说话人提取</b>(target speaker extraction, TSE)把增强目标从"干净语音"改为"注册说话人的语音":网络除带噪输入外,还接收一份<b>说话人条件</b>(注册语音的声纹嵌入),据此决定保留谁、压制谁。VoiceFilter<sup>[5]</sup> 首次将该范式用于声纹验证:注册嵌入经仿射调制注入 LSTM 增强器,带噪验证错误率显著下降。</p>
+<p>条件注入采用 <b>FiLM</b><sup>[6]</sup>(Feature-wise Linear Modulation,特征级线性调制)——把条件做成对中间特征的<b>逐通道仿射变换</b>:</p>
+<div class="formula">F̃<sub>c</sub>(t, f) = γ<sub>c</sub> ⊙ F(t, f) + β<sub>c</sub>,&nbsp;&nbsp;&nbsp;&nbsp;(γ<sub>c</sub>, β<sub>c</sub>) = MLP(e<sub>enr</sub>)</div>
+<p>其中 F 为网络中间特征,γ、β 为由条件嵌入 e<sub>enr</sub> 经小 MLP 生成的逐通道缩放与偏置系数,⊙ 为逐元素乘。相比只在输入端拼接条件向量,FiLM 让条件参与<b>特征组合本身</b>,表达能力强且几乎不增加参数。本课题的 SpeakerFiLM 即其工程实现(仅 0.52M,详见 5.1.2),并对调制层采用<b>零初始化</b>(γ=1、β=0),保证训练起点严格等价于无条件版本——条件能力在通用基座上渐进获得,而非通过整体重训获得。</p>
+<p class="small">本章所引文献见文末参考文献。</p>
+
+<!-- ================= 3 评测体系 ================= -->
+<h1 class="chapter">3&nbsp;&nbsp;评测体系与基线</h1>
+<h2>3.1 官方协议校准(管线可信性)</h2>
+<p>第一步用三个模型的官方预训练权重复现官方 cross-device / cross-distance / cross-dialect 三协议共 535,163 条 trial,与论文值对账:</p>
+<table>
+<tr><th>模型</th><th>我们实测 cross-device EER(%)</th><th>论文值(%)</th><th>偏差</th></tr>
+<tr><td>ECAPA-TDNN(20.8M)</td><td>9.31</td><td>8.87</td><td>+0.44 pp</td></tr>
+<tr><td>ERes2Net-large(29.1M)</td><td>6.87</td><td>6.34</td><td>+0.53 pp</td></tr>
+</table>
+<p>三个协议全部复现,偏差 &lt; 0.6 pp;cross-dialect 最难(12-15%);轻量后端 ReDimNet2-B6 在 cross-distance 反超 ERes2Net。<b>评测管线由此证明可信。</b></p>
+<h2>3.2 统一多条件基准</h2>
+<p>在 240 个官方测试说话人上构建四类角色划分——A 注册+正样本(180 人)、B/C 中文重叠干扰(15+15 人)、D 负样本/冒认(30 人)——另自 MUSAN speech(librivox)取 173 个英文说话人作 E/F 英文重叠干扰角色(中文侧 A+B+C+D 恰为 240 人、18,782 条;英文干扰为外部池,每人 1 条);一套注册语音(A 角色全部 8,687 条 clean)+ 一套试验清单 + 八套测试语音(clean、noise_0dB、noise_-5dB、混响、二/三人重叠 × 中文/英文);噪声取 MUSAN free-sound 段,训练池 615 条与测试池 168+ 条<b>严格隔离</b>;0 dB 与 -5 dB 同噪声同位置仅 SNR 不同;混响用模拟中等房间(T60 中位 0.60 s);重叠场景记录 TIR。全流程 seed=2026 固定可复现;打分文件采用官方格式 <span class="small">trials_cross_device</span> 共 <b>1,378,206 条</b>(目标 211,400 : 非目标 1,166,806 = 1 : 5.5)。EER 由官方打分脚本插值计算,自建复算脚本与之逐位对齐(自检:官方全文复算 EER 4.8921 vs 官方 4.892)。</p>
+<p><b>清单构成实测(9.6 统计):</b>对全部 1,378,206 条 trial 的 utterance 编码逐条统计——设备维度 100% 跨越(协议保证);同时<b>距离维度 93.9%、方言维度 87.1%、录音会话 97.1%</b> 的 trial 也在跨越,仅 4.8% 是"只跨设备、同距离同方言"的纯净对。也就是说,该主基准在事实上是<b>多条件复合</b>评测(跨设备为主、混入大量跨距离/跨方言对)——这也是其 EER 显著高于 clean 的原因之一,报告所有结论均建立在这一(更难的)复合口径上。</p>
+<h2>3.3 未增强基线锚点(主线一切对比的起点)</h2>
+<p class="tabcap">表 1 | 统一多条件基准的未增强基线 EER(%)</p>
+<table>
+<tr><th>后端(参数量)</th><th>clean</th><th>0dB 1s</th><th>0dB 3s</th><th>0dB 5s</th><th>-5dB 1s</th><th>-5dB 3s</th><th>-5dB 5s</th></tr>
+<tr><td>ERes2Net-large(29.1M)<b>主验收靶子</b></td><td>5.29</td><td>18.56</td><td class="hl">8.39</td><td>7.86</td><td>21.44</td><td class="hl">11.06</td><td>10.08</td></tr>
+<tr><td>ECAPA-TDNN(20.8M)</td><td>6.92</td><td>24.51</td><td>11.15</td><td>10.36</td><td>27.47</td><td>14.36</td><td>13.37</td></tr>
+<tr><td>ReDimNet2-B6(12.7M)</td><td>6.13</td><td>21.73</td><td>9.94</td><td>9.50</td><td>25.55</td><td>13.03</td><td>12.35</td></tr>
+</table>
+<p class="small">注:验收档为 0dB/-5dB 3s(30% 线对应达标线 5.874/7.739);clean 列为 cross_device 3s 口径,ECAPA/B6 两格 9.4 补齐,补齐时 ERes2Net 复测 5.2928 与 8.28 锚 5.293 逐位一致,互为协议验证(见 6.1)。</p>
+
+<!-- ================= 3 研究历程 ================= -->
+<h1 class="chapter">4&nbsp;&nbsp;研究历程与路线演进</h1>
+<h2>4.1 第一阶段(7.20-7.31):全量基线与基建</h2>
+<p>4 卡 Tesla P100 服务器搭环境,190 GB 3D-Speaker 就绪,三模型官方协议校准(3.1 节)。横向结论:方言/cross-dialect 最难;ERes2Net 全面领先 ECAPA 约 20-26%;B6 以 12.7M 参数在部分协议反超——确立"多量级对比"的价值。</p>
+<h2>4.2 第二阶段(8.3-8.24):两条自然路线先后中止</h2>
+<p class="tabcap">表 2 | 两条起点路线的排除记录(全链明细见表 2b)</p>
+<table>
+<tr><th style="width:15%">路线</th><th style="width:33%">做法</th><th style="width:28%">结果</th><th style="width:24%">判决</th></tr>
+<tr class="dim"><td>冻结式后端微调</td><td>冻结底层卷积与 BN 统计,在线多条件微调(8.20/8.21 重写配方,完整配置见下文)</td><td>0dB 8.39→7.69、-5dB 11.06→9.88;级联 7.50/9.51,分数融合最好 7.25/9.27</td><td class="hl">增益不足,未继续深入</td></tr>
+<tr class="dim"><td>通用降噪前端</td><td>FullSubNet+ 以信号重建为目标,降噪后语音送验证器</td><td>0dB 降噪后 10.11,比带噪 8.39 <b>还差 1.72pp</b></td><td class="hl">负增益,判定为无效路线</td></tr>
+</table>
+<p><b>冻结式微调的具体做法(8.20/8.21 重写配方):</b>训练数据取 9,900 个训练说话人(与代理验证 100 人、官方测试 240 人三方互斥,准备脚本运行时断言)中等距抽取的 30,000 条;同一句语音在每个 epoch 动态生成 clean / 0dB / -5dB 三个版本(随机 3s 裁剪、随机训练噪声与随机偏移),每个 batch 严格 1:1:1。模型侧冻结 conv1/bn1/layer1/layer2(含 BN 统计量,防带噪统计漂移污染冻结层),layer3/layer4、特征融合与池化层解冻训练;9,900 类分类头不再随机初始化,改由预训练 ERes2Net 的逐说话人 clean 原型(嵌入质心、L2 归一)初始化并逐位回读校验;lr 2e-5、AAM-Softmax(margin 0.2、scale 32)、8 epoch。(该配方为归因重写版:首版经验式配方曾致八条件中六套退化,重写后全线转正;首版明细见《实验结果汇总》§2.1 留档。)</p>
+<p class="tabcap">表 2b | 后端微调线的全链尝试(EER %)</p>
+<table>
+<tr><th>配置(官方协议,trials_cross_device/3s)</th><th>clean</th><th>0dB</th><th>-5dB</th></tr>
+<tr><td>未增强基线(pretrained ERes2Net)</td><td>5.29</td><td>8.39</td><td>11.06</td></tr>
+<tr><td>robust 后端(8.21,原型初始化 + 1:1:1 微调)</td><td class="good">5.10</td><td>7.69<br>(-8.3%)</td><td>9.88<br>(-10.7%)</td></tr>
+<tr><td>微调通用前端(8.18,加身份保持正则)</td><td>—</td><td>7.79<br>(-7.1%)</td><td>9.92<br>(-10.3%)</td></tr>
+<tr><td>前端 + robust 后端级联</td><td>—</td><td>7.50<br>(-10.6%)</td><td>9.51<br>(-14.0%)</td></tr>
+<tr><td>+ 跨系统分数融合(grid 最优)</td><td>—</td><td>7.25<br>(-13.6%)</td><td>9.27<br>(-16.2%)</td></tr>
+<tr><td>理论加性上限(前后端增益独立叠加)</td><td>—</td><td>≈7.09<br>(-15.5%)</td><td>≈8.74<br>(-21.0%)</td></tr>
+<tr><td>30% 达标线</td><td>—</td><td class="hl">5.874</td><td class="hl">7.739</td></tr>
+</table>
+<p class="small">注:全部为官方协议实测(出处:AI/8.21 组合评测与 8.24 当期留档);配方修正后全线转正、clean 无退化,但距 30% 线始终差约一倍(级联 7.50/9.51 距线 1.63/1.77pp);五模型权重汤 soup5(7.61/9.72)见表 14。</p>
+<p class="small">中止该路线的三点依据:①幅度——全链最好成绩距 30% 线仍差 1.4~1.8pp,约为所需降幅的一半;②重叠——后端只被原始带噪域校准过,级联实测(7.50/9.51)明显逊于前后端增益独立叠加的上限(≈7.09/8.74),两路增益互相侵蚀;③机会成本——同期注册条件化前端单级即达 -33.5%/-40.9%(表 13)。微调线的最终产物 soup5(7.61/9.72)转用作训练期冻结验证器(表 3 轮 0),仍在交付链中发挥复用价值。</p>
+<p><b>机理定位:</b>分离度分析显示降噪抹平了跨句稳定的说话人身份特征(目标对分数均值 0.422→0.391)。这一"负增益"发现是全课题最重要的转折点——它证明语音增强做声纹前端,不能以 SNR/信号保真为目标。</p>
+<h2>4.3 关键转折:单说话人噪声本质是"干扰语音"问题</h2>
+<div class="key">任务场景中的噪声是<b>另一个说话人在说话</b>。通用降噪器的目标是"保留所有语音、去掉非语音",因此会把干扰语音完整保留——问题并非降噪能力不足,而是<b>任务定义不当</b>。正确任务是:只提取注册说话人的语音(target speaker extraction, TSE)。而"该提取谁"这一信息,恰好可以由注册语音提供——注册语音本来就是验证系统自带的输入。</div>
+<h2>4.4 第三阶段(8.24-8.28):注册条件化 TSE 的四轮迭代</h2>
+<p>VoiceFilter 式设计:注册语音过冻结声纹后端得 512 维嵌入,经 SpeakerFiLM 模块对 FullSubNet+ 做仿射调制(详见 5.1)。迭代按"每级只加一个变量"推进,全部在代理验证集选点、官方测试单次实测:</p>
+<p class="tabcap">表 3 | 注册条件化迭代链(轮 0-6 冻结验证器口径,轮 7 交付口径)</p>
+<table>
+<tr><th>轮</th><th>在上一版基础上</th><th>0dB</th><th>-5dB</th></tr>
+<tr><td>0</td><td>未增强 raw(冻结验证器口径)</td><td>7.614</td><td>9.715</td></tr>
+<tr><td>1</td><td>接入条件化前端:仅 L<sub>se</sub>+L<sub>ce</sub> 基座适配训练,未加任何说话人侧损失</td><td>7.38</td><td>9.32</td></tr>
+<tr><td>2</td><td>+ 说话人保持损失(系数 0.3)</td><td>7.293</td><td>9.202</td></tr>
+<tr><td>3</td><td>+ 难负原型抑制损失(系数 0.5)</td><td>6.519</td><td>8.173</td></tr>
+<tr><td>4-6</td><td>同配方延长续训 ×3(第 4 轮回归 → 止损)</td><td>5.766 → 5.467 → <b>5.235</b></td><td>6.972 → 6.462 → <b>6.098</b></td></tr>
+<tr><td>7</td><td>+ 随机时长增强续训 = <b>交付前端</b>(换回预训练后端)</td><td class="good">4.89</td><td class="good">5.56</td></tr>
+</table>
+<p class="small"><b>轮 1 的准确含义(接入官方打分链路,而非分数融合):</b>把 8.26 版条件化前端接入官方打分链路——FullSubNet+ 装载 8.18 通用基座权重,SpeakerFiLM 末层零初始化、恒等起步;推理增强时以<b>说话人粒度</b>的注册嵌入为条件(该说话人官方注册 clean 过冻结 soup5,均值+L2;同一条件覆盖该说话人的注册侧与打分侧全部语音),增强语音直接送同一冻结验证器打分。该级前端做过 3 轮<b>基座适配训练</b>(损失仅 L<sub>se</sub> 重建 + L<sub>ce</sub> 判别分类,四损失中说话人侧的 L<sub>spk</sub>/L<sub>ns</sub> 均尚未引入)——"接入后 7.38/9.32"相对轮 0 锚点 -3.1%/-4.1%,验证注册条件化方向本身有价值。此步不涉及任何分数级融合(降噪分支+原始分支的分数加权融合是 8.22-8.25 的独立支线,经验证无效后弃用,见《实验结果汇总》§2.3)。</p>
+<div class="figwrap rmwrap">
+<div class="rm">
+<div class="rmcol">
+<div class="rmhead" style="background:#8A8F98;">已中止的路线(探索阶段)</div>
+<div class="rmbox fail"><b>A · 冻结式后端微调</b><br>冻结底层、分层学习率;归因重写配方后 0dB 8.39→7.69(-8.3%),距 30% 线差约一倍<br><span class="rmv">增益不足 → 未继续深入</span></div>
+<div class="rmbox fail"><b>B · 通用降噪前端</b><br>FullSubNet+ 以信号重建为目标;0dB 8.39→10.11(负增益)<br><span class="rmv">判定为无效路线</span></div>
+<div class="rmnote">机理:目标对分数均值 0.422→0.391,跨句稳定的身份特征被削弱</div>
+</div>
+<div class="rmarrow">➔</div>
+<div class="rmcol">
+<div class="rmhead" style="background:#2F5496;">任务重定义</div>
+<div class="rmbox new"><b>注册条件化目标说话人提取(TSE)</b><br><br>增强目标:任意干净语音 → <b>注册说话人的语音</b><br><br>注册语音提供「提取谁」的条件<br>SpeakerFiLM 注入 FullSubNet+</div>
+</div>
+<div class="rmarrow">➔</div>
+<div class="rmcol">
+<div class="rmhead" style="background:#2E7D32;">四级加码 → 最终交付</div>
+<div class="rmbox step">① 条件化前端接入<span class="rms">FiLM 调制 + 重建 + 分类,3 轮基座适配 · 0dB 7.38</span></div>
+<div class="rmbox step">② + 说话人保持损失<span class="rms">增强嵌入对齐注册嵌入 · 7.29</span></div>
+<div class="rmbox step">③ + 难负原型抑制<span class="rms">推离最难混淆原型 · 6.52</span></div>
+<div class="rmbox final">④ 同配方延长续训 + 随机时长增强<span class="rms">交付:0dB 4.89 / -5dB 5.56(超 30% 线)</span></div>
+</div>
+</div>
+<p class="figcap">图 1 | 研究路线图(①-③ 冻结验证器口径、④ 交付口径;与汇报 PPT 第 8 页对应)</p>
+</div>
+
+<!-- ================= 4 交付方法 ================= -->
+<h1 class="chapter">5&nbsp;&nbsp;交付方法:模型、损失与训练</h1>
+<h2>5.1 模型结构</h2>
+<div class="figwrap"><img src="figs/fig_arch_ppt.png"></div>
+<p class="figcap">图 2 | 交付前端结构(与汇报 PPT 第 13 页同图)</p>
+<h3>5.1.1 骨干:FullSubNet+</h3>
+<p>全带-子带融合降噪网络(结构详见 2.4)。输入 16 kHz 语音,STFT(帧长 512、帧移 256)得 257 维频谱;全带模型(LSTM,隐层 512)建模全局噪声上下文,子带模型(隐层 384,每子带看相邻 15 个频带)建模频带细节;输出复数理想比例掩码 cIRM,与带噪谱相乘重建增强语音。选它的原因:因果、实时、参数量小,且上一阶段的失败经验(4.2)正是在该骨干上取得——失败机理数据可直接复用。</p>
+<h3>5.1.2 条件化模块:SpeakerFiLM(FiLM 特征级仿射调制)</h3>
+<p>注册语音过<b>冻结</b>声纹后端得 512 维说话人嵌入 <i>e</i><sub>enr</sub>(评测实现:该说话人注册 clean 各条 3 s 定长 → 冻结后端 → 均值 → L2 归一)——它就是"提取谁"的条件。FiLM 的思想(2.5)是把条件做成对网络中间特征的<b>逐频带仿射变换</b>:</p>
+<div class="formula">(γ, β) = MLP(<i>e</i><sub>enr</sub>),&nbsp;&nbsp;&nbsp;&nbsp;F̃(t, f) = γ ⊙ F(t, f) + β</div>
+<p><b>真实实现(tse_model.py):</b>MLP 为 Linear(512→256) → ReLU → Linear(256→1,542),1,542 个输出拆为三路(复数谱<b>幅度 / 实部 / 虚部</b>)各自的 γ、β——每路 257 维<b>逐频带系数向量</b>,γ、β 的 shape 均为 (B, 3, 257),不是两个标量。注入位置在 FullSubNet+ 全带分支三路输入上:每路先过批归一化与 TSSE 通道注意力(channel_attention / channel_attention_real / channel_attention_imag),紧随其后做 FiLM 仿射,再进各自的全带 LSTM(fb_model / fb_model_real / fb_model_imag,隐层 512)。γ、β 沿时间轴广播:γ<sub>k</sub>、β<sub>k</sub> 由 (B, 257) 升维为 (B, 257, 1),作用于 (B, 257, T) 的特征——同一频带的所有帧共享该频带的一组缩放/偏置系数,257 个频带各有独立系数。SpeakerFiLM 的三个设计决策:</p>
+<ul>
+  <li><b>注入位置——特征级、掩码估计之前:</b>条件直接参与"该保留哪个说话人"的掩码估计过程,而不是在输出端对增强语音做事后修饰——后者无法影响子带级的谱细节决策。γ、β 逐频带作用于特征,等价于让网络对每个频带学习"在当前目标说话人下该放大还是抑制";FiLM 后的幅度特征还随邻域展开进入子带输入,条件信息同时抵达全带与子带两级。</li>
+  <li><b>末层零初始化(γ=1, β=0)——工程保险:</b>生成 (γ, β) 的 MLP 最后一层<b>权重与偏置全部</b>零初始化,三路调制初始均为恒等变换,训练起点<b>严格等价于</b>无条件版通用前端——8.18 已训练好的通用基座能力不因新增模块被破坏,条件信息随训练逐步注入(实际生效集中于幅度路,见下文说明)。这是条件化模块能以增量方式叠加在既有基座上的关键。</li>
+  <li><b>代价——仅 0.52M 参数,开集友好:</b>两层 Linear(512→256 / 256→1,542)共 0.52M,前端总参数 9.20M(附录 A);条件嵌入来自<b>与打分同一个冻结后端</b>,无需像 VoiceFilter 那样额外部署一个 d-vector 网络,全栈 ≈ 31.7M 参数(约 127 MB fp32),额外推理代价仅每句一次 FiLM 前向。MLP 权重是全部说话人<b>共享</b>的唯一条件参数——测试遇到训练未见说话人时,直接用其注册嵌入现场前向生成专属 γ/β,不保存任何按说话人的固定调制参数,新说话人零成本接入。</li>
+</ul>
+<p><b>交付实现的一个如实说明(代码级):</b>子带输入的三个"全带输出展开"槽位,在交付代码(tse_model.py)中均取<b>幅度路</b>全带 LSTM 的输出 fb_output——与 FullSubNet+ 原版 forward 三路各取各自输出的写法不同,系 8.26 条件化改造时引入并沿用至交付版。其后果是:实部/虚部两路的 FiLM 注入虽然存在于结构中,其后级输出并不进入子带输入,训练中这两路 γ/β 梯度恒为零、始终保持零初始化的恒等;条件作用实际经由两条途径生效——①幅度路 γ/β 调制幅度特征、进入幅度全带 LSTM;②FiLM 后的幅度特征另按子带邻域(相邻 15 带,共 31 列)展开,直接构成子带输入的一部分。即条件既改写全带上下文,也直抵子带掩码估计;全部交付数字均由该实现实测得出。</p>
+<h2>5.2 损失函数:四项各司其职</h2>
+<div class="key"><b>设计原则:</b>整个训练只更新前端 9.20M 参数——FullSubNet+ 骨干(8.68M)与 SpeakerFiLM(0.52M)在同一 Adam 优化器中<b>联合更新</b>;声纹后端(soup5 验证器)与 AAM 分类头 requires_grad=False 且不进优化器,<b>参数全程不变</b>(梯度仅穿越其计算图回传前端)——增强器被"当成"冻结验证器的可训前级,训练所用嵌入与推理打分所用嵌入出自同一网络,训练目标与评测目标严格一致。总损失为四项加权和(交付版取 λ<sub>spk</sub>=0.3、λ<sub>ns</sub>=0.5、λ<sub>ce</sub>=1.0):</div>
+<div class="formula">L = L<sub>se</sub> + λ<sub>spk</sub> · L<sub>spk</sub> + λ<sub>ns</sub> · L<sub>ns</sub> + λ<sub>ce</sub> · L<sub>ce</sub></div>
+<h3>(1) 信号重建损失 L<sub>se</sub>——防退化锚</h3>
+<div class="formula">L<sub>se</sub> = ‖ M̂ − M<sub>cIRM</sub> ‖<sub>2</sub><sup>2</sup></div>
+<p>M̂ 为前端估计的复数掩码,M<sub>cIRM</sub> 为理想掩码("干净语音谱 ÷ 带噪谱",由训练时在线混合的干净语音与噪声即时计算)。该项约束前端首先是一个合格的降噪器——没有它,后三项说话人侧损失可能诱导网络输出虽可通过验证器、却偏离目标说话人干净语音的退化结果。它是全部条件化能力的地基,自通用基座阶段一直保留。</p>
+<h3>(2) 说话人保持损失 L<sub>spk</sub>——只管目标侧</h3>
+<div class="formula">L<sub>spk</sub> = 1 − cos( e<sub>enh</sub>, e<sub>enr</sub> ),&nbsp;&nbsp;&nbsp;&nbsp;e<sub>enh</sub> = f(增强语音),&nbsp; e<sub>enr</sub> = f(注册语音)</div>
+<p>两个嵌入均由同一冻结后端 f 提取(训练实现:参考锚取<b>同句干净语音</b>的嵌入、no_grad 计算,与推理时的注册嵌入同后端同空间)。动机来自 4.2 的负增益机理:通用降噪会把增强语音的嵌入<b>拉离</b>注册嵌入(降噪抹平跨句稳定的身份特征);该项显式把增强嵌入拉回注册说话人方向,直接对齐验证打分所用的量——优化它就是在优化打分本身。第 2 轮引入,官方增益约 −4~−5%;系数 0.3 由剂量消融选定(7.2:倒 U 形剂量响应,0.1 与 0.5 均更差)。注意其作用范围:只出现在"注册者本人的混合语音"上(目标侧),不涉及冒认侧。</p>
+<h3>(3) 难负原型抑制损失 L<sub>ns</sub>——在线难负挖掘</h3>
+<div class="formula">L<sub>ns</sub> = (1/K) · Σ<sub>k∈TopK</sub> max( 0, cos(e<sub>enh</sub>, p<sub>k</sub>) − τ ),&nbsp;&nbsp;&nbsp;&nbsp;K = 8,&nbsp; τ = 0.30</div>
+<p>原型库 {p<sub>k</sub>} 取自 9,900 说话人 clean 原型表(prototypes.npz)——由<b>原始预训练 ERes2Net</b> 逐说话人提嵌入质心(每人 ≤8 句居中裁 3 s,逐条 L2 → 均值 → 再 L2),说话人与官方测试零交集;该表同时作为 L<sub>ce</sub> 分类头的初始化权重行,相当于"已有说话人空间"的一张静态地图。对每个 batch 的增强嵌入 e<sub>enh</sub>,计算分三步:</p>
+<ol>
+  <li><b>排除真说话人:</b>先把 e<sub>enh</sub> 所属说话人自己的原型从候选中剔除(实现:真说话人位置的相似度置 −2)——否则"离真原型近"这一正确行为会被误罚;</li>
+  <li><b>在线挑难负:</b>计算 e<sub>enh</sub> 与全部剩余原型的余弦相似度(实现:L2 归一嵌入对 9,900×512 冻结原型表的线性内积),取<b>最高的 K=8 个</b>——它们是与注册者最易混淆的"最难负类"原型,惩罚它们对判别最有信息量;</li>
+  <li><b>合页惩罚:</b>对每个难负原型,余弦压到 τ=0.30 以下不再罚,超过则线性罚——只拉间隔、不做过度打压,避免干扰正常特征学习。</li>
+</ol>
+<p>净效果:持续把增强嵌入推离其他说话人的嵌入区域,在冻结验证器的嵌入空间直接拉大目标/非目标判别间隔。关键工程事实:<b>难例在每个 batch 在线挑选、损失即时计算——全程不改数据分布,没有任何重采样或样本加权</b>;"难例利用"只存在于损失函数内部与验证选点(5.4),数据侧完全干净。第 3 轮引入,官方增益约 −10~−11%,是四级加码中单级贡献最大的损失(消融见表 12:λ<sub>ns</sub> 增益单调未饱和,且"通用最难原型池"优于"同域定向原型池"——难比"域匹配"更重要)。</p>
+<h3>(4) 判别分类损失 L<sub>ce</sub>——AAM-Softmax(角间隔分类)</h3>
+<div class="formula">L<sub>ce</sub> = − log&nbsp; e<sup>s·cos(θ<sub>y</sub>+m)</sup> / ( e<sup>s·cos(θ<sub>y</sub>+m)</sup> + Σ<sub>j≠y</sub> e<sup>s·cos θ<sub>j</sub></sup> )</div>
+<p>其中 cos θ<sub>j</sub> = w<sub>j</sub> · e<sub>enh</sub> / (‖w<sub>j</sub>‖ ‖e<sub>enh</sub>‖) 为增强嵌入与第 j 个原型(分类头权重行 w<sub>j</sub>)的余弦,y 为真说话人下标,超参 s=32、m=0.2。AAM-Softmax(加性角间隔<sup>[9]</sup>)的要点:对真类别的判定角 θ<sub>y</sub> 额外加上间隔 m 再进入 softmax——训练时真类别须以超过间隔 m 的优势胜出,迫使嵌入在空间中压出更宽的类间间隔;尺度 s 控制 softmax 的锐度。与标准用法的关键差别:此处分类头<b>由预训练 ERes2Net 的 9,900 说话人 clean 原型表初始化并保持冻结</b>,相当于一个永不更新的"免费教师"——把预训练模型已有的判别结构作为固定靶子,梯度只回传前端,让前端朝"验证器心目中的好嵌入"优化。该项自第 1 轮基座接入期即与 L<sub>se</sub> 同在;第 3 轮叠加 L<sub>ns</sub> 后,二者一个推离难负、一个拉近真类,共同构成完整的判别约束。</p>
+<p class="tabcap">表 4 | 损失族汇总</p>
+<table>
+<tr><th style="width:10%">项</th><th>约束目标</th><th style="width:10%">系数</th><th>引入轮次与官方增益</th></tr>
+<tr><td>L<sub>se</sub></td><td>掩码逼近理想 cIRM(保证仍是合格降噪器)</td><td>1.0</td><td>通用基座自带</td></tr>
+<tr><td>L<sub>spk</sub></td><td>增强嵌入对齐注册嵌入(目标侧拉回)</td><td>0.3</td><td>第 2 轮,−4~−5%</td></tr>
+<tr><td>L<sub>ns</sub></td><td>推离最难混淆原型(拉大判别间隔)</td><td>0.5</td><td>第 3 轮,−10~−11%</td></tr>
+<tr><td>L<sub>ce</sub></td><td>AAM 角间隔分类(免费教师定靶)</td><td>1.0</td><td>第 1 轮(基座接入期)即引入</td></tr>
+</table>
+<p class="small">注:另有段级随机 {1,2,3}s 时长增强(修 1s 短语音),属数据侧增强而非损失,配置见表 5。</p>
+<h2>5.3 实验条件与训练参数</h2>
+<p class="tabcap">表 5 | 实验条件与关键参数</p>
+<table>
+<tr><th style="width:24%">项</th><th>配置</th></tr>
+<tr><td>硬件</td><td>4 × Tesla P100-PCIE-12GB(nvidia-smi 实测);训练期与全量评测期共享使用,每卡独占单任务</td></tr>
+<tr><td>训练数据</td><td>3D-Speaker 中文(说话人隔离);每轮抽样 30,000 条;噪声:MUSAN free-sound 训练池 615 条,SNR ∈ {0, -5} dB;段长 3.0s(交付版随机 {1,2,3}s)</td></tr>
+<tr><td>声学前端</td><td>16 kHz,STFT 512/256,257 维频带</td></tr>
+<tr><td>模型</td><td>FullSubNet+(全带 LSTM 512 / 子带 384,邻域 15,前瞻 2 帧)+ SpeakerFiLM(0.52M);自 8.18 通用基座(10 轮)叠加起步</td></tr>
+<tr><td>优化</td><td>lr 1e-5,batch 2,每 worker 6;每级续训 3 轮;seed=2026;延长续训阶段以代理验证集(含困难试验子集)选点,逐轮延长同配方训练</td></tr>
+<tr><td>验证器/原型</td><td>冻结五成员权重汤 soup5(29.1M);AAM 头与 L<sub>ns</sub> 原型表 = 预训练 ERes2Net 的 9,900 说话人 clean 质心(L2 归一)</td></tr>
+<tr><td>训练纪律</td><td>代理验证集(100 未见说话人,1:5.5 对齐官方)选点;官方测试每个决策只跑一次;启动守卫(ckpt-config 一致性、manifest 校验);收敛守望(增益 &lt;0.08pp 自动停)</td></tr>
+<tr><td>评测</td><td>官方 trials_cross_device(1,378,206 条);EER/minDCF 官方脚本;三卡并行一天完成交付大表</td></tr>
+</table>
+<h2>5.4 训练流程与推理部署</h2>
+<h3>5.4.1 每级训练的完整流程</h3>
+<p>第 4.4 节的每一级迭代都严格走同一条流程,保证级间可比:</p>
+<ol>
+  <li><b>确定性抽样:</b>从 190 GB 训练集(说话人与测试完全隔离)按 np.linspace 等距抽 30,000 条,各级迭代使用<b>同一子集</b>——差异只来自训练配方,不来自数据;</li>
+  <li><b>在线随机混合:</b>TSEMixDataset 在每次取数时动态合成训练样本——随机抽 MUSAN free-sound 噪声(训练池 615 条,与测试池严格隔离)、随机 SNR ∈ {0, −5} dB。同一句干净语音在每个 epoch 得到不同的噪声与信噪比组合,等效无限增广;混合即时计算、不落盘,不存在预生成泄漏;</li>
+  <li><b>前向与损失:</b>注册语音(该说话人 clean)过冻结后端得 e<sub>enr</sub> → SpeakerFiLM 调制 FullSubNet+ → 得增强语音 → 按 5.2 计算四项损失;Adam(lr 1e-5、batch 2),每级 3 轮;</li>
+  <li><b>代理验证选点:</b>100 个训练/测试均未见过的说话人构成代理验证集(正负比 1:5.5 对齐官方),含按嵌入相似度挖掘的<b>困难试验子集</b>;每个 checkpoint 在此集上选点,<b>预声明判据</b>通过才允许触发官方测试——防止用测试集反馈调参;</li>
+  <li><b>官方测试单次实测:</b>在冻结的官方 trials_cross_device 清单上跑一次、只跑一次,结果记档,作为该级的"判决"。</li>
+</ol>
+<h3>5.4.2 延长续训(同配方分段延长)</h3>
+<p>第 3 轮引入 L<sub>ns</sub> + L<sub>ce</sub> 后官方增益显著(0dB 8.39→6.52),且剂量消融(表 12)显示 λ<sub>ns</sub> 增益单调未饱和,遂采用<b>同配方延长续训</b>继续下压:以上一轮 checkpoint 为起点,数据、损失、超参完全一致再训 3 轮(优化器状态重置),循环 3 段(表 3 轮 4-6),逐段官方实测持续改善(0dB:6.519 → 5.766 → 5.467 → 5.235);尝试再延长时官方实测回归(+17.7%),按预声明止损线停机。再次强调:"难例利用"只存在于两处——损失内的在线难负挖掘(5.2)与代理验证的困难试验子集选点(本节)——数据侧无任何重采样或加权。</p>
+<h3>5.4.3 推理与部署形态</h3>
+<p><b>注册阶段(一次性):</b>注册语音过冻结后端得 e<sub>enr</sub>,缓存为该用户模板。<b>验证阶段(每次):</b>带噪测试语音 + e<sub>enr</sub> → SpeakerFiLM 现场由该嵌入生成 γ/β(逐频带向量,5.1.2)→ FiLM 条件化增强(9.20M)→ 同一冻结后端提嵌入 → 与缓存模板余弦打分 → 冻结阈值判决。条件提取与打分<b>复用同一后端</b>——相比 VoiceFilter 需要独立 d-vector 网络的方案,省一份模型部署;全栈 31.7M / 约 127 MB(fp32,附录 A),前端近因果、支持流式处理,适配 AI 眼镜、车载座舱等终端场景。</p>
+<p><b>运行速度实测(加前端的代价):</b>以同批官方测试集(16,401 句 × 3s)在 Tesla P100 上的批量推理实测——<b>原始路径</b>(仅 ERes2Net-large 嵌入提取,batch 16)523 s,<b>31.9 ms/句</b>(RTF ≈ 0.011);<b>前端增强</b>(SpeakerFiLM + FullSubNet+,batch 8)两次独立实测 655 s(8.28 噪声档)与 668 s(9.3 clean 档),<b>40.0-40.7 ms/句</b>(RTF ≈ 0.014),跨日跨负载一致性 ±2%;<b>加前端后的整链</b>(增强 + 嵌入 + 余弦)约 <b>72 ms/句,RTF ≈ 0.024</b>,单卡吞吐约 14 句/s。即:单句验证耗时约为原来的 2.3 倍,前端自身开销约为后端嵌入的 1.3 倍——前端参数量虽只有后端的 1/3(9.2M vs 29.1M),但"全带 + 257 个子带 LSTM"逐帧展开的结构计算密度更高。RTF 远小于 1,实时性无虞。说明:以上为服务器 GPU 离线批量口径(含 wav 读写与 STFT/ISTFT,批量 8/16),流式单句首包延迟与终端芯片(NPU/DSP)上的实测留作后续评估。</p>
+
+<!-- ================= 5 主线结果 ================= -->
+<h1 class="chapter">6&nbsp;&nbsp;主线实验结果</h1>
+<h2>6.1 交付大表(验收口径)</h2>
+<div class="figwrap"><img src="figs/fig_backends.png"></div>
+<p class="figcap">图 3 | 三后端交付对比(3s)</p>
+<p class="tabcap">表 6 | 交付大表(EER %,验收档 3s)</p>
+<table>
+<tr><th rowspan="2">后端</th><th colspan="3">0 dB(raw → 前端,降幅)</th><th colspan="3">-5 dB(raw → 前端,降幅)</th></tr>
+<tr><th>1s</th><th>3s</th><th>5s</th><th>1s</th><th>3s</th><th>5s</th></tr>
+<tr><td>ERes2Net-large</td><td>18.56→13.57<br><b>-26.9%</b></td><td class="good">8.39→4.89<br><b>-41.7%</b></td><td>7.86→4.43<br><b>-43.6%</b></td><td>21.44→14.74<br><b>-31.2%</b></td><td class="good">11.06→5.56<br><b>-49.7%</b></td><td>10.08→4.90<br><b>-51.4%</b></td></tr>
+<tr><td>ECAPA-TDNN</td><td>24.51→18.35<br>-25.1%</td><td class="good">11.15→6.32<br><b>-43.3%</b></td><td>10.36→5.74<br><b>-44.6%</b></td><td>27.47→19.59<br>-28.7%</td><td class="good">14.36→7.13<br><b>-50.3%</b></td><td>13.37→6.36<br><b>-52.5%</b></td></tr>
+<tr><td>ReDimNet2-B6</td><td>21.73→18.36<br>-15.5%</td><td class="hl">9.94→7.58<br>-23.7%</td><td>9.50→7.20<br>-24.2%</td><td>25.55→20.76<br>-18.8%</td><td class="hl">13.03→9.35<br>-28.2%</td><td>12.35→8.82<br>-28.6%</td></tr>
+</table>
+<ul>
+  <li><b>验收档(3s):</b>主力 -41.7%/-49.7%、经典 -43.3%/-50.3%,均大幅超过 30% 线;轻量 -23.7%/-28.2%,差约 2pp 未过(其嵌入判别面与前端增益的兼容性问题,见 7.4/9)。</li>
+  <li><b>时长轴:</b>1s 相对偏弱(0dB -26.9%,差 3pp),随机时长增强后 5s 最强(-51.4%~-52.5%)。</li>
+  <li><b>clean:</b>最优增强格(0dB 5s 4.43)已低于未增强 clean 基线 5.29;9.3 补做直测——clean 测试集(16,401 条)整体过 r5 前端后 EER = <b>4.17</b>(minDCF 0.445),较未增强 5.29 相对改善 21%,"clean 无退化"由推断升级为<b>实测正增益</b>(前端顺带完成跨设备通道归一与注册信息注入;产物 AI/9.3/fe_clean/)。<b>clean 基准三后端 × 三时长全格补测(9.4,纯 CPU 复算)</b>:ERes2Net 13.37 / 5.29 / 5.06、ECAPA 18.55 / 6.92 / 6.57、ReDimNet2-B6 15.46 / 6.13 / 6.00(依次为 1s/3s/5s,cross_device)——三后端时长衰减形态同构、后端排序与带噪轴一致;其中 ERes2Net 3s 独立复算 5.2928 与原锚 5.293 逐位一致。</li>
+</ul>
+<h2>6.2 其他场景(分项报告)</h2>
+<div class="figwrap"><img src="figs/fig_scenes.png"></div>
+<p class="figcap">图 4 | 其他场景分项对比(主力后端,3s)</p>
+<p class="tabcap">表 7 | 其他场景分项(主力后端,3s)</p>
+<table>
+<tr><th>场景</th><th>raw</th><th>前端</th><th>降幅</th><th>说明</th></tr>
+<tr><td>回声/混响(T60 中位 0.60s)</td><td>6.09</td><td>4.87</td><td class="good">-20.0%</td><td>模拟 RIR 卷积</td></tr>
+<tr><td>二人重叠·中文(TIR=0dB)</td><td>22.42</td><td>16.63</td><td>-25.8%</td><td>干扰为竞争说话人</td></tr>
+<tr><td>三人重叠·中文</td><td>28.43</td><td>18.42</td><td class="good">-35.2%</td><td></td></tr>
+<tr><td>二人重叠·英文</td><td>9.13</td><td>7.76</td><td>-15.0%</td><td>英文干扰下增益部分衰减</td></tr>
+</table>
+<p class="small">注:固定阈值 FAR=5% 的 FRR 口径 2/3 场景达标(工作点全表见表 8)。</p>
+<h2>6.3 ROC / DET 与固定工作点</h2>
+<div class="figwrap"><img src="figs/main_eres_m5db.png" style="max-width:88%"></div>
+<p class="figcap">图 5 | 主力后端 -5dB 的 ROC 与 DET(原始 vs 前端)</p>
+<div class="figwrap"><img src="figs/main_ecapa_0db.png" style="max-width:88%"></div>
+<p class="figcap">图 6 | 经典后端 0dB 的 ROC 与 DET(原始 vs 前端)</p>
+<p class="small">注:两图均由官方打分文件后处理生成(gen_roc_det.py,2001 阈值点,DET 轴为正态概率刻度),自算 EER 与官方对账 &lt;0.5pp;threshold–FAR–FRR 曲线数据见附录 B。</p>
+<p class="tabcap">表 8 | 8 个评测格的 minDCF 与固定阈值工作点(raw / 前端成对)</p>
+<table>
+<tr><th rowspan="2">评测格(3s)</th><th colspan="2">EER(%)</th><th colspan="2">minDCF(p<sub>tar</sub>=0.01)</th><th colspan="2">FRR @ FAR=5%(%)</th><th colspan="2">FAR @ FRR=5%(%)</th></tr>
+<tr><th>raw</th><th>前端</th><th>raw</th><th>前端</th><th>raw</th><th>前端</th><th>raw</th><th>前端</th></tr>
+<tr><td>主力后端 0 dB</td><td>8.39</td><td class="good">4.89</td><td>0.628</td><td class="good">0.515</td><td>12.46</td><td class="good">4.77</td><td>14.98</td><td class="good">4.77</td></tr>
+<tr><td>主力后端 -5 dB</td><td>11.05</td><td class="good">5.56</td><td>0.687</td><td class="good">0.557</td><td>18.07</td><td class="good">6.20</td><td>27.09</td><td class="good">6.19</td></tr>
+<tr><td>经典后端 0 dB</td><td>11.15</td><td class="good">6.32</td><td>0.722</td><td class="good">0.580</td><td>18.91</td><td class="good">7.81</td><td>26.02</td><td>8.07</td></tr>
+<tr><td>经典后端 -5 dB</td><td>14.36</td><td class="good">7.13</td><td>0.773</td><td class="good">0.622</td><td>25.75</td><td class="good">9.62</td><td>41.38</td><td>10.32</td></tr>
+<tr><td>回声/混响</td><td>6.09</td><td>4.87</td><td>0.564</td><td class="good">0.506</td><td>7.31</td><td class="good">4.74</td><td>7.42</td><td class="good">4.76</td></tr>
+<tr><td>二人重叠·中文</td><td>22.41</td><td>16.63</td><td>0.914</td><td>0.860</td><td>46.05</td><td>33.28</td><td>65.94</td><td>46.10</td></tr>
+<tr><td>二人重叠·英文</td><td>9.13</td><td>7.76</td><td>0.648</td><td>0.602</td><td>13.82</td><td>10.65</td><td>18.64</td><td>13.27</td></tr>
+<tr><td>三人重叠·中文</td><td>28.43</td><td>18.42</td><td>0.979</td><td>0.934</td><td>61.02</td><td>39.89</td><td>76.39</td><td>48.58</td></tr>
+</table>
+<p class="small">注:minDCF 为官方脚本输出(p<sub>tar</sub>=0.01,c<sub>miss</sub>=c<sub>fa</sub>=1),工作点由 2001 阈值点分位数扫描得到。minDCF 与 EER 八格全部同向改善,但低误报口径下幅度小于 EER(主力 0dB −18% vs −41.7%)——minDCF 对分数尾部更敏感;固定 FAR=5% 时主力/经典/混响各格 FRR 降至 4.7~9.6%,重叠场景 FRR 仍高(三人重叠 39.9%),人声盲区在工作点口径同样可见。</p>
+<h2>6.4 噪声类型对比(域泛化)</h2>
+<div class="figwrap"><img src="figs/fig_noise_domains.png"></div>
+<p class="figcap">图 7 | 噪声域对比(换域噪声均为训练未见)</p>
+<p class="tabcap">表 9 | 噪声域对比(域泛化)</p>
+<table>
+<tr><th>噪声域</th><th>raw 0dB / -5dB</th><th>前端 0dB / -5dB</th><th>降幅</th><th>判读</th></tr>
+<tr><td>主验收池(free-sound 后 20%,186 条)</td><td>8.39 / 11.06</td><td>4.89 / 5.56</td><td class="good">-41.7% / -49.7%</td><td>主验收场景达标</td></tr>
+<tr><td>纯音乐域</td><td>9.64 / 13.29</td><td>5.79 / 7.34</td><td class="good">-39.9% / -44.8%</td><td>非人声全额迁移</td></tr>
+<tr><td>音效域(soundbible)</td><td>8.13 / 10.16</td><td>4.95 / 5.52</td><td class="good">-39.1% / -45.7%</td><td>同上</td></tr>
+<tr><td><b>竞争说话人域(speech)</b></td><td>8.63 / 10.83</td><td>7.47 / 10.92</td><td class="hl">-13.5% / <b>+0.8%</b></td><td><b>结构性盲区</b></td></tr>
+</table>
+<p class="small">注:非人声噪声 −39% 以上,主池结论非过拟合;人声干扰是结构性盲区——前端对"语音型干扰"的压制能力有限,与重叠场景增益偏低、附录 C 泄漏机理同根。</p>
+
+<h2>6.5 注册语音带噪鲁棒性(注册侧诊断)</h2>
+<p>验收条款只约束测试侧噪声;真实部署中<b>注册语音本身也可能带噪</b>。在 100 人代理验证集(训练/测试均未见过的说话人)上做注册侧 SNR {clean, 15, 10, 5, 0} dB × 测试侧 {0 dB, -5 dB} 全网格诊断:注册语音按 SNR 加噪后仍作为前端增强条件,交付前端(r5)增强后打分(冻结验证器口径;官方测试集冻结不重调,故诊断在代理集完成)。</p>
+<p class="tabcap">表 10 | 注册语音带噪 × 测试带噪全网格(EER %)</p>
+<table>
+<tr><th rowspan="2">注册语音质量</th><th colspan="2">测试 0 dB</th><th colspan="2">测试 -5 dB</th></tr>
+<tr><th>raw</th><th>前端</th><th>raw</th><th>前端</th></tr>
+<tr><td>干净注册</td><td>5.50</td><td class="good">1.81</td><td>13.00</td><td class="good">3.74</td></tr>
+<tr><td>15 dB 注册</td><td>6.00</td><td>2.48</td><td>12.76</td><td>4.22</td></tr>
+<tr><td>10 dB 注册</td><td>6.24</td><td>2.26</td><td>12.24</td><td>4.00</td></tr>
+<tr><td>5 dB 注册</td><td>7.24</td><td>2.52</td><td>12.24</td><td>4.74</td></tr>
+<tr><td><b>0 dB 注册</b></td><td>9.00</td><td>4.50</td><td>12.72</td><td>6.24</td></tr>
+</table>
+<p class="small">注:raw = 带噪注册嵌入直接对带噪测试语音打分(100 人代理验证集,产物 AI/8.27/diag_enroll_noise/)。注册质量下降时前端增益缓降但仍大幅有效——注册低至 0 dB 时相对降幅仍约 50%,部署时注册端不必苛求录音棚条件。</p>
+
+<!-- ================= 6 消融 ================= -->
+<h1 class="chapter">7&nbsp;&nbsp;消融实验</h1>
+<h2>7.1 增量消融(每级只加一个变量)</h2>
+<div class="figwrap"><img src="figs/fig_staircase.png"></div>
+<p class="figcap">图 8 | 增量消融链(冻结验证器口径;虚线为该口径 30% 线)</p>
+<p>两级损失各贡献 -4~-11%,难负原型抑制及同配方延长训练贡献最大(累计 -31.2%/-37.2%);第 4 轮过拟合回归(+17.7%),按预声明止损线停机。链路完整、可复现,详见 4.4 表 3。</p>
+<h2>7.2 单独消融 A:说话人保持损失系数</h2>
+<p>同基座同预算三臂(0.1/0.3/0.5),困难验证集(与官方负对同构)选点,3 轮:</p>
+<p class="tabcap">表 11 | 说话人保持损失系数消融</p>
+<table>
+<tr><th>λ<sub>spk</sub></th><th>困难验证集 avg</th><th>官方单次判决</th></tr>
+<tr><td>0.1</td><td>7.750</td><td>未触发官方</td></tr>
+<tr><td class="good">0.3</td><td class="good">7.403(加速下行)</td><td class="good">官方实测 7.293 / 9.202</td></tr>
+<tr><td>0.5</td><td>7.750</td><td>未触发官方</td></tr>
+</table>
+<p class="small">注:倒 U 形剂量响应,0.3 最优;官方增益落在预声明饱和带(&lt;0.1-0.2pp)→ 不堆轮数,直接叠加下一级。</p>
+<h2>7.3 单独消融 B:难负原型抑制系数与原型池</h2>
+<p class="tabcap">表 12 | 难负原型抑制系数与原型池消融</p>
+<table>
+<tr><th>变体</th><th>困难验证集(0dB/-5dB)</th><th>官方单次判决</th></tr>
+<tr><td>λ<sub>ns</sub> = 0.2</td><td>7.023(4.261/9.784)</td><td>未触发官方</td></tr>
+<tr><td class="good">λ<sub>ns</sub> = 0.5</td><td class="good">6.881(4.045/9.716,单调未饱和)</td><td class="good">官方实测 6.519 / 8.173</td></tr>
+<tr><td>原型池换成竞争说话人域定向</td><td>—</td><td class="hl">官方实测 7.184 / 9.005(更差)</td></tr>
+</table>
+<p class="small">注:与消融 A 相反,λ<sub>ns</sub> 响应单调未饱和(支持继续加码);"最难"比"同域"重要——通用难例池优于同域定向池。</p>
+<h2>7.4 单独消融 C:前端 × 后端矩阵</h2>
+<p class="tabcap">表 13 | 前端增益的跨后端迁移(延长续训第 2 轮版前端)</p>
+<table>
+<tr><th>后端</th><th>raw 0dB / -5dB</th><th>+前端 0dB / -5dB</th><th>降幅</th></tr>
+<tr><td>ERes2Net-large</td><td>8.390 / 11.055</td><td>5.576 / 6.531</td><td class="good">-33.5% / -40.9%</td></tr>
+<tr><td>ECAPA-TDNN</td><td>11.148 / 14.358</td><td>7.185 / 8.399</td><td class="good">-35.5% / -41.5%</td></tr>
+<tr><td>ReDimNet2-B6</td><td>9.941 / 13.026</td><td>8.069 / 10.203</td><td class="hl">-18.9% / -21.7%</td></tr>
+</table>
+<p class="small">注:增益来自前端本身、可跨后端迁移,但在轻量后端的嵌入空间有所衰减——与其判别面性质有关(第 9 章)。</p>
+<h2>7.5 消融附带的方法学收获</h2>
+<ul>
+  <li>困难验证集<b>方向全对</b>但<b>幅度高估约 5 倍</b>(预测 -0.27pp vs 官方实测 -0.089pp)→ 立下"困难集移动 &lt;1pp 不动官方"铁律;</li>
+  <li>旧版随机验证集系统性乐观 +5.6/+4.7pp(负对过易),全部选点切到困难口径;</li>
+  <li>"前 2 轮无增益、第 3 轮兑现"两次复现 → 趋势判决不早于 3 轮。</li>
+</ul>
+
+<!-- ================= 8 大小模型比较 ================= -->
+<h1 class="chapter">8&nbsp;&nbsp;大、小模型与协同方案比较</h1>
+<p>任务书要求"比较大模型、小模型及协同方案"。同一协议下的横向对比如下(0dB/-5dB,3s):</p>
+<p class="tabcap">表 14 | 大、小模型与协同方案比较(0dB/-5dB,3s)</p>
+<table>
+<tr><th>方案</th><th>参数量</th><th>0dB</th><th>-5dB</th><th>说明</th></tr>
+<tr><td>WavLM-base<sup>[10]</sup>(大模型,SSL 预训练,零样本)</td><td>≈95M</td><td class="hl">35.28</td><td class="hl">38.42</td><td>英文域预训练 + 域不匹配,中文跨设备协议上远差于监督中小模型;clean 亦 27.77</td></tr>
+<tr><td>WavLM-base(大模型,SSL,<b>中文 90k 多条件微调后</b>,9.3 补测)</td><td>≈101M</td><td class="hl">20.90</td><td class="hl">24.01</td><td>冻结 CNN 前端、transformer 全可训,7 轮;较零样本改善 11~14pp(clean 17.04),<b>但仍大幅落后于 29M 监督模型</b>——微调已把"不可用"拉回"可用",却无竞争力</td></tr>
+<tr><td>ReDimNet2-B6(小模型)</td><td>12.7M</td><td>9.94</td><td>13.03</td><td>参数最小,性价比高,但增益迁移有所衰减</td></tr>
+<tr><td>ECAPA-TDNN(中模型)</td><td>20.8M</td><td>11.15</td><td>14.36</td><td></td></tr>
+<tr><td>ERes2Net-large(主骨干)</td><td>29.1M</td><td>8.39</td><td>11.06</td><td>主验收靶子</td></tr>
+<tr><td>五模型权重平均(协同,soup5)</td><td>29.1M</td><td>7.61</td><td>9.71</td><td>后用于训练期验证器</td></tr>
+<tr><td>八成员异构融合(含 WavLM,协同)</td><td>—</td><td>7.21</td><td>9.15</td><td>融合系统历史最优;后被前端路线全面超越(同口径 5.24/6.10)</td></tr>
+<tr><td class="good">ERes2Net + 交付前端(本课题)</td><td class="good">+9.2M</td><td class="good">4.89</td><td class="good">5.56</td><td class="good">全表最优</td></tr>
+</table>
+<p class="small">注:①大模型零样本在本协议无优势,域匹配比模型大小更重要;②SSL 大模型经中文 90k 多条件微调后仍大幅落后于 29M 监督模型——当前中文数据规模下,域匹配与数据规模比参数量更关键;③协同方案(权重平均/异构融合)有稳定但有限的收益;④"中等骨干 + 注册条件化前端"性价比最高。</p>
+<div class="figwrap"><img src="figs/fig_params.png"></div>
+<p class="figcap">图 9 | 参数量普查(完整数据见附录 A)</p>
+
+<!-- ================= 9 局限 ================= -->
+<h1 class="chapter">9&nbsp;&nbsp;局限性分析</h1>
+<ol>
+  <li><b>部署口径下的条件信息泄漏(主要局限)</b>:条件化增强会将注册身份信息写入输出语音;在部署真实口径(claim)下前端尚未超越未增强基线,15 种训练/推理侧补救刻画出清晰的权衡前沿、暂无方案双达标(分析与补救全景见附录 C)。验收口径的结果不受影响。</li>
+  <li><b>人声干扰域盲区</b>:非人声噪声 -39% 以上,竞争说话人域 -13.5%/+0.8%;重叠场景 -15.0%~-35.2%,英文干扰仅 -15.0%。注册条件化是多人场景潜在的解决方向,但当前前端对"语音型干扰"的分离能力仍不足。</li>
+  <li><b>1s 短语音未过线</b>:0dB 档 -26.9%,距 30% 线差约 3pp(时长增强后仍不足)。</li>
+  <li><b>轻量后端增益衰减</b>:ReDimNet2-B6 -23.7%/-28.2%,差约 2pp。其嵌入判别面与前端优化目标(以 soup5/ERes2Net 系验证器定义)不一致。</li>
+  <li><b>挑战目标未冲击</b>:EER ≤ 0.5% 与现有水平差一个数量级。9.3 补测的 WavLM 微调实验进一步表明单靠加大参数量不行——1.01 亿参数的 SSL 大模型经中文 90k 数据微调后仍大幅落后于 29M 监督模型;突破需更大规模中文域数据 + 多通道等根本性手段。</li>
+  <li><b>评测规模限制</b>:加压检验(附录 C)的非目标侧为 30,000 条抽样(目标侧全量),CI95 ≈ ±0.2pp;更多样的冒认攻击方式(如跨设备冒认)未覆盖。</li>
+</ol>
+
+<!-- ================= 10 总结展望 ================= -->
+<h1 class="chapter">10&nbsp;&nbsp;总结与展望</h1>
+<h2>10.1 总结</h2>
+<ul>
+  <li>建立了说话人隔离、开集验证、阈值冻结的统一评测体系,官方协议校准偏差 &lt;0.6pp;</li>
+  <li>排除两条自然路线并定位机理(后端微调"增益不足不过线"、通用降噪"抹平身份"、"任务定义不当"),由此提出<b>注册条件化目标说话人提取前端</b>(9.2M 参数,VoiceFilter 式 FiLM 条件化 + 末层零初始化);</li>
+  <li>四级加码(说话人保持 → 难负原型抑制与判别分类 → 同配方延长续训至止损 → 时长增强)配合严格的代理选点/官方单次纪律,交付口径主力后端 <b>-41.7%/-49.7%</b>、经典后端 <b>-43.3%/-50.3%</b>,超额完成 ≥30% 验收线;clean 无退化,非人声域、混响、重叠、短语音全轴分项报告;</li>
+  <li>主动按部署真实口径加压复测,发现并系统刻画<b>注册条件泄漏机理</b>与 15 臂权衡前沿(附录 C)——本课题最重要的科学产出与开放问题。</li>
+</ul>
+<h2>10.2 展望</h2>
+<ol>
+  <li><b>注册条件泄漏修复</b>(现象与全景见附录 C):三个候选方向——①条件dropout/扰动训练(注册嵌入加噪、随机置换冒认条件并显式建模);②分数域校准(以冒认感知的打分归一替代分数融合);③改条件注入位置(仅在掩码估计端注入、输出端做身份中和);目标:部署口径优于 raw 的同时验收口径保住 -30%。</li>
+  <li><b>人声干扰盲区</b>:引入重叠语音训练(utterance-mixing,如 WavLM 预训练所用)与说话人分离前端级联;注册条件从单嵌入扩展为"目标嵌入 + 干扰负原型"双条件。</li>
+  <li><b>轻量后端适配</b>:以 B6 自身为验证器重训前端(匹配判别面),或在 B6 嵌入空间做蒸馏对齐。</li>
+  <li><b>短语音</b>:注册侧多句拼接/质量加权模板 + 前端输出段的置信度加权打分。</li>
+  <li><b>部署压缩</b>:前端 9.2M 已小,可进一步量化/蒸馏;条件提取与打分复用同一后端的架构天然省一次部署。</li>
+</ol>
+
+<!-- ================= 未来职业规划 ================= -->
+<h1>未来职业规划</h1>
+<p>结合本次实习课题的科研与工程训练,我的职业规划分三个阶段:</p>
+<table>
+<tr><th style="width:20%">阶段</th><th>规划</th></tr>
+<tr>
+  <td><b>短期</b><br>(硕士在读,1-2 年)</td>
+  <td>完成本课题交付与后续迭代;把注册条件泄漏机理、人声干扰盲区两个开放问题推进为论文成果(目标:说话人验证 / 语音增强方向会议或期刊);系统补齐语音大模型(SSL 预训练、多模态、流式部署)方向的工程能力。</td>
+</tr>
+<tr>
+  <td><b>中期</b><br>(毕业后 3-5 年)</td>
+  <td>进入工业界从事语音算法研发,专注声纹验证、语音识别与增强技术在智能终端、车载等场景的规模化落地;保持与学术界的连接,持续在开源社区输出可复现的工作。</td>
+</tr>
+<tr>
+  <td><b>长期</b><br>(5 年以上)</td>
+  <td>成长为能独立带方向的技术专家,深耕可信语音交互(鲁棒性、安全性、隐私保护);期望参与国产 AI 平台(如中国移动九天大模型生态)的语音能力建设,把课题中"从路线排除到交付"的方法论带进产业。</td>
+</tr>
+</table>
+
+<!-- ================= 参考文献 ================= -->
+<h1 class="chapter">参考文献</h1>
+<div class="refs">
+[1] Reynolds D A, Rose R C. Robust text-independent speaker identification using Gaussian mixture speaker models[J]. IEEE Transactions on Speech and Audio Processing, 1995, 3(1): 72-83.<br>
+[2] Desplanques B, Thienpondt J, Demuynck K. ECAPA-TDNN: emphasized channel attention, propagation and aggregation in TDNN based speaker verification[C]//Interspeech 2020. 2020: 3830-3834.<br>
+[3] Hao X, Su X, Horaud R, et al. FullSubNet: a full-band and sub-band fusion model for speech enhancement[C]//ICASSP 2021. 2021: 6633-6637.<br>
+[4] Chen J, et al. FullSubNet+: channel attention FullSubNet with complex spectrograms for speech enhancement[C]//ICASSP 2022. 2022.<br>
+[5] Wang Q, Muckenheim H, Wilson K, et al. VoiceFilter: targeted speech separation by speaker-conditioned spectrogram masking[C]//Interspeech 2019. 2019: 2728-2732.<br>
+[6] Perez E, Strub F, de Vries H, et al. FiLM: visual reasoning with a general conditioning layer[C]//Proceedings of the AAAI Conference on Artificial Intelligence. 2018: 3942-3951.<br>
+[7] Chen Y, Zheng S, Wang H, et al. An enhanced Res2Net with local and global feature fusion for speaker verification[C]//Interspeech 2023. 2023.<br>
+[8] Zheng S, Cheng L, Chen Y, et al. 3D-Speaker: a large-scale multi-device, multi-distance, and multi-dialect corpus for speech representation disentanglement[C]//Interspeech 2023. 2023.<br>
+[9] Deng J, Guo J, Xue N, et al. ArcFace: additive angular margin loss for deep face recognition[C]//CVPR 2019. 2019: 4690-4699.<br>
+[10] Chen S, et al. WavLM: large-scale self-supervised pre-training for full stack speech processing[J]. IEEE Journal of Selected Topics in Signal Processing, 2022, 16(6): 1505-1518.
+</div>
+
+<!-- ================= 附录 ================= -->
+<h1 class="chapter">附录 A&nbsp;&nbsp;模型参数量普查</h1>
+<p>9.3 对全部 17 个 checkpoint 实测(脚本 census_params.py,口径:state_dict 浮点张量元素数;产物 params_census.json + 模型参数量统计.md):</p>
+<p class="tabcap">表 15 | 参数量普查摘要</p>
+<table>
+<tr><th>模型</th><th>参数量</th><th>文件</th><th>说明</th></tr>
+<tr><td class="good">FullSubNet+ TSE 前端(交付 r5)</td><td class="good">9.20M</td><td>35.2MB</td><td>基座 8.68M + SpeakerFiLM 0.52M;全部补救臂同构 9.20M</td></tr>
+<tr><td>FullSubNet+ 通用基座(8.18)</td><td>8.68M</td><td>33.2MB</td><td>条件化之前的形态</td></tr>
+<tr><td>ERes2Net-large(主后端)</td><td>29.06M</td><td>111.0MB</td><td>ckpt 含分类头;嵌入提取器口径 22.46M</td></tr>
+<tr><td>ECAPA-TDNN</td><td>20.81M</td><td>79.5MB</td><td></td></tr>
+<tr><td>ReDimNet2-B6</td><td>12.72M</td><td>48.8MB</td><td></td></tr>
+<tr><td>soup5 / soup_w50(权重平均)</td><td>29.06M</td><td>111.0MB</td><td>训练期冻结验证器</td></tr>
+<tr><td>后端鲁棒微调系列(8.21-8.24 多配方)</td><td>29.06M</td><td>130.4MB(.tar 含优化器)</td><td>与原架构同构的权重变体(soup5 即由该系列权重平均而来)</td></tr>
+<tr><td>ECAPA robust(镜像微调)</td><td>20.81M</td><td>86.7MB</td><td>第二后端交付</td></tr>
+<tr><td>MoE-lite 支线(否决)</td><td>50.54M</td><td>212.4MB</td><td>+74% 参数无收益,硬成本证据</td></tr>
+<tr><td>GateNet 支线(否决)</td><td>29.25M</td><td>131.1MB</td><td>+0.19M,增益不过判决线</td></tr>
+<tr><td>WeSep 第三方前端(探索弃用)</td><td>27.63M</td><td>269.5MB(含优化器)</td><td></td></tr>
+</table>
+<p class="small">注:<b>部署栈 = 前端 9.20M + 嵌入提取骨干 22.46M ≈ 31.7M ≈ 127MB(fp32)</b>,条件提取与打分复用同一后端。</p>
+
+<h1 class="chapter">附录 B&nbsp;&nbsp;实验产物索引</h1>
+<table>
+<tr><th style="width:34%">内容</th><th>位置(服务器 /data/home/ligangrui/china_mobile/)</th></tr>
+<tr><td>任务书</td><td>任务.xlsx;课题分析报告(AI/)</td></tr>
+<tr><td>官方打分结果(逐格 EER/minDCF)</td><td>各实验目录 */result.metrics</td></tr>
+<tr><td>交付终评全表 / 场景 / clean 基线</td><td>AI/8.28/final_eval_r5/、AI/8.28/scenes_r5/、AI/8.28/clean_baseline_eres2net_3s/</td></tr>
+<tr><td>噪声域对比</td><td>AI/8.28/final_eval_r5/nd_r5_eres_*(前端)、AI/8.28/noise_domains/eval_raw/(锚点)</td></tr>
+<tr><td>增量/剂量消融官方结果</td><td>AI/8.27/exp/official_*/;剂量判决记录 AI/8.27/README.md</td></tr>
+<tr><td>claim 三口径与全部补救臂</td><td>AI/8.31/claim_retest/、AI/8.31/claim_fix/(summary/energy_gate/fusion)</td></tr>
+<tr><td>ROC/DET 与固定工作点</td><td>AI/8.30/roc_det/(PNG+CSV+summary.json)、gen_roc_det.py</td></tr>
+<tr><td>失败案例挖掘</td><td>AI/8.30/failures/failures.json、mine_failures.py</td></tr>
+<tr><td>注册语音带噪鲁棒性诊断</td><td>AI/8.27/exp/proxy/diag_enroll_noise/summary.json</td></tr>
+<tr><td>参数量普查</td><td>AI/9.3/census_params.py、params_census.json、模型参数量统计.md</td></tr>
+<tr><td>clean 直测格(r5 前端增强 clean 测试集,9.3 补测)</td><td>AI/9.3/fe_clean/(launch_fe_clean.sh、fe_clean_eres_3s/result.metrics)</td></tr>
+<tr><td>WavLM 微调版官方协议评测(9.3 补测)</td><td>AI/9.3/wavlm_ft_official/(wavlm_summary.json、scores/);微调训练 AI/8.24/wavlm_finetune.py、exp/wavlm_ft/</td></tr>
+<tr><td>clean 基准三后端 × 三时长全格(9.4 补测)</td><td>AI/9.4/clean_bench/{ecapa,eres2net,redimnet2}/{1s,3s,5s}/(result.metrics、trials_*.score);打分脚本 AI/9.4/score_clean_bench.sh</td></tr>
+<tr><td>汇总文档</td><td>AI/9.3/README_实验结果汇总.md、项目完整故事_9.3.md</td></tr>
+<tr><td>交付 checkpoint</td><td>前端 AI/8.27/exp/tse_v3_ns05duraug_r5/checkpoint_best.tar;后端 AI/8.24/exp/soup5/</td></tr>
+<tr><td>训练/评测代码</td><td>AI/8.26(tse_model.py、train_tse*.py)、AI/8.22(后端微调)、AI/8.27(exp/ 评测链)</td></tr>
+<tr><td>交付材料汇集(报告/PPT/讲稿/图/清单)</td><td>AI/9.3/交付材料_9.3/(00-08 目录;本地 E 盘同步备份)</td></tr>
+</table>
+<p class="small" style="margin-top:18px;">附注:周报(7.20-8.28 共 6 期)、开题报告与本报告数字一一对应;全部实验在 4×Tesla P100-PCIE-12GB 服务器完成,评测脚本可复现(seed 固定)。</p>
+
+<h1 class="chapter">附录 C&nbsp;&nbsp;部署口径(claim)分析与局限性与补救全景</h1>
+<div class="note">本附录为<b>部署口径的分析与局限性讨论</b>,不属验收主线:验收条款的场景设定(单说话人噪声下的声纹验证)中,测试语音与注册身份的绑定是协议给定条件,oracle 口径即任务验收口径(第 6 章交付大表)——当前结果已验证注册条件化增强能力。claim 口径是面向真实部署的主动加压检验,定位与汇报 PPT 的备用页一致,用于说明方法边界、防止部署误读:真实部署条件下,条件信息泄漏问题仍需进一步解决,这是本课题识别出的最重要的开放问题。</div>
+<h2>C.1 口径定义</h2>
+<ul>
+  <li><b>raw</b>:不增强,注册语音 vs 带噪语音直接打分(基线锚点);</li>
+  <li><b>oracle 口径(交付口径)</b>:测试句按其<b>真实说话人</b>的注册语音做增强条件——系统"知道"这句是谁的;</li>
+  <li><b>claim 口径(部署真实口径)</b>:真目标句同 oracle;<b>冒认句按"声称者"的注册语音做条件</b>——部署时系统只知道对方<b>声称</b>的身份,冒认者会用别人的身份来攻击系统。</li>
+</ul>
+<h2>C.2 主结果与机理</h2>
+<p class="tabcap">表 16 | 交付前端三口径对比(0dB/-5dB,3s)</p>
+<table>
+<tr><th>条件</th><th>raw</th><th>oracle(交付)</th><th>claim(部署)</th></tr>
+<tr><td>0 dB</td><td>8.37</td><td class="good">4.88(-41.7% ✅)</td><td class="hl">10.72(比 raw 还差 +2.36pp ❌)</td></tr>
+<tr><td>-5 dB</td><td>11.09</td><td class="good">5.53(-50.1% ✅)</td><td class="hl">12.85(比 raw 差 +1.76pp ❌)</td></tr>
+</table>
+<p class="small">注:抽样 = 全部 211,400 目标 + 30,000 非目标,bootstrap 200 次 95% CI ≈ ±0.2pp。</p>
+<div class="warn"><b>机理(冒认泄漏):</b>冒认侧把冒认者的语音"往声称者拉"——非目标分数中位数从 0.044(raw)抬到 0.129(claim),约 3 倍,误接受随之上升。换言之,<b>注册身份信息经条件化增强"泄漏"进了增强语音本身</b>:前端不仅去噪,还在输出中写入了注册说话人的特征。该"对语音型干扰压制不足"的机理,与竞争说话人噪声域增益偏低(表 9)、重叠场景增益受限(表 7)一脉相承。</div>
+<h2>C.3 系统性补救实验(13 个训练侧臂 + 2 种推理侧)</h2>
+<div class="figwrap"><img src="figs/fig_claim_tradeoff.png"></div>
+<p class="figcap">图 10 | oracle-claim 权衡前沿(0dB,15 臂;双达标区为空)</p>
+<p class="small">注:横轴交付(oracle)口径、纵轴部署(claim)口径;左下绿区为"双达标区"(oracle 过 30% 线且 claim 优于 raw)——该区为空,15 臂全部落在权衡前沿上,点旁编号对应表 17/18 各补救臂。</p>
+<p class="tabcap">表 17 | 训练侧补救 13 臂全量结果</p>
+<table>
+<tr><th style="width:42%">臂(在交付前端基础上改了什么)</th><th>oracle 0dB / -5dB</th><th>claim 0dB / -5dB</th><th>claim 冒认分中位</th></tr>
+<tr><td>交付前端(对照)</td><td>4.88 / 5.53</td><td class="hl">10.72 / 12.85</td><td>0.129</td></tr>
+<tr><td>难负原型抑制训练占比 +30%</td><td>5.41 / 6.20</td><td>9.12 / 10.98</td><td>0.100</td></tr>
+<tr><td>+50%</td><td>6.05 / 7.14</td><td>8.39 / 10.25</td><td>0.082</td></tr>
+<tr><td>+50% + 反拉项</td><td>6.05 / 7.14</td><td>8.48 / 10.32</td><td>0.082</td></tr>
+<tr><td class="good">+70%(claim 首次优于 raw)</td><td>6.69 / 8.30</td><td class="good">8.11 / 10.05</td><td>0.069</td></tr>
+<tr><td>判别损失清零(前端"中性化")</td><td>7.83 / 9.98</td><td>7.84 / 10.00</td><td>0.051</td></tr>
+<tr><td>判别损失减半</td><td>7.82 / 10.02</td><td>7.82 / 10.03</td><td>0.050</td></tr>
+<tr><td>训练混入冒认条件样本 40%(强度 0.3)</td><td>4.87 / 5.58</td><td class="hl">10.56 / 12.35</td><td>0.129</td></tr>
+<tr><td>同上(强度 0.5)</td><td>5.51 / 6.52</td><td>9.46 / 11.29</td><td>0.104</td></tr>
+<tr><td>混样 + 排序损失</td><td>5.54 / 6.49</td><td>9.33 / 11.13</td><td>0.103</td></tr>
+<tr><td>混样配方强化版</td><td>4.79 / 5.48</td><td class="hl">11.42 / 13.49</td><td>0.140</td></tr>
+<tr><td>中性化配方强化版</td><td>7.78 / 9.98</td><td>7.79 / 10.00</td><td>0.051</td></tr>
+<tr><td>冒认静音掩蔽 + 排序损失</td><td class="good">4.73 / 5.39(oracle 全场最优)</td><td class="hl">12.60 / 14.64(claim 全场最差)</td><td>0.154</td></tr>
+</table>
+<p class="small">注:冒认分中位数(raw ≈ 0.044)直接度量"泄漏"强度,与 claim 恶化程度单调一致。</p>
+<p class="tabcap">表 18 | 推理侧补救</p>
+<table>
+<tr><th style="width:42%">推理侧补救</th><th>结果</th></tr>
+<tr><td>能量门控(按增强语音能量静音可疑段,门限 -60…-10dB 全扫描)</td><td>各门限 claim 恒劣于 oracle;最好点(-60dB,静音 9.8%)claim 14.69 vs oracle 8.28;静音比例升至 100% 双双归零——未恢复有效性能</td></tr>
+<tr><td>raw + claim 分数融合(验证集网格搜权重)</td><td>最优 0dB 8.23 / -5dB 10.50——只回到 raw 附近,无净增益</td></tr>
+</table>
+<h2>C.4 结论</h2>
+<p>验收(oracle)口径两个主后端 -41.7%~-50.4% 超额达标,验证了注册条件化增强能力;部署(claim)口径下,15 种补救实验刻画出清晰的权衡前沿,<b>尚无方案同时满足"验收过线且部署优于基线"两项要求</b>。最优补救臂(难负原型抑制占比 +70%)部署口径已优于未增强基线(-3.1%/-9.3%),但验收口径退回 1.7pp 线外。该现象由"条件化增强写入注册身份"的结构性机理决定,是本课题识别出的最重要的开放问题(解决方向见第 10 章展望)。</p>
+
+</body>
+</html>

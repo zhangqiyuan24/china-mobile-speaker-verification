@@ -1,0 +1,11 @@
+===== fix overlap3_cn gpu3 (Wed 02 Sep 2026 08:02:15 PM CST) =====
+[overlap3_cn] wavlist=16401（应 16401）
+[overlap3_cn] v8d  : EER = 13.5331
+[overlap3_cn] puref: EER = 28.9763
+[overlap3_cn] r5   : EER = 18.4205
+===== fix reverb gpu3 (Wed 02 Sep 2026 08:39:34 PM CST) =====
+[reverb] wavlist=16401（应 16401）
+[reverb] v8d  : EER = 4.3841
+[reverb] puref: EER = 6.1625
+[reverb] r5   : EER = 4.8737
+[fix-gpu3 done] Wed 02 Sep 2026 09:18:36 PM CST

@@ -1,0 +1,57 @@
+[probe] 构建 encoder(fp32, 与训练脚本同链)
+[load_pretrained] missing=0 unexpected=0
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[freeze] 冻结模块: ['bn1', 'conv1', 'fuse_mode12', 'layer1', 'layer1_downsample', 'layer2']
+[freeze] 训练模块: ['fuse_mode123', 'fuse_mode1234', 'layer2_downsample', 'layer3', 'layer3_downsample', 'layer4', 'pool', 'seg_1', 'seg_2', 'seg_bn_1']
+
+[probe] A) 无 GateNet 基线(裸 encoder)
+[mem] A-构建后                            alloc=  0.13GiB reserved=  0.14GiB
+[mem] A-前向后                            alloc=  4.41GiB reserved=  5.44GiB
+[mem] A-反向后                            alloc=  0.26GiB reserved=  5.75GiB
+[mem] A-首个 step 后                      alloc=  0.51GiB reserved=  5.78GiB
+[mem] A-清理后                            alloc=  0.00GiB reserved=  0.02GiB
+
+[probe] B) 含 GateNet(与 train_feature_gate 同构)
+[load_pretrained] missing=0 unexpected=0
+[freeze] 冻结模块: ['bn1', 'conv1', 'fuse_mode12', 'layer1', 'layer1_downsample', 'layer2']
+[freeze] 训练模块: ['fuse_mode123', 'fuse_mode1234', 'layer2_downsample', 'layer3', 'layer3_downsample', 'layer4', 'pool', 'seg_1', 'seg_2', 'seg_bn_1']
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[mem] B-构建后                            alloc=  0.13GiB reserved=  0.14GiB
+Traceback (most recent call last):
+  File "probe_gate_mem.py", line 123, in <module>
+    main()
+  File "probe_gate_mem.py", line 113, in main
+    cosine = joint(fb)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data/home/ligangrui/china_mobile/AI/8.20/trainer_eres2net_robust.py", line 126, in forward
+    return self.classifier(self.embedding_model(feats))
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data/home/ligangrui/china_mobile/AI/8.26/feature_gate.py", line 59, in forward
+    return self.enc(self.gate(x))
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data/home/ligangrui/china_mobile/AI/8.26/../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/../../../speakerlab/models/eres2net/ERes2Net.py", line 218, in forward
+    fuse_out123 = self.fuse_mode123(out3, fuse_out12_downsample)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data/home/ligangrui/china_mobile/AI/8.26/../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/../../../speakerlab/models/eres2net/fusion.py", line 24, in forward
+    x_att = self.local_att(xa)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/container.py", line 141, in forward
+    input = module(input)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 446, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 442, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: CUDA out of memory. Tried to allocate 54.00 MiB (GPU 0; 11.91 GiB total capacity; 10.65 GiB already allocated; 29.31 MiB free; 10.79 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

@@ -1,0 +1,9 @@
+{
+ "eres2net_ckpt": "/data/home/ligangrui/china_mobile/AI/8.21/../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt",
+ "source": "full_scp",
+ "utts_per_spk": 8,
+ "crop_seconds": 3.0,
+ "num_speakers": 9900,
+ "num_utts": 79200,
+ "limit_speakers": 0
+}

@@ -1,0 +1,17 @@
+[ok] main_eres_0db/raw: EER=8.3908
+[ok] main_eres_0db/fe: EER=4.8925
+[ok] main_eres_m5db/raw: EER=11.0549
+[ok] main_eres_m5db/fe: EER=5.5643
+[ok] main_ecapa_0db/raw: EER=11.1476
+[ok] main_ecapa_0db/fe: EER=6.3193
+[ok] main_ecapa_m5db/raw: EER=14.3613
+[ok] main_ecapa_m5db/fe: EER=7.1323
+[miss] scene_reverb/raw: 无 score 文件
+[ok] scene_reverb/fe: EER=4.8732
+[ok] scene_ov2cn/raw: EER=22.4133
+[ok] scene_ov2cn/fe: EER=16.6306
+[ok] scene_ov2en/raw: EER=9.1321
+[ok] scene_ov2en/fe: EER=7.7586
+[ok] scene_ov3cn/raw: EER=28.4291
+[ok] scene_ov3cn/fe: EER=18.4207
+[gen-roc-det done] /data/home/ligangrui/china_mobile/AI/8.30/roc_det （DET 轴: scipy=yes）

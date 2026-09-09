@@ -1,0 +1,6 @@
+FR-device: Device02:9, Device06:4, Device07:3, Device01:2
+FR-distance: Distance07:9, Distance02:4, Distance00:3, Distance05:2
+FR-dialect: Dialect00:19, Dialect06:1
+FA-device: Device05:7, Device08:6, Device02:3, Device06:3
+FA-distance: Distance06:6, Distance12:6, Distance04:4, Distance02:3
+FA-dialect: Dialect12:17, Dialect13:2, Dialect06:1

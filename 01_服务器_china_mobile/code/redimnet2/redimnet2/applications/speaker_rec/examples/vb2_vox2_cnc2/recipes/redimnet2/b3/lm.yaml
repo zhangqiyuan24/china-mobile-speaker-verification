@@ -1,0 +1,170 @@
+# b3 LM: large-margin fine-tuning, 1 epoch, on the vox2 + vb2 + cnc2 mix.
+#
+# Ported from recipes/vox2_vb2_cnc2/b6_gnorm_100ep/lm.yaml to target
+# recipes/vox2_vb2_cnc2/b3/ptn.yaml. The PT target writes to
+# exp/vox2_vb2_cnc2/b3_gnorm_110ep/ptn_ha and has checkpoints through epoch 110.
+#
+# Provenance:
+#   * model + spec/fbank + aug tree <- b3/ptn.yaml
+#   * LM crop/schedule/data/head handling, including aug prob 0.7
+#                                    <- b6_gnorm_100ep/lm.yaml
+#
+# Inits from the target PT checkpoint; the projection head is reassembled from
+# the target PT spk2id.json. The 115,361 LM speakers are a strict subset of the
+# target PT run's 119,273 speakers, so the mapping is 1:1. num_class and
+# epoch_iter are auto-computed by train.py from the data; do not set them here.
+#
+# Launch (8 GPUs):
+#   ./applications/speaker_rec/launch.sh applications/speaker_rec/examples/vb2_vox2_cnc2/recipes/redimnet2/b3/lm.yaml 8
+
+compile_backbone:
+  mode: default
+data_type: raw_fast
+do_lm: true
+enable_amp: true
+seed: 42
+
+exp_dir: exp/vox2_vb2_cnc2/b3_gnorm_110ep/lm
+model_ckpt: exp/vox2_vb2_cnc2/b3_gnorm_110ep/ptn_ha/models/model_110.pt
+spk2id_map_path: exp/vox2_vb2_cnc2/b3_gnorm_110ep/ptn_ha/spk2id.json
+
+train_data: /data/wespeaker_data/vox2_vb2_cnc2_v0/mix_join_lm/data.list
+train_label: /data/wespeaker_data/vox2_vb2_cnc2_v0/mix_join_lm/utt2spk
+
+gpus:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+grad_accum_steps: 1
+
+dataloader_args:
+  batch_size: 48
+  drop_last: true
+  num_workers: 24
+  pin_memory: false
+  prefetch_factor: 2
+  seed_worker: true
+
+dataset_args:
+  num_frms: 500
+  resample_rate: 16000
+  sample_num_per_epoch: 0
+  shuffle: true
+  shuffle_args:
+    shuffle_size: 2500
+  speed_perturb: false
+  fbank_args:
+    dither: 1.0
+    frame_length: 25
+    frame_shift: 10
+    num_mel_bins: 80
+  aug_setup:
+    aug_type: Sequential
+    prob: 0.7
+    augmentors:
+    - aug_type: OneOf
+      prob: 0.8
+      augmentors:
+      - aug_type: CustomNoise
+        dataset_dir: /data/wespeaker_data/raw/musan/music
+        snr: [2, 12]
+        prob: 1.0
+      - aug_type: CustomNoise
+        dataset_dir: /data/wespeaker_data/raw/musan/noise
+        snr: [0, 12]
+        prob: 1.0
+      - aug_type: CustomNoise
+        dataset_dir: /data/wespeaker_data/raw/musan/speech
+        snr: [7, 18]
+        babble: true
+        prob: 1.0
+    - aug_type: Reverb
+      lmdb_file: /data/wespeaker_data/rirs/lmdb
+      prob: 0.2
+    - aug_type: OneOf
+      prob: 0.25
+      augmentors:
+      - aug_type: LowPassAug
+        cutoff_ratio: 0.6
+        transition_width: 0.08
+        prob: 1.0
+
+model: ReDimNet2Custom
+model_args:
+  C: 24
+  F: 72
+  agg_gnorm: true
+  block_1d_type: conv+att
+  block_2d_type: basic_resnet
+  causal: none
+  compress_tconvs: true
+  emb_bn: false
+  embed_dim: 192
+  feat_type: tf
+  fm_weigthing_type: NC
+  global_context_att: true
+  group_divisor: 1
+  hop_length: 160
+  out_channels: 224
+  pooling_func: ASTP
+  return_2d_output: true
+  spec_in_channels: 1
+  spec_params:
+    do_preemph: true
+    do_spec_aug: false
+    norm_signal: true
+
+loss: CrossEntropyLoss
+loss_args: {}
+mixup_alpha: null
+
+projection_args:
+  do_lm: true
+  easy_margin: false
+  embed_dim: 192
+  lanbuda: 0.7
+  margin_type: C
+  project_type: sphereface2
+  scale: 32.0
+  t: 3
+
+margin_scheduler: MarginScheduler
+margin_update:
+  final_margin: 0.3
+  fix_start_epoch: 1
+  increase_start_epoch: 1
+  increase_type: exp
+  initial_margin: 0.3
+  update_margin: true
+
+loss_weight_decay_mult: 0.25
+num_epochs: 1
+optimizer: SGD
+optimizer_args:
+  lr: 0.1
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 4.0e-05
+
+scheduler: ExponentialDecrease
+scheduler_args:
+  initial_lr: 0.0001
+  final_lr: 2.5e-05
+  num_epochs: 1
+  scale_ratio: 6.0
+  warm_from_zero: true
+  warm_up_epoch: 0.2
+
+num_avg: 10
+save_epoch_interval: 1
+eval_dur: 8.0
+eval_step_interval: 3000
+log_batch_interval: 25
+val_type: local
+validation:
+  vox1: /data/wespeaker_data/vox1-test

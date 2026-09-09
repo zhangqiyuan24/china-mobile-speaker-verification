@@ -1,0 +1,10 @@
+[tse] 8.18 权重装载: 缺 4 键(全部 film.*, 零初始化恒等)
+[ckpt] /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v5_ce00_lam03/checkpoint_epoch2.tar (epoch=2)
+[cond] 100 spk 嵌入(soup5, 均值+L2)
+[enhance] noise_0db 待处理 400
+[enhance] noise_0db 待处理 400
+  [noise_0db] enh=3.250 raw=3.500 | fused α*= 0.10 → 3.250 (a03/05/07 = 3.250/3.250/3.250) n=400T/400N
+[enhance] noise_m5db 待处理 400
+[enhance] noise_m5db 待处理 400
+  [noise_m5db] enh=5.750 raw=7.000 | fused α*= 0.85 → 5.750 (a03/05/07 = 6.500/6.250/6.000) n=400T/400N
+[saved] /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/fusion_claim/ce00e2.json

@@ -1,0 +1,84 @@
+==== Step 0: 训练数据就绪（/data/home/ligangrui/china_mobile/AI/8.20/exp/robust/data） ====
+==== Step 1: enh 语料准备（部署前端 = 8.18 spk-preserve, 冻结） ====
+[data] 训练清单 30000 条 × SNR [0.0, -5.0] -> 60000 个增强样本
+[mix] train noise pool = 615 条（与 8.21 raw 分支同池）
+[mix] 3000/30000 条 × 2 档（新写 0，跳过 6000）
+[mix] 6000/30000 条 × 2 档（新写 0，跳过 12000）
+[mix] 9000/30000 条 × 2 档（新写 0，跳过 18000）
+[mix] 12000/30000 条 × 2 档（新写 0，跳过 24000）
+[mix] 15000/30000 条 × 2 档（新写 0，跳过 30000）
+[mix] 18000/30000 条 × 2 档（新写 0，跳过 36000）
+[mix] 21000/30000 条 × 2 档（新写 0，跳过 42000）
+[mix] 24000/30000 条 × 2 档（新写 0，跳过 48000）
+[mix] 27000/30000 条 × 2 档（新写 0，跳过 54000）
+[mix] 30000/30000 条 × 2 档（新写 0，跳过 60000）
+[enhance] snr0: 10 块全部完成
+[enhance] snrm5: 10 块全部完成
+[manifest] complete=True  snr0=30000  snrm5=30000  前端=/data/home/ligangrui/china_mobile/AI/8.18/exp/spk_preserve/checkpoint_epoch10.tar
+[bench] test_0db: 已增强（200 条），跳过
+[bench] test_m5db: 已增强（200 条），跳过
+[bench] 完成：/data/home/ligangrui/china_mobile/AI/8.22/exp/enh_bench/test_0db, test_m5db（enroll 复用 8.20 clean 注册）
+
+[prepare] 完成。下一步：bash run_train.sh（训练会校验 manifest）
+==== Step 2: 五条件训练（clean/raw0/raw-5/enh0/enh-5 均匀 1/5） ====
+[corpus] enhanced/snr0: 30000 条（前端=checkpoint_epoch10.tar）
+[corpus] enhanced/snrm5: 30000 条（前端=checkpoint_epoch10.tar）
+[data] 训练 30000 条 / 9892 人；条件=5x -> 150000 样本/epoch（clean/raw0/raw-5/enh0/enh-5 各 1/5）
+[data] train noise pool = 615 条（raw 分支动态混噪，与 8.21 同池同法）
+[load_pretrained] missing=0 unexpected=0
+[freeze] 冻结模块: ['bn1', 'conv1', 'fuse_mode12', 'layer1', 'layer1_downsample', 'layer2']
+[freeze] 训练模块: ['fuse_mode123', 'fuse_mode1234', 'layer2_downsample', 'layer3', 'layer3_downsample', 'layer4', 'pool', 'seg_1', 'seg_2', 'seg_bn_1']
+[proto-init] classifier weight shape = (9892, 512)
+[proto-init] prototype matrix shape = (9900, 512)（超集，8 行多余 prototype 不使用）
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9892/9892 类用 prototype 初始化）
+[freeze_report] embedding: 可训练 27.98M / 冻结 1.03M (共 29.02M, 可训练占比 96.4%)
+[freeze_report] classifier: 5.06M (全训练)
+[loss] AAM-softmax: margin=0.2 scale=32.0（固定）  amp=True  batch_size=50 accum=2（有效batch=100，五路各 10）
+
+[prototype init] clean 探针 256 条 / 9892 类
+  clean top1 acc          = 100.00%   (随机理论 ≈ 0.010%)
+  clean aam loss          = 0.0817   (随机理论 ≈ 15.60)
+  mean target cosine      = 0.8447
+  mean max non-target cos = 0.4995
+
+===== epoch 0（pretrained 基线）双 bench 验证 =====
+[val] 提示：raw bench 为 seen-by-pretrained（clean 绝对值偏乐观），仅用于逐 epoch 对照与选型；
+      正式结论以 evaluate_combo 的 open-set 协议为准。
+val-enroll:   0%|                                                           | 0/200 [00:00<?, ?it/s]val-enroll:   4%|██▎                                                | 9/200 [00:00<00:02, 89.42it/s]val-enroll:  12%|█████▋                                           | 23/200 [00:00<00:01, 108.00it/s]val-enroll:  17%|████████▌                                         | 34/200 [00:00<00:03, 45.81it/s]val-enroll:  21%|██████████▌                                       | 42/200 [00:00<00:03, 48.96it/s]val-enroll:  24%|████████████▎                                     | 49/200 [00:01<00:04, 34.76it/s]val-enroll:  28%|█████████████▊                                    | 55/200 [00:01<00:03, 38.68it/s]val-enroll:  30%|███████████████▎                                  | 61/200 [00:01<00:03, 42.34it/s]val-enroll:  34%|█████████████████▎                                | 69/200 [00:01<00:02, 49.85it/s]val-enroll:  38%|███████████████████                               | 76/200 [00:01<00:03, 34.53it/s]val-enroll:  41%|████████████████████▌                             | 82/200 [00:01<00:03, 38.81it/s]val-enroll:  46%|███████████████████████                           | 92/200 [00:02<00:02, 49.07it/s]val-enroll:  50%|████████████████████████▊                         | 99/200 [00:02<00:02, 34.07it/s]val-enroll:  57%|████████████████████████████▏                    | 115/200 [00:02<00:01, 54.46it/s]val-enroll:  62%|██████████████████████████████▍                  | 124/200 [00:02<00:01, 45.32it/s]val-enroll:  72%|███████████████████████████████████▎             | 144/200 [00:03<00:01, 51.29it/s]val-enroll:  84%|█████████████████████████████████████████▏       | 168/200 [00:03<00:00, 58.86it/s]val-enroll:  91%|████████████████████████████████████████████▌    | 182/200 [00:03<00:00, 65.70it/s]val-enroll:  96%|███████████████████████████████████████████████  | 192/200 [00:03<00:00, 52.17it/s]val-enroll: 100%|████████████████████████████████████████████████▊| 199/200 [00:04<00:00, 54.03it/s]val-enroll: 100%|█████████████████████████████████████████████████| 200/200 [00:04<00:00, 49.72it/s]
+val-clean:   0%|                                                            | 0/200 [00:00<?, ?it/s]val-clean:   6%|███▎                                              | 13/200 [00:00<00:01, 123.23it/s]val-clean:  13%|██████▋                                            | 26/200 [00:00<00:03, 54.71it/s]val-clean:  18%|████████▉                                          | 35/200 [00:00<00:02, 62.67it/s]val-clean:  24%|████████████▏                                      | 48/200 [00:00<00:02, 51.96it/s]val-clean:  28%|██████████████▌                                    | 57/200 [00:00<00:02, 59.45it/s]val-clean:  34%|█████████████████▌                                 | 69/200 [00:01<00:01, 69.43it/s]val-clean:  39%|███████████████████▉                               | 78/200 [00:01<00:02, 49.95it/s]val-clean:  46%|███████████████████████▏                           | 91/200 [00:01<00:01, 63.56it/s]val-clean:  50%|█████████████████████████                         | 100/200 [00:01<00:01, 50.29it/s]val-clean:  56%|████████████████████████████▏                     | 113/200 [00:01<00:01, 63.10it/s]val-clean:  61%|██████████████████████████████▌                   | 122/200 [00:02<00:01, 50.77it/s]val-clean:  71%|███████████████████████████████████▌              | 142/200 [00:02<00:00, 74.32it/s]val-clean:  76%|██████████████████████████████████████            | 152/200 [00:02<00:00, 58.95it/s]val-clean:  84%|██████████████████████████████████████████        | 168/200 [00:02<00:00, 56.96it/s]val-clean:  94%|██████████████████████████████████████████████▊   | 187/200 [00:02<00:00, 77.40it/s]val-clean:  99%|█████████████████████████████████████████████████▌| 198/200 [00:03<00:00, 62.70it/s]val-clean: 100%|██████████████████████████████████████████████████| 200/200 [00:03<00:00, 61.68it/s]
+   [val] clean: EER = 1.2500%  minDCF = 0.0375  (trials=800)
+val-0db:   0%|                                                              | 0/200 [00:00<?, ?it/s]val-0db:  12%|██████▎                                              | 24/200 [00:00<00:02, 69.17it/s]val-0db:  20%|██████████▌                                          | 40/200 [00:00<00:01, 89.43it/s]val-0db:  26%|█████████████▌                                       | 51/200 [00:00<00:02, 60.91it/s]val-0db:  31%|████████████████▍                                    | 62/200 [00:00<00:01, 70.73it/s]val-0db:  36%|███████████████████                                  | 72/200 [00:01<00:02, 54.49it/s]val-0db:  43%|██████████████████████▊                              | 86/200 [00:01<00:01, 69.14it/s]val-0db:  48%|█████████████████████████▍                           | 96/200 [00:01<00:01, 53.49it/s]val-0db:  57%|█████████████████████████████▉                      | 115/200 [00:01<00:01, 76.91it/s]val-0db:  63%|████████████████████████████████▊                   | 126/200 [00:01<00:01, 61.29it/s]val-0db:  72%|█████████████████████████████████████▍              | 144/200 [00:02<00:00, 58.63it/s]val-0db:  84%|███████████████████████████████████████████▋        | 168/200 [00:02<00:00, 64.16it/s]val-0db:  96%|█████████████████████████████████████████████████▉  | 192/200 [00:02<00:00, 67.34it/s]val-0db: 100%|████████████████████████████████████████████████████| 200/200 [00:02<00:00, 67.60it/s]
+   [val]   0db: EER = 7.0000%  minDCF = 0.1675  (trials=800)
+val-m5db:   0%|                                                             | 0/200 [00:00<?, ?it/s]val-m5db:   6%|███                                                 | 12/200 [00:00<00:02, 74.35it/s]val-m5db:  12%|██████▏                                             | 24/200 [00:00<00:03, 50.08it/s]val-m5db:  17%|████████▊                                           | 34/200 [00:00<00:03, 49.86it/s]val-m5db:  24%|████████████▍                                       | 48/200 [00:00<00:03, 46.23it/s]val-m5db:  32%|████████████████▋                                   | 64/200 [00:01<00:02, 66.06it/s]val-m5db:  36%|██████████████████▉                                 | 73/200 [00:01<00:02, 50.18it/s]val-m5db:  44%|██████████████████████▉                             | 88/200 [00:01<00:01, 66.96it/s]val-m5db:  49%|█████████████████████████▍                          | 98/200 [00:01<00:01, 54.37it/s]val-m5db:  57%|█████████████████████████████                      | 114/200 [00:01<00:01, 72.10it/s]val-m5db:  62%|███████████████████████████████▉                   | 125/200 [00:02<00:01, 58.68it/s]val-m5db:  72%|████████████████████████████████████▋              | 144/200 [00:02<00:00, 59.00it/s]val-m5db:  83%|██████████████████████████████████████████▎        | 166/200 [00:02<00:00, 83.22it/s]val-m5db:  89%|█████████████████████████████████████████████▍     | 178/200 [00:02<00:00, 67.45it/s]val-m5db:  96%|████████████████████████████████████████████████▉  | 192/200 [00:03<00:00, 60.16it/s]val-m5db: 100%|███████████████████████████████████████████████████| 200/200 [00:03<00:00, 62.67it/s]
+   [val]  m5db: EER = 11.2500%  minDCF = 0.3800  (trials=800)
+val-enroll:   0%|                                                           | 0/200 [00:00<?, ?it/s]val-enroll:  12%|██████                                            | 24/200 [00:00<00:02, 77.13it/s]val-enroll:  24%|████████████                                      | 48/200 [00:00<00:01, 76.55it/s]val-enroll:  36%|██████████████████                                | 72/200 [00:00<00:01, 76.63it/s]val-enroll:  48%|████████████████████████                          | 96/200 [00:01<00:01, 76.93it/s]val-enroll:  60%|█████████████████████████████▍                   | 120/200 [00:01<00:01, 76.99it/s]val-enroll:  72%|███████████████████████████████████▎             | 144/200 [00:01<00:00, 77.06it/s]val-enroll:  84%|█████████████████████████████████████████▏       | 168/200 [00:02<00:00, 77.11it/s]val-enroll:  96%|███████████████████████████████████████████████  | 192/200 [00:02<00:00, 76.32it/s]val-enroll: 100%|█████████████████████████████████████████████████| 200/200 [00:02<00:00, 78.93it/s]
+val-enh0db:   0%|                                                           | 0/200 [00:00<?, ?it/s]val-enh0db:   2%|█                                                  | 4/200 [00:00<00:05, 38.46it/s]val-enh0db:  12%|██████                                            | 24/200 [00:00<00:02, 59.51it/s]val-enh0db:  20%|██████████                                        | 40/200 [00:00<00:01, 85.46it/s]val-enh0db:  25%|████████████▌                                     | 50/200 [00:00<00:02, 59.88it/s]val-enh0db:  34%|█████████████████                                 | 68/200 [00:00<00:01, 84.63it/s]val-enh0db:  40%|████████████████████                              | 80/200 [00:01<00:01, 64.98it/s]val-enh0db:  48%|████████████████████████                          | 96/200 [00:01<00:01, 60.59it/s]val-enh0db:  60%|█████████████████████████████▍                   | 120/200 [00:01<00:01, 65.32it/s]val-enh0db:  72%|███████████████████████████████████▎             | 144/200 [00:02<00:00, 66.96it/s]val-enh0db:  84%|█████████████████████████████████████████▏       | 168/200 [00:02<00:00, 69.04it/s]val-enh0db:  96%|███████████████████████████████████████████████  | 192/200 [00:02<00:00, 70.25it/s]val-enh0db: 100%|█████████████████████████████████████████████████| 200/200 [00:02<00:00, 70.35it/s]
+   [val] enh0db: EER = 5.2500%  minDCF = 0.1875  (trials=800)
+val-enhm5db:   0%|                                                          | 0/200 [00:00<?, ?it/s]val-enhm5db:  12%|█████▉                                           | 24/200 [00:00<00:02, 70.36it/s]val-enhm5db:  24%|███████████▎                                    | 47/200 [00:00<00:01, 117.24it/s]val-enhm5db:  32%|███████████████▋                                 | 64/200 [00:00<00:01, 83.09it/s]val-enhm5db:  38%|██████████████████▌                              | 76/200 [00:01<00:01, 65.73it/s]val-enhm5db:  48%|███████████████████████▌                         | 96/200 [00:01<00:01, 65.51it/s]val-enhm5db:  60%|████████████████████████████▊                   | 120/200 [00:01<00:01, 68.53it/s]val-enhm5db:  72%|██████████████████████████████████▌             | 144/200 [00:01<00:00, 70.65it/s]val-enhm5db:  84%|████████████████████████████████████████▎       | 168/200 [00:02<00:00, 70.73it/s]val-enhm5db:  96%|██████████████████████████████████████████████  | 192/200 [00:02<00:00, 71.08it/s]val-enhm5db: 100%|████████████████████████████████████████████████| 200/200 [00:02<00:00, 74.63it/s]   [val] enhm5db: EER = 8.5000%  minDCF = 0.3625  (trials=800)
+[gate] clean 门限 = epoch0 raw-bench clean 1.2500% + 1.0pp = 2.2500%
+
+===== epoch 1/8 (lr=2e-05) =====
+
+Traceback (most recent call last):
+  File "train_matched.py", line 514, in <module>
+    main()
+  File "train_matched.py", line 448, in main
+    first_step_guard(loader)
+  File "train_matched.py", line 393, in first_step_guard
+    loss, _acc = trainer.train_step(feats, labels)
+  File "/data/home/ligangrui/china_mobile/AI/8.21/trainer_eres2net_robust_proto.py", line 194, in train_step
+    cosine = self.net(feats)              # CosineClassifier 输出 cos logits
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data/home/ligangrui/china_mobile/AI/8.20/trainer_eres2net_robust.py", line 126, in forward
+    return self.classifier(self.embedding_model(feats))
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/speakerlab/models/eres2net/ERes2Net.py", line 218, in forward
+    fuse_out123 = self.fuse_mode123(out3, fuse_out12_downsample)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/speakerlab/models/eres2net/fusion.py", line 23, in forward
+    xa = torch.cat((x, ds_y), dim=1)
+RuntimeError: CUDA out of memory. Tried to allocate 148.00 MiB (GPU 0; 11.91 GiB total capacity; 4.78 GiB already allocated; 12.31 MiB free; 4.93 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

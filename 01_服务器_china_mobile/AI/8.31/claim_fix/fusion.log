@@ -1,0 +1,4 @@
+targets=211400 nontargets=30000
+[noise_0db] raw=8.367 oracle=0.000 claim=10.722 min_raw_claim=8.409 grid_best=8.230 grid_a=0.100 grid_b=0.600
+[noise_m5db] raw=11.087 oracle=0.000 claim=12.850 min_raw_claim=11.080 grid_best=10.500 grid_a=0.700 grid_b=1.500
+saved fusion_summary.json

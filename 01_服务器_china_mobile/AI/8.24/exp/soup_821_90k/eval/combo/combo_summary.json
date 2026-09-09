@@ -1,0 +1,42 @@
+{
+  "checkpoint": "/data/home/ligangrui/china_mobile/AI/8.24/exp/soup_821_90k/checkpoints/checkpoint_soup_w50.tar",
+  "results": {
+    "raw": {
+      "noise_0db": {
+        "eer": 7.7119,
+        "mindcf": 0.603
+      },
+      "noise_m5db": {
+        "eer": 9.8122,
+        "mindcf": 0.659
+      },
+      "clean": {
+        "eer": 5.1414,
+        "mindcf": 0.4794
+      }
+    },
+    "frontend": {
+      "noise_0db": {
+        "eer": 7.5104,
+        "mindcf": 0.5931
+      },
+      "noise_m5db": {
+        "eer": 9.4513,
+        "mindcf": 0.6484
+      }
+    }
+  },
+  "baseline": {
+    "clean": 5.8248,
+    "noise_0db": 8.3911,
+    "noise_m5db": 11.0557,
+    "noise_0db_frontend_only": 7.7902,
+    "noise_m5db_frontend_only": 9.9186,
+    "ref_821": {
+      "raw_robust_0db": 7.6911,
+      "raw_robust_m5db": 9.8781,
+      "combo_0db": 7.5,
+      "combo_m5db": 9.5085
+    }
+  }
+}

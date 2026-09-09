@@ -1,0 +1,45 @@
+# ============================================================
+# WeSep TSE + ERes2Net 评测配置 — 全相对路径
+#
+# 目录约定 (AI 与 code 同级):
+#   china_mobile/
+#   ├── AI/8.13/            ← 本目录 (config.yaml 所在)
+#   └── code/
+#       ├── 3D-speaker/3D-speaker/
+#       │   ├── egs/3dspeaker/sv-ecapa/    ← 评测数据
+#       │   └── speakerlab/
+#       └── wesep-master/wesep-master/     ← WeSep 代码
+#
+# 所有 rel 路径都相对于本 config.yaml 所在目录 (AI/8.13/)
+# ============================================================
+
+# ---- WeSep ----
+wesep:
+  # third_party/ 目录: 含 wesep/ 和 wespeaker/ 两个包 + models/ (模型)
+  third_party_rel: "third_party"
+  # 解压后的 pretrained 模型目录 (含 avg_model.pt + config.yaml)
+  model_dir_rel: "third_party/models"
+  device: "cuda:0"
+  resample_rate: 16000
+  apply_vad: false
+
+# ---- ERes2Net-large ----
+eres2net:
+  feat_dim: 80
+  embedding_size: 512
+  m_channels: 64
+  # pretrained checkpoint (AI/8.15 的 install.sh 部署到 sv-ecapa/pretrained/)
+  # 微调: sv-eres2net/exp/eres2net_finetune_ts/models/best_robust/embedding_model.ckpt
+  ckpt_rel: "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+  device: "cuda:0"
+
+# ---- 数据 ----
+data:
+  sv_ecapa_rel: "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+  data_for_test: "data/data_for_test"
+  duration: "3s"
+  trial: "data/data_for_test/clean/3s/trials_cross_device"
+
+# ---- 评测 ----
+eval:
+  batch_size: 16          # WeSep 批量推理的 batch size

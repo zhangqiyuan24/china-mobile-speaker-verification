@@ -1,0 +1,29 @@
+[backend] 821 <- checkpoint_best.tar
+[backend] 30k <- checkpoint_best.tar
+[backend] 90k <- checkpoint_best.tar
+[backend] soup <- checkpoint_soup_w50.tar
+[backend] p90k <- checkpoint_best.tar
+[backend] soup5 <- checkpoint_soup5.tar
+[score] 821_raw      noise_0db   EER=2.239% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/821_raw_noise_0db.score
+[score] 821_raw      noise_m5db  EER=6.000% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/821_raw_noise_m5db.score
+[score] 821_fe       noise_0db   EER=2.000% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/821_fe_noise_0db.score
+[score] 821_fe       noise_m5db  EER=5.000% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/821_fe_noise_m5db.score
+[score] 30k_raw      noise_0db   EER=2.545% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/30k_raw_noise_0db.score
+[score] 30k_raw      noise_m5db  EER=6.193% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/30k_raw_noise_m5db.score
+[score] 30k_fe       noise_0db   EER=2.239% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/30k_fe_noise_0db.score
+[score] 30k_fe       noise_m5db  EER=4.761% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/30k_fe_noise_m5db.score
+[score] 90k_raw      noise_0db   EER=2.477% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/90k_raw_noise_0db.score
+[score] 90k_raw      noise_m5db  EER=5.693% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/90k_raw_noise_m5db.score
+[score] 90k_fe       noise_0db   EER=2.500% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/90k_fe_noise_0db.score
+[score] 90k_fe       noise_m5db  EER=4.307% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/90k_fe_noise_m5db.score
+[score] soup_raw     noise_0db   EER=2.239% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/soup_raw_noise_0db.score
+[score] soup_raw     noise_m5db  EER=6.000% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/soup_raw_noise_m5db.score
+[score] soup_fe      noise_0db   EER=2.023% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/soup_fe_noise_0db.score
+[score] soup_fe      noise_m5db  EER=4.500% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/soup_fe_noise_m5db.score
+[score] p90k_raw     noise_0db   EER=2.500% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/p90k_raw_noise_0db.score
+[score] p90k_raw     noise_m5db  EER=6.045% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/p90k_raw_noise_m5db.score
+[score] p90k_fe      noise_0db   EER=2.239% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/p90k_fe_noise_0db.score
+[score] p90k_fe      noise_m5db  EER=5.000% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/p90k_fe_noise_m5db.score
+[score] tse_soup5    noise_0db   EER=2.000% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/tse_soup5_noise_0db.score
+[score] tse_soup5    noise_m5db  EER=4.261% -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores/tse_soup5_noise_m5db.score
+[done]

@@ -1,0 +1,482 @@
+[labels] 90000 utts / 9900 spks
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[init] 续训自 /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v3_ns05duraug_r5/checkpoint_best.tar
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[cond] 100 spk 嵌入(soup5, 均值+L2)
+[train] 30000 样本 15000 it/ep × 3 ep, lambda_ce=1.0, lambda_spk=0.3, lambda_ns=0.5, imp_prob=0.3, lam_imp=0.0, tau_imp=0.1, dur_aug=ON seg=200 it -> /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v5_asym30
+  [dur] ep1 it0 -> 3s 段
+  ep1 it 200/15000 L=1.3523 se=0.0610 ce=1.1903 spk=0.1754 ns=0.0968 imp=0.0000 hardcos=0.3967 cos=0.8246 ccond_imp=0.1159(92个) dur=3s
+  [dur] ep1 it200 -> 1s 段
+  ep1 it 400/15000 L=1.2253 se=0.0587 ce=1.0650 spk=0.1742 ns=0.0986 imp=0.0000 hardcos=0.3985 cos=0.8258 ccond_imp=0.1020(124个) dur=1s
+  [dur] ep1 it400 -> 1s 段
+  ep1 it 600/15000 L=1.4348 se=0.0612 ce=1.2724 spk=0.1719 ns=0.0993 imp=0.0000 hardcos=0.3991 cos=0.8281 ccond_imp=0.0960(102个) dur=1s
+  [dur] ep1 it600 -> 3s 段
+  ep1 it 800/15000 L=1.5563 se=0.0597 ce=1.3925 spk=0.1820 ns=0.0988 imp=0.0000 hardcos=0.3986 cos=0.8180 ccond_imp=0.1025(128个) dur=3s
+  [dur] ep1 it800 -> 1s 段
+  ep1 it 1000/15000 L=1.4331 se=0.0616 ce=1.2697 spk=0.1733 ns=0.0997 imp=0.0000 hardcos=0.3996 cos=0.8267 ccond_imp=0.0730(122个) dur=1s
+  [dur] ep1 it1000 -> 2s 段
+  ep1 it 1200/15000 L=1.5128 se=0.0615 ce=1.3480 spk=0.1800 ns=0.0985 imp=0.0000 hardcos=0.3984 cos=0.8200 ccond_imp=0.0803(104个) dur=2s
+  [dur] ep1 it1200 -> 3s 段
+  ep1 it 1400/15000 L=1.6389 se=0.0588 ce=1.4752 spk=0.1814 ns=0.1009 imp=0.0000 hardcos=0.4008 cos=0.8186 ccond_imp=0.0705(144个) dur=3s
+  [dur] ep1 it1400 -> 1s 段
+  ep1 it 1600/15000 L=1.1395 se=0.0612 ce=0.9796 spk=0.1599 ns=0.1013 imp=0.0000 hardcos=0.4011 cos=0.8401 ccond_imp=0.0719(82个) dur=1s
+  [dur] ep1 it1600 -> 3s 段
+  ep1 it 1800/15000 L=1.4512 se=0.0580 ce=1.2919 spk=0.1682 ns=0.1017 imp=0.0000 hardcos=0.4016 cos=0.8318 ccond_imp=0.0718(92个) dur=3s
+  [dur] ep1 it1800 -> 3s 段
+  ep1 it 2000/15000 L=1.6471 se=0.0599 ce=1.4834 spk=0.1800 ns=0.0996 imp=0.0000 hardcos=0.3994 cos=0.8200 ccond_imp=0.0862(132个) dur=3s
+  [dur] ep1 it2000 -> 3s 段
+  ep1 it 2200/15000 L=1.2289 se=0.0618 ce=1.0678 spk=0.1616 ns=0.1016 imp=0.0000 hardcos=0.4014 cos=0.8384 ccond_imp=0.0752(106个) dur=3s
+  [dur] ep1 it2200 -> 2s 段
+  ep1 it 2400/15000 L=1.4578 se=0.0608 ce=1.2984 spk=0.1610 ns=0.1006 imp=0.0000 hardcos=0.4005 cos=0.8390 ccond_imp=0.0875(110个) dur=2s
+  [dur] ep1 it2400 -> 3s 段
+  ep1 it 2600/15000 L=1.5862 se=0.0621 ce=1.4235 spk=0.1647 ns=0.1023 imp=0.0000 hardcos=0.4022 cos=0.8353 ccond_imp=0.0765(144个) dur=3s
+  [dur] ep1 it2600 -> 2s 段
+  ep1 it 2800/15000 L=1.3883 se=0.0611 ce=1.2290 spk=0.1632 ns=0.0985 imp=0.0000 hardcos=0.3984 cos=0.8368 ccond_imp=0.0737(154个) dur=2s
+  [dur] ep1 it2800 -> 1s 段
+  ep1 it 3000/15000 L=1.6889 se=0.0596 ce=1.5294 spk=0.1625 ns=0.1021 imp=0.0000 hardcos=0.4018 cos=0.8375 ccond_imp=0.0775(128个) dur=1s
+  [dur] ep1 it3000 -> 2s 段
+  ep1 it 3200/15000 L=1.3017 se=0.0606 ce=1.1431 spk=0.1569 ns=0.1018 imp=0.0000 hardcos=0.4016 cos=0.8431 ccond_imp=0.0889(122个) dur=2s
+  [dur] ep1 it3200 -> 1s 段
+  ep1 it 3400/15000 L=1.9112 se=0.0611 ce=1.7454 spk=0.1844 ns=0.0986 imp=0.0000 hardcos=0.3984 cos=0.8156 ccond_imp=0.0647(138个) dur=1s
+  [dur] ep1 it3400 -> 2s 段
+  ep1 it 3600/15000 L=1.4935 se=0.0611 ce=1.3292 spk=0.1711 ns=0.1037 imp=0.0000 hardcos=0.4036 cos=0.8289 ccond_imp=0.0702(112个) dur=2s
+  [dur] ep1 it3600 -> 1s 段
+  ep1 it 3800/15000 L=1.4652 se=0.0581 ce=1.3049 spk=0.1729 ns=0.1006 imp=0.0000 hardcos=0.4005 cos=0.8271 ccond_imp=0.0800(102个) dur=1s
+  [dur] ep1 it3800 -> 3s 段
+  ep1 it 4000/15000 L=1.3406 se=0.0591 ce=1.1825 spk=0.1643 ns=0.0994 imp=0.0000 hardcos=0.3992 cos=0.8357 ccond_imp=0.0768(136个) dur=3s
+  [dur] ep1 it4000 -> 3s 段
+  ep1 it 4200/15000 L=1.2867 se=0.0586 ce=1.1276 spk=0.1658 ns=0.1016 imp=0.0000 hardcos=0.4015 cos=0.8342 ccond_imp=0.0759(110个) dur=3s
+  [dur] ep1 it4200 -> 3s 段
+  ep1 it 4400/15000 L=1.5975 se=0.0613 ce=1.4335 spk=0.1750 ns=0.1005 imp=0.0000 hardcos=0.4003 cos=0.8250 ccond_imp=0.0829(138个) dur=3s
+  [dur] ep1 it4400 -> 3s 段
+  ep1 it 4600/15000 L=1.3274 se=0.0587 ce=1.1710 spk=0.1553 ns=0.1023 imp=0.0000 hardcos=0.4022 cos=0.8447 ccond_imp=0.0664(144个) dur=3s
+  [dur] ep1 it4600 -> 1s 段
+  ep1 it 4800/15000 L=1.4895 se=0.0606 ce=1.3289 spk=0.1620 ns=0.1027 imp=0.0000 hardcos=0.4025 cos=0.8380 ccond_imp=0.0825(102个) dur=1s
+  [dur] ep1 it4800 -> 2s 段
+  ep1 it 5000/15000 L=1.2567 se=0.0593 ce=1.0989 spk=0.1595 ns=0.1013 imp=0.0000 hardcos=0.4012 cos=0.8405 ccond_imp=0.0769(100个) dur=2s
+  [dur] ep1 it5000 -> 3s 段
+  ep1 it 5200/15000 L=1.5426 se=0.0595 ce=1.3809 spk=0.1728 ns=0.1006 imp=0.0000 hardcos=0.4005 cos=0.8272 ccond_imp=0.0664(144个) dur=3s
+  [dur] ep1 it5200 -> 2s 段
+  ep1 it 5400/15000 L=1.7166 se=0.0584 ce=1.5556 spk=0.1711 ns=0.1027 imp=0.0000 hardcos=0.4025 cos=0.8289 ccond_imp=0.0674(146个) dur=2s
+  [dur] ep1 it5400 -> 3s 段
+  ep1 it 5600/15000 L=1.3682 se=0.0598 ce=1.2071 spk=0.1636 ns=0.1046 imp=0.0000 hardcos=0.4045 cos=0.8364 ccond_imp=0.0485(114个) dur=3s
+  [dur] ep1 it5600 -> 3s 段
+  ep1 it 5800/15000 L=1.4758 se=0.0596 ce=1.3179 spk=0.1583 ns=0.1018 imp=0.0000 hardcos=0.4018 cos=0.8417 ccond_imp=0.0705(126个) dur=3s
+  [dur] ep1 it5800 -> 3s 段
+  ep1 it 6000/15000 L=1.3320 se=0.0595 ce=1.1742 spk=0.1532 ns=0.1047 imp=0.0000 hardcos=0.4047 cos=0.8468 ccond_imp=0.0671(108个) dur=3s
+  [dur] ep1 it6000 -> 3s 段
+  ep1 it 6200/15000 L=1.3200 se=0.0617 ce=1.1598 spk=0.1625 ns=0.0995 imp=0.0000 hardcos=0.3994 cos=0.8375 ccond_imp=0.0723(90个) dur=3s
+  [dur] ep1 it6200 -> 3s 段
+  ep1 it 6400/15000 L=1.3128 se=0.0619 ce=1.1494 spk=0.1705 ns=0.1008 imp=0.0000 hardcos=0.4006 cos=0.8295 ccond_imp=0.0847(108个) dur=3s
+  [dur] ep1 it6400 -> 2s 段
+  ep1 it 6600/15000 L=1.4351 se=0.0596 ce=1.2740 spk=0.1733 ns=0.0991 imp=0.0000 hardcos=0.3989 cos=0.8267 ccond_imp=0.0791(114个) dur=2s
+  [dur] ep1 it6600 -> 2s 段
+  ep1 it 6800/15000 L=1.5548 se=0.0619 ce=1.3917 spk=0.1663 ns=0.1028 imp=0.0000 hardcos=0.4027 cos=0.8337 ccond_imp=0.0823(114个) dur=2s
+  [dur] ep1 it6800 -> 3s 段
+  ep1 it 7000/15000 L=1.6146 se=0.0594 ce=1.4505 spk=0.1803 ns=0.1011 imp=0.0000 hardcos=0.4009 cos=0.8197 ccond_imp=0.0909(126个) dur=3s
+  [dur] ep1 it7000 -> 1s 段
+  ep1 it 7200/15000 L=1.2978 se=0.0600 ce=1.1376 spk=0.1641 ns=0.1018 imp=0.0000 hardcos=0.4016 cos=0.8359 ccond_imp=0.0803(120个) dur=1s
+  [dur] ep1 it7200 -> 3s 段
+  ep1 it 7400/15000 L=1.5649 se=0.0587 ce=1.4038 spk=0.1729 ns=0.1010 imp=0.0000 hardcos=0.4010 cos=0.8271 ccond_imp=0.0703(156个) dur=3s
+  [dur] ep1 it7400 -> 3s 段
+  ep1 it 7600/15000 L=1.0812 se=0.0604 ce=0.9230 spk=0.1571 ns=0.1012 imp=0.0000 hardcos=0.4012 cos=0.8429 ccond_imp=0.0855(70个) dur=3s
+  [dur] ep1 it7600 -> 1s 段
+  ep1 it 7800/15000 L=1.5410 se=0.0602 ce=1.3801 spk=0.1651 ns=0.1025 imp=0.0000 hardcos=0.4022 cos=0.8349 ccond_imp=0.0640(140个) dur=1s
+  [dur] ep1 it7800 -> 3s 段
+  ep1 it 8000/15000 L=1.5102 se=0.0637 ce=1.3443 spk=0.1706 ns=0.1019 imp=0.0000 hardcos=0.4016 cos=0.8294 ccond_imp=0.0927(102个) dur=3s
+  [dur] ep1 it8000 -> 3s 段
+  ep1 it 8200/15000 L=1.4177 se=0.0596 ce=1.2568 spk=0.1659 ns=0.1032 imp=0.0000 hardcos=0.4032 cos=0.8341 ccond_imp=0.0830(106个) dur=3s
+  [dur] ep1 it8200 -> 2s 段
+  ep1 it 8400/15000 L=1.4416 se=0.0600 ce=1.2802 spk=0.1675 ns=0.1022 imp=0.0000 hardcos=0.4021 cos=0.8325 ccond_imp=0.0524(92个) dur=2s
+  [dur] ep1 it8400 -> 3s 段
+  ep1 it 8600/15000 L=1.5108 se=0.0626 ce=1.3476 spk=0.1681 ns=0.1005 imp=0.0000 hardcos=0.4004 cos=0.8319 ccond_imp=0.0756(132个) dur=3s
+  [dur] ep1 it8600 -> 3s 段
+  ep1 it 8800/15000 L=1.4300 se=0.0601 ce=1.2663 spk=0.1737 ns=0.1029 imp=0.0000 hardcos=0.4028 cos=0.8263 ccond_imp=0.0803(118个) dur=3s
+  [dur] ep1 it8800 -> 2s 段
+  ep1 it 9000/15000 L=1.5088 se=0.0599 ce=1.3484 spk=0.1660 ns=0.1014 imp=0.0000 hardcos=0.4012 cos=0.8340 ccond_imp=0.0754(86个) dur=2s
+  [dur] ep1 it9000 -> 3s 段
+  ep1 it 9200/15000 L=1.3845 se=0.0593 ce=1.2252 spk=0.1659 ns=0.1005 imp=0.0000 hardcos=0.4004 cos=0.8341 ccond_imp=0.0782(92个) dur=3s
+  [dur] ep1 it9200 -> 3s 段
+  ep1 it 9400/15000 L=1.4636 se=0.0594 ce=1.3032 spk=0.1677 ns=0.1015 imp=0.0000 hardcos=0.4013 cos=0.8323 ccond_imp=0.0729(164个) dur=3s
+  [dur] ep1 it9400 -> 1s 段
+  ep1 it 9600/15000 L=1.3392 se=0.0599 ce=1.1830 spk=0.1587 ns=0.0975 imp=0.0000 hardcos=0.3974 cos=0.8413 ccond_imp=0.0636(116个) dur=1s
+  [dur] ep1 it9600 -> 3s 段
+  ep1 it 9800/15000 L=1.6746 se=0.0613 ce=1.5136 spk=0.1652 ns=0.1003 imp=0.0000 hardcos=0.3998 cos=0.8348 ccond_imp=0.0696(168个) dur=3s
+  [dur] ep1 it9800 -> 3s 段
+  ep1 it 10000/15000 L=1.2209 se=0.0600 ce=1.0637 spk=0.1554 ns=0.1011 imp=0.0000 hardcos=0.4010 cos=0.8446 ccond_imp=0.0772(96个) dur=3s
+  [dur] ep1 it10000 -> 3s 段
+  ep1 it 10200/15000 L=1.3270 se=0.0579 ce=1.1706 spk=0.1608 ns=0.1007 imp=0.0000 hardcos=0.4006 cos=0.8392 ccond_imp=0.0667(126个) dur=3s
+  [dur] ep1 it10200 -> 1s 段
+  ep1 it 10400/15000 L=1.5962 se=0.0605 ce=1.4327 spk=0.1716 ns=0.1030 imp=0.0000 hardcos=0.4028 cos=0.8284 ccond_imp=0.0750(140个) dur=1s
+  [dur] ep1 it10400 -> 2s 段
+  ep1 it 10600/15000 L=1.6931 se=0.0590 ce=1.5298 spk=0.1780 ns=0.1017 imp=0.0000 hardcos=0.4017 cos=0.8220 ccond_imp=0.0700(134个) dur=2s
+  [dur] ep1 it10600 -> 3s 段
+  ep1 it 10800/15000 L=1.6351 se=0.0594 ce=1.4742 spk=0.1654 ns=0.1037 imp=0.0000 hardcos=0.4035 cos=0.8346 ccond_imp=0.0842(140个) dur=3s
+  [dur] ep1 it10800 -> 3s 段
+  ep1 it 11000/15000 L=1.1665 se=0.0600 ce=1.0087 spk=0.1529 ns=0.1038 imp=0.0000 hardcos=0.4038 cos=0.8471 ccond_imp=0.0675(120个) dur=3s
+  [dur] ep1 it11000 -> 3s 段
+  ep1 it 11200/15000 L=1.5233 se=0.0631 ce=1.3598 spk=0.1669 ns=0.1007 imp=0.0000 hardcos=0.4004 cos=0.8331 ccond_imp=0.0788(90个) dur=3s
+  [dur] ep1 it11200 -> 2s 段
+  ep1 it 11400/15000 L=1.5855 se=0.0606 ce=1.4205 spk=0.1750 ns=0.1038 imp=0.0000 hardcos=0.4037 cos=0.8250 ccond_imp=0.0746(126个) dur=2s
+  [dur] ep1 it11400 -> 3s 段
+  ep1 it 11600/15000 L=1.5600 se=0.0608 ce=1.3977 spk=0.1650 ns=0.1040 imp=0.0000 hardcos=0.4036 cos=0.8350 ccond_imp=0.0685(132个) dur=3s
+  [dur] ep1 it11600 -> 3s 段
+  ep1 it 11800/15000 L=1.4933 se=0.0578 ce=1.3347 spk=0.1690 ns=0.1004 imp=0.0000 hardcos=0.4002 cos=0.8310 ccond_imp=0.0602(120个) dur=3s
+  [dur] ep1 it11800 -> 3s 段
+  ep1 it 12000/15000 L=1.5176 se=0.0595 ce=1.3553 spk=0.1708 ns=0.1033 imp=0.0000 hardcos=0.4032 cos=0.8292 ccond_imp=0.0771(126个) dur=3s
+  [dur] ep1 it12000 -> 3s 段
+  ep1 it 12200/15000 L=1.5283 se=0.0622 ce=1.3666 spk=0.1645 ns=0.1003 imp=0.0000 hardcos=0.4001 cos=0.8355 ccond_imp=0.0616(128个) dur=3s
+  [dur] ep1 it12200 -> 2s 段
+  ep1 it 12400/15000 L=1.5711 se=0.0587 ce=1.4104 spk=0.1741 ns=0.0995 imp=0.0000 hardcos=0.3992 cos=0.8259 ccond_imp=0.0726(152个) dur=2s
+  [dur] ep1 it12400 -> 1s 段
+  ep1 it 12600/15000 L=1.4073 se=0.0593 ce=1.2461 spk=0.1666 ns=0.1038 imp=0.0000 hardcos=0.4036 cos=0.8334 ccond_imp=0.0628(98个) dur=1s
+  [dur] ep1 it12600 -> 1s 段
+  ep1 it 12800/15000 L=1.3440 se=0.0585 ce=1.1882 spk=0.1559 ns=0.1011 imp=0.0000 hardcos=0.4011 cos=0.8441 ccond_imp=0.0731(96个) dur=1s
+  [dur] ep1 it12800 -> 3s 段
+  ep1 it 13000/15000 L=1.1755 se=0.0619 ce=1.0173 spk=0.1518 ns=0.1015 imp=0.0000 hardcos=0.4014 cos=0.8482 ccond_imp=0.0655(76个) dur=3s
+  [dur] ep1 it13000 -> 3s 段
+  ep1 it 13200/15000 L=1.3846 se=0.0597 ce=1.2240 spk=0.1634 ns=0.1036 imp=0.0000 hardcos=0.4036 cos=0.8366 ccond_imp=0.0832(128个) dur=3s
+  [dur] ep1 it13200 -> 1s 段
+  ep1 it 13400/15000 L=1.1381 se=0.0609 ce=0.9785 spk=0.1569 ns=0.1034 imp=0.0000 hardcos=0.4034 cos=0.8431 ccond_imp=0.0839(120个) dur=1s
+  [dur] ep1 it13400 -> 3s 段
+  ep1 it 13600/15000 L=1.3181 se=0.0599 ce=1.1580 spk=0.1639 ns=0.1020 imp=0.0000 hardcos=0.4019 cos=0.8361 ccond_imp=0.0733(120个) dur=3s
+  [dur] ep1 it13600 -> 3s 段
+  ep1 it 13800/15000 L=1.3203 se=0.0583 ce=1.1618 spk=0.1612 ns=0.1037 imp=0.0000 hardcos=0.4035 cos=0.8388 ccond_imp=0.0847(126个) dur=3s
+  [dur] ep1 it13800 -> 2s 段
+  ep1 it 14000/15000 L=1.1768 se=0.0624 ce=1.0180 spk=0.1485 ns=0.1037 imp=0.0000 hardcos=0.4035 cos=0.8515 ccond_imp=0.0599(124个) dur=2s
+  [dur] ep1 it14000 -> 2s 段
+  ep1 it 14200/15000 L=1.2629 se=0.0592 ce=1.1058 spk=0.1573 ns=0.1015 imp=0.0000 hardcos=0.4014 cos=0.8427 ccond_imp=0.0636(96个) dur=2s
+  [dur] ep1 it14200 -> 2s 段
+  ep1 it 14400/15000 L=1.2429 se=0.0585 ce=1.0853 spk=0.1610 ns=0.1016 imp=0.0000 hardcos=0.4016 cos=0.8390 ccond_imp=0.0774(98个) dur=2s
+  [dur] ep1 it14400 -> 3s 段
+  ep1 it 14600/15000 L=1.2566 se=0.0604 ce=1.1003 spk=0.1526 ns=0.1003 imp=0.0000 hardcos=0.4002 cos=0.8474 ccond_imp=0.0681(118个) dur=3s
+  [dur] ep1 it14600 -> 3s 段
+  ep1 it 14800/15000 L=1.2109 se=0.0602 ce=1.0524 spk=0.1564 ns=0.1027 imp=0.0000 hardcos=0.4027 cos=0.8436 ccond_imp=0.0718(92个) dur=3s
+  [dur] ep1 it14800 -> 3s 段
+  ep1 it 15000/15000 L=1.3368 se=0.0593 ce=1.1766 spk=0.1660 ns=0.1021 imp=0.0000 hardcos=0.4021 cos=0.8340 ccond_imp=0.0741(132个) dur=3s
+[enhance] noise_0db 待处理 400
+[enhance] noise_0db 待处理 400
+  [val-claim] noise_0db eer=2.750 nt_med=0.169 nt_p90=0.318
+[enhance] noise_m5db 待处理 400
+[enhance] noise_m5db 待处理 400
+  [val-claim] noise_m5db eer=4.750 nt_med=0.171 nt_p90=0.333
+  [val-hard] ep1 0db=2.239 m5db=4.500 avg=3.369 | [val-claim] eer_avg=3.750 (门槛①: 基线 avg+0.3 内；门槛②: eer_avg 显著降)
+  [val-hard] 新最优 avg=3.369 -> checkpoint_best.tar
+  [dur] ep2 it0 -> 3s 段
+  ep2 it 200/15000 L=1.2385 se=0.0599 ce=1.0789 spk=0.1616 ns=0.1025 imp=0.0000 hardcos=0.4025 cos=0.8384 ccond_imp=0.0671(92个) dur=3s
+  [dur] ep2 it200 -> 2s 段
+  ep2 it 400/15000 L=1.8372 se=0.0583 ce=1.6761 spk=0.1761 ns=0.0999 imp=0.0000 hardcos=0.3998 cos=0.8239 ccond_imp=0.0832(124个) dur=2s
+  [dur] ep2 it400 -> 3s 段
+  ep2 it 600/15000 L=1.5848 se=0.0597 ce=1.4238 spk=0.1695 ns=0.1009 imp=0.0000 hardcos=0.4007 cos=0.8305 ccond_imp=0.0856(102个) dur=3s
+  [dur] ep2 it600 -> 3s 段
+  ep2 it 800/15000 L=1.3631 se=0.0601 ce=1.2027 spk=0.1637 ns=0.1023 imp=0.0000 hardcos=0.4021 cos=0.8363 ccond_imp=0.0853(128个) dur=3s
+  [dur] ep2 it800 -> 1s 段
+  ep2 it 1000/15000 L=1.6514 se=0.0602 ce=1.4887 spk=0.1743 ns=0.1004 imp=0.0000 hardcos=0.4003 cos=0.8257 ccond_imp=0.0858(122个) dur=1s
+  [dur] ep2 it1000 -> 3s 段
+  ep2 it 1200/15000 L=1.2769 se=0.0604 ce=1.1161 spk=0.1671 ns=0.1004 imp=0.0000 hardcos=0.4002 cos=0.8329 ccond_imp=0.0701(104个) dur=3s
+  [dur] ep2 it1200 -> 1s 段
+  ep2 it 1400/15000 L=1.3408 se=0.0605 ce=1.1789 spk=0.1658 ns=0.1032 imp=0.0000 hardcos=0.4030 cos=0.8342 ccond_imp=0.0548(144个) dur=1s
+  [dur] ep2 it1400 -> 3s 段
+  ep2 it 1600/15000 L=1.3624 se=0.0576 ce=1.2075 spk=0.1580 ns=0.0999 imp=0.0000 hardcos=0.3997 cos=0.8420 ccond_imp=0.0936(82个) dur=3s
+  [dur] ep2 it1600 -> 1s 段
+  ep2 it 1800/15000 L=1.3853 se=0.0603 ce=1.2256 spk=0.1658 ns=0.0993 imp=0.0000 hardcos=0.3991 cos=0.8342 ccond_imp=0.0807(92个) dur=1s
+  [dur] ep2 it1800 -> 2s 段
+  ep2 it 2000/15000 L=1.6047 se=0.0592 ce=1.4438 spk=0.1683 ns=0.1024 imp=0.0000 hardcos=0.4022 cos=0.8317 ccond_imp=0.0800(132个) dur=2s
+  [dur] ep2 it2000 -> 2s 段
+  ep2 it 2200/15000 L=1.1548 se=0.0607 ce=0.9965 spk=0.1572 ns=0.1008 imp=0.0000 hardcos=0.4005 cos=0.8428 ccond_imp=0.0734(106个) dur=2s
+  [dur] ep2 it2200 -> 2s 段
+  ep2 it 2400/15000 L=1.3976 se=0.0612 ce=1.2357 spk=0.1678 ns=0.1008 imp=0.0000 hardcos=0.4008 cos=0.8322 ccond_imp=0.0892(110个) dur=2s
+  [dur] ep2 it2400 -> 3s 段
+  ep2 it 2600/15000 L=1.3902 se=0.0628 ce=1.2271 spk=0.1652 ns=0.1014 imp=0.0000 hardcos=0.4013 cos=0.8348 ccond_imp=0.0813(144个) dur=3s
+  [dur] ep2 it2600 -> 3s 段
+  ep2 it 2800/15000 L=1.6197 se=0.0591 ce=1.4582 spk=0.1659 ns=0.1053 imp=0.0000 hardcos=0.4051 cos=0.8341 ccond_imp=0.0845(154个) dur=3s
+  [dur] ep2 it2800 -> 2s 段
+  ep2 it 3000/15000 L=1.4722 se=0.0603 ce=1.3099 spk=0.1707 ns=0.1017 imp=0.0000 hardcos=0.4016 cos=0.8293 ccond_imp=0.0796(128个) dur=2s
+  [dur] ep2 it3000 -> 3s 段
+  ep2 it 3200/15000 L=1.1773 se=0.0604 ce=1.0185 spk=0.1516 ns=0.1059 imp=0.0000 hardcos=0.4058 cos=0.8484 ccond_imp=0.0631(122个) dur=3s
+  [dur] ep2 it3200 -> 3s 段
+  ep2 it 3400/15000 L=1.2654 se=0.0601 ce=1.1037 spk=0.1636 ns=0.1050 imp=0.0000 hardcos=0.4049 cos=0.8364 ccond_imp=0.0734(138个) dur=3s
+  [dur] ep2 it3400 -> 1s 段
+  ep2 it 3600/15000 L=1.1547 se=0.0596 ce=0.9942 spk=0.1647 ns=0.1030 imp=0.0000 hardcos=0.4029 cos=0.8353 ccond_imp=0.0607(112个) dur=1s
+  [dur] ep2 it3600 -> 2s 段
+  ep2 it 3800/15000 L=1.0711 se=0.0587 ce=0.9145 spk=0.1553 ns=0.1027 imp=0.0000 hardcos=0.4027 cos=0.8447 ccond_imp=0.0985(102个) dur=2s
+  [dur] ep2 it3800 -> 3s 段
+  ep2 it 4000/15000 L=1.3550 se=0.0605 ce=1.1937 spk=0.1624 ns=0.1041 imp=0.0000 hardcos=0.4039 cos=0.8376 ccond_imp=0.0645(136个) dur=3s
+  [dur] ep2 it4000 -> 2s 段
+  ep2 it 4200/15000 L=1.6621 se=0.0622 ce=1.4984 spk=0.1658 ns=0.1036 imp=0.0000 hardcos=0.4034 cos=0.8342 ccond_imp=0.0670(110个) dur=2s
+  [dur] ep2 it4200 -> 3s 段
+  ep2 it 4400/15000 L=1.4753 se=0.0582 ce=1.3186 spk=0.1581 ns=0.1022 imp=0.0000 hardcos=0.4021 cos=0.8419 ccond_imp=0.0721(138个) dur=3s
+  [dur] ep2 it4400 -> 1s 段
+  ep2 it 4600/15000 L=1.7073 se=0.0597 ce=1.5427 spk=0.1826 ns=0.1002 imp=0.0000 hardcos=0.4000 cos=0.8174 ccond_imp=0.0765(144个) dur=1s
+  [dur] ep2 it4600 -> 3s 段
+  ep2 it 4800/15000 L=1.4620 se=0.0596 ce=1.3013 spk=0.1664 ns=0.1023 imp=0.0000 hardcos=0.4022 cos=0.8336 ccond_imp=0.0511(102个) dur=3s
+  [dur] ep2 it4800 -> 1s 段
+  ep2 it 5000/15000 L=1.3320 se=0.0580 ce=1.1742 spk=0.1654 ns=0.1004 imp=0.0000 hardcos=0.4002 cos=0.8346 ccond_imp=0.0782(100个) dur=1s
+  [dur] ep2 it5000 -> 2s 段
+  ep2 it 5200/15000 L=1.7401 se=0.0591 ce=1.5781 spk=0.1749 ns=0.1007 imp=0.0000 hardcos=0.4005 cos=0.8251 ccond_imp=0.0723(144个) dur=2s
+  [dur] ep2 it5200 -> 3s 段
+  ep2 it 5400/15000 L=1.5000 se=0.0613 ce=1.3387 spk=0.1684 ns=0.0990 imp=0.0000 hardcos=0.3988 cos=0.8316 ccond_imp=0.0620(146个) dur=3s
+  [dur] ep2 it5400 -> 3s 段
+  ep2 it 5600/15000 L=1.5644 se=0.0612 ce=1.4006 spk=0.1715 ns=0.1025 imp=0.0000 hardcos=0.4023 cos=0.8285 ccond_imp=0.0729(114个) dur=3s
+  [dur] ep2 it5600 -> 1s 段
+  ep2 it 5800/15000 L=1.2935 se=0.0615 ce=1.1306 spk=0.1711 ns=0.1001 imp=0.0000 hardcos=0.4000 cos=0.8289 ccond_imp=0.0814(126个) dur=1s
+  [dur] ep2 it5800 -> 2s 段
+  ep2 it 6000/15000 L=1.5368 se=0.0618 ce=1.3728 spk=0.1706 ns=0.1021 imp=0.0000 hardcos=0.4020 cos=0.8294 ccond_imp=0.0751(108个) dur=2s
+  [dur] ep2 it6000 -> 3s 段
+  ep2 it 6200/15000 L=1.2599 se=0.0599 ce=1.1003 spk=0.1580 ns=0.1046 imp=0.0000 hardcos=0.4046 cos=0.8420 ccond_imp=0.0708(90个) dur=3s
+  [dur] ep2 it6200 -> 3s 段
+  ep2 it 6400/15000 L=1.3241 se=0.0591 ce=1.1652 spk=0.1644 ns=0.1009 imp=0.0000 hardcos=0.4008 cos=0.8356 ccond_imp=0.0822(108个) dur=3s
+  [dur] ep2 it6400 -> 3s 段
+  ep2 it 6600/15000 L=1.3868 se=0.0602 ce=1.2275 spk=0.1632 ns=0.1003 imp=0.0000 hardcos=0.4002 cos=0.8368 ccond_imp=0.0628(114个) dur=3s
+  [dur] ep2 it6600 -> 3s 段
+  ep2 it 6800/15000 L=1.7054 se=0.0585 ce=1.5458 spk=0.1669 ns=0.1019 imp=0.0000 hardcos=0.4016 cos=0.8331 ccond_imp=0.0932(114个) dur=3s
+  [dur] ep2 it6800 -> 2s 段
+  ep2 it 7000/15000 L=1.2388 se=0.0605 ce=1.0814 spk=0.1534 ns=0.1018 imp=0.0000 hardcos=0.4017 cos=0.8466 ccond_imp=0.0660(126个) dur=2s
+  [dur] ep2 it7000 -> 2s 段
+  ep2 it 7200/15000 L=1.3404 se=0.0604 ce=1.1814 spk=0.1592 ns=0.1018 imp=0.0000 hardcos=0.4017 cos=0.8408 ccond_imp=0.0490(120个) dur=2s
+  [dur] ep2 it7200 -> 3s 段
+  ep2 it 7400/15000 L=1.4251 se=0.0591 ce=1.2640 spk=0.1668 ns=0.1038 imp=0.0000 hardcos=0.4035 cos=0.8332 ccond_imp=0.0703(156个) dur=3s
+  [dur] ep2 it7400 -> 2s 段
+  ep2 it 7600/15000 L=1.1792 se=0.0583 ce=1.0232 spk=0.1552 ns=0.1023 imp=0.0000 hardcos=0.4022 cos=0.8448 ccond_imp=0.0568(70个) dur=2s
+  [dur] ep2 it7600 -> 1s 段
+  ep2 it 7800/15000 L=1.5320 se=0.0604 ce=1.3736 spk=0.1595 ns=0.1003 imp=0.0000 hardcos=0.4001 cos=0.8405 ccond_imp=0.0726(140个) dur=1s
+  [dur] ep2 it7800 -> 1s 段
+  ep2 it 8000/15000 L=1.3192 se=0.0602 ce=1.1610 spk=0.1607 ns=0.0995 imp=0.0000 hardcos=0.3992 cos=0.8393 ccond_imp=0.0613(102个) dur=1s
+  [dur] ep2 it8000 -> 3s 段
+  ep2 it 8200/15000 L=1.2405 se=0.0586 ce=1.0816 spk=0.1597 ns=0.1046 imp=0.0000 hardcos=0.4045 cos=0.8403 ccond_imp=0.0757(106个) dur=3s
+  [dur] ep2 it8200 -> 3s 段
+  ep2 it 8400/15000 L=1.3985 se=0.0586 ce=1.2390 spk=0.1656 ns=0.1025 imp=0.0000 hardcos=0.4022 cos=0.8344 ccond_imp=0.0803(92个) dur=3s
+  [dur] ep2 it8400 -> 1s 段
+  ep2 it 8600/15000 L=1.2741 se=0.0605 ce=1.1142 spk=0.1598 ns=0.1030 imp=0.0000 hardcos=0.4029 cos=0.8402 ccond_imp=0.0740(132个) dur=1s
+  [dur] ep2 it8600 -> 3s 段
+  ep2 it 8800/15000 L=1.4338 se=0.0600 ce=1.2735 spk=0.1651 ns=0.1014 imp=0.0000 hardcos=0.4013 cos=0.8349 ccond_imp=0.0667(118个) dur=3s
+  [dur] ep2 it8800 -> 3s 段
+  ep2 it 9000/15000 L=1.3798 se=0.0600 ce=1.2210 spk=0.1568 ns=0.1035 imp=0.0000 hardcos=0.4035 cos=0.8432 ccond_imp=0.0573(86个) dur=3s
+  [dur] ep2 it9000 -> 1s 段
+  ep2 it 9200/15000 L=1.1778 se=0.0606 ce=1.0175 spk=0.1639 ns=0.1011 imp=0.0000 hardcos=0.4008 cos=0.8361 ccond_imp=0.0781(92个) dur=1s
+  [dur] ep2 it9200 -> 3s 段
+  ep2 it 9400/15000 L=1.3914 se=0.0594 ce=1.2337 spk=0.1544 ns=0.1040 imp=0.0000 hardcos=0.4039 cos=0.8456 ccond_imp=0.0703(164个) dur=3s
+  [dur] ep2 it9400 -> 2s 段
+  ep2 it 9600/15000 L=1.3632 se=0.0610 ce=1.2033 spk=0.1625 ns=0.1003 imp=0.0000 hardcos=0.4002 cos=0.8375 ccond_imp=0.0747(116个) dur=2s
+  [dur] ep2 it9600 -> 2s 段
+  ep2 it 9800/15000 L=1.6982 se=0.0592 ce=1.5352 spk=0.1719 ns=0.1044 imp=0.0000 hardcos=0.4043 cos=0.8281 ccond_imp=0.0618(168个) dur=2s
+  [dur] ep2 it9800 -> 3s 段
+  ep2 it 10000/15000 L=1.4017 se=0.0581 ce=1.2424 spk=0.1695 ns=0.1008 imp=0.0000 hardcos=0.4007 cos=0.8305 ccond_imp=0.0701(96个) dur=3s
+  [dur] ep2 it10000 -> 3s 段
+  ep2 it 10200/15000 L=1.0250 se=0.0597 ce=0.8685 spk=0.1565 ns=0.0997 imp=0.0000 hardcos=0.3994 cos=0.8435 ccond_imp=0.0699(126个) dur=3s
+  [dur] ep2 it10200 -> 3s 段
+  ep2 it 10400/15000 L=1.5193 se=0.0575 ce=1.3617 spk=0.1685 ns=0.0990 imp=0.0000 hardcos=0.3990 cos=0.8315 ccond_imp=0.0718(140个) dur=3s
+  [dur] ep2 it10400 -> 1s 段
+  ep2 it 10600/15000 L=1.7011 se=0.0581 ce=1.5400 spk=0.1733 ns=0.1019 imp=0.0000 hardcos=0.4017 cos=0.8267 ccond_imp=0.0658(134个) dur=1s
+  [dur] ep2 it10600 -> 3s 段
+  ep2 it 10800/15000 L=1.6989 se=0.0605 ce=1.5336 spk=0.1820 ns=0.1004 imp=0.0000 hardcos=0.4002 cos=0.8180 ccond_imp=0.0840(140个) dur=3s
+  [dur] ep2 it10800 -> 3s 段
+  ep2 it 11000/15000 L=1.2740 se=0.0612 ce=1.1127 spk=0.1666 ns=0.1002 imp=0.0000 hardcos=0.4001 cos=0.8334 ccond_imp=0.0622(120个) dur=3s
+  [dur] ep2 it11000 -> 1s 段
+  ep2 it 11200/15000 L=1.3861 se=0.0594 ce=1.2259 spk=0.1675 ns=0.1011 imp=0.0000 hardcos=0.4009 cos=0.8325 ccond_imp=0.0892(90个) dur=1s
+  [dur] ep2 it11200 -> 3s 段
+  ep2 it 11400/15000 L=1.3670 se=0.0590 ce=1.2091 spk=0.1584 ns=0.1026 imp=0.0000 hardcos=0.4025 cos=0.8416 ccond_imp=0.0738(126个) dur=3s
+  [dur] ep2 it11400 -> 3s 段
+  ep2 it 11600/15000 L=1.4941 se=0.0588 ce=1.3333 spk=0.1710 ns=0.1015 imp=0.0000 hardcos=0.4013 cos=0.8290 ccond_imp=0.0762(132个) dur=3s
+  [dur] ep2 it11600 -> 2s 段
+  ep2 it 11800/15000 L=1.3635 se=0.0591 ce=1.2076 spk=0.1558 ns=0.1000 imp=0.0000 hardcos=0.3998 cos=0.8442 ccond_imp=0.0631(120个) dur=2s
+  [dur] ep2 it11800 -> 3s 段
+  ep2 it 12000/15000 L=1.2135 se=0.0579 ce=1.0601 spk=0.1498 ns=0.1011 imp=0.0000 hardcos=0.4010 cos=0.8502 ccond_imp=0.0648(126个) dur=3s
+  [dur] ep2 it12000 -> 3s 段
+  ep2 it 12200/15000 L=1.3489 se=0.0583 ce=1.1917 spk=0.1585 ns=0.1028 imp=0.0000 hardcos=0.4028 cos=0.8415 ccond_imp=0.0736(128个) dur=3s
+  [dur] ep2 it12200 -> 2s 段
+  ep2 it 12400/15000 L=1.6481 se=0.0601 ce=1.4842 spk=0.1718 ns=0.1045 imp=0.0000 hardcos=0.4044 cos=0.8282 ccond_imp=0.0760(152个) dur=2s
+  [dur] ep2 it12400 -> 1s 段
+  ep2 it 12600/15000 L=1.1385 se=0.0616 ce=0.9821 spk=0.1506 ns=0.0991 imp=0.0000 hardcos=0.3989 cos=0.8494 ccond_imp=0.0622(98个) dur=1s
+  [dur] ep2 it12600 -> 3s 段
+  ep2 it 12800/15000 L=1.3288 se=0.0582 ce=1.1722 spk=0.1590 ns=0.1014 imp=0.0000 hardcos=0.4013 cos=0.8410 ccond_imp=0.0880(96个) dur=3s
+  [dur] ep2 it12800 -> 3s 段
+  ep2 it 13000/15000 L=1.3440 se=0.0590 ce=1.1826 spk=0.1700 ns=0.1029 imp=0.0000 hardcos=0.4028 cos=0.8300 ccond_imp=0.0747(76个) dur=3s
+  [dur] ep2 it13000 -> 3s 段
+  ep2 it 13200/15000 L=1.3263 se=0.0598 ce=1.1630 spk=0.1703 ns=0.1047 imp=0.0000 hardcos=0.4046 cos=0.8297 ccond_imp=0.0706(128个) dur=3s
+  [dur] ep2 it13200 -> 3s 段
+  ep2 it 13400/15000 L=1.4784 se=0.0594 ce=1.3179 spk=0.1674 ns=0.1017 imp=0.0000 hardcos=0.4017 cos=0.8326 ccond_imp=0.0865(120个) dur=3s
+  [dur] ep2 it13400 -> 3s 段
+  ep2 it 13600/15000 L=1.3177 se=0.0596 ce=1.1594 spk=0.1600 ns=0.1013 imp=0.0000 hardcos=0.4010 cos=0.8400 ccond_imp=0.0795(120个) dur=3s
+  [dur] ep2 it13600 -> 2s 段
+  ep2 it 13800/15000 L=1.4761 se=0.0575 ce=1.3162 spk=0.1758 ns=0.0994 imp=0.0000 hardcos=0.3993 cos=0.8242 ccond_imp=0.0702(126个) dur=2s
+  [dur] ep2 it13800 -> 3s 段
+  ep2 it 14000/15000 L=1.3175 se=0.0606 ce=1.1600 spk=0.1491 ns=0.1044 imp=0.0000 hardcos=0.4042 cos=0.8509 ccond_imp=0.0651(124个) dur=3s
+  [dur] ep2 it14000 -> 3s 段
+  ep2 it 14200/15000 L=1.5442 se=0.0612 ce=1.3783 spk=0.1804 ns=0.1010 imp=0.0000 hardcos=0.4009 cos=0.8196 ccond_imp=0.0797(96个) dur=3s
+  [dur] ep2 it14200 -> 1s 段
+  ep2 it 14400/15000 L=1.4272 se=0.0610 ce=1.2626 spk=0.1727 ns=0.1035 imp=0.0000 hardcos=0.4033 cos=0.8273 ccond_imp=0.0823(98个) dur=1s
+  [dur] ep2 it14400 -> 1s 段
+  ep2 it 14600/15000 L=1.2928 se=0.0605 ce=1.1338 spk=0.1610 ns=0.1005 imp=0.0000 hardcos=0.4004 cos=0.8390 ccond_imp=0.0652(118个) dur=1s
+  [dur] ep2 it14600 -> 3s 段
+  ep2 it 14800/15000 L=1.2931 se=0.0584 ce=1.1383 spk=0.1527 ns=0.1012 imp=0.0000 hardcos=0.4009 cos=0.8473 ccond_imp=0.0817(92个) dur=3s
+  [dur] ep2 it14800 -> 3s 段
+  ep2 it 15000/15000 L=1.5677 se=0.0610 ce=1.4028 spk=0.1755 ns=0.1026 imp=0.0000 hardcos=0.4024 cos=0.8245 ccond_imp=0.0648(132个) dur=3s
+[enhance] noise_0db 待处理 400
+[enhance] noise_0db 待处理 400
+  [val-claim] noise_0db eer=2.750 nt_med=0.165 nt_p90=0.321
+[enhance] noise_m5db 待处理 400
+[enhance] noise_m5db 待处理 400
+  [val-claim] noise_m5db eer=4.750 nt_med=0.169 nt_p90=0.328
+  [val-hard] ep2 0db=2.239 m5db=4.739 avg=3.489 | [val-claim] eer_avg=3.750 (门槛①: 基线 avg+0.3 内；门槛②: eer_avg 显著降)
+  [dur] ep3 it0 -> 3s 段
+  ep3 it 200/15000 L=1.3955 se=0.0604 ce=1.2360 spk=0.1594 ns=0.1024 imp=0.0000 hardcos=0.4021 cos=0.8406 ccond_imp=0.0676(92个) dur=3s
+  [dur] ep3 it200 -> 3s 段
+  ep3 it 400/15000 L=1.2469 se=0.0589 ce=1.0885 spk=0.1614 ns=0.1020 imp=0.0000 hardcos=0.4019 cos=0.8386 ccond_imp=0.0593(124个) dur=3s
+  [dur] ep3 it400 -> 3s 段
+  ep3 it 600/15000 L=1.3406 se=0.0600 ce=1.1787 spk=0.1682 ns=0.1026 imp=0.0000 hardcos=0.4026 cos=0.8318 ccond_imp=0.0623(102个) dur=3s
+  [dur] ep3 it600 -> 2s 段
+  ep3 it 800/15000 L=1.3360 se=0.0604 ce=1.1773 spk=0.1557 ns=0.1029 imp=0.0000 hardcos=0.4028 cos=0.8443 ccond_imp=0.0672(128个) dur=2s
+  [dur] ep3 it800 -> 2s 段
+  ep3 it 1000/15000 L=1.5105 se=0.0592 ce=1.3487 spk=0.1715 ns=0.1024 imp=0.0000 hardcos=0.4023 cos=0.8285 ccond_imp=0.0740(122个) dur=2s
+  [dur] ep3 it1000 -> 3s 段
+  ep3 it 1200/15000 L=1.4708 se=0.0570 ce=1.3148 spk=0.1602 ns=0.1018 imp=0.0000 hardcos=0.4017 cos=0.8398 ccond_imp=0.0590(104个) dur=3s
+  [dur] ep3 it1200 -> 1s 段
+  ep3 it 1400/15000 L=1.5181 se=0.0602 ce=1.3563 spk=0.1682 ns=0.1023 imp=0.0000 hardcos=0.4022 cos=0.8318 ccond_imp=0.0810(144个) dur=1s
+  [dur] ep3 it1400 -> 2s 段
+  ep3 it 1600/15000 L=1.4998 se=0.0598 ce=1.3406 spk=0.1649 ns=0.0999 imp=0.0000 hardcos=0.3999 cos=0.8351 ccond_imp=0.0695(82个) dur=2s
+  [dur] ep3 it1600 -> 2s 段
+  ep3 it 1800/15000 L=1.3270 se=0.0609 ce=1.1661 spk=0.1618 ns=0.1031 imp=0.0000 hardcos=0.4029 cos=0.8382 ccond_imp=0.0758(92个) dur=2s
+  [dur] ep3 it1800 -> 1s 段
+  ep3 it 2000/15000 L=1.5383 se=0.0601 ce=1.3755 spk=0.1696 ns=0.1035 imp=0.0000 hardcos=0.4033 cos=0.8304 ccond_imp=0.0872(132个) dur=1s
+  [dur] ep3 it2000 -> 3s 段
+  ep3 it 2200/15000 L=1.2546 se=0.0592 ce=1.0988 spk=0.1527 ns=0.1016 imp=0.0000 hardcos=0.4014 cos=0.8473 ccond_imp=0.0617(106个) dur=3s
+  [dur] ep3 it2200 -> 1s 段
+  ep3 it 2400/15000 L=1.5670 se=0.0610 ce=1.4011 spk=0.1797 ns=0.1019 imp=0.0000 hardcos=0.4018 cos=0.8203 ccond_imp=0.0883(110个) dur=1s
+  [dur] ep3 it2400 -> 1s 段
+  ep3 it 2600/15000 L=1.6142 se=0.0602 ce=1.4523 spk=0.1746 ns=0.0984 imp=0.0000 hardcos=0.3979 cos=0.8254 ccond_imp=0.0701(144个) dur=1s
+  [dur] ep3 it2600 -> 1s 段
+  ep3 it 2800/15000 L=1.6380 se=0.0625 ce=1.4725 spk=0.1690 ns=0.1046 imp=0.0000 hardcos=0.4044 cos=0.8310 ccond_imp=0.0895(154个) dur=1s
+  [dur] ep3 it2800 -> 3s 段
+  ep3 it 3000/15000 L=1.6518 se=0.0610 ce=1.4897 spk=0.1706 ns=0.0997 imp=0.0000 hardcos=0.3996 cos=0.8294 ccond_imp=0.0831(128个) dur=3s
+  [dur] ep3 it3000 -> 1s 段
+  ep3 it 3200/15000 L=1.1444 se=0.0622 ce=0.9862 spk=0.1511 ns=0.1013 imp=0.0000 hardcos=0.4012 cos=0.8489 ccond_imp=0.0631(122个) dur=1s
+  [dur] ep3 it3200 -> 1s 段
+  ep3 it 3400/15000 L=1.7098 se=0.0589 ce=1.5461 spk=0.1777 ns=0.1028 imp=0.0000 hardcos=0.4026 cos=0.8223 ccond_imp=0.0604(138个) dur=1s
+  [dur] ep3 it3400 -> 3s 段
+  ep3 it 3600/15000 L=1.3900 se=0.0613 ce=1.2318 spk=0.1554 ns=0.1005 imp=0.0000 hardcos=0.4004 cos=0.8446 ccond_imp=0.0618(112个) dur=3s
+  [dur] ep3 it3600 -> 1s 段
+  ep3 it 3800/15000 L=1.4374 se=0.0576 ce=1.2810 spk=0.1567 ns=0.1034 imp=0.0000 hardcos=0.4034 cos=0.8433 ccond_imp=0.0789(102个) dur=1s
+  [dur] ep3 it3800 -> 1s 段
+  ep3 it 4000/15000 L=1.3402 se=0.0581 ce=1.1850 spk=0.1483 ns=0.1051 imp=0.0000 hardcos=0.4050 cos=0.8517 ccond_imp=0.0647(136个) dur=1s
+  [dur] ep3 it4000 -> 3s 段
+  ep3 it 4200/15000 L=1.5441 se=0.0575 ce=1.3845 spk=0.1747 ns=0.0994 imp=0.0000 hardcos=0.3993 cos=0.8253 ccond_imp=0.0747(110个) dur=3s
+  [dur] ep3 it4200 -> 2s 段
+  ep3 it 4400/15000 L=1.4405 se=0.0640 ce=1.2753 spk=0.1645 ns=0.1037 imp=0.0000 hardcos=0.4036 cos=0.8355 ccond_imp=0.0772(138个) dur=2s
+  [dur] ep3 it4400 -> 1s 段
+  ep3 it 4600/15000 L=1.3091 se=0.0587 ce=1.1517 spk=0.1601 ns=0.1012 imp=0.0000 hardcos=0.4012 cos=0.8399 ccond_imp=0.0714(144个) dur=1s
+  [dur] ep3 it4600 -> 2s 段
+  ep3 it 4800/15000 L=1.1773 se=0.0613 ce=1.0189 spk=0.1569 ns=0.1002 imp=0.0000 hardcos=0.4000 cos=0.8431 ccond_imp=0.0731(102个) dur=2s
+  [dur] ep3 it4800 -> 3s 段
+  ep3 it 5000/15000 L=1.2764 se=0.0579 ce=1.1173 spk=0.1690 ns=0.1010 imp=0.0000 hardcos=0.4009 cos=0.8310 ccond_imp=0.0632(100个) dur=3s
+  [dur] ep3 it5000 -> 1s 段
+  ep3 it 5200/15000 L=1.4598 se=0.0580 ce=1.3010 spk=0.1605 ns=0.1051 imp=0.0000 hardcos=0.4050 cos=0.8395 ccond_imp=0.0799(144个) dur=1s
+  [dur] ep3 it5200 -> 3s 段
+  ep3 it 5400/15000 L=1.6627 se=0.0586 ce=1.5010 spk=0.1765 ns=0.1004 imp=0.0000 hardcos=0.4000 cos=0.8235 ccond_imp=0.0594(146个) dur=3s
+  [dur] ep3 it5400 -> 3s 段
+  ep3 it 5600/15000 L=1.3716 se=0.0596 ce=1.2131 spk=0.1593 ns=0.1021 imp=0.0000 hardcos=0.4020 cos=0.8407 ccond_imp=0.0654(114个) dur=3s
+  [dur] ep3 it5600 -> 1s 段
+  ep3 it 5800/15000 L=1.3988 se=0.0598 ce=1.2407 spk=0.1582 ns=0.1015 imp=0.0000 hardcos=0.4013 cos=0.8418 ccond_imp=0.0714(126个) dur=1s
+  [dur] ep3 it5800 -> 3s 段
+  ep3 it 6000/15000 L=1.5968 se=0.0607 ce=1.4356 spk=0.1666 ns=0.1013 imp=0.0000 hardcos=0.4012 cos=0.8334 ccond_imp=0.0601(108个) dur=3s
+  [dur] ep3 it6000 -> 3s 段
+  ep3 it 6200/15000 L=1.1618 se=0.0610 ce=1.0014 spk=0.1610 ns=0.1021 imp=0.0000 hardcos=0.4020 cos=0.8390 ccond_imp=0.0702(90个) dur=3s
+  [dur] ep3 it6200 -> 3s 段
+  ep3 it 6400/15000 L=1.3992 se=0.0607 ce=1.2388 spk=0.1649 ns=0.1004 imp=0.0000 hardcos=0.4004 cos=0.8351 ccond_imp=0.0664(108个) dur=3s
+  [dur] ep3 it6400 -> 2s 段
+  ep3 it 6600/15000 L=1.4624 se=0.0598 ce=1.3020 spk=0.1706 ns=0.0989 imp=0.0000 hardcos=0.3987 cos=0.8294 ccond_imp=0.0740(114个) dur=2s
+  [dur] ep3 it6600 -> 3s 段
+  ep3 it 6800/15000 L=1.5665 se=0.0572 ce=1.4072 spk=0.1735 ns=0.1000 imp=0.0000 hardcos=0.3998 cos=0.8265 ccond_imp=0.0795(114个) dur=3s
+  [dur] ep3 it6800 -> 1s 段
+  ep3 it 7000/15000 L=1.4334 se=0.0594 ce=1.2752 spk=0.1645 ns=0.0991 imp=0.0000 hardcos=0.3990 cos=0.8355 ccond_imp=0.0778(126个) dur=1s
+  [dur] ep3 it7000 -> 2s 段
+  ep3 it 7200/15000 L=1.4005 se=0.0600 ce=1.2400 spk=0.1649 ns=0.1020 imp=0.0000 hardcos=0.4019 cos=0.8351 ccond_imp=0.0785(120个) dur=2s
+  [dur] ep3 it7200 -> 3s 段
+  ep3 it 7400/15000 L=1.3007 se=0.0592 ce=1.1431 spk=0.1565 ns=0.1027 imp=0.0000 hardcos=0.4026 cos=0.8435 ccond_imp=0.0837(156个) dur=3s
+  [dur] ep3 it7400 -> 3s 段
+  ep3 it 7600/15000 L=1.1823 se=0.0601 ce=1.0240 spk=0.1525 ns=0.1050 imp=0.0000 hardcos=0.4049 cos=0.8475 ccond_imp=0.0753(70个) dur=3s
+  [dur] ep3 it7600 -> 3s 段
+  ep3 it 7800/15000 L=1.3902 se=0.0605 ce=1.2277 spk=0.1725 ns=0.1006 imp=0.0000 hardcos=0.4004 cos=0.8275 ccond_imp=0.0711(140个) dur=3s
+  [dur] ep3 it7800 -> 1s 段
+  ep3 it 8000/15000 L=1.3300 se=0.0581 ce=1.1733 spk=0.1591 ns=0.1016 imp=0.0000 hardcos=0.4015 cos=0.8409 ccond_imp=0.0659(102个) dur=1s
+  [dur] ep3 it8000 -> 3s 段
+  ep3 it 8200/15000 L=1.1776 se=0.0580 ce=1.0194 spk=0.1644 ns=0.1017 imp=0.0000 hardcos=0.4016 cos=0.8356 ccond_imp=0.0720(106个) dur=3s
+  [dur] ep3 it8200 -> 1s 段
+  ep3 it 8400/15000 L=1.1236 se=0.0610 ce=0.9642 spk=0.1549 ns=0.1040 imp=0.0000 hardcos=0.4040 cos=0.8451 ccond_imp=0.0817(92个) dur=1s
+  [dur] ep3 it8400 -> 2s 段
+  ep3 it 8600/15000 L=1.5242 se=0.0606 ce=1.3616 spk=0.1745 ns=0.0995 imp=0.0000 hardcos=0.3993 cos=0.8255 ccond_imp=0.0645(132个) dur=2s
+  [dur] ep3 it8600 -> 2s 段
+  ep3 it 8800/15000 L=1.3363 se=0.0610 ce=1.1753 spk=0.1627 ns=0.1026 imp=0.0000 hardcos=0.4025 cos=0.8373 ccond_imp=0.0596(118个) dur=2s
+  [dur] ep3 it8800 -> 3s 段
+  ep3 it 9000/15000 L=1.3023 se=0.0595 ce=1.1452 spk=0.1564 ns=0.1014 imp=0.0000 hardcos=0.4013 cos=0.8436 ccond_imp=0.0717(86个) dur=3s
+  [dur] ep3 it9000 -> 2s 段
+  ep3 it 9200/15000 L=1.0753 se=0.0592 ce=0.9193 spk=0.1531 ns=0.1016 imp=0.0000 hardcos=0.4015 cos=0.8469 ccond_imp=0.0542(92个) dur=2s
+  [dur] ep3 it9200 -> 3s 段
+  ep3 it 9400/15000 L=1.4313 se=0.0593 ce=1.2729 spk=0.1592 ns=0.1027 imp=0.0000 hardcos=0.4023 cos=0.8408 ccond_imp=0.0546(164个) dur=3s
+  [dur] ep3 it9400 -> 3s 段
+  ep3 it 9600/15000 L=1.4673 se=0.0609 ce=1.3036 spk=0.1766 ns=0.0997 imp=0.0000 hardcos=0.3996 cos=0.8234 ccond_imp=0.0823(116个) dur=3s
+  [dur] ep3 it9600 -> 2s 段
+  ep3 it 9800/15000 L=1.4611 se=0.0606 ce=1.3016 spk=0.1602 ns=0.1017 imp=0.0000 hardcos=0.4016 cos=0.8398 ccond_imp=0.0685(168个) dur=2s
+  [dur] ep3 it9800 -> 1s 段
+  ep3 it 10000/15000 L=1.5373 se=0.0604 ce=1.3761 spk=0.1681 ns=0.1010 imp=0.0000 hardcos=0.4008 cos=0.8319 ccond_imp=0.0698(96个) dur=1s
+  [dur] ep3 it10000 -> 3s 段
+  ep3 it 10200/15000 L=1.5472 se=0.0605 ce=1.3856 spk=0.1688 ns=0.1008 imp=0.0000 hardcos=0.4006 cos=0.8312 ccond_imp=0.0651(126个) dur=3s
+  [dur] ep3 it10200 -> 3s 段
+  ep3 it 10400/15000 L=1.6758 se=0.0621 ce=1.5089 spk=0.1830 ns=0.0997 imp=0.0000 hardcos=0.3994 cos=0.8170 ccond_imp=0.0783(140个) dur=3s
+  [dur] ep3 it10400 -> 1s 段
+  ep3 it 10600/15000 L=1.5547 se=0.0580 ce=1.3970 spk=0.1649 ns=0.1003 imp=0.0000 hardcos=0.4000 cos=0.8351 ccond_imp=0.0575(134个) dur=1s
+  [dur] ep3 it10600 -> 3s 段
+  ep3 it 10800/15000 L=1.4736 se=0.0605 ce=1.3112 spk=0.1695 ns=0.1021 imp=0.0000 hardcos=0.4019 cos=0.8305 ccond_imp=0.0647(140个) dur=3s
+  [dur] ep3 it10800 -> 3s 段
+  ep3 it 11000/15000 L=1.5642 se=0.0586 ce=1.4050 spk=0.1677 ns=0.1006 imp=0.0000 hardcos=0.4004 cos=0.8323 ccond_imp=0.0720(120个) dur=3s
+  [dur] ep3 it11000 -> 3s 段
+  ep3 it 11200/15000 L=1.2217 se=0.0590 ce=1.0650 spk=0.1562 ns=0.1019 imp=0.0000 hardcos=0.4018 cos=0.8438 ccond_imp=0.0547(90个) dur=3s
+  [dur] ep3 it11200 -> 3s 段
+  ep3 it 11400/15000 L=1.8206 se=0.0612 ce=1.6587 spk=0.1719 ns=0.0984 imp=0.0000 hardcos=0.3980 cos=0.8281 ccond_imp=0.0734(126个) dur=3s
+  [dur] ep3 it11400 -> 1s 段
+  ep3 it 11600/15000 L=1.5643 se=0.0596 ce=1.4051 spk=0.1658 ns=0.0997 imp=0.0000 hardcos=0.3996 cos=0.8342 ccond_imp=0.0785(132个) dur=1s
+  [dur] ep3 it11600 -> 3s 段
+  ep3 it 11800/15000 L=1.4749 se=0.0611 ce=1.3131 spk=0.1664 ns=0.1017 imp=0.0000 hardcos=0.4016 cos=0.8336 ccond_imp=0.0829(120个) dur=3s
+  [dur] ep3 it11800 -> 1s 段
+  ep3 it 12000/15000 L=1.5987 se=0.0590 ce=1.4408 spk=0.1608 ns=0.1013 imp=0.0000 hardcos=0.4012 cos=0.8392 ccond_imp=0.0684(126个) dur=1s
+  [dur] ep3 it12000 -> 3s 段
+  ep3 it 12200/15000 L=1.5608 se=0.0587 ce=1.3995 spk=0.1765 ns=0.0993 imp=0.0000 hardcos=0.3990 cos=0.8235 ccond_imp=0.0775(128个) dur=3s
+  [dur] ep3 it12200 -> 3s 段
+  ep3 it 12400/15000 L=1.3915 se=0.0599 ce=1.2309 spk=0.1641 ns=0.1028 imp=0.0000 hardcos=0.4027 cos=0.8359 ccond_imp=0.0659(152个) dur=3s
+  [dur] ep3 it12400 -> 3s 段
+  ep3 it 12600/15000 L=1.4162 se=0.0618 ce=1.2505 spk=0.1719 ns=0.1046 imp=0.0000 hardcos=0.4046 cos=0.8281 ccond_imp=0.0655(98个) dur=3s
+  [dur] ep3 it12600 -> 1s 段
+  ep3 it 12800/15000 L=1.2579 se=0.0596 ce=1.1006 spk=0.1578 ns=0.1009 imp=0.0000 hardcos=0.4008 cos=0.8422 ccond_imp=0.0793(96个) dur=1s
+  [dur] ep3 it12800 -> 3s 段
+  ep3 it 13000/15000 L=1.2361 se=0.0621 ce=1.0742 spk=0.1603 ns=0.1035 imp=0.0000 hardcos=0.4034 cos=0.8397 ccond_imp=0.0704(76个) dur=3s
+  [dur] ep3 it13000 -> 3s 段
+  ep3 it 13200/15000 L=1.6624 se=0.0598 ce=1.5003 spk=0.1748 ns=0.0999 imp=0.0000 hardcos=0.3997 cos=0.8252 ccond_imp=0.0860(128个) dur=3s
+  [dur] ep3 it13200 -> 3s 段
+  ep3 it 13400/15000 L=1.5020 se=0.0578 ce=1.3430 spk=0.1690 ns=0.1010 imp=0.0000 hardcos=0.4010 cos=0.8310 ccond_imp=0.0712(120个) dur=3s
+  [dur] ep3 it13400 -> 3s 段
+  ep3 it 13600/15000 L=1.5044 se=0.0606 ce=1.3423 spk=0.1662 ns=0.1033 imp=0.0000 hardcos=0.4032 cos=0.8338 ccond_imp=0.0596(120个) dur=3s
+  [dur] ep3 it13600 -> 2s 段
+  ep3 it 13800/15000 L=1.3797 se=0.0590 ce=1.2187 spk=0.1716 ns=0.1011 imp=0.0000 hardcos=0.4010 cos=0.8284 ccond_imp=0.0691(126个) dur=2s
+  [dur] ep3 it13800 -> 2s 段
+  ep3 it 14000/15000 L=1.2909 se=0.0622 ce=1.1275 spk=0.1727 ns=0.0988 imp=0.0000 hardcos=0.3988 cos=0.8273 ccond_imp=0.0776(124个) dur=2s
+  [dur] ep3 it14000 -> 3s 段
+  ep3 it 14200/15000 L=1.1893 se=0.0606 ce=1.0305 spk=0.1610 ns=0.0997 imp=0.0000 hardcos=0.3996 cos=0.8390 ccond_imp=0.0766(96个) dur=3s
+  [dur] ep3 it14200 -> 3s 段
+  ep3 it 14400/15000 L=1.6417 se=0.0607 ce=1.4751 spk=0.1811 ns=0.1030 imp=0.0000 hardcos=0.4029 cos=0.8189 ccond_imp=0.0912(98个) dur=3s
+  [dur] ep3 it14400 -> 1s 段
+  ep3 it 14600/15000 L=1.4925 se=0.0602 ce=1.3319 spk=0.1686 ns=0.0996 imp=0.0000 hardcos=0.3994 cos=0.8314 ccond_imp=0.0870(118个) dur=1s
+  [dur] ep3 it14600 -> 1s 段
+  ep3 it 14800/15000 L=1.3201 se=0.0563 ce=1.1653 spk=0.1583 ns=0.1020 imp=0.0000 hardcos=0.4018 cos=0.8417 ccond_imp=0.0719(92个) dur=1s
+  [dur] ep3 it14800 -> 3s 段
+  ep3 it 15000/15000 L=1.5395 se=0.0617 ce=1.3781 spk=0.1629 ns=0.1016 imp=0.0000 hardcos=0.4016 cos=0.8371 ccond_imp=0.0929(132个) dur=3s
+[enhance] noise_0db 待处理 400
+[enhance] noise_0db 待处理 400
+  [val-claim] noise_0db eer=2.750 nt_med=0.163 nt_p90=0.314
+[enhance] noise_m5db 待处理 400
+[enhance] noise_m5db 待处理 400
+  [val-claim] noise_m5db eer=4.750 nt_med=0.165 nt_p90=0.326
+  [val-hard] ep3 0db=2.500 m5db=4.739 avg=3.619 | [val-claim] eer_avg=3.750 (门槛①: 基线 avg+0.3 内；门槛②: eer_avg 显著降)
+[done] imp_prob=0.3 lam_imp=0.0 best_hard_avg=3.369 best_claim_eer=3.750

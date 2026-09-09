@@ -1,0 +1,16 @@
+# eval_ns05ext3.toml — ns05ext3（ep9 ckpt 再续训破线臂）官方加码评测（8.28 凌晨布防）
+# 预声明触发：ep11 hard 4.023（0db 2.545/m5db 5.500）< ext2 ep9 的 4.381 ✓ 已触发。
+# 收官时 checkpoint_best.tar = ep10-12 全程最优；官方一次，无论好坏都报。
+# 兑换率预期：hard 降 0.358 × ~0.5 ≈ 官方降 0.18pp（0dB ~5.29 / m5dB ~6.28）。
+
+[paths]
+sv_ecapa = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+eres2net_ckpt = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+exp_dir = "exp/official_ns05ext3"
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+noise_0db_frontend_only = 7.7902
+noise_m5db_frontend_only = 9.9186

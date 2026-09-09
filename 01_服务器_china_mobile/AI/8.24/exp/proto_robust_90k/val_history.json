@@ -1,0 +1,196 @@
+[
+  {
+    "epoch": 0,
+    "phase": "pretrained",
+    "val": {
+      "clean": {
+        "eer": 1.25,
+        "mindcf": 0.0375
+      },
+      "0db": {
+        "eer": 7.000000000000001,
+        "mindcf": 0.1675
+      },
+      "m5db": {
+        "eer": 11.25,
+        "mindcf": 0.38
+      }
+    }
+  },
+  {
+    "epoch": 1,
+    "val": {
+      "clean": {
+        "eer": 1.5,
+        "mindcf": 0.065
+      },
+      "0db": {
+        "eer": 5.75,
+        "mindcf": 0.21
+      },
+      "m5db": {
+        "eer": 9.25,
+        "mindcf": 0.44
+      }
+    },
+    "noise_sum": 15.0,
+    "clean_gate_ok": true,
+    "train_loss": 1.251665476319525,
+    "train_acc": 0.9466703906059265,
+    "proto_init": true
+  },
+  {
+    "epoch": 2,
+    "val": {
+      "clean": {
+        "eer": 1.2499999999999956,
+        "mindcf": 0.05
+      },
+      "0db": {
+        "eer": 6.25,
+        "mindcf": 0.185
+      },
+      "m5db": {
+        "eer": 9.250000000000004,
+        "mindcf": 0.34
+      }
+    },
+    "noise_sum": 15.500000000000004,
+    "clean_gate_ok": true,
+    "train_loss": 1.111920006328159,
+    "train_acc": 0.9558407606866625,
+    "proto_init": true
+  },
+  {
+    "epoch": 3,
+    "val": {
+      "clean": {
+        "eer": 1.25,
+        "mindcf": 0.05999999999999999
+      },
+      "0db": {
+        "eer": 5.75,
+        "mindcf": 0.1775
+      },
+      "m5db": {
+        "eer": 9.999999999999998,
+        "mindcf": 0.41250000000000003
+      }
+    },
+    "noise_sum": 15.749999999999998,
+    "clean_gate_ok": true,
+    "train_loss": 1.035123818424013,
+    "train_acc": 0.9597666863123576,
+    "proto_init": true
+  },
+  {
+    "epoch": 4,
+    "val": {
+      "clean": {
+        "eer": 1.5,
+        "mindcf": 0.0625
+      },
+      "0db": {
+        "eer": 6.5,
+        "mindcf": 0.22
+      },
+      "m5db": {
+        "eer": 9.25,
+        "mindcf": 0.43750000000000006
+      }
+    },
+    "noise_sum": 15.75,
+    "clean_gate_ok": true,
+    "train_loss": 0.974152365983857,
+    "train_acc": 0.9633518709924486,
+    "proto_init": true
+  },
+  {
+    "epoch": 5,
+    "val": {
+      "clean": {
+        "eer": 1.5,
+        "mindcf": 0.0525
+      },
+      "0db": {
+        "eer": 6.25,
+        "mindcf": 0.175
+      },
+      "m5db": {
+        "eer": 9.5,
+        "mindcf": 0.3475
+      }
+    },
+    "noise_sum": 15.75,
+    "clean_gate_ok": true,
+    "train_loss": 0.9303604003190994,
+    "train_acc": 0.9655444632000393,
+    "proto_init": true
+  },
+  {
+    "epoch": 6,
+    "val": {
+      "clean": {
+        "eer": 1.25,
+        "mindcf": 0.075
+      },
+      "0db": {
+        "eer": 6.75,
+        "mindcf": 0.2325
+      },
+      "m5db": {
+        "eer": 9.75,
+        "mindcf": 0.3975
+      }
+    },
+    "noise_sum": 16.5,
+    "clean_gate_ok": true,
+    "train_loss": 0.8787352293491364,
+    "train_acc": 0.9682666854858398,
+    "proto_init": true
+  },
+  {
+    "epoch": 7,
+    "val": {
+      "clean": {
+        "eer": 1.5,
+        "mindcf": 0.1275
+      },
+      "0db": {
+        "eer": 6.000000000000005,
+        "mindcf": 0.26
+      },
+      "m5db": {
+        "eer": 8.999999999999996,
+        "mindcf": 0.3725
+      }
+    },
+    "noise_sum": 15.000000000000002,
+    "clean_gate_ok": true,
+    "train_loss": 0.8390247539056672,
+    "train_acc": 0.9704852028316922,
+    "proto_init": true
+  },
+  {
+    "epoch": 8,
+    "val": {
+      "clean": {
+        "eer": 1.749999999999996,
+        "mindcf": 0.135
+      },
+      "0db": {
+        "eer": 6.000000000000005,
+        "mindcf": 0.265
+      },
+      "m5db": {
+        "eer": 9.25,
+        "mindcf": 0.3775
+      }
+    },
+    "noise_sum": 15.250000000000005,
+    "clean_gate_ok": true,
+    "train_loss": 0.8081268185946676,
+    "train_acc": 0.9721926102850172,
+    "proto_init": true
+  }
+]

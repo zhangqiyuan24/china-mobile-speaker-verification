@@ -1,0 +1,39 @@
+[enrol] clean(3s) wav 16401
+  [enrol-emb] 1680 utts / 210 spks
+  [enrol-emb] 0/1680
+  [enrol-emb] 400/1680
+  [enrol-emb] 800/1680
+  [enrol-emb] 1200/1680
+  [enrol-emb] 1600/1680
+[cond] 210 个说话人注册嵌入(512, L2)
+[tse] 8.18 权重装载: 缺 4 键(全部 film.*, 零初始化恒等)
+[tse] 装载 /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v8_v8d_sil/checkpoint_epoch1.tar(epoch=1)
+[noise_0db/1s] 16401 条带噪待增强
+  [enhance] 已完成 0，待处理 16401
+  [enhance] 组 0/210
+  [enhance] 组 20/210
+  [enhance] 组 40/210
+  [enhance] 组 60/210
+  [enhance] 组 80/210
+  [enhance] 组 100/210
+  [enhance] 组 120/210
+  [enhance] 组 140/210
+  [enhance] 组 160/210
+  [enhance] 组 180/210
+  [enhance] 组 200/210
+  [enhance] 本轮完成 16401
+[noise_m5db/1s] 16401 条带噪待增强
+  [enhance] 已完成 0，待处理 16401
+  [enhance] 组 0/210
+  [enhance] 组 20/210
+  [enhance] 组 40/210
+  [enhance] 组 60/210
+  [enhance] 组 80/210
+  [enhance] 组 100/210
+  [enhance] 组 120/210
+  [enhance] 组 140/210
+  [enhance] 组 160/210
+  [enhance] 组 180/210
+  [enhance] 组 200/210
+  [enhance] 本轮完成 16401
+[done] 增强产物 -> /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v8_v8d_sil/enhanced_official_1s5s/1s/noise_0db noise_m5db

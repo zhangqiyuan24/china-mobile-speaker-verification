@@ -1,0 +1,13 @@
+{
+  "name": "raw_noise_0db",
+  "n_trials": 1378206,
+  "n_target": 211400,
+  "n_nontarget": 1166806,
+  "EER": 7.614,
+  "EER_thr": 0.18863,
+  "minDCF(p=0.01)": 0.5942,
+  "minDCF_thr": 0.41567,
+  "fixed_thr": 0.2266,
+  "FAR@fixed": 4.274,
+  "FRR@fixed": 11.746
+}

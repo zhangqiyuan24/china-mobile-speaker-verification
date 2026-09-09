@@ -1,0 +1,6 @@
+[night] 2026-08-24 21:42:28 值守启动: 等 proto_robust_90k 结束
+[night] 2026-08-25 02:30:35 proto_robust_90k 训练进程已结束
+[night] 2026-08-25 02:30:35 开始 evaluate_combo (proto_robust_90k best)
+[night] 2026-08-25 04:12:15 评测完成(退出码 0), 结果: exp/proto_robust_90k/eval/combo/combo_summary.json
+[night] 2026-08-25 04:12:15 启动 born-again 蒸馏 (GPU3, teacher=soup)
+[night] 2026-08-25 04:12:15 蒸馏 PID=249326 ; 值守结束

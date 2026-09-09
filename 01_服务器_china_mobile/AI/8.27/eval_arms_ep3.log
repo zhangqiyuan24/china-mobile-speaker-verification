@@ -1,0 +1,75 @@
+[cond] 100 spk 嵌入(soup5, 均值+L2)
+ckpt              0dB hard  -5dB hard     avg   (锚点 tse_soup5: 4.716/11.193 avg 7.955)
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam01_ep3/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam01_ep3/noise_m5db
+lam01_ep3            4.500     11.000   7.750
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam01_epbest/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam01_epbest/noise_m5db
+lam01_epbest         4.477     11.239   7.858
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam03_ep3/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam03_ep3/noise_m5db
+lam03_ep3            4.307     10.500   7.403
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam03_epbest/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam03_epbest/noise_m5db
+lam03_epbest         4.500     11.500   8.000
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam05_ep3/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam05_ep3/noise_m5db
+lam05_ep3            4.500     11.000   7.750
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam05_epbest/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_hard/lam05_epbest/noise_m5db
+lam05_epbest         4.500     10.784   7.642
+[done]

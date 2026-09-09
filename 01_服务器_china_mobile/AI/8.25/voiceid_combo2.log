@@ -1,0 +1,32 @@
+[validate] 已加载 checkpoint: /data/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/checkpoints/checkpoint_soup3.tar (epoch=soup3)
+[extract] enrol-clean(robust ckpt): ark 已存在且 checkpoint 一致，跳过
+
+===== 模式 RAW：原始带噪 → robust 模型 =====
+[extract] raw-noise_0db: ark 已存在且 checkpoint 一致，跳过
+[score] raw-noise_0db: result.metrics 已存在，跳过打分（重打请删除 /data/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/eval/combo/scores/raw_noise_0db）
+[extract] raw-noise_m5db: ark 已存在且 checkpoint 一致，跳过
+[score] raw-noise_m5db: result.metrics 已存在，跳过打分（重打请删除 /data/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/eval/combo/scores/raw_noise_m5db）
+[extract] raw-clean: ark 已存在且 checkpoint 一致，跳过
+[score] raw-clean: result.metrics 已存在，跳过打分（重打请删除 /data/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/eval/combo/scores/raw_clean）
+
+===== 模式 FRONTEND：带噪 → FullSubNet+(8.18) → robust 模型 =====
+[extract] frontend-noise_0db: ark 已存在且 checkpoint 一致，跳过
+[score] frontend-noise_0db: result.metrics 已存在，跳过打分（重打请删除 /data/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/eval/combo/scores/frontend_noise_0db）
+[extract] frontend-noise_m5db: ark 已存在且 checkpoint 一致，跳过
+[score] frontend-noise_m5db: result.metrics 已存在，跳过打分（重打请删除 /data/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/eval/combo/scores/frontend_noise_m5db）
+
+===== 组合评测汇总（trials_cross_device, 3s, 官方打分） =====
+方案                        0dB EER% -5dB EER%    0dB 降幅   -5dB 降幅
+official baseline           8.3911   11.0557      0.0%      0.0%
+frontend only (8.18)        7.7902    9.9186      7.2%     10.3%
+raw robust (8.21)           7.6438    9.7450      8.9%     11.9%
+frontend + robust           7.4683    9.4347     11.0%     14.7%
+                        clean EER = 5.0809%（官方 clean 基线 5.8248，open-set 真实 clean 退化）
+
+----- 前端 ablation（frontend+robust 相对 raw robust 的额外变化） -----
+  noise_0db : raw 7.6438 -> frontend 7.4683 （额外 +0.1755pp / +2.3%）← 前端有益
+  noise_m5db: raw 9.7450 -> frontend 9.4347 （额外 +0.3103pp / +3.2%）← 前端有益
+
+验收判据（0dB/-5dB 相对官方基线 ≥30%）：raw robust 未达标；frontend+robust 未达标
+
+[combo] 明细已写 /data/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/eval/combo/combo_summary.json；分数在 /data/home/ligangrui/china_mobile/AI/8.24/exp/soup3_abc/eval/combo/scores/

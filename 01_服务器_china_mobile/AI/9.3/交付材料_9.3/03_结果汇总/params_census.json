@@ -1,0 +1,162 @@
+[
+ {
+  "path": "code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_ecapa-tdnn_sv_zh-cn_3dspeaker_16k/ecapa-tdnn.ckpt",
+  "size_mb": 79.5,
+  "params": 20805952,
+  "params_M": 20.81,
+  "float_tensors": 200,
+  "int_elems": 31,
+  "label": "ECAPA-TDNN 官方预训练",
+  "note": "经典基线, 3D-Speaker 官方权重"
+ },
+ {
+  "path": "code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt",
+  "size_mb": 111.0,
+  "params": 29059200,
+  "params_M": 29.06,
+  "float_tensors": 494,
+  "int_elems": 93,
+  "label": "ERes2Net-large 官方预训练",
+  "note": "强基线/主验收靶子"
+ },
+ {
+  "path": "code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/redimnet2/b6-vb2+vox2+cnc2_v0-lm.pt",
+  "size_mb": 48.8,
+  "params": 12720930,
+  "params_M": 12.72,
+  "float_tensors": 743,
+  "int_elems": 78,
+  "label": "ReDimNet2-B6 官方预训练",
+  "note": "跨框架 SOTA 基线"
+ },
+ {
+  "path": "AI/8.18/exp/spk_preserve/checkpoint_epoch10.tar",
+  "size_mb": 33.2,
+  "params": 8675102,
+  "params_M": 8.68,
+  "float_tensors": 340,
+  "int_elems": 0,
+  "label": "FullSubNet+ 通用基座(8.18)",
+  "note": "TSE 之前的前端基座"
+ },
+ {
+  "path": "AI/8.27/exp/tse_v3_ns05duraug_r5/checkpoint_best.tar",
+  "size_mb": 35.2,
+  "params": 9202724,
+  "params_M": 9.2,
+  "float_tensors": 344,
+  "int_elems": 0,
+  "label": "FullSubNet+ TSE 交付 r5",
+  "note": "最终交付前端 (含 SpeakerFiLM)"
+ },
+ {
+  "path": "AI/8.27/exp/tse_v8_v8d_sil/checkpoint_best.tar",
+  "size_mb": 35.2,
+  "params": 9202724,
+  "params_M": 9.2,
+  "float_tensors": 344,
+  "int_elems": 0,
+  "label": "FullSubNet+ TSE v8d_sil",
+  "note": "claim 补救臂, 验证同构"
+ },
+ {
+  "path": "AI/8.21/exp/proto_robust/checkpoints/checkpoint_best.tar",
+  "size_mb": 130.4,
+  "params": 29059200,
+  "params_M": 29.06,
+  "float_tensors": 494,
+  "int_elems": 93,
+  "label": "proto_robust (8.21)",
+  "note": "ERes2Net 五条件鲁棒微调"
+ },
+ {
+  "path": "AI/8.24/exp/proto_robust_90k/checkpoints/checkpoint_best.tar",
+  "size_mb": 130.4,
+  "params": 29059200,
+  "params_M": 29.06,
+  "float_tensors": 494,
+  "int_elems": 93,
+  "label": "proto_robust_90k (8.24)",
+  "note": "90k 数据版"
+ },
+ {
+  "path": "AI/8.22/exp/matched_robust_90k/checkpoints/checkpoint_best.tar",
+  "size_mb": 130.4,
+  "params": 29059200,
+  "params_M": 29.06,
+  "float_tensors": 494,
+  "int_elems": 93,
+  "label": "matched_robust_90k (8.22)",
+  "note": "匹配域微调"
+ },
+ {
+  "path": "AI/8.24/exp/channel_aug_90k/checkpoints/checkpoint_best.tar",
+  "size_mb": 130.4,
+  "params": 29059200,
+  "params_M": 29.06,
+  "float_tensors": 494,
+  "int_elems": 93,
+  "label": "channel_aug_90k (8.24)",
+  "note": "通道增广微调"
+ },
+ {
+  "path": "AI/8.24/exp/soup5/checkpoints/checkpoint_soup5.tar",
+  "size_mb": 111.0,
+  "params": 29059200,
+  "params_M": 29.06,
+  "float_tensors": 494,
+  "int_elems": 93,
+  "label": "soup5 权重平均 (8.24)",
+  "note": "五模型汤, 冻结验证器"
+ },
+ {
+  "path": "AI/8.24/exp/soup_821_90k/checkpoints/checkpoint_soup_w50.tar",
+  "size_mb": 111.0,
+  "params": 29059200,
+  "params_M": 29.06,
+  "float_tensors": 494,
+  "int_elems": 93,
+  "label": "soup_w50 (8.24)",
+  "note": "8.21+90k 混合汤"
+ },
+ {
+  "path": "AI/8.26/exp/ecapa_robust_90k/checkpoints/checkpoint_best.tar",
+  "size_mb": 86.7,
+  "params": 20805952,
+  "params_M": 20.81,
+  "float_tensors": 200,
+  "int_elems": 31,
+  "label": "ECAPA robust_90k (8.26)",
+  "note": "ECAPA 镜像微调, 第二后端"
+ },
+ {
+  "path": "AI/8.26/exp/moe_lite/checkpoints/checkpoint_best.tar",
+  "size_mb": 212.4,
+  "params": 50536387,
+  "params_M": 50.54,
+  "float_tensors": 817,
+  "int_elems": 153,
+  "label": "moe_lite (8.26, 已否决)",
+  "note": "MoE-lite 支线"
+ },
+ {
+  "path": "AI/8.26/exp/feature_gate_90k/checkpoints/checkpoint_best.tar",
+  "size_mb": 131.1,
+  "params": 29250256,
+  "params_M": 29.25,
+  "float_tensors": 520,
+  "int_elems": 97,
+  "label": "feature_gate_90k (8.26,已否决)",
+  "note": "GateNet 支线"
+ },
+ {
+  "path": "AI/8.13/third_party/models/avg_model.pt",
+  "size_mb": 269.5,
+  "params": 27633800,
+  "params_M": 27.63,
+  "float_tensors": 722,
+  "int_elems": 29,
+  "label": "WeSep TSE avg_model (8.13)",
+  "note": "第三方 WeSep 探索, 已弃"
+ }
+]

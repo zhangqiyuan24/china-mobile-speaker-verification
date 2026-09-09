@@ -1,0 +1,85 @@
+# E2-matched + 数据放大 90k（AI/8.22）
+#
+# 与 config_matched.toml（30k 版）的唯一差异：训练数据源换成 90k 清单
+#   data_dir_820 -> exp/data_90k/data（由 config_data90k.toml + 8.20 的
+#   prepare_multicond_data.py 生成的自包含数据目录，仍复用同一套隔离逻辑）
+# 输出目录全部换新（_90k 后缀），不覆盖 30k 版任何产物；
+# exp/enh_bench 保持原名复用（bench 内容与 30k 版一致，增强结果无需重做）。
+#
+# 量级变化（共享卡实测 0.24s/micro-step 外推）：
+#   每 epoch 样本 150k -> 450k；micro-step 15k -> 45k；训练 ~20h -> ~24h
+#   enh 语料 60k -> 180k 条（磁盘 ~11GB -> ~34GB；混噪 ~3h + 前端增强 ~10-14h）
+# lr=2e-5 / 冻结 / AAM / prototype 初始化全部不动（单变量：只放数据量）。
+# 8.21 的 prototypes.npz 直接复用：90k 清单的说话人集合 ⊆ npz 的 9900 行
+# （30k 抽样漏掉的少数说话人 90k 会补回来，日志应显示 9900/9900 类命中）。
+
+[paths]
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+# 90k 数据目录（train_utts.csv / noise_train.txt / val_bench / val_trials 全在此）
+data_dir_820 = "exp/data_90k/data"
+prototypes_npz = "../8.21/exp/prototypes/prototypes.npz"
+# 本目录输出（全部带 _90k，与 30k 版隔离）
+exp_dir = "exp/soup4_abcd"
+enh_corpus_dir = "exp/enh_corpus_90k"
+enh_bench_dir = "exp/enh_bench"            # 复用：bench 同一份，增强结果已存在会自动跳过
+
+# Step 0 自动补数据：train_utts.csv 缺失时 run_train.sh 用它调 8.20 的 prepare
+[prep]
+generator = "config_data90k.toml"
+
+[frontend]
+fsn_code = "../8.17/code"
+fsn_inference_config = "config/inference.toml"
+ckpt = "../8.18/exp/spk_preserve/checkpoint_epoch10.tar"
+
+[enh_corpus]
+seed = 2026
+snrs = [0.0, -5.0]
+snr_tags = ["snr0", "snrm5"]
+crop_seconds = 3.0
+chunk_size = 3000
+# 磁盘预算：noisy + enhanced 各 90k×2 条 3s PCM16 ≈ 共 34GB，跑前 df -h 确认
+
+[data]
+seed = 2026
+
+[model]
+embedding_size = 512
+m_channels = 64
+margin = 0.2
+scale = 32.0
+
+[prototype]
+probe_speakers = 256
+
+[training]
+# 独占卡路径（SHARED=0，不带显式参数）用这里的值：100 × 1 = 有效 100
+# （共享路径 run_train.sh 显式传 --batch-size 10 --accum 10，不受此处影响）
+batch_size = 100
+accum = 1
+epochs = 8
+sanity_epochs = 3
+lr = 2e-5
+weight_decay = 5e-5
+num_workers = 8
+amp = false
+val_batch_size = 24
+clean_degradation_max = 1.0
+log_every = 50
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+noise_0db_frontend_only = 7.7902
+noise_m5db_frontend_only = 9.9186
+[baseline.ref_821]
+raw_robust_0db = 7.6911
+raw_robust_m5db = 9.8781
+combo_0db = 7.5000
+combo_m5db = 9.5085
+
+[eval]
+enh_0db = "../8.18/exp/spk_preserve/eval_e10/denoised/noise_0db"
+enh_m5db = "../8.18/exp/spk_preserve/eval_e10/denoised/noise_m5db"

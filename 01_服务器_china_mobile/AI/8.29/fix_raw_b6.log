@@ -1,0 +1,6 @@
+[fix-raw-b6 start] Sat 29 Aug 2026 04:14:46 PM CST（等待 gpu3 主脚本退出）
+[raw_b6_noise_0db_1s] EER = 21.7252
+[raw_b6_noise_0db_5s] EER = 9.4975
+[raw_b6_noise_m5db_1s] EER = 25.5545
+[raw_b6_noise_m5db_5s] EER = 12.3515
+[fix-raw-b6 done] Sat 29 Aug 2026 07:53:42 PM CST

@@ -1,0 +1,30 @@
+[v8d-1s5s start] Wed 02 Sep 2026 07:33:55 PM CST
+[enhance v8d 1s] Wed 02 Sep 2026 07:33:55 PM CST
+[enhance v8d 5s] Wed 02 Sep 2026 07:51:41 PM CST
+[v8d_eres_noise_0db_1s] EER = 13.1183
+[v8d_ecapa_noise_0db_1s] EER = 17.6641
+[v8d_b6_noise_0db_1s] EER = 17.9830
+[v8d_eres_noise_0db_5s] EER = 4.2729
+[v8d_ecapa_noise_0db_5s] EER = 5.4812
+[v8d_b6_noise_0db_5s] EER = 7.0904
+[v8d_eres_noise_m5db_1s] EER = 14.3562
+[v8d_ecapa_noise_m5db_1s] EER = 18.9205
+[v8d_b6_noise_m5db_1s] EER = 20.4513
+[v8d_eres_noise_m5db_5s] EER = 4.7999
+[v8d_ecapa_noise_m5db_5s] EER = 6.1797
+[v8d_b6_noise_m5db_5s] EER = 8.7767
+
+===== v8d 1s/5s 轴汇总 =====
+v8d_b6_noise_0db_1s: EER = 17.9830
+v8d_b6_noise_m5db_1s: EER = 20.4513
+v8d_ecapa_noise_0db_1s: EER = 17.6641
+v8d_ecapa_noise_m5db_1s: EER = 18.9205
+v8d_eres_noise_0db_1s: EER = 13.1183
+v8d_eres_noise_m5db_1s: EER = 14.3562
+v8d_b6_noise_0db_5s: EER = 7.0904
+v8d_b6_noise_m5db_5s: EER = 8.7767
+v8d_ecapa_noise_0db_5s: EER = 5.4812
+v8d_ecapa_noise_m5db_5s: EER = 6.1797
+v8d_eres_noise_0db_5s: EER = 4.2729
+v8d_eres_noise_m5db_5s: EER = 4.7999
+[v8d-1s5s done] Thu 03 Sep 2026 01:24:54 AM CST

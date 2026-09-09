@@ -1,0 +1,42 @@
+{
+  "checkpoint": "/data/home/ligangrui/china_mobile/AI/8.22/exp/matched_robust_90k/checkpoints/checkpoint_best.tar",
+  "results": {
+    "raw": {
+      "noise_0db": {
+        "eer": 8.1956,
+        "mindcf": 0.6191
+      },
+      "noise_m5db": {
+        "eer": 10.2784,
+        "mindcf": 0.6734
+      },
+      "clean": {
+        "eer": 5.5326,
+        "mindcf": 0.4991
+      }
+    },
+    "frontend": {
+      "noise_0db": {
+        "eer": 7.9316,
+        "mindcf": 0.6072
+      },
+      "noise_m5db": {
+        "eer": 9.8389,
+        "mindcf": 0.6628
+      }
+    }
+  },
+  "baseline": {
+    "clean": 5.8248,
+    "noise_0db": 8.3911,
+    "noise_m5db": 11.0557,
+    "noise_0db_frontend_only": 7.7902,
+    "noise_m5db_frontend_only": 9.9186,
+    "ref_821": {
+      "raw_robust_0db": 7.6911,
+      "raw_robust_m5db": 9.8781,
+      "combo_0db": 7.5,
+      "combo_m5db": 9.5085
+    }
+  }
+}

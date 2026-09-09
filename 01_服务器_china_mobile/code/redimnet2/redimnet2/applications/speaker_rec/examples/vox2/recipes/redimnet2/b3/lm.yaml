@@ -1,0 +1,101 @@
+compile_backbone:
+  mode: default
+data_type: raw_fast
+dataloader_args:
+  batch_size: 64
+  drop_last: true
+  num_workers: 16
+  pin_memory: false
+  prefetch_factor: 2
+dataset_args:
+  aug_setup:
+    aug_prob: 0.6
+    noise_lmdb_file: /data/wespeaker_data/musan/lmdb
+    preset: default
+    reverb_lmdb_file: /data/wespeaker_data/rirs/lmdb
+    type: wespeaker_augs
+  fbank_args:
+    dither: 1.0
+    frame_length: 25
+    frame_shift: 10
+    num_mel_bins: 80
+  num_frms: 600
+  resample_rate: 16000
+  sample_num_per_epoch: 0
+  shuffle: true
+  shuffle_args:
+    shuffle_size: 2500
+  speed_perturb: false
+do_lm: true
+enable_amp: true
+eval_dur: 8.0
+exp_dir: exp/redimnet2/b3/conv_att/lm
+gpus:
+- 0
+log_batch_interval: 25
+loss: CrossEntropyLoss
+loss_args: {}
+margin_scheduler: MarginScheduler
+margin_update:
+  final_margin: 0.3
+  fix_start_epoch: 1
+  increase_start_epoch: 1
+  increase_type: exp
+  initial_margin: 0.3
+  update_margin: true
+mixup_alpha: null
+model: ReDimNet2Custom
+model_args:
+  C: 24
+  F: 72
+  agg_gnorm: true
+  block_1d_type: conv+att
+  block_2d_type: basic_resnet
+  causal: none
+  compress_tconvs: true
+  emb_bn: false
+  embed_dim: 192
+  feat_type: tf
+  fm_weigthing_type: NC
+  global_context_att: true
+  group_divisor: 1
+  hop_length: 160
+  pooling_func: ASTP
+  return_2d_output: true
+  spec_in_channels: 1
+  spec_params:
+    do_preemph: true
+    do_spec_aug: false
+    norm_signal: true
+model_ckpt: exp/redimnet2/b3/conv_att/ptn/models/model_120.pt
+num_avg: 10
+num_epochs: 5
+optimizer: SGD
+optimizer_args:
+  lr: 0.0001
+  momentum: 0.9
+  nesterov: true
+  weight_decay: 0.0001
+projection_args:
+  do_lm: true
+  easy_margin: false
+  embed_dim: 192
+  lanbuda: 0.7
+  margin_type: C
+  num_class: 5994
+  project_type: sphereface2
+  scale: 32.0
+  t: 3
+save_epoch_interval: 1
+scheduler: ExponentialDecrease
+scheduler_args:
+  final_lr: 2.5e-05
+  initial_lr: 0.0001
+  warm_from_zero: true
+  warm_up_epoch: 1
+seed: 42
+train_data: /data/wespeaker_data/vox2_dev/data.list
+train_label: /data/wespeaker_data/vox2_dev/utt2spk
+val_type: local
+validation:
+  vox1: /data/wespeaker_data/vox1-test

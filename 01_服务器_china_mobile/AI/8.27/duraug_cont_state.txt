@@ -1,0 +1,11 @@
+[08-28 13:30] 收敛守望器启动 BEST=3.869(ns05ext3) CUR=ns05duraug
+[08-28 14:35] ns05duraug 轮最优=3.750 历史最优=3.869(ns05ext3) 增益=0.119
+[08-28 14:35] 续训 ns05duraug_r2（base=ns05duraug best）pid=945340
+[08-28 20:14] ns05duraug_r2 轮最优=3.500 历史最优=3.750(ns05duraug_r2) 增益=0.25
+[08-28 20:14] 续训 ns05duraug_r3（base=ns05duraug_r2 best）pid=993565
+[08-28 20:43] 收敛守望器启动 BEST=3.500(ns05duraug_r2) CUR=ns05duraug_r3 RSTART=4
+[08-29 01:54] ns05duraug_r3 轮最优=3.108 历史最优=3.500(ns05duraug_r2) 增益=0.392
+[08-29 01:54] 续训 ns05duraug_r4（base=ns05duraug_r3 best）pid=1037840
+[08-29 07:34] ns05duraug_r4 轮最优=3.011 历史最优=3.108(ns05duraug_r3) 增益=0.097
+[08-29 07:34] 续训 ns05duraug_r5（base=ns05duraug_r4 best）pid=1078281
+[08-29 07:34] 收敛守望器退出

@@ -1,0 +1,91 @@
+# E2-matched：五条件混合域鲁棒微调（AI/8.22，对照 AI/8.21）
+#
+# 与 8.21 唯一的方法差异：训练条件混合从 {clean, raw0dB, raw-5dB} 均匀 1/3
+# 扩展为 {clean, raw0dB, raw-5dB, enh0dB, enh-5dB} 均匀 1/5。
+# enh 分支语料 = prepare_enh_data.py 用【部署前端】(8.18 speaker-preserve,
+# 产出 7.7902/9.9186 的 checkpoint_epoch10.tar) 离线增强的固定语料；
+# raw 分支保持与 8.21 完全相同的动态混噪。
+# 其余（pretrained 起点 / prototype 初始化 / lr / 冻结 / AAM / 8 epoch）不动。
+#
+# 已测背景（trials_cross_device, 3s, 官方打分，EER%）：
+#   基线 8.3911/11.0557 | 前端单独 7.7902/9.9186 | raw robust 7.6911/9.8781
+#   级联(前端+8.21robust) 7.5000/9.5085 = -10.6%/-14.0%，两路增益重叠
+#   本轮目标：收回重叠（加性上限 ≈ 7.09/8.74），预期 -13~-17% / -17~-21%
+#
+# 路径为相对本文件的路径（服务器上 AI/8.22 与 code/ 平级）
+
+[paths]
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+# pretrained ERes2Net-large（只读，起点与 validate/evaluate 建模用）
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+# 复用 8.20 已生成数据（train_utts.csv / noise_train.txt / val_bench / val_trials），
+# 复用 8.21 的 prototype npz —— 本目录不重跑任何 prepare
+data_dir_820 = "../8.20/exp/robust/data"
+prototypes_npz = "../8.21/exp/prototypes/prototypes.npz"
+# 本目录输出
+exp_dir = "exp/matched_robust"          # checkpoint / val_history / eval/combo
+enh_corpus_dir = "exp/enh_corpus"       # prepare_enh_data.py 产物（训练增强语料）
+enh_bench_dir = "exp/enh_bench"         # 验证 bench 的增强版（选点用）
+
+[frontend]
+# 部署前端 = 8.18 speaker-preserve 微调版（冻结，只当数据工厂）。
+# 训练语料/验证 bench 的增强必须且只能用它生成——训练与推理同前端。
+fsn_code = "../8.17/code"               # FullSubNet+ 代码（只读）
+fsn_inference_config = "config/inference.toml"   # 相对 fsn_code
+ckpt = "../8.18/exp/spk_preserve/checkpoint_epoch10.tar"
+
+[enh_corpus]
+seed = 2026
+snrs = [0.0, -5.0]                      # 与 raw 分支/验收两档一致
+snr_tags = ["snr0", "snrm5"]
+crop_seconds = 3.0
+chunk_size = 3000                       # 分块增强，块级断点续跑
+# 磁盘预算：noisy + enhanced 各 30k×2 条 3s PCM16 ≈ 共 11GB，跑前 df -h 确认
+
+[data]
+seed = 2026                             # 与 8.20/8.21 相同（raw 分支裁剪/选噪种子）
+
+[model]
+embedding_size = 512
+m_channels = 64
+margin = 0.2
+scale = 32.0
+
+[prototype]
+# 训练前初始化诊断探针人数（与 8.21 同值；prototype 本体复用 8.21 的 npz）
+probe_speakers = 256
+
+[training]
+# 五条件各 batch/5：有效 batch 100（8.21 为 96，规模一致）。
+# 独占卡路径（SHARED=0）直接用这里的值：100 × 1 = 有效 100；
+# 共享卡配方：run_train.sh SHARED=1 显式传 --batch-size 10 --accum 10，不受此处影响
+batch_size = 100
+accum = 1
+epochs = 8
+sanity_epochs = 3
+lr = 2e-5                               # 与 8.21 相同，不动
+weight_decay = 5e-5
+num_workers = 8
+amp = false
+val_batch_size = 24
+clean_degradation_max = 1.0             # 选点 clean 门限（epoch0 bench clean + 1pp）
+log_every = 50
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+noise_0db_frontend_only = 7.7902        # 8.18 前端 × pretrained 后端
+noise_m5db_frontend_only = 9.9186
+# 8.21 raw robust / 级联实测（对照参考，evaluate_combo 汇总打印用不上但记录在此）
+[baseline.ref_821]
+raw_robust_0db = 7.6911
+raw_robust_m5db = 9.8781
+combo_0db = 7.5000
+combo_m5db = 9.5085
+
+[eval]
+# 正式 open-set 评测的前端测试侧：8.18 eval_e10 已增强好的官方测试集
+# （与 7.7902 那次前端输出逐位一致；复用，不重降噪）
+enh_0db = "../8.18/exp/spk_preserve/eval_e10/denoised/noise_0db"
+enh_m5db = "../8.18/exp/spk_preserve/eval_e10/denoised/noise_m5db"

@@ -1,0 +1,7 @@
+{
+ "checkpoint": "exp/soup_821_90k/checkpoints/checkpoint_soup_w50.tar",
+ "num_utts": 1000,
+ "crop_seconds": 3.0,
+ "cohort_spks": 500,
+ "cohort_utts": 2
+}

@@ -1,0 +1,36 @@
+{
+  "backend": "official_pretrained_eres2net",
+  "eres2net_ckpt": "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt",
+  "results": {
+    "raw": {
+      "noise_0db": {
+        "eer": 8.2906,
+        "mindcf": 0.6204
+      },
+      "noise_m5db": {
+        "eer": 10.8856,
+        "mindcf": 0.6779
+      },
+      "clean": {
+        "eer": 5.2091,
+        "mindcf": 0.487
+      }
+    },
+    "frontend": {
+      "noise_0db": {
+        "eer": 5.8231,
+        "mindcf": 0.5592
+      },
+      "noise_m5db": {
+        "eer": 7.0002,
+        "mindcf": 0.6116
+      }
+    }
+  },
+  "baseline": {
+    "clean": 5.8248,
+    "noise_0db": 8.3911,
+    "noise_m5db": 11.0557
+  },
+  "selfcheck_raw_reproduces_baseline": false
+}

@@ -1,0 +1,16 @@
+[① 选ckpt] Wed 02 Sep 2026 12:20:08 AM CST
+  ckpt=/data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v7_rk05e2_mix40i50/checkpoint_best.tar (proxy-claim 最优 ep=best)
+[② 全集oracle增强] Wed 02 Sep 2026 12:20:08 AM CST
+[③ 冒认claim增强] Wed 02 Sep 2026 12:44:07 AM CST
+[④ 提嵌入] Wed 02 Sep 2026 01:22:59 AM CST
+[⑤ 分析] Wed 02 Sep 2026 02:10:36 AM CST
+targets=211400 sampled_nontarget=30000
+
+===== noise_0db ===== raw=16401 fe=16401 claim=27389
+  raw=8.3667 oracleFE=5.5407 claimFE=9.3311 CI95=[9.150,9.524] nt_med={'raw': 0.043661847710609436, 'oracle': 0.04741876572370529, 'claim': 0.10346633195877075}
+
+===== noise_m5db ===== raw=16401 fe=16401 claim=27389
+  raw=11.0867 oracleFE=6.4891 claimFE=11.1306 CI95=[10.956,11.330] nt_med={'raw': 0.04081098735332489, 'oracle': 0.04601721465587616, 'claim': 0.10767234116792679}
+
+[done] /data/home/ligangrui/china_mobile/AI/8.31/claim_fix/official_rk05e2_mix40i50/summary.json
+[done rk05e2_mix40i50] Wed 02 Sep 2026 02:11:04 AM CST

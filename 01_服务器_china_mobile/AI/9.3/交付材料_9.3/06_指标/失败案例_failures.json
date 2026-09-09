@@ -1,0 +1,1250 @@
+[
+ {
+  "name": "main_eres_0db_raw",
+  "thr": 0.19737,
+  "n_fn": 17736,
+  "n_fa": 97917,
+  "fn_rate": 8.39,
+  "top_fn_speakers": [
+   {
+    "spk": "06207",
+    "fn": 197,
+    "tot": 432,
+    "rate": 45.6
+   },
+   {
+    "spk": "06851",
+    "fn": 63,
+    "tot": 144,
+    "rate": 43.8
+   },
+   {
+    "spk": "06820",
+    "fn": 141,
+    "tot": 363,
+    "rate": 38.8
+   },
+   {
+    "spk": "06852",
+    "fn": 136,
+    "tot": 363,
+    "rate": 37.5
+   },
+   {
+    "spk": "06157",
+    "fn": 77,
+    "tot": 225,
+    "rate": 34.2
+   },
+   {
+    "spk": "06159",
+    "fn": 189,
+    "tot": 588,
+    "rate": 32.1
+   },
+   {
+    "spk": "06860",
+    "fn": 210,
+    "tot": 675,
+    "rate": 31.1
+   },
+   {
+    "spk": "06849",
+    "fn": 31,
+    "tot": 100,
+    "rate": 31.0
+   },
+   {
+    "spk": "06985",
+    "fn": 1213,
+    "tot": 4725,
+    "rate": 25.7
+   },
+   {
+    "spk": "06220",
+    "fn": 290,
+    "tot": 1176,
+    "rate": 24.7
+   }
+  ],
+  "top_fa_pairs": [
+   {
+    "pair": "06987|08102",
+    "fa": 516
+   },
+   {
+    "pair": "06974|08099",
+    "fa": 481
+   },
+   {
+    "pair": "06993|08099",
+    "fa": 461
+   },
+   {
+    "pair": "06993|08107",
+    "fa": 449
+   },
+   {
+    "pair": "06988|08102",
+    "fa": 425
+   },
+   {
+    "pair": "06975|08115",
+    "fa": 406
+   },
+   {
+    "pair": "06992|08117",
+    "fa": 366
+   },
+   {
+    "pair": "06993|08117",
+    "fa": 359
+   },
+   {
+    "pair": "06992|08115",
+    "fa": 353
+   },
+   {
+    "pair": "06999|08114",
+    "fa": 349
+   }
+  ],
+  "fn_rate_by_test_device": {
+   "Device01": 6.82,
+   "Device02": 7.99,
+   "Device03": 9.46,
+   "Device04": 7.3,
+   "Device05": 5.09,
+   "Device06": 13.47,
+   "Device07": 7.53,
+   "Device08": 4.32
+  },
+  "worst_cases": {
+   "07001": [
+    [
+     -0.199,
+     "3D_SPK_07001_005_Device03_Distance03_Dialect06_3s",
+     "3D_SPK_07001_007_Device04_Distance01_Dialect00_3s"
+    ],
+    [
+     -0.18771,
+     "3D_SPK_07001_001_Device01_Distance05_Dialect06_3s",
+     "3D_SPK_07001_007_Device02_Distance07_Dialect00_3s"
+    ],
+    [
+     -0.17356,
+     "3D_SPK_07001_002_Device04_Distance01_Dialect06_3s",
+     "3D_SPK_07001_007_Device08_Distance13_Dialect00_3s"
+    ]
+   ],
+   "06981": [
+    [
+     -0.22802,
+     "3D_SPK_06981_003_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_012_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.18685,
+     "3D_SPK_06981_004_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_012_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.16347,
+     "3D_SPK_06981_006_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_012_Device06_Distance02_Dialect00_3s"
+    ]
+   ],
+   "06977": [
+    [
+     -0.1284,
+     "3D_SPK_06977_006_Device05_Distance12_Dialect04_3s",
+     "3D_SPK_06977_009_Device04_Distance06_Dialect00_3s"
+    ],
+    [
+     -0.12543,
+     "3D_SPK_06977_006_Device05_Distance12_Dialect04_3s",
+     "3D_SPK_06977_009_Device01_Distance05_Dialect00_3s"
+    ],
+    [
+     -0.11872,
+     "3D_SPK_06977_005_Device05_Distance12_Dialect04_3s",
+     "3D_SPK_06977_009_Device01_Distance05_Dialect00_3s"
+    ]
+   ],
+   "06985": [
+    [
+     -0.14405,
+     "3D_SPK_06985_002_Device08_Distance13_Dialect04_3s",
+     "3D_SPK_06985_011_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.12656,
+     "3D_SPK_06985_001_Device08_Distance13_Dialect04_3s",
+     "3D_SPK_06985_009_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.11984,
+     "3D_SPK_06985_006_Device04_Distance06_Dialect04_3s",
+     "3D_SPK_06985_007_Device01_Distance05_Dialect04_3s"
+    ]
+   ],
+   "06158": [
+    [
+     -0.1085,
+     "3D_SPK_06158_009_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06158_013_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.10594,
+     "3D_SPK_06158_002_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06158_009_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.08726,
+     "3D_SPK_06158_005_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06158_013_Device03_Distance00_Dialect00_3s"
+    ]
+   ]
+  }
+ },
+ {
+  "name": "main_eres_0db_fe",
+  "thr": 0.23815,
+  "n_fn": 10391,
+  "n_fa": 56820,
+  "fn_rate": 4.92,
+  "top_fn_speakers": [
+   {
+    "spk": "06851",
+    "fn": 62,
+    "tot": 144,
+    "rate": 43.1
+   },
+   {
+    "spk": "06820",
+    "fn": 151,
+    "tot": 363,
+    "rate": 41.6
+   },
+   {
+    "spk": "06207",
+    "fn": 172,
+    "tot": 432,
+    "rate": 39.8
+   },
+   {
+    "spk": "06852",
+    "fn": 124,
+    "tot": 363,
+    "rate": 34.2
+   },
+   {
+    "spk": "06157",
+    "fn": 56,
+    "tot": 225,
+    "rate": 24.9
+   },
+   {
+    "spk": "06841",
+    "fn": 53,
+    "tot": 225,
+    "rate": 23.6
+   },
+   {
+    "spk": "06849",
+    "fn": 23,
+    "tot": 100,
+    "rate": 23.0
+   },
+   {
+    "spk": "06832",
+    "fn": 148,
+    "tot": 675,
+    "rate": 21.9
+   },
+   {
+    "spk": "06159",
+    "fn": 117,
+    "tot": 588,
+    "rate": 19.9
+   },
+   {
+    "spk": "06860",
+    "fn": 131,
+    "tot": 675,
+    "rate": 19.4
+   }
+  ],
+  "top_fa_pairs": [
+   {
+    "pair": "06993|08107",
+    "fa": 556
+   },
+   {
+    "pair": "06975|08115",
+    "fa": 451
+   },
+   {
+    "pair": "06993|08099",
+    "fa": 445
+   },
+   {
+    "pair": "06987|08102",
+    "fa": 443
+   },
+   {
+    "pair": "06988|08102",
+    "fa": 396
+   },
+   {
+    "pair": "06975|08100",
+    "fa": 385
+   },
+   {
+    "pair": "06993|08100",
+    "fa": 376
+   },
+   {
+    "pair": "06975|08103",
+    "fa": 374
+   },
+   {
+    "pair": "06999|08114",
+    "fa": 359
+   },
+   {
+    "pair": "06974|08099",
+    "fa": 358
+   }
+  ],
+  "fn_rate_by_test_device": {
+   "Device01": 4.46,
+   "Device02": 4.35,
+   "Device03": 5.76,
+   "Device04": 3.92,
+   "Device05": 3.88,
+   "Device06": 7.42,
+   "Device07": 3.85,
+   "Device08": 3.15
+  },
+  "worst_cases": {
+   "07001": [
+    [
+     -0.21174,
+     "3D_SPK_07001_005_Device03_Distance03_Dialect06_3s",
+     "3D_SPK_07001_007_Device04_Distance01_Dialect00_3s"
+    ],
+    [
+     -0.14445,
+     "3D_SPK_07001_002_Device03_Distance03_Dialect06_3s",
+     "3D_SPK_07001_007_Device04_Distance01_Dialect00_3s"
+    ],
+    [
+     -0.14231,
+     "3D_SPK_07001_001_Device03_Distance03_Dialect06_3s",
+     "3D_SPK_07001_007_Device04_Distance01_Dialect00_3s"
+    ]
+   ],
+   "06852": [
+    [
+     -0.07845,
+     "3D_SPK_06852_002_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06852_006_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.03117,
+     "3D_SPK_06852_008_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06852_011_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.01901,
+     "3D_SPK_06852_003_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06852_006_Device06_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06981": [
+    [
+     -0.1123,
+     "3D_SPK_06981_003_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_011_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.07723,
+     "3D_SPK_06981_003_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_012_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.0666,
+     "3D_SPK_06981_003_Device05_Distance12_Dialect06_3s",
+     "3D_SPK_06981_011_Device06_Distance02_Dialect00_3s"
+    ]
+   ],
+   "06222": [
+    [
+     -0.04931,
+     "3D_SPK_06222_001_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06222_007_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     0.02942,
+     "3D_SPK_06222_001_Device07_Distance00_Dialect00_3s",
+     "3D_SPK_06222_007_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     0.04447,
+     "3D_SPK_06222_005_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06222_011_Device03_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06977": [
+    [
+     -0.07417,
+     "3D_SPK_06977_006_Device05_Distance12_Dialect04_3s",
+     "3D_SPK_06977_009_Device03_Distance03_Dialect00_3s"
+    ],
+    [
+     -0.06999,
+     "3D_SPK_06977_006_Device01_Distance05_Dialect04_3s",
+     "3D_SPK_06977_009_Device03_Distance03_Dialect00_3s"
+    ],
+    [
+     -0.05849,
+     "3D_SPK_06977_005_Device05_Distance12_Dialect04_3s",
+     "3D_SPK_06977_009_Device03_Distance03_Dialect00_3s"
+    ]
+   ]
+  }
+ },
+ {
+  "name": "main_eres_m5db_raw",
+  "thr": 0.17047,
+  "n_fn": 23363,
+  "n_fa": 129029,
+  "fn_rate": 11.05,
+  "top_fn_speakers": [
+   {
+    "spk": "06851",
+    "fn": 62,
+    "tot": 144,
+    "rate": 43.1
+   },
+   {
+    "spk": "06207",
+    "fn": 182,
+    "tot": 432,
+    "rate": 42.1
+   },
+   {
+    "spk": "06852",
+    "fn": 151,
+    "tot": 363,
+    "rate": 41.6
+   },
+   {
+    "spk": "06820",
+    "fn": 133,
+    "tot": 363,
+    "rate": 36.6
+   },
+   {
+    "spk": "06159",
+    "fn": 205,
+    "tot": 588,
+    "rate": 34.9
+   },
+   {
+    "spk": "06157",
+    "fn": 76,
+    "tot": 225,
+    "rate": 33.8
+   },
+   {
+    "spk": "06860",
+    "fn": 207,
+    "tot": 675,
+    "rate": 30.7
+   },
+   {
+    "spk": "06208",
+    "fn": 91,
+    "tot": 300,
+    "rate": 30.3
+   },
+   {
+    "spk": "06221",
+    "fn": 128,
+    "tot": 432,
+    "rate": 29.6
+   },
+   {
+    "spk": "06878",
+    "fn": 171,
+    "tot": 588,
+    "rate": 29.1
+   }
+  ],
+  "top_fa_pairs": [
+   {
+    "pair": "06974|08099",
+    "fa": 509
+   },
+   {
+    "pair": "06993|08099",
+    "fa": 493
+   },
+   {
+    "pair": "06993|08107",
+    "fa": 463
+   },
+   {
+    "pair": "06987|08102",
+    "fa": 460
+   },
+   {
+    "pair": "06988|08102",
+    "fa": 415
+   },
+   {
+    "pair": "06975|08115",
+    "fa": 409
+   },
+   {
+    "pair": "06993|08117",
+    "fa": 389
+   },
+   {
+    "pair": "06987|08099",
+    "fa": 370
+   },
+   {
+    "pair": "06992|08117",
+    "fa": 368
+   },
+   {
+    "pair": "06992|08115",
+    "fa": 359
+   }
+  ],
+  "fn_rate_by_test_device": {
+   "Device01": 8.33,
+   "Device02": 11.46,
+   "Device03": 13.71,
+   "Device04": 10.05,
+   "Device05": 8.28,
+   "Device06": 15.16,
+   "Device07": 9.56,
+   "Device08": 6.59
+  },
+  "worst_cases": {
+   "07001": [
+    [
+     -0.22866,
+     "3D_SPK_07001_001_Device01_Distance05_Dialect06_3s",
+     "3D_SPK_07001_007_Device02_Distance07_Dialect00_3s"
+    ],
+    [
+     -0.22317,
+     "3D_SPK_07001_002_Device05_Distance12_Dialect06_3s",
+     "3D_SPK_07001_007_Device02_Distance07_Dialect00_3s"
+    ],
+    [
+     -0.19977,
+     "3D_SPK_07001_001_Device05_Distance12_Dialect06_3s",
+     "3D_SPK_07001_007_Device02_Distance07_Dialect00_3s"
+    ]
+   ],
+   "06981": [
+    [
+     -0.21146,
+     "3D_SPK_06981_003_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_012_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.15936,
+     "3D_SPK_06981_006_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_012_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.15322,
+     "3D_SPK_06981_004_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_012_Device06_Distance02_Dialect00_3s"
+    ]
+   ],
+   "06980": [
+    [
+     -0.1417,
+     "3D_SPK_06980_001_Device06_Distance02_Dialect03_3s",
+     "3D_SPK_06980_002_Device04_Distance06_Dialect03_3s"
+    ],
+    [
+     -0.11438,
+     "3D_SPK_06980_002_Device03_Distance03_Dialect03_3s",
+     "3D_SPK_06980_005_Device06_Distance02_Dialect03_3s"
+    ],
+    [
+     -0.11158,
+     "3D_SPK_06980_002_Device08_Distance13_Dialect03_3s",
+     "3D_SPK_06980_005_Device06_Distance02_Dialect03_3s"
+    ]
+   ],
+   "06186": [
+    [
+     -0.20534,
+     "3D_SPK_06186_004_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06186_008_Device07_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.1389,
+     "3D_SPK_06186_002_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06186_008_Device07_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.11233,
+     "3D_SPK_06186_003_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06186_008_Device07_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06977": [
+    [
+     -0.13342,
+     "3D_SPK_06977_006_Device05_Distance12_Dialect04_3s",
+     "3D_SPK_06977_009_Device01_Distance05_Dialect00_3s"
+    ],
+    [
+     -0.13016,
+     "3D_SPK_06977_005_Device05_Distance12_Dialect04_3s",
+     "3D_SPK_06977_009_Device01_Distance05_Dialect00_3s"
+    ],
+    [
+     -0.12759,
+     "3D_SPK_06977_006_Device01_Distance05_Dialect04_3s",
+     "3D_SPK_06977_009_Device05_Distance12_Dialect00_3s"
+    ]
+   ]
+  }
+ },
+ {
+  "name": "main_eres_m5db_fe",
+  "thr": 0.22464,
+  "n_fn": 11741,
+  "n_fa": 65045,
+  "fn_rate": 5.55,
+  "top_fn_speakers": [
+   {
+    "spk": "06851",
+    "fn": 64,
+    "tot": 144,
+    "rate": 44.4
+   },
+   {
+    "spk": "06820",
+    "fn": 148,
+    "tot": 363,
+    "rate": 40.8
+   },
+   {
+    "spk": "06852",
+    "fn": 137,
+    "tot": 363,
+    "rate": 37.7
+   },
+   {
+    "spk": "06207",
+    "fn": 158,
+    "tot": 432,
+    "rate": 36.6
+   },
+   {
+    "spk": "06157",
+    "fn": 60,
+    "tot": 225,
+    "rate": 26.7
+   },
+   {
+    "spk": "06841",
+    "fn": 52,
+    "tot": 225,
+    "rate": 23.1
+   },
+   {
+    "spk": "06832",
+    "fn": 155,
+    "tot": 675,
+    "rate": 23.0
+   },
+   {
+    "spk": "06159",
+    "fn": 119,
+    "tot": 588,
+    "rate": 20.2
+   },
+   {
+    "spk": "06828",
+    "fn": 124,
+    "tot": 675,
+    "rate": 18.4
+   },
+   {
+    "spk": "06985",
+    "fn": 853,
+    "tot": 4725,
+    "rate": 18.1
+   }
+  ],
+  "top_fa_pairs": [
+   {
+    "pair": "06993|08107",
+    "fa": 566
+   },
+   {
+    "pair": "06993|08099",
+    "fa": 480
+   },
+   {
+    "pair": "06975|08115",
+    "fa": 470
+   },
+   {
+    "pair": "06987|08102",
+    "fa": 429
+   },
+   {
+    "pair": "06993|08117",
+    "fa": 408
+   },
+   {
+    "pair": "06975|08100",
+    "fa": 389
+   },
+   {
+    "pair": "06993|08100",
+    "fa": 383
+   },
+   {
+    "pair": "06975|08103",
+    "fa": 382
+   },
+   {
+    "pair": "06988|08102",
+    "fa": 380
+   },
+   {
+    "pair": "06974|08099",
+    "fa": 375
+   }
+  ],
+  "fn_rate_by_test_device": {
+   "Device01": 4.98,
+   "Device02": 5.54,
+   "Device03": 6.83,
+   "Device04": 4.83,
+   "Device05": 4.27,
+   "Device06": 7.62,
+   "Device07": 4.09,
+   "Device08": 3.63
+  },
+  "worst_cases": {
+   "07001": [
+    [
+     -0.18588,
+     "3D_SPK_07001_005_Device03_Distance03_Dialect06_3s",
+     "3D_SPK_07001_007_Device04_Distance01_Dialect00_3s"
+    ],
+    [
+     -0.13819,
+     "3D_SPK_07001_001_Device03_Distance03_Dialect06_3s",
+     "3D_SPK_07001_007_Device04_Distance01_Dialect00_3s"
+    ],
+    [
+     -0.12724,
+     "3D_SPK_07001_002_Device03_Distance03_Dialect06_3s",
+     "3D_SPK_07001_007_Device04_Distance01_Dialect00_3s"
+    ]
+   ],
+   "06981": [
+    [
+     -0.14167,
+     "3D_SPK_06981_003_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_011_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.10455,
+     "3D_SPK_06981_003_Device05_Distance12_Dialect06_3s",
+     "3D_SPK_06981_011_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.09354,
+     "3D_SPK_06981_003_Device04_Distance06_Dialect06_3s",
+     "3D_SPK_06981_011_Device06_Distance02_Dialect00_3s"
+    ]
+   ],
+   "06994": [
+    [
+     -0.16422,
+     "3D_SPK_06994_006_Device06_Distance02_Dialect06_3s",
+     "3D_SPK_06994_010_Device04_Distance01_Dialect00_3s"
+    ],
+    [
+     -0.08998,
+     "3D_SPK_06994_006_Device01_Distance05_Dialect06_3s",
+     "3D_SPK_06994_008_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.07714,
+     "3D_SPK_06994_006_Device02_Distance07_Dialect06_3s",
+     "3D_SPK_06994_008_Device06_Distance02_Dialect00_3s"
+    ]
+   ],
+   "06852": [
+    [
+     -0.0811,
+     "3D_SPK_06852_002_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06852_006_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.0208,
+     "3D_SPK_06852_008_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06852_011_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.01465,
+     "3D_SPK_06852_006_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06852_008_Device06_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06973": [
+    [
+     -0.09264,
+     "3D_SPK_06973_004_Device02_Distance07_Dialect08_3s",
+     "3D_SPK_06973_013_Device08_Distance13_Dialect00_3s"
+    ],
+    [
+     -0.06683,
+     "3D_SPK_06973_004_Device02_Distance07_Dialect08_3s",
+     "3D_SPK_06973_013_Device05_Distance12_Dialect00_3s"
+    ],
+    [
+     -0.05685,
+     "3D_SPK_06973_004_Device02_Distance07_Dialect08_3s",
+     "3D_SPK_06973_014_Device05_Distance12_Dialect00_3s"
+    ]
+   ]
+  }
+ },
+ {
+  "name": "scene_ov2cn_fe",
+  "thr": 0.14973,
+  "n_fn": 35181,
+  "n_fa": 193916,
+  "fn_rate": 16.64,
+  "top_fn_speakers": [
+   {
+    "spk": "06832",
+    "fn": 457,
+    "tot": 675,
+    "rate": 67.7
+   },
+   {
+    "spk": "06878",
+    "fn": 376,
+    "tot": 588,
+    "rate": 63.9
+   },
+   {
+    "spk": "06842",
+    "fn": 370,
+    "tot": 588,
+    "rate": 62.9
+   },
+   {
+    "spk": "06862",
+    "fn": 188,
+    "tot": 300,
+    "rate": 62.7
+   },
+   {
+    "spk": "06820",
+    "fn": 226,
+    "tot": 363,
+    "rate": 62.3
+   },
+   {
+    "spk": "06818",
+    "fn": 211,
+    "tot": 363,
+    "rate": 58.1
+   },
+   {
+    "spk": "06852",
+    "fn": 206,
+    "tot": 363,
+    "rate": 56.7
+   },
+   {
+    "spk": "06869",
+    "fn": 66,
+    "tot": 121,
+    "rate": 54.5
+   },
+   {
+    "spk": "06849",
+    "fn": 54,
+    "tot": 100,
+    "rate": 54.0
+   },
+   {
+    "spk": "06860",
+    "fn": 359,
+    "tot": 675,
+    "rate": 53.2
+   }
+  ],
+  "top_fa_pairs": [
+   {
+    "pair": "06993|08107",
+    "fa": 551
+   },
+   {
+    "pair": "06993|08099",
+    "fa": 514
+   },
+   {
+    "pair": "06993|08111",
+    "fa": 480
+   },
+   {
+    "pair": "06974|08099",
+    "fa": 440
+   },
+   {
+    "pair": "06993|08115",
+    "fa": 425
+   },
+   {
+    "pair": "06999|08114",
+    "fa": 395
+   },
+   {
+    "pair": "06966|08111",
+    "fa": 376
+   },
+   {
+    "pair": "06975|08115",
+    "fa": 359
+   },
+   {
+    "pair": "06987|08111",
+    "fa": 358
+   },
+   {
+    "pair": "06977|08117",
+    "fa": 357
+   }
+  ],
+  "fn_rate_by_test_device": {
+   "Device01": 7.3,
+   "Device02": 15.1,
+   "Device03": 32.23,
+   "Device04": 15.79,
+   "Device05": 5.62,
+   "Device06": 21.7,
+   "Device07": 17.86,
+   "Device08": 4.94
+  },
+  "worst_cases": {
+   "06220": [
+    [
+     -0.18315,
+     "3D_SPK_06220_003_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06220_014_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.17837,
+     "3D_SPK_06220_008_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06220_014_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.15743,
+     "3D_SPK_06220_010_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06220_014_Device03_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06159": [
+    [
+     -0.17736,
+     "3D_SPK_06159_002_Device07_Distance00_Dialect00_3s",
+     "3D_SPK_06159_006_Device04_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.14286,
+     "3D_SPK_06159_003_Device07_Distance00_Dialect00_3s",
+     "3D_SPK_06159_006_Device04_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.13017,
+     "3D_SPK_06159_005_Device07_Distance00_Dialect00_3s",
+     "3D_SPK_06159_006_Device04_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06981": [
+    [
+     -0.16137,
+     "3D_SPK_06981_002_Device05_Distance12_Dialect06_3s",
+     "3D_SPK_06981_005_Device06_Distance02_Dialect06_3s"
+    ],
+    [
+     -0.14146,
+     "3D_SPK_06981_004_Device08_Distance13_Dialect06_3s",
+     "3D_SPK_06981_006_Device06_Distance02_Dialect06_3s"
+    ],
+    [
+     -0.13476,
+     "3D_SPK_06981_002_Device05_Distance12_Dialect06_3s",
+     "3D_SPK_06981_011_Device06_Distance02_Dialect00_3s"
+    ]
+   ],
+   "06985": [
+    [
+     -0.15274,
+     "3D_SPK_06985_007_Device03_Distance03_Dialect04_3s",
+     "3D_SPK_06985_012_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.15273,
+     "3D_SPK_06985_002_Device05_Distance12_Dialect04_3s",
+     "3D_SPK_06985_012_Device06_Distance02_Dialect00_3s"
+    ],
+    [
+     -0.15004,
+     "3D_SPK_06985_004_Device04_Distance06_Dialect04_3s",
+     "3D_SPK_06985_012_Device06_Distance02_Dialect00_3s"
+    ]
+   ],
+   "06222": [
+    [
+     -0.14647,
+     "3D_SPK_06222_003_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06222_006_Device04_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.12037,
+     "3D_SPK_06222_004_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06222_006_Device04_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.10083,
+     "3D_SPK_06222_005_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06222_006_Device03_Distance00_Dialect00_3s"
+    ]
+   ]
+  }
+ },
+ {
+  "name": "scene_ov3cn_fe",
+  "thr": 0.13765,
+  "n_fn": 38948,
+  "n_fa": 214897,
+  "fn_rate": 18.42,
+  "top_fn_speakers": [
+   {
+    "spk": "06842",
+    "fn": 445,
+    "tot": 588,
+    "rate": 75.7
+   },
+   {
+    "spk": "06832",
+    "fn": 493,
+    "tot": 675,
+    "rate": 73.0
+   },
+   {
+    "spk": "06829",
+    "fn": 99,
+    "tot": 144,
+    "rate": 68.8
+   },
+   {
+    "spk": "06878",
+    "fn": 363,
+    "tot": 588,
+    "rate": 61.7
+   },
+   {
+    "spk": "06820",
+    "fn": 221,
+    "tot": 363,
+    "rate": 60.9
+   },
+   {
+    "spk": "06833",
+    "fn": 136,
+    "tot": 225,
+    "rate": 60.4
+   },
+   {
+    "spk": "06849",
+    "fn": 57,
+    "tot": 100,
+    "rate": 57.0
+   },
+   {
+    "spk": "06852",
+    "fn": 206,
+    "tot": 363,
+    "rate": 56.7
+   },
+   {
+    "spk": "06861",
+    "fn": 56,
+    "tot": 100,
+    "rate": 56.0
+   },
+   {
+    "spk": "06159",
+    "fn": 327,
+    "tot": 588,
+    "rate": 55.6
+   }
+  ],
+  "top_fa_pairs": [
+   {
+    "pair": "06993|08099",
+    "fa": 553
+   },
+   {
+    "pair": "06993|08107",
+    "fa": 550
+   },
+   {
+    "pair": "06974|08099",
+    "fa": 508
+   },
+   {
+    "pair": "06993|08111",
+    "fa": 471
+   },
+   {
+    "pair": "06968|08099",
+    "fa": 434
+   },
+   {
+    "pair": "06993|08117",
+    "fa": 430
+   },
+   {
+    "pair": "06968|08101",
+    "fa": 425
+   },
+   {
+    "pair": "06993|08115",
+    "fa": 425
+   },
+   {
+    "pair": "06987|08099",
+    "fa": 402
+   },
+   {
+    "pair": "06975|08107",
+    "fa": 392
+   }
+  ],
+  "fn_rate_by_test_device": {
+   "Device01": 7.94,
+   "Device02": 18.18,
+   "Device03": 31.06,
+   "Device04": 19.32,
+   "Device05": 7.73,
+   "Device06": 22.76,
+   "Device07": 22.11,
+   "Device08": 7.33
+  },
+  "worst_cases": {
+   "06218": [
+    [
+     -0.1628,
+     "3D_SPK_06218_001_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06218_004_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.15628,
+     "3D_SPK_06218_003_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06218_004_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.1439,
+     "3D_SPK_06218_006_Device07_Distance00_Dialect00_3s",
+     "3D_SPK_06218_012_Device06_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06862": [
+    [
+     -0.17672,
+     "3D_SPK_06862_002_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06862_009_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.17144,
+     "3D_SPK_06862_004_Device06_Distance00_Dialect00_3s",
+     "3D_SPK_06862_009_Device03_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.15465,
+     "3D_SPK_06862_002_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06862_008_Device03_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06839": [
+    [
+     -0.15319,
+     "3D_SPK_06839_001_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06839_005_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.1223,
+     "3D_SPK_06839_005_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06839_005_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.07211,
+     "3D_SPK_06839_002_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06839_005_Device06_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06842": [
+    [
+     -0.16628,
+     "3D_SPK_06842_003_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06842_013_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.14644,
+     "3D_SPK_06842_001_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06842_014_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.13316,
+     "3D_SPK_06842_003_Device03_Distance00_Dialect00_3s",
+     "3D_SPK_06842_008_Device06_Distance00_Dialect00_3s"
+    ]
+   ],
+   "06195": [
+    [
+     -0.17832,
+     "3D_SPK_06195_005_Device07_Distance00_Dialect00_3s",
+     "3D_SPK_06195_010_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.14267,
+     "3D_SPK_06195_005_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06195_010_Device06_Distance00_Dialect00_3s"
+    ],
+    [
+     -0.09544,
+     "3D_SPK_06195_007_Device04_Distance00_Dialect00_3s",
+     "3D_SPK_06195_010_Device06_Distance00_Dialect00_3s"
+    ]
+   ]
+  }
+ }
+]

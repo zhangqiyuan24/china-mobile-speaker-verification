@@ -1,0 +1,76 @@
+[backend] 821 <- checkpoint_best.tar
+[score] 821_raw      noise_0db   hard EER=5.977%（旧 2.239）
+[score] 821_raw      noise_m5db  hard EER=13.000%（旧 6.000）
+[score] 821_fe       noise_0db   hard EER=4.500%（旧 2.000）
+[score] 821_fe       noise_m5db  hard EER=12.500%（旧 5.000）
+[backend] 30k <- checkpoint_best.tar
+[score] 30k_raw      noise_0db   hard EER=6.500%（旧 2.239）
+[score] 30k_raw      noise_m5db  hard EER=13.500%（旧 5.500）
+[score] 30k_fe       noise_0db   hard EER=5.500%（旧 2.239）
+[score] 30k_fe       noise_m5db  hard EER=11.307%（旧 4.761）
+[backend] 90k <- checkpoint_best.tar
+[score] 90k_raw      noise_0db   hard EER=6.500%（旧 2.477）
+[score] 90k_raw      noise_m5db  hard EER=13.261%（旧 5.693）
+[score] 90k_fe       noise_0db   hard EER=5.193%（旧 2.500）
+[score] 90k_fe       noise_m5db  hard EER=11.284%（旧 4.307）
+[backend] soup <- checkpoint_soup_w50.tar
+[score] soup_raw     noise_0db   hard EER=5.500%（旧 2.239）
+[score] soup_raw     noise_m5db  hard EER=13.000%（旧 6.000）
+[score] soup_fe      noise_0db   hard EER=4.500%（旧 2.023）
+[score] soup_fe      noise_m5db  hard EER=11.239%（旧 4.500）
+[backend] p90k <- checkpoint_best.tar
+[score] p90k_raw     noise_0db   hard EER=6.239%（旧 2.500）
+[score] p90k_raw     noise_m5db  hard EER=13.000%（旧 6.045）
+[score] p90k_fe      noise_0db   hard EER=4.500%（旧 2.239）
+[score] p90k_fe      noise_m5db  hard EER=11.284%（旧 5.000）
+[backend] soup5 <- checkpoint_soup5.tar
+[score] tse_soup5    noise_0db   hard EER=4.716%（旧 2.000）
+[score] tse_soup5    noise_m5db  hard EER=11.193%（旧 4.261）
+
+===== hard proxy 汇总（EER%）=====
+member          0dB旧  0dBhard    -5dB旧  -5dBhard
+821_raw        2.239    5.977    6.000    13.000
+821_fe         2.000    4.500    5.000    12.500
+30k_raw        2.239    6.500    5.500    13.500
+30k_fe         2.239    5.500    4.761    11.307
+90k_raw        2.477    6.500    5.693    13.261
+90k_fe         2.500    5.193    4.307    11.284
+soup_raw       2.239    5.500    6.000    13.000
+soup_fe        2.023    4.500    4.500    11.239
+p90k_raw       2.500    6.239    6.045    13.000
+p90k_fe        2.239    4.500    5.000    11.284
+tse_soup5      2.000    4.716    4.261    11.193
+[done] 新锚点 = tse_soup5 hard: 4.716/11.193
+[proxy 侧] /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/scores_hard
+===== noise_0db =====
+member      proxy% official%
+821_raw      5.977    7.6911
+821_fe       4.500    7.5000
+30k_fe       5.500    7.7914
+90k_raw      6.500    8.1959
+90k_fe       5.193    7.9319
+soup_raw     5.500    7.7124
+soup_fe      4.500    7.5104
+p90k_raw     6.239    8.3033
+p90k_fe      4.500    8.0761
+tse_soup5    4.716    7.3817
+  Spearman rho = 0.624 (n=10)
+  proxy 均值 5.312 vs 官方均值 7.809  系统性偏差 +2.497pp
+  proxy 最优成员 = 821_fe / 官方最优成员 = tse_soup5  不一致
+===== noise_m5db =====
+member      proxy% official%
+821_raw     13.000    9.8784
+821_fe      12.500    9.5085
+30k_fe      11.307    9.7834
+90k_raw     13.261   10.2786
+90k_fe      11.284    9.8391
+soup_raw    13.000    9.8121
+soup_fe     11.239    9.4516
+p90k_raw    13.000   10.5280
+p90k_fe     11.284   10.1770
+tse_soup5   11.193    9.3160
+  Spearman rho = 0.721 (n=10)
+  proxy 均值 12.107 vs 官方均值 9.857  系统性偏差 -2.250pp
+  proxy 最优成员 = tse_soup5 / 官方最优成员 = tse_soup5  一致
+
+结论: rho(0dB)=0.62, rho(-5dB)=0.72 —— 排序弱相关, 选点需谨慎

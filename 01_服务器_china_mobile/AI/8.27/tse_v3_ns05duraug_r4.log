@@ -1,0 +1,496 @@
+[labels] 90000 utts / 9900 spks
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[init] 续训自 /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v3_ns05duraug_r3/checkpoint_best.tar
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[proto] 9900 行 × 512 维 (τ=0.3, K=8)
+[train] 30000 样本 15000 it/ep × 3 ep, lambda_ce=1.0, lambda_spk=0.3, lambda_ns=0.5, dur_aug=ON seg=200 it, 3/2/1s @ 0.5/0.25/0.25 -> /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v3_ns05duraug_r4
+[cond] 100 spk 嵌入(soup5, 均值+L2)
+  [dur] ep1 it0 -> 3s 段
+  ep1 it 200/15000 L=1.0472 se=0.0594 ce=0.8888 spk=0.1655 ns=0.0988 hardcos=0.3987 cos=0.8345 dur=3s
+  [dur] ep1 it200 -> 1s 段
+  ep1 it 400/15000 L=1.0330 se=0.0622 ce=0.8698 spk=0.1700 ns=0.0999 hardcos=0.3998 cos=0.8300 dur=1s
+  [dur] ep1 it400 -> 1s 段
+  ep1 it 600/15000 L=1.0691 se=0.0608 ce=0.9065 spk=0.1789 ns=0.0963 hardcos=0.3961 cos=0.8211 dur=1s
+  [dur] ep1 it600 -> 3s 段
+  ep1 it 800/15000 L=1.0637 se=0.0597 ce=0.9019 spk=0.1742 ns=0.0997 hardcos=0.3996 cos=0.8258 dur=3s
+  [dur] ep1 it800 -> 1s 段
+  ep1 it 1000/15000 L=0.9381 se=0.0626 ce=0.7782 spk=0.1642 ns=0.0961 hardcos=0.3961 cos=0.8358 dur=1s
+  [dur] ep1 it1000 -> 2s 段
+  ep1 it 1200/15000 L=1.2211 se=0.0595 ce=1.0587 spk=0.1762 ns=0.1001 hardcos=0.3999 cos=0.8238 dur=2s
+  [dur] ep1 it1200 -> 3s 段
+  ep1 it 1400/15000 L=1.0477 se=0.0618 ce=0.8839 spk=0.1766 ns=0.0981 hardcos=0.3980 cos=0.8234 dur=3s
+  [dur] ep1 it1400 -> 1s 段
+  ep1 it 1600/15000 L=0.9755 se=0.0596 ce=0.8159 spk=0.1656 ns=0.1007 hardcos=0.4007 cos=0.8344 dur=1s
+  [dur] ep1 it1600 -> 3s 段
+  ep1 it 1800/15000 L=0.9908 se=0.0593 ce=0.8350 spk=0.1582 ns=0.0979 hardcos=0.3979 cos=0.8418 dur=3s
+  [dur] ep1 it1800 -> 3s 段
+  ep1 it 2000/15000 L=0.8641 se=0.0607 ce=0.7066 spk=0.1591 ns=0.0984 hardcos=0.3983 cos=0.8409 dur=3s
+  [dur] ep1 it2000 -> 3s 段
+  ep1 it 2200/15000 L=0.9661 se=0.0593 ce=0.8104 spk=0.1574 ns=0.0982 hardcos=0.3981 cos=0.8426 dur=3s
+  [dur] ep1 it2200 -> 2s 段
+  ep1 it 2400/15000 L=0.9895 se=0.0600 ce=0.8311 spk=0.1644 ns=0.0981 hardcos=0.3980 cos=0.8356 dur=2s
+  [dur] ep1 it2400 -> 3s 段
+  ep1 it 2600/15000 L=1.1561 se=0.0585 ce=1.0001 spk=0.1604 ns=0.0988 hardcos=0.3987 cos=0.8396 dur=3s
+  [dur] ep1 it2600 -> 2s 段
+  ep1 it 2800/15000 L=1.0942 se=0.0610 ce=0.9307 spk=0.1771 ns=0.0987 hardcos=0.3986 cos=0.8229 dur=2s
+  [dur] ep1 it2800 -> 1s 段
+  ep1 it 3000/15000 L=0.9219 se=0.0582 ce=0.7672 spk=0.1597 ns=0.0972 hardcos=0.3971 cos=0.8403 dur=1s
+  [dur] ep1 it3000 -> 2s 段
+  ep1 it 3200/15000 L=1.0929 se=0.0590 ce=0.9321 spk=0.1721 ns=0.1004 hardcos=0.4003 cos=0.8279 dur=2s
+  [dur] ep1 it3200 -> 1s 段
+  ep1 it 3400/15000 L=1.1524 se=0.0591 ce=0.9928 spk=0.1687 ns=0.0996 hardcos=0.3994 cos=0.8313 dur=1s
+  [dur] ep1 it3400 -> 2s 段
+  ep1 it 3600/15000 L=1.1722 se=0.0613 ce=1.0103 spk=0.1722 ns=0.0978 hardcos=0.3976 cos=0.8278 dur=2s
+  [dur] ep1 it3600 -> 1s 段
+  ep1 it 3800/15000 L=0.9983 se=0.0606 ce=0.8375 spk=0.1700 ns=0.0984 hardcos=0.3984 cos=0.8300 dur=1s
+  [dur] ep1 it3800 -> 3s 段
+  ep1 it 4000/15000 L=1.1167 se=0.0582 ce=0.9608 spk=0.1599 ns=0.0996 hardcos=0.3995 cos=0.8401 dur=3s
+  [dur] ep1 it4000 -> 3s 段
+  ep1 it 4200/15000 L=1.0050 se=0.0606 ce=0.8437 spk=0.1736 ns=0.0973 hardcos=0.3972 cos=0.8264 dur=3s
+  [dur] ep1 it4200 -> 3s 段
+  ep1 it 4400/15000 L=0.8702 se=0.0604 ce=0.7108 spk=0.1626 ns=0.1005 hardcos=0.4005 cos=0.8374 dur=3s
+  [dur] ep1 it4400 -> 3s 段
+  ep1 it 4600/15000 L=0.9780 se=0.0597 ce=0.8193 spk=0.1714 ns=0.0953 hardcos=0.3952 cos=0.8286 dur=3s
+  [dur] ep1 it4600 -> 1s 段
+  ep1 it 4800/15000 L=0.9210 se=0.0609 ce=0.7614 spk=0.1636 ns=0.0992 hardcos=0.3991 cos=0.8364 dur=1s
+  [dur] ep1 it4800 -> 2s 段
+  ep1 it 5000/15000 L=1.0423 se=0.0616 ce=0.8800 spk=0.1697 ns=0.0995 hardcos=0.3994 cos=0.8303 dur=2s
+  [dur] ep1 it5000 -> 3s 段
+  ep1 it 5200/15000 L=0.8855 se=0.0607 ce=0.7260 spk=0.1626 ns=0.0999 hardcos=0.3999 cos=0.8374 dur=3s
+  [dur] ep1 it5200 -> 2s 段
+  ep1 it 5400/15000 L=1.0181 se=0.0608 ce=0.8580 spk=0.1637 ns=0.1003 hardcos=0.4002 cos=0.8363 dur=2s
+  [dur] ep1 it5400 -> 3s 段
+  ep1 it 5600/15000 L=1.2347 se=0.0618 ce=1.0700 spk=0.1789 ns=0.0985 hardcos=0.3984 cos=0.8211 dur=3s
+  [dur] ep1 it5600 -> 3s 段
+  ep1 it 5800/15000 L=1.0310 se=0.0603 ce=0.8716 spk=0.1644 ns=0.0995 hardcos=0.3993 cos=0.8356 dur=3s
+  [dur] ep1 it5800 -> 3s 段
+  ep1 it 6000/15000 L=0.8788 se=0.0629 ce=0.7175 spk=0.1626 ns=0.0993 hardcos=0.3992 cos=0.8374 dur=3s
+  [dur] ep1 it6000 -> 3s 段
+  ep1 it 6200/15000 L=1.0791 se=0.0608 ce=0.9190 spk=0.1685 ns=0.0974 hardcos=0.3973 cos=0.8315 dur=3s
+  [dur] ep1 it6200 -> 3s 段
+  ep1 it 6400/15000 L=1.0466 se=0.0611 ce=0.8837 spk=0.1698 ns=0.1018 hardcos=0.4017 cos=0.8302 dur=3s
+  [dur] ep1 it6400 -> 2s 段
+  ep1 it 6600/15000 L=0.9239 se=0.0606 ce=0.7650 spk=0.1662 ns=0.0968 hardcos=0.3967 cos=0.8338 dur=2s
+  [dur] ep1 it6600 -> 2s 段
+  ep1 it 6800/15000 L=1.0516 se=0.0625 ce=0.8905 spk=0.1689 ns=0.0958 hardcos=0.3957 cos=0.8311 dur=2s
+  [dur] ep1 it6800 -> 3s 段
+  ep1 it 7000/15000 L=1.1214 se=0.0601 ce=0.9601 spk=0.1752 ns=0.0970 hardcos=0.3969 cos=0.8248 dur=3s
+  [dur] ep1 it7000 -> 1s 段
+  ep1 it 7200/15000 L=1.0043 se=0.0619 ce=0.8478 spk=0.1522 ns=0.0980 hardcos=0.3978 cos=0.8478 dur=1s
+  [dur] ep1 it7200 -> 3s 段
+  ep1 it 7400/15000 L=1.2845 se=0.0588 ce=1.1247 spk=0.1690 ns=0.1005 hardcos=0.4002 cos=0.8310 dur=3s
+  [dur] ep1 it7400 -> 3s 段
+  ep1 it 7600/15000 L=1.1644 se=0.0601 ce=1.0038 spk=0.1712 ns=0.0983 hardcos=0.3982 cos=0.8288 dur=3s
+  [dur] ep1 it7600 -> 1s 段
+  ep1 it 7800/15000 L=1.1850 se=0.0596 ce=1.0235 spk=0.1780 ns=0.0969 hardcos=0.3967 cos=0.8220 dur=1s
+  [dur] ep1 it7800 -> 3s 段
+  ep1 it 8000/15000 L=1.2091 se=0.0604 ce=1.0466 spk=0.1808 ns=0.0957 hardcos=0.3956 cos=0.8192 dur=3s
+  [dur] ep1 it8000 -> 3s 段
+  ep1 it 8200/15000 L=1.0412 se=0.0601 ce=0.8792 spk=0.1754 ns=0.0986 hardcos=0.3982 cos=0.8246 dur=3s
+  [dur] ep1 it8200 -> 2s 段
+  ep1 it 8400/15000 L=0.9386 se=0.0594 ce=0.7802 spk=0.1677 ns=0.0975 hardcos=0.3974 cos=0.8323 dur=2s
+  [dur] ep1 it8400 -> 3s 段
+  ep1 it 8600/15000 L=0.8810 se=0.0598 ce=0.7246 spk=0.1570 ns=0.0991 hardcos=0.3990 cos=0.8430 dur=3s
+  [dur] ep1 it8600 -> 3s 段
+  ep1 it 8800/15000 L=0.8494 se=0.0624 ce=0.6857 spk=0.1724 ns=0.0993 hardcos=0.3993 cos=0.8276 dur=3s
+  [dur] ep1 it8800 -> 2s 段
+  ep1 it 9000/15000 L=0.9302 se=0.0605 ce=0.7739 spk=0.1576 ns=0.0971 hardcos=0.3970 cos=0.8424 dur=2s
+  [dur] ep1 it9000 -> 3s 段
+  ep1 it 9200/15000 L=1.0297 se=0.0617 ce=0.8676 spk=0.1665 ns=0.1008 hardcos=0.4007 cos=0.8335 dur=3s
+  [dur] ep1 it9200 -> 3s 段
+  ep1 it 9400/15000 L=1.1120 se=0.0638 ce=0.9483 spk=0.1690 ns=0.0984 hardcos=0.3983 cos=0.8310 dur=3s
+  [dur] ep1 it9400 -> 1s 段
+  ep1 it 9600/15000 L=1.0222 se=0.0596 ce=0.8630 spk=0.1680 ns=0.0984 hardcos=0.3982 cos=0.8320 dur=1s
+  [dur] ep1 it9600 -> 3s 段
+  ep1 it 9800/15000 L=0.8441 se=0.0626 ce=0.6865 spk=0.1546 ns=0.0973 hardcos=0.3972 cos=0.8454 dur=3s
+  [dur] ep1 it9800 -> 3s 段
+  ep1 it 10000/15000 L=1.0132 se=0.0604 ce=0.8533 spk=0.1670 ns=0.0988 hardcos=0.3987 cos=0.8330 dur=3s
+  [dur] ep1 it10000 -> 3s 段
+  ep1 it 10200/15000 L=1.3383 se=0.0604 ce=1.1755 spk=0.1813 ns=0.0960 hardcos=0.3958 cos=0.8187 dur=3s
+  [dur] ep1 it10200 -> 1s 段
+  ep1 it 10400/15000 L=0.8649 se=0.0597 ce=0.7062 spk=0.1653 ns=0.0988 hardcos=0.3987 cos=0.8347 dur=1s
+  [dur] ep1 it10400 -> 2s 段
+  ep1 it 10600/15000 L=0.9281 se=0.0624 ce=0.7682 spk=0.1601 ns=0.0989 hardcos=0.3988 cos=0.8399 dur=2s
+  [dur] ep1 it10600 -> 3s 段
+  ep1 it 10800/15000 L=0.8867 se=0.0631 ce=0.7273 spk=0.1556 ns=0.0992 hardcos=0.3991 cos=0.8444 dur=3s
+  [dur] ep1 it10800 -> 3s 段
+  ep1 it 11000/15000 L=0.9659 se=0.0625 ce=0.8057 spk=0.1585 ns=0.1003 hardcos=0.4003 cos=0.8415 dur=3s
+  [dur] ep1 it11000 -> 3s 段
+  ep1 it 11200/15000 L=0.8970 se=0.0624 ce=0.7367 spk=0.1637 ns=0.0976 hardcos=0.3974 cos=0.8363 dur=3s
+  [dur] ep1 it11200 -> 2s 段
+  ep1 it 11400/15000 L=0.9221 se=0.0623 ce=0.7633 spk=0.1607 ns=0.0964 hardcos=0.3961 cos=0.8393 dur=2s
+  [dur] ep1 it11400 -> 3s 段
+  ep1 it 11600/15000 L=0.7549 se=0.0592 ce=0.5987 spk=0.1557 ns=0.1006 hardcos=0.4006 cos=0.8443 dur=3s
+  [dur] ep1 it11600 -> 3s 段
+  ep1 it 11800/15000 L=0.8733 se=0.0584 ce=0.7160 spk=0.1653 ns=0.0986 hardcos=0.3986 cos=0.8347 dur=3s
+  [dur] ep1 it11800 -> 3s 段
+  ep1 it 12000/15000 L=0.9811 se=0.0593 ce=0.8230 spk=0.1638 ns=0.0993 hardcos=0.3991 cos=0.8362 dur=3s
+  [dur] ep1 it12000 -> 3s 段
+  ep1 it 12200/15000 L=1.0842 se=0.0592 ce=0.9265 spk=0.1695 ns=0.0955 hardcos=0.3953 cos=0.8305 dur=3s
+  [dur] ep1 it12200 -> 2s 段
+  ep1 it 12400/15000 L=1.2521 se=0.0593 ce=1.0938 spk=0.1702 ns=0.0959 hardcos=0.3956 cos=0.8298 dur=2s
+  [dur] ep1 it12400 -> 1s 段
+  ep1 it 12600/15000 L=0.7968 se=0.0604 ce=0.6358 spk=0.1687 ns=0.0999 hardcos=0.3998 cos=0.8313 dur=1s
+  [dur] ep1 it12600 -> 1s 段
+  ep1 it 12800/15000 L=1.0776 se=0.0597 ce=0.9186 spk=0.1648 ns=0.0998 hardcos=0.3997 cos=0.8352 dur=1s
+  [dur] ep1 it12800 -> 3s 段
+  ep1 it 13000/15000 L=1.2433 se=0.0579 ce=1.0837 spk=0.1771 ns=0.0972 hardcos=0.3971 cos=0.8229 dur=3s
+  [dur] ep1 it13000 -> 3s 段
+  ep1 it 13200/15000 L=1.0640 se=0.0598 ce=0.9058 spk=0.1627 ns=0.0993 hardcos=0.3991 cos=0.8373 dur=3s
+  [dur] ep1 it13200 -> 1s 段
+  ep1 it 13400/15000 L=0.8771 se=0.0581 ce=0.7215 spk=0.1605 ns=0.0986 hardcos=0.3985 cos=0.8395 dur=1s
+  [dur] ep1 it13400 -> 3s 段
+  ep1 it 13600/15000 L=1.0432 se=0.0598 ce=0.8839 spk=0.1633 ns=0.1010 hardcos=0.4009 cos=0.8367 dur=3s
+  [dur] ep1 it13600 -> 3s 段
+  ep1 it 13800/15000 L=1.1650 se=0.0604 ce=1.0008 spk=0.1762 ns=0.1019 hardcos=0.4019 cos=0.8238 dur=3s
+  [dur] ep1 it13800 -> 2s 段
+  ep1 it 14000/15000 L=1.0317 se=0.0592 ce=0.8719 spk=0.1753 ns=0.0960 hardcos=0.3958 cos=0.8247 dur=2s
+  [dur] ep1 it14000 -> 2s 段
+  ep1 it 14200/15000 L=0.9588 se=0.0619 ce=0.7988 spk=0.1611 ns=0.0996 hardcos=0.3995 cos=0.8389 dur=2s
+  [dur] ep1 it14200 -> 2s 段
+  ep1 it 14400/15000 L=0.9309 se=0.0585 ce=0.7730 spk=0.1667 ns=0.0989 hardcos=0.3989 cos=0.8333 dur=2s
+  [dur] ep1 it14400 -> 3s 段
+  ep1 it 14600/15000 L=1.0440 se=0.0591 ce=0.8835 spk=0.1737 ns=0.0987 hardcos=0.3986 cos=0.8263 dur=3s
+  [dur] ep1 it14600 -> 3s 段
+  ep1 it 14800/15000 L=1.0226 se=0.0607 ce=0.8626 spk=0.1685 ns=0.0976 hardcos=0.3975 cos=0.8315 dur=3s
+  [dur] ep1 it14800 -> 3s 段
+  ep1 it 15000/15000 L=0.9281 se=0.0597 ce=0.7703 spk=0.1634 ns=0.0981 hardcos=0.3981 cos=0.8366 dur=3s
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v4_ns05duraug_r4_ep1/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v4_ns05duraug_r4_ep1/noise_m5db
+  [val-hard] ep1 0db=2.000 m5db=4.261 avg=3.131 (门槛①: base avg − 0.3 以内)
+  [val-hard] 新最优 avg=3.131 -> checkpoint_best.tar
+  [dur] ep2 it0 -> 3s 段
+  ep2 it 200/15000 L=1.0024 se=0.0608 ce=0.8437 spk=0.1603 ns=0.0995 hardcos=0.3994 cos=0.8397 dur=3s
+  [dur] ep2 it200 -> 2s 段
+  ep2 it 400/15000 L=1.0854 se=0.0607 ce=0.9251 spk=0.1688 ns=0.0979 hardcos=0.3978 cos=0.8312 dur=2s
+  [dur] ep2 it400 -> 3s 段
+  ep2 it 600/15000 L=0.8929 se=0.0608 ce=0.7349 spk=0.1588 ns=0.0989 hardcos=0.3989 cos=0.8412 dur=3s
+  [dur] ep2 it600 -> 3s 段
+  ep2 it 800/15000 L=0.8895 se=0.0589 ce=0.7307 spk=0.1622 ns=0.1025 hardcos=0.4024 cos=0.8378 dur=3s
+  [dur] ep2 it800 -> 1s 段
+  ep2 it 1000/15000 L=0.9876 se=0.0589 ce=0.8287 spk=0.1716 ns=0.0971 hardcos=0.3969 cos=0.8284 dur=1s
+  [dur] ep2 it1000 -> 3s 段
+  ep2 it 1200/15000 L=1.0197 se=0.0618 ce=0.8597 spk=0.1607 ns=0.1000 hardcos=0.3998 cos=0.8393 dur=3s
+  [dur] ep2 it1200 -> 1s 段
+  ep2 it 1400/15000 L=1.2082 se=0.0608 ce=1.0454 spk=0.1767 ns=0.0979 hardcos=0.3977 cos=0.8233 dur=1s
+  [dur] ep2 it1400 -> 3s 段
+  ep2 it 1600/15000 L=0.9074 se=0.0593 ce=0.7502 spk=0.1635 ns=0.0978 hardcos=0.3976 cos=0.8365 dur=3s
+  [dur] ep2 it1600 -> 1s 段
+  ep2 it 1800/15000 L=1.0761 se=0.0586 ce=0.9188 spk=0.1667 ns=0.0973 hardcos=0.3971 cos=0.8333 dur=1s
+  [dur] ep2 it1800 -> 2s 段
+  ep2 it 2000/15000 L=0.9668 se=0.0607 ce=0.8077 spk=0.1628 ns=0.0991 hardcos=0.3990 cos=0.8372 dur=2s
+  [dur] ep2 it2000 -> 2s 段
+  ep2 it 2200/15000 L=1.0968 se=0.0601 ce=0.9371 spk=0.1664 ns=0.0995 hardcos=0.3994 cos=0.8336 dur=2s
+  [dur] ep2 it2200 -> 2s 段
+  ep2 it 2400/15000 L=1.0824 se=0.0606 ce=0.9188 spk=0.1718 ns=0.1030 hardcos=0.4029 cos=0.8282 dur=2s
+  [dur] ep2 it2400 -> 3s 段
+  ep2 it 2600/15000 L=1.0752 se=0.0615 ce=0.9118 spk=0.1742 ns=0.0994 hardcos=0.3993 cos=0.8258 dur=3s
+  [dur] ep2 it2600 -> 3s 段
+  ep2 it 2800/15000 L=0.9289 se=0.0606 ce=0.7703 spk=0.1617 ns=0.0989 hardcos=0.3988 cos=0.8383 dur=3s
+  [dur] ep2 it2800 -> 2s 段
+  ep2 it 3000/15000 L=0.9648 se=0.0642 ce=0.8019 spk=0.1652 ns=0.0983 hardcos=0.3980 cos=0.8348 dur=2s
+  [dur] ep2 it3000 -> 3s 段
+  ep2 it 3200/15000 L=0.9574 se=0.0613 ce=0.7980 spk=0.1667 ns=0.0961 hardcos=0.3960 cos=0.8333 dur=3s
+  [dur] ep2 it3200 -> 3s 段
+  ep2 it 3400/15000 L=1.0276 se=0.0591 ce=0.8677 spk=0.1707 ns=0.0991 hardcos=0.3991 cos=0.8293 dur=3s
+  [dur] ep2 it3400 -> 1s 段
+  ep2 it 3600/15000 L=1.0526 se=0.0595 ce=0.8966 spk=0.1595 ns=0.0973 hardcos=0.3971 cos=0.8405 dur=1s
+  [dur] ep2 it3600 -> 2s 段
+  ep2 it 3800/15000 L=1.0844 se=0.0611 ce=0.9272 spk=0.1561 ns=0.0985 hardcos=0.3984 cos=0.8439 dur=2s
+  [dur] ep2 it3800 -> 3s 段
+  ep2 it 4000/15000 L=1.0474 se=0.0598 ce=0.8875 spk=0.1759 ns=0.0947 hardcos=0.3945 cos=0.8241 dur=3s
+  [dur] ep2 it4000 -> 2s 段
+  ep2 it 4200/15000 L=0.9785 se=0.0638 ce=0.8177 spk=0.1565 ns=0.1000 hardcos=0.4000 cos=0.8435 dur=2s
+  [dur] ep2 it4200 -> 3s 段
+  ep2 it 4400/15000 L=0.9253 se=0.0609 ce=0.7671 spk=0.1586 ns=0.0994 hardcos=0.3992 cos=0.8414 dur=3s
+  [dur] ep2 it4400 -> 1s 段
+  ep2 it 4600/15000 L=1.1334 se=0.0611 ce=0.9719 spk=0.1710 ns=0.0982 hardcos=0.3980 cos=0.8290 dur=1s
+  [dur] ep2 it4600 -> 3s 段
+  ep2 it 4800/15000 L=1.0457 se=0.0601 ce=0.8879 spk=0.1604 ns=0.0991 hardcos=0.3990 cos=0.8396 dur=3s
+  [dur] ep2 it4800 -> 1s 段
+  ep2 it 5000/15000 L=0.9778 se=0.0585 ce=0.8211 spk=0.1682 ns=0.0955 hardcos=0.3954 cos=0.8318 dur=1s
+  [dur] ep2 it5000 -> 2s 段
+  ep2 it 5200/15000 L=0.9620 se=0.0601 ce=0.8000 spk=0.1755 ns=0.0984 hardcos=0.3984 cos=0.8245 dur=2s
+  [dur] ep2 it5200 -> 3s 段
+  ep2 it 5400/15000 L=0.9096 se=0.0588 ce=0.7537 spk=0.1589 ns=0.0989 hardcos=0.3988 cos=0.8411 dur=3s
+  [dur] ep2 it5400 -> 3s 段
+  ep2 it 5600/15000 L=1.1831 se=0.0601 ce=1.0233 spk=0.1699 ns=0.0975 hardcos=0.3972 cos=0.8301 dur=3s
+  [dur] ep2 it5600 -> 1s 段
+  ep2 it 5800/15000 L=1.0100 se=0.0579 ce=0.8535 spk=0.1632 ns=0.0992 hardcos=0.3989 cos=0.8368 dur=1s
+  [dur] ep2 it5800 -> 2s 段
+  ep2 it 6000/15000 L=0.9341 se=0.0586 ce=0.7763 spk=0.1653 ns=0.0992 hardcos=0.3991 cos=0.8347 dur=2s
+  [dur] ep2 it6000 -> 3s 段
+  ep2 it 6200/15000 L=1.2338 se=0.0585 ce=1.0776 spk=0.1663 ns=0.0955 hardcos=0.3951 cos=0.8337 dur=3s
+  [dur] ep2 it6200 -> 3s 段
+  ep2 it 6400/15000 L=1.1174 se=0.0587 ce=0.9600 spk=0.1682 ns=0.0966 hardcos=0.3964 cos=0.8318 dur=3s
+  [dur] ep2 it6400 -> 3s 段
+  ep2 it 6600/15000 L=1.2425 se=0.0598 ce=1.0823 spk=0.1669 ns=0.1008 hardcos=0.4007 cos=0.8331 dur=3s
+  [dur] ep2 it6600 -> 3s 段
+  ep2 it 6800/15000 L=1.0157 se=0.0588 ce=0.8601 spk=0.1577 ns=0.0990 hardcos=0.3989 cos=0.8423 dur=3s
+  [dur] ep2 it6800 -> 2s 段
+  ep2 it 7000/15000 L=0.8621 se=0.0625 ce=0.7005 spk=0.1636 ns=0.1001 hardcos=0.4000 cos=0.8364 dur=2s
+  [dur] ep2 it7000 -> 2s 段
+  ep2 it 7200/15000 L=0.9748 se=0.0604 ce=0.8164 spk=0.1631 ns=0.0982 hardcos=0.3981 cos=0.8369 dur=2s
+  [dur] ep2 it7200 -> 3s 段
+  ep2 it 7400/15000 L=1.2177 se=0.0613 ce=1.0535 spk=0.1788 ns=0.0985 hardcos=0.3984 cos=0.8212 dur=3s
+  [dur] ep2 it7400 -> 2s 段
+  ep2 it 7600/15000 L=0.9271 se=0.0622 ce=0.7657 spk=0.1669 ns=0.0982 hardcos=0.3981 cos=0.8331 dur=2s
+  [dur] ep2 it7600 -> 1s 段
+  ep2 it 7800/15000 L=0.9254 se=0.0587 ce=0.7695 spk=0.1611 ns=0.0977 hardcos=0.3975 cos=0.8389 dur=1s
+  [dur] ep2 it7800 -> 1s 段
+  ep2 it 8000/15000 L=1.0239 se=0.0592 ce=0.8623 spk=0.1763 ns=0.0989 hardcos=0.3988 cos=0.8237 dur=1s
+  [dur] ep2 it8000 -> 3s 段
+  ep2 it 8200/15000 L=0.8968 se=0.0620 ce=0.7386 spk=0.1594 ns=0.0966 hardcos=0.3966 cos=0.8406 dur=3s
+  [dur] ep2 it8200 -> 3s 段
+  ep2 it 8400/15000 L=0.8877 se=0.0606 ce=0.7276 spk=0.1646 ns=0.1001 hardcos=0.4001 cos=0.8354 dur=3s
+  [dur] ep2 it8400 -> 1s 段
+  ep2 it 8600/15000 L=1.0120 se=0.0593 ce=0.8546 spk=0.1695 ns=0.0946 hardcos=0.3944 cos=0.8305 dur=1s
+  [dur] ep2 it8600 -> 3s 段
+  ep2 it 8800/15000 L=0.9511 se=0.0594 ce=0.7941 spk=0.1581 ns=0.1005 hardcos=0.4003 cos=0.8419 dur=3s
+  [dur] ep2 it8800 -> 3s 段
+  ep2 it 9000/15000 L=1.0180 se=0.0600 ce=0.8600 spk=0.1627 ns=0.0984 hardcos=0.3982 cos=0.8373 dur=3s
+  [dur] ep2 it9000 -> 1s 段
+  ep2 it 9200/15000 L=1.0169 se=0.0613 ce=0.8549 spk=0.1717 ns=0.0984 hardcos=0.3984 cos=0.8283 dur=1s
+  [dur] ep2 it9200 -> 3s 段
+  ep2 it 9400/15000 L=1.1782 se=0.0614 ce=1.0190 spk=0.1669 ns=0.0955 hardcos=0.3953 cos=0.8331 dur=3s
+  [dur] ep2 it9400 -> 2s 段
+  ep2 it 9600/15000 L=0.8782 se=0.0590 ce=0.7224 spk=0.1536 ns=0.1014 hardcos=0.4012 cos=0.8464 dur=2s
+  [dur] ep2 it9600 -> 2s 段
+  ep2 it 9800/15000 L=1.0714 se=0.0606 ce=0.9079 spk=0.1818 ns=0.0968 hardcos=0.3967 cos=0.8182 dur=2s
+  [dur] ep2 it9800 -> 3s 段
+  ep2 it 10000/15000 L=1.0177 se=0.0592 ce=0.8607 spk=0.1621 ns=0.0982 hardcos=0.3981 cos=0.8379 dur=3s
+  [dur] ep2 it10000 -> 3s 段
+  ep2 it 10200/15000 L=0.9441 se=0.0599 ce=0.7849 spk=0.1667 ns=0.0986 hardcos=0.3985 cos=0.8333 dur=3s
+  [dur] ep2 it10200 -> 3s 段
+  ep2 it 10400/15000 L=1.1232 se=0.0583 ce=0.9673 spk=0.1647 ns=0.0965 hardcos=0.3963 cos=0.8353 dur=3s
+  [dur] ep2 it10400 -> 1s 段
+  ep2 it 10600/15000 L=1.0909 se=0.0582 ce=0.9313 spk=0.1719 ns=0.0996 hardcos=0.3995 cos=0.8281 dur=1s
+  [dur] ep2 it10600 -> 3s 段
+  ep2 it 10800/15000 L=1.0879 se=0.0578 ce=0.9288 spk=0.1758 ns=0.0970 hardcos=0.3969 cos=0.8242 dur=3s
+  [dur] ep2 it10800 -> 3s 段
+  ep2 it 11000/15000 L=1.0571 se=0.0604 ce=0.8969 spk=0.1714 ns=0.0967 hardcos=0.3964 cos=0.8286 dur=3s
+  [dur] ep2 it11000 -> 1s 段
+  ep2 it 11200/15000 L=1.1626 se=0.0616 ce=1.0000 spk=0.1732 ns=0.0979 hardcos=0.3979 cos=0.8268 dur=1s
+  [dur] ep2 it11200 -> 3s 段
+  ep2 it 11400/15000 L=1.0032 se=0.0599 ce=0.8406 spk=0.1758 ns=0.0999 hardcos=0.3999 cos=0.8242 dur=3s
+  [dur] ep2 it11400 -> 3s 段
+  ep2 it 11600/15000 L=0.8225 se=0.0611 ce=0.6648 spk=0.1606 ns=0.0968 hardcos=0.3967 cos=0.8394 dur=3s
+  [dur] ep2 it11600 -> 2s 段
+  ep2 it 11800/15000 L=0.9567 se=0.0622 ce=0.7937 spk=0.1671 ns=0.1014 hardcos=0.4014 cos=0.8329 dur=2s
+  [dur] ep2 it11800 -> 3s 段
+  ep2 it 12000/15000 L=1.0046 se=0.0610 ce=0.8440 spk=0.1677 ns=0.0986 hardcos=0.3985 cos=0.8323 dur=3s
+  [dur] ep2 it12000 -> 3s 段
+  ep2 it 12200/15000 L=0.7512 se=0.0613 ce=0.5921 spk=0.1585 ns=0.1006 hardcos=0.4005 cos=0.8415 dur=3s
+  [dur] ep2 it12200 -> 2s 段
+  ep2 it 12400/15000 L=1.0268 se=0.0601 ce=0.8664 spk=0.1703 ns=0.0983 hardcos=0.3981 cos=0.8297 dur=2s
+  [dur] ep2 it12400 -> 1s 段
+  ep2 it 12600/15000 L=0.9038 se=0.0596 ce=0.7486 spk=0.1556 ns=0.0979 hardcos=0.3978 cos=0.8444 dur=1s
+  [dur] ep2 it12600 -> 3s 段
+  ep2 it 12800/15000 L=1.0327 se=0.0589 ce=0.8746 spk=0.1691 ns=0.0970 hardcos=0.3969 cos=0.8309 dur=3s
+  [dur] ep2 it12800 -> 3s 段
+  ep2 it 13000/15000 L=1.1592 se=0.0606 ce=0.9981 spk=0.1677 ns=0.1005 hardcos=0.4003 cos=0.8323 dur=3s
+  [dur] ep2 it13000 -> 3s 段
+  ep2 it 13200/15000 L=0.9293 se=0.0605 ce=0.7698 spk=0.1692 ns=0.0967 hardcos=0.3966 cos=0.8308 dur=3s
+  [dur] ep2 it13200 -> 3s 段
+  ep2 it 13400/15000 L=0.8943 se=0.0597 ce=0.7347 spk=0.1684 ns=0.0987 hardcos=0.3986 cos=0.8316 dur=3s
+  [dur] ep2 it13400 -> 3s 段
+  ep2 it 13600/15000 L=1.0746 se=0.0609 ce=0.9149 spk=0.1675 ns=0.0973 hardcos=0.3971 cos=0.8325 dur=3s
+  [dur] ep2 it13600 -> 2s 段
+  ep2 it 13800/15000 L=0.9817 se=0.0579 ce=0.8266 spk=0.1588 ns=0.0990 hardcos=0.3988 cos=0.8412 dur=2s
+  [dur] ep2 it13800 -> 3s 段
+  ep2 it 14000/15000 L=0.9356 se=0.0589 ce=0.7782 spk=0.1607 ns=0.1007 hardcos=0.4006 cos=0.8393 dur=3s
+  [dur] ep2 it14000 -> 3s 段
+  ep2 it 14200/15000 L=0.8949 se=0.0586 ce=0.7370 spk=0.1663 ns=0.0989 hardcos=0.3989 cos=0.8337 dur=3s
+  [dur] ep2 it14200 -> 1s 段
+  ep2 it 14400/15000 L=1.0248 se=0.0617 ce=0.8634 spk=0.1707 ns=0.0971 hardcos=0.3970 cos=0.8293 dur=1s
+  [dur] ep2 it14400 -> 1s 段
+  ep2 it 14600/15000 L=0.7615 se=0.0582 ce=0.6064 spk=0.1614 ns=0.0972 hardcos=0.3970 cos=0.8386 dur=1s
+  [dur] ep2 it14600 -> 3s 段
+  ep2 it 14800/15000 L=0.9343 se=0.0604 ce=0.7740 spk=0.1645 ns=0.1011 hardcos=0.4009 cos=0.8355 dur=3s
+  [dur] ep2 it14800 -> 3s 段
+  ep2 it 15000/15000 L=0.8691 se=0.0619 ce=0.7093 spk=0.1625 ns=0.0984 hardcos=0.3983 cos=0.8375 dur=3s
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v4_ns05duraug_r4_ep2/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v4_ns05duraug_r4_ep2/noise_m5db
+  [val-hard] ep2 0db=1.761 m5db=4.261 avg=3.011 (门槛①: base avg − 0.3 以内)
+  [val-hard] 新最优 avg=3.011 -> checkpoint_best.tar
+  [dur] ep3 it0 -> 3s 段
+  ep3 it 200/15000 L=1.0063 se=0.0595 ce=0.8458 spk=0.1721 ns=0.0987 hardcos=0.3986 cos=0.8279 dur=3s
+  [dur] ep3 it200 -> 3s 段
+  ep3 it 400/15000 L=0.8914 se=0.0595 ce=0.7342 spk=0.1619 ns=0.0981 hardcos=0.3980 cos=0.8381 dur=3s
+  [dur] ep3 it400 -> 3s 段
+  ep3 it 600/15000 L=1.1977 se=0.0590 ce=1.0398 spk=0.1643 ns=0.0994 hardcos=0.3992 cos=0.8357 dur=3s
+  [dur] ep3 it600 -> 2s 段
+  ep3 it 800/15000 L=0.8965 se=0.0620 ce=0.7359 spk=0.1666 ns=0.0972 hardcos=0.3972 cos=0.8334 dur=2s
+  [dur] ep3 it800 -> 2s 段
+  ep3 it 1000/15000 L=1.0356 se=0.0601 ce=0.8758 spk=0.1704 ns=0.0973 hardcos=0.3972 cos=0.8296 dur=2s
+  [dur] ep3 it1000 -> 3s 段
+  ep3 it 1200/15000 L=0.8592 se=0.0620 ce=0.6988 spk=0.1619 ns=0.0996 hardcos=0.3995 cos=0.8381 dur=3s
+  [dur] ep3 it1200 -> 1s 段
+  ep3 it 1400/15000 L=1.1882 se=0.0636 ce=1.0217 spk=0.1777 ns=0.0991 hardcos=0.3990 cos=0.8223 dur=1s
+  [dur] ep3 it1400 -> 2s 段
+  ep3 it 1600/15000 L=0.9195 se=0.0588 ce=0.7639 spk=0.1642 ns=0.0950 hardcos=0.3948 cos=0.8358 dur=2s
+  [dur] ep3 it1600 -> 2s 段
+  ep3 it 1800/15000 L=0.8808 se=0.0603 ce=0.7199 spk=0.1683 ns=0.1002 hardcos=0.4001 cos=0.8317 dur=2s
+  [dur] ep3 it1800 -> 1s 段
+  ep3 it 2000/15000 L=0.8694 se=0.0597 ce=0.7121 spk=0.1634 ns=0.0972 hardcos=0.3972 cos=0.8366 dur=1s
+  [dur] ep3 it2000 -> 3s 段
+  ep3 it 2200/15000 L=0.9188 se=0.0607 ce=0.7576 spk=0.1713 ns=0.0982 hardcos=0.3981 cos=0.8287 dur=3s
+  [dur] ep3 it2200 -> 1s 段
+  ep3 it 2400/15000 L=0.9808 se=0.0617 ce=0.8220 spk=0.1635 ns=0.0962 hardcos=0.3959 cos=0.8365 dur=1s
+  [dur] ep3 it2400 -> 1s 段
+  ep3 it 2600/15000 L=1.0669 se=0.0576 ce=0.9087 spk=0.1700 ns=0.0993 hardcos=0.3991 cos=0.8300 dur=1s
+  [dur] ep3 it2600 -> 1s 段
+  ep3 it 2800/15000 L=0.9458 se=0.0613 ce=0.7853 spk=0.1675 ns=0.0978 hardcos=0.3975 cos=0.8325 dur=1s
+  [dur] ep3 it2800 -> 3s 段
+  ep3 it 3000/15000 L=0.9648 se=0.0600 ce=0.8074 spk=0.1633 ns=0.0969 hardcos=0.3968 cos=0.8367 dur=3s
+  [dur] ep3 it3000 -> 1s 段
+  ep3 it 3200/15000 L=1.1340 se=0.0601 ce=0.9752 spk=0.1709 ns=0.0949 hardcos=0.3946 cos=0.8291 dur=1s
+  [dur] ep3 it3200 -> 1s 段
+  ep3 it 3400/15000 L=1.1335 se=0.0593 ce=0.9739 spk=0.1692 ns=0.0991 hardcos=0.3988 cos=0.8308 dur=1s
+  [dur] ep3 it3400 -> 3s 段
+  ep3 it 3600/15000 L=0.9554 se=0.0595 ce=0.7987 spk=0.1593 ns=0.0988 hardcos=0.3987 cos=0.8407 dur=3s
+  [dur] ep3 it3600 -> 1s 段
+  ep3 it 3800/15000 L=1.1017 se=0.0610 ce=0.9393 spk=0.1759 ns=0.0973 hardcos=0.3971 cos=0.8241 dur=1s
+  [dur] ep3 it3800 -> 1s 段
+  ep3 it 4000/15000 L=0.8563 se=0.0601 ce=0.7002 spk=0.1562 ns=0.0982 hardcos=0.3981 cos=0.8438 dur=1s
+  [dur] ep3 it4000 -> 3s 段
+  ep3 it 4200/15000 L=1.0545 se=0.0600 ce=0.8940 spk=0.1745 ns=0.0962 hardcos=0.3961 cos=0.8255 dur=3s
+  [dur] ep3 it4200 -> 2s 段
+  ep3 it 4400/15000 L=0.9057 se=0.0610 ce=0.7463 spk=0.1594 ns=0.1011 hardcos=0.4010 cos=0.8406 dur=2s
+  [dur] ep3 it4400 -> 1s 段
+  ep3 it 4600/15000 L=0.8910 se=0.0599 ce=0.7314 spk=0.1702 ns=0.0972 hardcos=0.3970 cos=0.8298 dur=1s
+  [dur] ep3 it4600 -> 2s 段
+  ep3 it 4800/15000 L=0.9767 se=0.0606 ce=0.8177 spk=0.1625 ns=0.0993 hardcos=0.3992 cos=0.8375 dur=2s
+  [dur] ep3 it4800 -> 3s 段
+  ep3 it 5000/15000 L=0.8912 se=0.0601 ce=0.7320 spk=0.1652 ns=0.0990 hardcos=0.3990 cos=0.8348 dur=3s
+  [dur] ep3 it5000 -> 1s 段
+  ep3 it 5200/15000 L=1.0632 se=0.0596 ce=0.9043 spk=0.1706 ns=0.0961 hardcos=0.3960 cos=0.8294 dur=1s
+  [dur] ep3 it5200 -> 3s 段
+  ep3 it 5400/15000 L=1.0269 se=0.0615 ce=0.8668 spk=0.1647 ns=0.0984 hardcos=0.3982 cos=0.8353 dur=3s
+  [dur] ep3 it5400 -> 3s 段
+  ep3 it 5600/15000 L=0.8964 se=0.0614 ce=0.7376 spk=0.1577 ns=0.1003 hardcos=0.4001 cos=0.8423 dur=3s
+  [dur] ep3 it5600 -> 1s 段
+  ep3 it 5800/15000 L=0.8950 se=0.0591 ce=0.7361 spk=0.1642 ns=0.1011 hardcos=0.4010 cos=0.8358 dur=1s
+  [dur] ep3 it5800 -> 3s 段
+  ep3 it 6000/15000 L=0.9520 se=0.0589 ce=0.7943 spk=0.1599 ns=0.1016 hardcos=0.4016 cos=0.8401 dur=3s
+  [dur] ep3 it6000 -> 3s 段
+  ep3 it 6200/15000 L=0.8298 se=0.0604 ce=0.6726 spk=0.1578 ns=0.0988 hardcos=0.3987 cos=0.8422 dur=3s
+  [dur] ep3 it6200 -> 3s 段
+  ep3 it 6400/15000 L=0.8564 se=0.0622 ce=0.7001 spk=0.1491 ns=0.0989 hardcos=0.3987 cos=0.8509 dur=3s
+  [dur] ep3 it6400 -> 2s 段
+  ep3 it 6600/15000 L=1.0246 se=0.0577 ce=0.8682 spk=0.1640 ns=0.0990 hardcos=0.3989 cos=0.8360 dur=2s
+  [dur] ep3 it6600 -> 3s 段
+  ep3 it 6800/15000 L=1.1999 se=0.0602 ce=1.0402 spk=0.1686 ns=0.0980 hardcos=0.3978 cos=0.8314 dur=3s
+  [dur] ep3 it6800 -> 1s 段
+  ep3 it 7000/15000 L=1.1785 se=0.0613 ce=1.0138 spk=0.1817 ns=0.0978 hardcos=0.3977 cos=0.8183 dur=1s
+  [dur] ep3 it7000 -> 2s 段
+  ep3 it 7200/15000 L=1.1809 se=0.0605 ce=1.0219 spk=0.1646 ns=0.0982 hardcos=0.3979 cos=0.8354 dur=2s
+  [dur] ep3 it7200 -> 3s 段
+  ep3 it 7400/15000 L=0.9068 se=0.0587 ce=0.7457 spk=0.1762 ns=0.0991 hardcos=0.3990 cos=0.8238 dur=3s
+  [dur] ep3 it7400 -> 3s 段
+  ep3 it 7600/15000 L=0.8795 se=0.0610 ce=0.7195 spk=0.1621 ns=0.1008 hardcos=0.4007 cos=0.8379 dur=3s
+  [dur] ep3 it7600 -> 3s 段
+  ep3 it 7800/15000 L=1.2147 se=0.0591 ce=1.0562 spk=0.1665 ns=0.0989 hardcos=0.3987 cos=0.8335 dur=3s
+  [dur] ep3 it7800 -> 1s 段
+  ep3 it 8000/15000 L=0.9199 se=0.0597 ce=0.7584 spk=0.1772 ns=0.0972 hardcos=0.3972 cos=0.8228 dur=1s
+  [dur] ep3 it8000 -> 3s 段
+  ep3 it 8200/15000 L=0.8469 se=0.0575 ce=0.6911 spk=0.1652 ns=0.0974 hardcos=0.3973 cos=0.8348 dur=3s
+  [dur] ep3 it8200 -> 1s 段
+  ep3 it 8400/15000 L=1.4051 se=0.0597 ce=1.2441 spk=0.1791 ns=0.0948 hardcos=0.3946 cos=0.8209 dur=1s
+  [dur] ep3 it8400 -> 2s 段
+  ep3 it 8600/15000 L=0.8823 se=0.0605 ce=0.7211 spk=0.1710 ns=0.0988 hardcos=0.3986 cos=0.8290 dur=2s
+  [dur] ep3 it8600 -> 2s 段
+  ep3 it 8800/15000 L=0.9725 se=0.0617 ce=0.8143 spk=0.1613 ns=0.0961 hardcos=0.3959 cos=0.8387 dur=2s
+  [dur] ep3 it8800 -> 3s 段
+  ep3 it 9000/15000 L=1.0336 se=0.0586 ce=0.8764 spk=0.1654 ns=0.0978 hardcos=0.3976 cos=0.8346 dur=3s
+  [dur] ep3 it9000 -> 2s 段
+  ep3 it 9200/15000 L=1.0379 se=0.0603 ce=0.8808 spk=0.1629 ns=0.0959 hardcos=0.3957 cos=0.8371 dur=2s
+  [dur] ep3 it9200 -> 3s 段
+  ep3 it 9400/15000 L=0.9163 se=0.0612 ce=0.7582 spk=0.1588 ns=0.0984 hardcos=0.3983 cos=0.8412 dur=3s
+  [dur] ep3 it9400 -> 3s 段
+  ep3 it 9600/15000 L=0.8957 se=0.0627 ce=0.7344 spk=0.1679 ns=0.0964 hardcos=0.3963 cos=0.8321 dur=3s
+  [dur] ep3 it9600 -> 2s 段
+  ep3 it 9800/15000 L=0.8144 se=0.0614 ce=0.6550 spk=0.1639 ns=0.0977 hardcos=0.3975 cos=0.8361 dur=2s
+  [dur] ep3 it9800 -> 1s 段
+  ep3 it 10000/15000 L=0.9017 se=0.0606 ce=0.7405 spk=0.1733 ns=0.0973 hardcos=0.3970 cos=0.8267 dur=1s
+  [dur] ep3 it10000 -> 3s 段
+  ep3 it 10200/15000 L=0.8659 se=0.0605 ce=0.7074 spk=0.1644 ns=0.0973 hardcos=0.3972 cos=0.8356 dur=3s
+  [dur] ep3 it10200 -> 3s 段
+  ep3 it 10400/15000 L=0.9998 se=0.0594 ce=0.8388 spk=0.1692 ns=0.1016 hardcos=0.4016 cos=0.8308 dur=3s
+  [dur] ep3 it10400 -> 1s 段
+  ep3 it 10600/15000 L=1.0772 se=0.0610 ce=0.9150 spk=0.1750 ns=0.0972 hardcos=0.3972 cos=0.8250 dur=1s
+  [dur] ep3 it10600 -> 3s 段
+  ep3 it 10800/15000 L=0.9720 se=0.0604 ce=0.8149 spk=0.1615 ns=0.0965 hardcos=0.3963 cos=0.8385 dur=3s
+  [dur] ep3 it10800 -> 3s 段
+  ep3 it 11000/15000 L=1.0000 se=0.0612 ce=0.8426 spk=0.1588 ns=0.0973 hardcos=0.3971 cos=0.8412 dur=3s
+  [dur] ep3 it11000 -> 3s 段
+  ep3 it 11200/15000 L=1.1165 se=0.0591 ce=0.9575 spk=0.1706 ns=0.0973 hardcos=0.3972 cos=0.8294 dur=3s
+  [dur] ep3 it11200 -> 3s 段
+  ep3 it 11400/15000 L=1.0748 se=0.0588 ce=0.9176 spk=0.1672 ns=0.0964 hardcos=0.3962 cos=0.8328 dur=3s
+  [dur] ep3 it11400 -> 1s 段
+  ep3 it 11600/15000 L=1.0898 se=0.0577 ce=0.9316 spk=0.1709 ns=0.0986 hardcos=0.3984 cos=0.8291 dur=1s
+  [dur] ep3 it11600 -> 3s 段
+  ep3 it 11800/15000 L=1.0553 se=0.0605 ce=0.8923 spk=0.1771 ns=0.0987 hardcos=0.3986 cos=0.8229 dur=3s
+  [dur] ep3 it11800 -> 1s 段
+  ep3 it 12000/15000 L=1.1021 se=0.0573 ce=0.9465 spk=0.1676 ns=0.0960 hardcos=0.3958 cos=0.8324 dur=1s
+  [dur] ep3 it12000 -> 3s 段
+  ep3 it 12200/15000 L=1.0373 se=0.0589 ce=0.8812 spk=0.1621 ns=0.0972 hardcos=0.3972 cos=0.8379 dur=3s
+  [dur] ep3 it12200 -> 3s 段
+  ep3 it 12400/15000 L=1.0857 se=0.0612 ce=0.9264 spk=0.1626 ns=0.0986 hardcos=0.3985 cos=0.8374 dur=3s
+  [dur] ep3 it12400 -> 3s 段
+  ep3 it 12600/15000 L=1.0492 se=0.0633 ce=0.8875 spk=0.1628 ns=0.0991 hardcos=0.3989 cos=0.8372 dur=3s
+  [dur] ep3 it12600 -> 1s 段
+  ep3 it 12800/15000 L=0.9186 se=0.0602 ce=0.7604 spk=0.1635 ns=0.0980 hardcos=0.3979 cos=0.8365 dur=1s
+  [dur] ep3 it12800 -> 3s 段
+  ep3 it 13000/15000 L=1.0678 se=0.0613 ce=0.9050 spk=0.1753 ns=0.0979 hardcos=0.3975 cos=0.8247 dur=3s
+  [dur] ep3 it13000 -> 3s 段
+  ep3 it 13200/15000 L=0.7443 se=0.0601 ce=0.5884 spk=0.1521 ns=0.1004 hardcos=0.4004 cos=0.8479 dur=3s
+  [dur] ep3 it13200 -> 3s 段
+  ep3 it 13400/15000 L=1.0206 se=0.0608 ce=0.8601 spk=0.1685 ns=0.0983 hardcos=0.3981 cos=0.8315 dur=3s
+  [dur] ep3 it13400 -> 3s 段
+  ep3 it 13600/15000 L=0.7687 se=0.0590 ce=0.6131 spk=0.1587 ns=0.0981 hardcos=0.3980 cos=0.8413 dur=3s
+  [dur] ep3 it13600 -> 2s 段
+  ep3 it 13800/15000 L=0.9315 se=0.0595 ce=0.7716 spk=0.1693 ns=0.0991 hardcos=0.3991 cos=0.8307 dur=2s
+  [dur] ep3 it13800 -> 2s 段
+  ep3 it 14000/15000 L=1.1150 se=0.0590 ce=0.9587 spk=0.1628 ns=0.0970 hardcos=0.3968 cos=0.8372 dur=2s
+  [dur] ep3 it14000 -> 3s 段
+  ep3 it 14200/15000 L=0.8362 se=0.0610 ce=0.6755 spk=0.1656 ns=0.0999 hardcos=0.3999 cos=0.8344 dur=3s
+  [dur] ep3 it14200 -> 3s 段
+  ep3 it 14400/15000 L=0.9172 se=0.0603 ce=0.7575 spk=0.1684 ns=0.0979 hardcos=0.3979 cos=0.8316 dur=3s
+  [dur] ep3 it14400 -> 1s 段
+  ep3 it 14600/15000 L=0.8949 se=0.0579 ce=0.7384 spk=0.1665 ns=0.0974 hardcos=0.3973 cos=0.8335 dur=1s
+  [dur] ep3 it14600 -> 1s 段
+  ep3 it 14800/15000 L=1.0213 se=0.0609 ce=0.8579 spk=0.1788 ns=0.0978 hardcos=0.3976 cos=0.8212 dur=1s
+  [dur] ep3 it14800 -> 3s 段
+  ep3 it 15000/15000 L=0.9823 se=0.0617 ce=0.8209 spk=0.1690 ns=0.0980 hardcos=0.3979 cos=0.8310 dur=3s
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v4_ns05duraug_r4_ep3/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v4_ns05duraug_r4_ep3/noise_m5db
+  [val-hard] ep3 0db=1.761 m5db=4.261 avg=3.011 (门槛①: base avg − 0.3 以内)
+[done] λ_ns=0.5 dur_aug=True best_hard_avg=3.011 (门槛①线见上)

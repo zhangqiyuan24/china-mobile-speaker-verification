@@ -1,0 +1,5 @@
+{
+ "checkpoint": "/data/home/ligangrui/china_mobile/AI/8.22/exp/matched_robust/checkpoints/checkpoint_best.tar",
+ "num_utts": 16401,
+ "length_policy": "full_utterance_grouped"
+}

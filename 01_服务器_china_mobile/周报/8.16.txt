@@ -1,0 +1,47 @@
+本周目标：
+完成多说话人重叠语音（WeSep TSE）与噪声降噪（FullSubNet+）两条前端增强路线的部署与评测，验证前端增强能否降低声纹识别的 EER，并定位 Teacher-Student 微调的收敛问题。
+
+已完成工作：
+
+1. 完成 Teacher-Student 微调的收敛问题修复。定位并修复了两个导致训练不收敛的关键 bug：（1）_apply_freeze 使用子串匹配，导致 conv1/bn1 误冻了所有残差块内部的卷积和 BN 层，backbone 实际未进入优化器；（2）build() 的配置缓存导致 Teacher 与 Student 共享同一模型对象，冻结 Teacher 时把 Student 也一并冻结。修复后 Student 可训练参数正常进入 optimizer，训练诊断（[FREEZE]/[OPT]/[SANITY] 日志）确认 backbone 参数真实更新。
+
+2. 完成 WeSep TSE（目标说话人提取）前端的离线部署。WeSep 要求 torch≥1.12，与现有 torch 1.10.1 环境冲突，逐一解决了 s3prl 依赖、silero-vad JIT 模型 torchscript 版本不兼容（绕过 VAD 加载）、wespeaker 重依赖清理等一系列环境问题，实现了在断网服务器上的完整离线部署与推理。
+
+3. 完成 FullSubNet+ 降噪前端的离线部署与评测。本地下载 checkpoint（Google Drive）+ 依赖 wheel，服务器离线安装（librosa/torch_complex/toml），打通了降噪→提 embedding→打分的完整评测闭环。
+
+核心结果：
+
+（一）降噪前端（FullSubNet+）在 noise_0db 条件上 EER 不降反增：
+
+  test 条件         EER
+  clean            5.29%
+  noisy（带噪）     8.39%
+  denoised（降噪后）10.11%   ← 比带噪还差 1.72
+
+分离度分析（clean enrollment 分别对上三种 test）：
+  test 条件    target 均值   nontarget 均值   分离度（越大越好）
+  clean       0.4903        0.0597          0.4307
+  noisy       0.4220        0.0513          0.3708
+  denoised    0.3905        0.0583          0.3322
+
+根因：降噪后 target 分数明显下降（0.4220→0.3905），说明 FullSubNet+ 在去除噪声的同时损伤了说话人身份信息（音色、共振峰等跨句子稳定的个性化特征）。单条同一句话的 cosine 验证却显示降噪有效（ERes2Net 提升 +0.166、ECAPA 提升 +0.255），二者不矛盾——同一句话去噪后更接近其 clean 版本，但跨句子靠身份特征区分说话人时，降噪抹平了身份差异。SI-SDR 仅提升 0.81 dB（-5.04→-4.23），说明降噪强度有限，却已引入了不可忽视的身份损伤。
+
+（二）多说话人重叠（WeSep TSE）评测尚未跑完，全量 trial（约 138 万条）耗时过长；已出的初步结果显示中文重叠语音效果较好，英文重叠语音效果欠佳。
+
+遇到的问题：
+
+1. 降噪损伤身份信息。FullSubNet+ 以 SNR/PESQ/STOI 为训练目标，不以说话人身份保真为目标，导致降噪后 EER 不降反升，这是"语音增强做声纹前端"的典型陷阱。
+
+2. 多说话人评测耗时过长。TSE 输出依赖 enrollment，每个 (enroll, mixture) 组合都要跑一次 WeSep，全量 138 万 trial 单条件需约 30 小时，严重制约迭代速度；且英文重叠效果欠佳，可能与 WeSep 预训练模型（英文 VoxCeleb）与中文测试集不匹配有关。
+
+3. 断网环境部署成本高。服务器无网络，所有模型 checkpoint 和依赖需本地下载后离线安装，期间遇到 cryptography 与系统 GLIBC 版本不兼容、pip download 条件依赖漏下、torchscript 跨版本不兼容等多个环境问题。
+
+下周计划：
+
+1. 降噪方向：改用更温和或 speaker-aware 的降噪策略，避免过度损伤身份信息；或降噪后联合微调 ERes2Net 使其适配降噪语音分布，而非直接用 clean 训练的模型评测。
+
+2. 多说话人方向：完成全量评测（通过增大 batch_size、预缓存 enrollment fbank、预加载 wav 到内存等优化缩短耗时）；针对英文效果欠佳的问题，分析是否需换用中文适配的 TSE 模型或微调。
+
+3. Teacher-Student 微调：修复收敛 bug 后重启训练，验证 consistency loss 是否能在保持 clean 性能的同时提升噪声/重叠鲁棒性。
+
+4. 优化评测迭代速度：将全量评测策略从百万级 trial 缩减至可接受规模（小规模 balanced 抽样先行验证），提升实验闭环效率。

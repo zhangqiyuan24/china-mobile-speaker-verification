@@ -1,0 +1,19 @@
+# MoE-lite 训练配置（8.26 线④, NCMoE 移植）
+# ERes2Net-large 从 soup5 起步(UMES: layer4 复制 K 份 = 通用模型已就位)
+# 路由器 3 类(clean/0dB/-5dB)条件监督, 温度 softmax gamma=0.1
+
+[paths]
+sv_ecapa = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+data_dir_820 = "/data/home/ligangrui/china_mobile/AI/8.22/exp/data_90k/data"
+proto_npz = "/data/home/ligangrui/china_mobile/AI/8.21/exp/prototypes/prototypes.npz"
+init_ckpt = "/data/home/ligangrui/china_mobile/AI/8.24/exp/soup5/checkpoints/checkpoint_soup5.tar"
+exp_dir = "exp/moe_lite"
+
+[data]
+seed = 2026
+
+[model]
+n_expert = 3
+gamma = 0.1
+scale = 32.0
+margin = 0.2

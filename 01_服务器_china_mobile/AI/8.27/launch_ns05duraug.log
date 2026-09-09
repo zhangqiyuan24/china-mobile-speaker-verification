@@ -1,0 +1,3 @@
+[base] ext3 官方 5.2351/6.0979 vs ext2 5.4669/6.4615, 用ext3=1
+[base] 采用 /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v3_ns05ext3/checkpoint_best.tar
+[launched] dur-aug 训练 pid 876590 日志 tse_v3_ns05duraug.log

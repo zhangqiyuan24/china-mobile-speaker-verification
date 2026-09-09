@@ -1,0 +1,26 @@
+[cond] 100 spk 嵌入(soup5, 均值+L2)
+ckpt              0dB hard  -5dB hard     avg   (锚点 tse_soup5: 4.716/11.193 avg 7.955)
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[enhance] 待处理 400
+Traceback (most recent call last):
+  File "/data/home/ligangrui/china_mobile/AI/8.27/eval_arms_hard.py", line 151, in <module>
+    main()
+  File "/data/home/ligangrui/china_mobile/AI/8.27/eval_arms_hard.py", line 130, in main
+    enhance(model, stft_fn, istft_fn, dec,
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/autograd/grad_mode.py", line 28, in decorate_context
+    return func(*args, **kwargs)
+  File "/data/home/ligangrui/china_mobile/AI/8.27/enhance_proxy.py", line 93, in enhance
+    r = model(c.abs().unsqueeze(1), c.real.unsqueeze(1), c.imag.unsqueeze(1), e)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data/home/ligangrui/china_mobile/AI/8.26/tse_model.py", line 109, in forward
+    sb_mask = self.sb_model(sb_input)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ligangrui/china_mobile/AI/8.17/code/speech_enhance/audio_zen/model/module/sequence_model.py", line 118, in forward
+    o, _ = self.sequence_model(x)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/ligangrui/china_mobile/zhangqiyuan/lib/python3.8/site-packages/torch/nn/modules/rnn.py", line 691, in forward
+    result = _VF.lstm(input, hx, self._flat_weights, self.bias, self.num_layers,
+RuntimeError: CUDA out of memory. Tried to allocate 2.28 GiB (GPU 0; 11.91 GiB total capacity; 963.43 MiB already allocated; 973.31 MiB free; 1010.00 MiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

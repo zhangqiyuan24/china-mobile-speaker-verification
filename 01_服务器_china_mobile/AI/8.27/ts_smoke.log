@@ -1,0 +1,10 @@
+[data] 90000 utts / 9900 spk -> 400 对（跨设备 100.0%）/ 噪声 675
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[train] 150 it/ep × 1 ep, batch=8 对(16 样本), lr=2e-05, 学生=checkpoint_soup5.tar, 教师=checkpoint_soup5.tar
+  ep1 it 100/150 anchor=0.1520 xdev=0.5246 hard=0.0005 ce=1.9853 w={'anchor': '1.10', 'xdev': '0.55', 'hard': '0.33', 'ce': '0.93'}
+  [val-hard] ep1 0db=6.500 m5db=13.045 avg=9.773 (锚 soup5 本体: 4.716/11.193 avg=7.955)
+  [val-hard] 新最优 avg=9.773 -> checkpoint_best.tar
+[done] best_hard_avg=9.773 (锚 7.955)

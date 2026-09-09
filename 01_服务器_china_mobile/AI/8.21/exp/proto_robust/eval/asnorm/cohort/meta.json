@@ -1,0 +1,7 @@
+{
+ "checkpoint": "/data/home/ligangrui/china_mobile/AI/8.21/exp/proto_robust/checkpoints/checkpoint_best.tar",
+ "num_utts": 1000,
+ "crop_seconds": 3.0,
+ "cohort_spks": 500,
+ "cohort_utts": 2
+}

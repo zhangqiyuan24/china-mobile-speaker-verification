@@ -1,0 +1,8 @@
+{
+  "n_spk": 100,
+  "n_enrol_per_spk": 2,
+  "n_test_per_spk": 4,
+  "nontarget_ratio": 5.5,
+  "seed": 2027,
+  "noise_pool": 168
+}

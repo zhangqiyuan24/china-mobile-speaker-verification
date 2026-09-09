@@ -1,0 +1,28 @@
+{
+  "k": 200,
+  "checkpoint": "exp/soup_821_90k/checkpoints/checkpoint_soup_w50.tar",
+  "cohort_dir": "/data/home/ligangrui/china_mobile/AI/8.24/exp/soup_821_90k/eval/asnorm/cohort",
+  "conds": {
+    "clean": {
+      "raw_eer": 5.141438032166509,
+      "as_eer": 5.339276623534673,
+      "raw_mindcf": 0.4793793280494711,
+      "as_mindcf": 0.5436410527336755,
+      "rel_to_baseline": "8.3%"
+    },
+    "noise_0db": {
+      "raw_eer": 7.711920529801325,
+      "as_eer": 7.860927152317881,
+      "raw_mindcf": 0.6030084390061942,
+      "as_mindcf": 0.6564207118968955,
+      "rel_to_baseline": "6.3%"
+    },
+    "noise_m5db": {
+      "raw_eer": 9.812204351939451,
+      "as_eer": 9.94672636239443,
+      "raw_mindcf": 0.6590319518175047,
+      "as_mindcf": 0.7114601804850146,
+      "rel_to_baseline": "10.0%"
+    }
+  }
+}

@@ -1,0 +1,1679 @@
+  [enrol-emb] 1440 utts / 180 spks
+  [enrol-emb] 0/1440
+  [enrol-emb] 400/1440
+  [enrol-emb] 800/1440
+  [enrol-emb] 1200/1440
+[cond] 180 个声称者注册质心(512, L2)
+[tse] 8.18 权重装载: 缺 4 键(全部 film.*, 零初始化恒等)
+[tse] 装载 /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v5_asym70/checkpoint_epoch3.tar(epoch=3)
+  [enhance] 已完成 0，待处理 117
+  [enhance] 组 0/13
+  [enhance] 本轮完成 117
+[noise_0db] 1/180 3D_SPK_06154 done
+  [enhance] 已完成 0，待处理 89
+  [enhance] 组 0/13
+  [enhance] 本轮完成 89
+[noise_0db] 2/180 3D_SPK_06155 done
+  [enhance] 已完成 0，待处理 138
+  [enhance] 组 0/20
+  [enhance] 本轮完成 138
+[noise_0db] 3/180 3D_SPK_06156 done
+  [enhance] 已完成 0，待处理 113
+  [enhance] 组 0/15
+  [enhance] 本轮完成 113
+[noise_0db] 4/180 3D_SPK_06157 done
+  [enhance] 已完成 0，待处理 185
+  [enhance] 组 0/30
+  [enhance] 组 20/30
+  [enhance] 本轮完成 185
+[noise_0db] 5/180 3D_SPK_06158 done
+  [enhance] 已完成 0，待处理 136
+  [enhance] 组 0/15
+  [enhance] 本轮完成 136
+[noise_0db] 6/180 3D_SPK_06159 done
+  [enhance] 已完成 0，待处理 146
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 146
+[noise_0db] 7/180 3D_SPK_06160 done
+  [enhance] 已完成 0，待处理 126
+  [enhance] 组 0/16
+  [enhance] 本轮完成 126
+[noise_0db] 8/180 3D_SPK_06161 done
+  [enhance] 已完成 0，待处理 156
+  [enhance] 组 0/19
+  [enhance] 本轮完成 156
+[noise_0db] 9/180 3D_SPK_06162 done
+  [enhance] 已完成 0，待处理 112
+  [enhance] 组 0/17
+  [enhance] 本轮完成 112
+[noise_0db] 10/180 3D_SPK_06163 done
+  [enhance] 已完成 0，待处理 184
+  [enhance] 组 0/35
+  [enhance] 组 20/35
+  [enhance] 本轮完成 184
+[noise_0db] 11/180 3D_SPK_06164 done
+  [enhance] 已完成 0，待处理 126
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 126
+[noise_0db] 12/180 3D_SPK_06165 done
+  [enhance] 已完成 0，待处理 154
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 154
+[noise_0db] 13/180 3D_SPK_06166 done
+  [enhance] 已完成 0，待处理 173
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 173
+[noise_0db] 14/180 3D_SPK_06167 done
+  [enhance] 已完成 0，待处理 130
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 130
+[noise_0db] 15/180 3D_SPK_06168 done
+  [enhance] 已完成 0，待处理 127
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 127
+[noise_0db] 16/180 3D_SPK_06169 done
+  [enhance] 已完成 0，待处理 117
+  [enhance] 组 0/15
+  [enhance] 本轮完成 117
+[noise_0db] 17/180 3D_SPK_06170 done
+  [enhance] 已完成 0，待处理 67
+  [enhance] 组 0/11
+  [enhance] 本轮完成 67
+[noise_0db] 18/180 3D_SPK_06171 done
+  [enhance] 已完成 0，待处理 133
+  [enhance] 组 0/19
+  [enhance] 本轮完成 133
+[noise_0db] 19/180 3D_SPK_06172 done
+  [enhance] 已完成 0，待处理 120
+  [enhance] 组 0/17
+  [enhance] 本轮完成 120
+[noise_0db] 20/180 3D_SPK_06173 done
+  [enhance] 已完成 0，待处理 136
+  [enhance] 组 0/19
+  [enhance] 本轮完成 136
+[noise_0db] 21/180 3D_SPK_06174 done
+  [enhance] 已完成 0，待处理 99
+  [enhance] 组 0/14
+  [enhance] 本轮完成 99
+[noise_0db] 22/180 3D_SPK_06175 done
+  [enhance] 已完成 0，待处理 147
+  [enhance] 组 0/24
+  [enhance] 组 20/24
+  [enhance] 本轮完成 147
+[noise_0db] 23/180 3D_SPK_06176 done
+  [enhance] 已完成 0，待处理 96
+  [enhance] 组 0/14
+  [enhance] 本轮完成 96
+[noise_0db] 24/180 3D_SPK_06177 done
+  [enhance] 已完成 0，待处理 184
+  [enhance] 组 0/34
+  [enhance] 组 20/34
+  [enhance] 本轮完成 184
+[noise_0db] 25/180 3D_SPK_06178 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 152
+[noise_0db] 26/180 3D_SPK_06179 done
+  [enhance] 已完成 0，待处理 146
+  [enhance] 组 0/27
+  [enhance] 组 20/27
+  [enhance] 本轮完成 146
+[noise_0db] 27/180 3D_SPK_06180 done
+  [enhance] 已完成 0，待处理 157
+  [enhance] 组 0/20
+  [enhance] 本轮完成 157
+[noise_0db] 28/180 3D_SPK_06181 done
+  [enhance] 已完成 0，待处理 157
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 157
+[noise_0db] 29/180 3D_SPK_06182 done
+  [enhance] 已完成 0，待处理 144
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 144
+[noise_0db] 30/180 3D_SPK_06183 done
+  [enhance] 已完成 0，待处理 153
+  [enhance] 组 0/17
+  [enhance] 本轮完成 153
+[noise_0db] 31/180 3D_SPK_06184 done
+  [enhance] 已完成 0，待处理 115
+  [enhance] 组 0/19
+  [enhance] 本轮完成 115
+[noise_0db] 32/180 3D_SPK_06185 done
+  [enhance] 已完成 0，待处理 158
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 158
+[noise_0db] 33/180 3D_SPK_06186 done
+  [enhance] 已完成 0，待处理 145
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 145
+[noise_0db] 34/180 3D_SPK_06187 done
+  [enhance] 已完成 0，待处理 174
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 174
+[noise_0db] 35/180 3D_SPK_06188 done
+  [enhance] 已完成 0，待处理 124
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 124
+[noise_0db] 36/180 3D_SPK_06189 done
+  [enhance] 已完成 0，待处理 96
+  [enhance] 组 0/15
+  [enhance] 本轮完成 96
+[noise_0db] 37/180 3D_SPK_06190 done
+  [enhance] 已完成 0，待处理 81
+  [enhance] 组 0/15
+  [enhance] 本轮完成 81
+[noise_0db] 38/180 3D_SPK_06191 done
+  [enhance] 已完成 0，待处理 136
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 136
+[noise_0db] 39/180 3D_SPK_06192 done
+  [enhance] 已完成 0，待处理 133
+  [enhance] 组 0/18
+  [enhance] 本轮完成 133
+[noise_0db] 40/180 3D_SPK_06193 done
+  [enhance] 已完成 0，待处理 157
+  [enhance] 组 0/20
+  [enhance] 本轮完成 157
+[noise_0db] 41/180 3D_SPK_06194 done
+  [enhance] 已完成 0，待处理 161
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 161
+[noise_0db] 42/180 3D_SPK_06195 done
+  [enhance] 已完成 0，待处理 154
+  [enhance] 组 0/25
+  [enhance] 组 20/25
+  [enhance] 本轮完成 154
+[noise_0db] 43/180 3D_SPK_06196 done
+  [enhance] 已完成 0，待处理 91
+  [enhance] 组 0/16
+  [enhance] 本轮完成 91
+[noise_0db] 44/180 3D_SPK_06197 done
+  [enhance] 已完成 0，待处理 184
+  [enhance] 组 0/30
+  [enhance] 组 20/30
+  [enhance] 本轮完成 184
+[noise_0db] 45/180 3D_SPK_06198 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 152
+[noise_0db] 46/180 3D_SPK_06199 done
+  [enhance] 已完成 0，待处理 121
+  [enhance] 组 0/17
+  [enhance] 本轮完成 121
+[noise_0db] 47/180 3D_SPK_06200 done
+  [enhance] 已完成 0，待处理 105
+  [enhance] 组 0/13
+  [enhance] 本轮完成 105
+[noise_0db] 48/180 3D_SPK_06201 done
+  [enhance] 已完成 0，待处理 108
+  [enhance] 组 0/20
+  [enhance] 本轮完成 108
+[noise_0db] 49/180 3D_SPK_06202 done
+  [enhance] 已完成 0，待处理 95
+  [enhance] 组 0/16
+  [enhance] 本轮完成 95
+[noise_0db] 50/180 3D_SPK_06203 done
+  [enhance] 已完成 0，待处理 167
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 167
+[noise_0db] 51/180 3D_SPK_06204 done
+  [enhance] 已完成 0，待处理 131
+  [enhance] 组 0/14
+  [enhance] 本轮完成 131
+[noise_0db] 52/180 3D_SPK_06205 done
+  [enhance] 已完成 0，待处理 154
+  [enhance] 组 0/20
+  [enhance] 本轮完成 154
+[noise_0db] 53/180 3D_SPK_06206 done
+  [enhance] 已完成 0，待处理 124
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 124
+[noise_0db] 54/180 3D_SPK_06207 done
+  [enhance] 已完成 0，待处理 107
+  [enhance] 组 0/13
+  [enhance] 本轮完成 107
+[noise_0db] 55/180 3D_SPK_06208 done
+  [enhance] 已完成 0，待处理 82
+  [enhance] 组 0/13
+  [enhance] 本轮完成 82
+[noise_0db] 56/180 3D_SPK_06209 done
+  [enhance] 已完成 0，待处理 148
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 148
+[noise_0db] 57/180 3D_SPK_06210 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 152
+[noise_0db] 58/180 3D_SPK_06211 done
+  [enhance] 已完成 0，待处理 95
+  [enhance] 组 0/14
+  [enhance] 本轮完成 95
+[noise_0db] 59/180 3D_SPK_06212 done
+  [enhance] 已完成 0，待处理 79
+  [enhance] 组 0/9
+  [enhance] 本轮完成 79
+[noise_0db] 60/180 3D_SPK_06213 done
+  [enhance] 已完成 0，待处理 179
+  [enhance] 组 0/32
+  [enhance] 组 20/32
+  [enhance] 本轮完成 179
+[noise_0db] 61/180 3D_SPK_06214 done
+  [enhance] 已完成 0，待处理 100
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 100
+[noise_0db] 62/180 3D_SPK_06215 done
+  [enhance] 已完成 0，待处理 178
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 178
+[noise_0db] 63/180 3D_SPK_06216 done
+  [enhance] 已完成 0，待处理 111
+  [enhance] 组 0/16
+  [enhance] 本轮完成 111
+[noise_0db] 64/180 3D_SPK_06217 done
+  [enhance] 已完成 0，待处理 166
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 166
+[noise_0db] 65/180 3D_SPK_06218 done
+  [enhance] 已完成 0，待处理 117
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 117
+[noise_0db] 66/180 3D_SPK_06219 done
+  [enhance] 已完成 0，待处理 178
+  [enhance] 组 0/27
+  [enhance] 组 20/27
+  [enhance] 本轮完成 178
+[noise_0db] 67/180 3D_SPK_06220 done
+  [enhance] 已完成 0，待处理 125
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 125
+[noise_0db] 68/180 3D_SPK_06221 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/30
+  [enhance] 组 20/30
+  [enhance] 本轮完成 152
+[noise_0db] 69/180 3D_SPK_06222 done
+  [enhance] 已完成 0，待处理 102
+  [enhance] 组 0/13
+  [enhance] 本轮完成 102
+[noise_0db] 70/180 3D_SPK_06223 done
+  [enhance] 已完成 0，待处理 143
+  [enhance] 组 0/24
+  [enhance] 组 20/24
+  [enhance] 本轮完成 143
+[noise_0db] 71/180 3D_SPK_06810 done
+  [enhance] 已完成 0，待处理 74
+  [enhance] 组 0/17
+  [enhance] 本轮完成 74
+[noise_0db] 72/180 3D_SPK_06811 done
+  [enhance] 已完成 0，待处理 134
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 134
+[noise_0db] 73/180 3D_SPK_06812 done
+  [enhance] 已完成 0，待处理 106
+  [enhance] 组 0/17
+  [enhance] 本轮完成 106
+[noise_0db] 74/180 3D_SPK_06813 done
+  [enhance] 已完成 0，待处理 101
+  [enhance] 组 0/14
+  [enhance] 本轮完成 101
+[noise_0db] 75/180 3D_SPK_06814 done
+  [enhance] 已完成 0，待处理 106
+  [enhance] 组 0/16
+  [enhance] 本轮完成 106
+[noise_0db] 76/180 3D_SPK_06815 done
+  [enhance] 已完成 0，待处理 123
+  [enhance] 组 0/25
+  [enhance] 组 20/25
+  [enhance] 本轮完成 123
+[noise_0db] 77/180 3D_SPK_06816 done
+  [enhance] 已完成 0，待处理 94
+  [enhance] 组 0/17
+  [enhance] 本轮完成 94
+[noise_0db] 78/180 3D_SPK_06817 done
+  [enhance] 已完成 0，待处理 110
+  [enhance] 组 0/20
+  [enhance] 本轮完成 110
+[noise_0db] 79/180 3D_SPK_06818 done
+  [enhance] 已完成 0，待处理 82
+  [enhance] 组 0/12
+  [enhance] 本轮完成 82
+[noise_0db] 80/180 3D_SPK_06819 done
+  [enhance] 已完成 0，待处理 101
+  [enhance] 组 0/11
+  [enhance] 本轮完成 101
+[noise_0db] 81/180 3D_SPK_06820 done
+  [enhance] 已完成 0，待处理 97
+  [enhance] 组 0/13
+  [enhance] 本轮完成 97
+[noise_0db] 82/180 3D_SPK_06821 done
+  [enhance] 已完成 0，待处理 111
+  [enhance] 组 0/14
+  [enhance] 本轮完成 111
+[noise_0db] 83/180 3D_SPK_06822 done
+  [enhance] 已完成 0，待处理 71
+  [enhance] 组 0/14
+  [enhance] 本轮完成 71
+[noise_0db] 84/180 3D_SPK_06823 done
+  [enhance] 已完成 0，待处理 153
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 153
+[noise_0db] 85/180 3D_SPK_06824 done
+  [enhance] 已完成 0，待处理 108
+  [enhance] 组 0/16
+  [enhance] 本轮完成 108
+[noise_0db] 86/180 3D_SPK_06825 done
+  [enhance] 已完成 0，待处理 140
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 140
+[noise_0db] 87/180 3D_SPK_06826 done
+  [enhance] 已完成 0，待处理 92
+  [enhance] 组 0/16
+  [enhance] 本轮完成 92
+[noise_0db] 88/180 3D_SPK_06827 done
+  [enhance] 已完成 0，待处理 153
+  [enhance] 组 0/24
+  [enhance] 组 20/24
+  [enhance] 本轮完成 153
+[noise_0db] 89/180 3D_SPK_06828 done
+  [enhance] 已完成 0，待处理 72
+  [enhance] 组 0/7
+  [enhance] 本轮完成 72
+[noise_0db] 90/180 3D_SPK_06829 done
+  [enhance] 已完成 0，待处理 138
+  [enhance] 组 0/19
+  [enhance] 本轮完成 138
+[noise_0db] 91/180 3D_SPK_06830 done
+  [enhance] 已完成 0，待处理 72
+  [enhance] 组 0/13
+  [enhance] 本轮完成 72
+[noise_0db] 92/180 3D_SPK_06831 done
+  [enhance] 已完成 0，待处理 138
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 138
+[noise_0db] 93/180 3D_SPK_06832 done
+  [enhance] 已完成 0，待处理 102
+  [enhance] 组 0/11
+  [enhance] 本轮完成 102
+[noise_0db] 94/180 3D_SPK_06833 done
+  [enhance] 已完成 0，待处理 122
+  [enhance] 组 0/20
+  [enhance] 本轮完成 122
+[noise_0db] 95/180 3D_SPK_06834 done
+  [enhance] 已完成 0，待处理 96
+  [enhance] 组 0/17
+  [enhance] 本轮完成 96
+[noise_0db] 96/180 3D_SPK_06835 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 152
+[noise_0db] 97/180 3D_SPK_06836 done
+  [enhance] 已完成 0，待处理 62
+  [enhance] 组 0/9
+  [enhance] 本轮完成 62
+[noise_0db] 98/180 3D_SPK_06837 done
+  [enhance] 已完成 0，待处理 105
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 105
+[noise_0db] 99/180 3D_SPK_06838 done
+  [enhance] 已完成 0，待处理 82
+  [enhance] 组 0/16
+  [enhance] 本轮完成 82
+[noise_0db] 100/180 3D_SPK_06839 done
+  [enhance] 已完成 0，待处理 117
+  [enhance] 组 0/17
+  [enhance] 本轮完成 117
+[noise_0db] 101/180 3D_SPK_06840 done
+  [enhance] 已完成 0，待处理 97
+  [enhance] 组 0/18
+  [enhance] 本轮完成 97
+[noise_0db] 102/180 3D_SPK_06841 done
+  [enhance] 已完成 0，待处理 134
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 134
+[noise_0db] 103/180 3D_SPK_06842 done
+  [enhance] 已完成 0，待处理 59
+  [enhance] 组 0/10
+  [enhance] 本轮完成 59
+[noise_0db] 104/180 3D_SPK_06843 done
+  [enhance] 已完成 0，待处理 96
+  [enhance] 组 0/19
+  [enhance] 本轮完成 96
+[noise_0db] 105/180 3D_SPK_06844 done
+  [enhance] 已完成 0，待处理 67
+  [enhance] 组 0/13
+  [enhance] 本轮完成 67
+[noise_0db] 106/180 3D_SPK_06845 done
+  [enhance] 已完成 0，待处理 105
+  [enhance] 组 0/10
+  [enhance] 本轮完成 105
+[noise_0db] 107/180 3D_SPK_06846 done
+  [enhance] 已完成 0，待处理 106
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 106
+[noise_0db] 108/180 3D_SPK_06847 done
+  [enhance] 已完成 0，待处理 121
+  [enhance] 组 0/14
+  [enhance] 本轮完成 121
+[noise_0db] 109/180 3D_SPK_06848 done
+  [enhance] 已完成 0，待处理 74
+  [enhance] 组 0/12
+  [enhance] 本轮完成 74
+[noise_0db] 110/180 3D_SPK_06849 done
+  [enhance] 已完成 0，待处理 157
+  [enhance] 组 0/25
+  [enhance] 组 20/25
+  [enhance] 本轮完成 157
+[noise_0db] 111/180 3D_SPK_06850 done
+  [enhance] 已完成 0，待处理 66
+  [enhance] 组 0/16
+  [enhance] 本轮完成 66
+[noise_0db] 112/180 3D_SPK_06851 done
+  [enhance] 已完成 0，待处理 107
+  [enhance] 组 0/20
+  [enhance] 本轮完成 107
+[noise_0db] 113/180 3D_SPK_06852 done
+  [enhance] 已完成 0，待处理 88
+  [enhance] 组 0/16
+  [enhance] 本轮完成 88
+[noise_0db] 114/180 3D_SPK_06853 done
+  [enhance] 已完成 0，待处理 135
+  [enhance] 组 0/20
+  [enhance] 本轮完成 135
+[noise_0db] 115/180 3D_SPK_06854 done
+  [enhance] 已完成 0，待处理 87
+  [enhance] 组 0/10
+  [enhance] 本轮完成 87
+[noise_0db] 116/180 3D_SPK_06855 done
+  [enhance] 已完成 0，待处理 125
+  [enhance] 组 0/19
+  [enhance] 本轮完成 125
+[noise_0db] 117/180 3D_SPK_06856 done
+  [enhance] 已完成 0，待处理 72
+  [enhance] 组 0/14
+  [enhance] 本轮完成 72
+[noise_0db] 118/180 3D_SPK_06857 done
+  [enhance] 已完成 0，待处理 184
+  [enhance] 组 0/31
+  [enhance] 组 20/31
+  [enhance] 本轮完成 184
+[noise_0db] 119/180 3D_SPK_06858 done
+  [enhance] 已完成 0，待处理 105
+  [enhance] 组 0/18
+  [enhance] 本轮完成 105
+[noise_0db] 120/180 3D_SPK_06859 done
+  [enhance] 已完成 0，待处理 149
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 149
+[noise_0db] 121/180 3D_SPK_06860 done
+  [enhance] 已完成 0，待处理 70
+  [enhance] 组 0/8
+  [enhance] 本轮完成 70
+[noise_0db] 122/180 3D_SPK_06861 done
+  [enhance] 已完成 0，待处理 88
+  [enhance] 组 0/9
+  [enhance] 本轮完成 88
+[noise_0db] 123/180 3D_SPK_06862 done
+  [enhance] 已完成 0，待处理 86
+  [enhance] 组 0/15
+  [enhance] 本轮完成 86
+[noise_0db] 124/180 3D_SPK_06863 done
+  [enhance] 已完成 0，待处理 146
+  [enhance] 组 0/24
+  [enhance] 组 20/24
+  [enhance] 本轮完成 146
+[noise_0db] 125/180 3D_SPK_06864 done
+  [enhance] 已完成 0，待处理 82
+  [enhance] 组 0/12
+  [enhance] 本轮完成 82
+[noise_0db] 126/180 3D_SPK_06865 done
+  [enhance] 已完成 0，待处理 99
+  [enhance] 组 0/17
+  [enhance] 本轮完成 99
+[noise_0db] 127/180 3D_SPK_06866 done
+  [enhance] 已完成 0，待处理 94
+  [enhance] 组 0/14
+  [enhance] 本轮完成 94
+[noise_0db] 128/180 3D_SPK_06867 done
+  [enhance] 已完成 0，待处理 112
+  [enhance] 组 0/19
+  [enhance] 本轮完成 112
+[noise_0db] 129/180 3D_SPK_06868 done
+  [enhance] 已完成 0，待处理 81
+  [enhance] 组 0/9
+  [enhance] 本轮完成 81
+[noise_0db] 130/180 3D_SPK_06869 done
+  [enhance] 已完成 0，待处理 110
+  [enhance] 组 0/15
+  [enhance] 本轮完成 110
+[noise_0db] 131/180 3D_SPK_06870 done
+  [enhance] 已完成 0，待处理 95
+  [enhance] 组 0/11
+  [enhance] 本轮完成 95
+[noise_0db] 132/180 3D_SPK_06871 done
+  [enhance] 已完成 0，待处理 92
+  [enhance] 组 0/14
+  [enhance] 本轮完成 92
+[noise_0db] 133/180 3D_SPK_06872 done
+  [enhance] 已完成 0，待处理 95
+  [enhance] 组 0/19
+  [enhance] 本轮完成 95
+[noise_0db] 134/180 3D_SPK_06873 done
+  [enhance] 已完成 0，待处理 126
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 126
+[noise_0db] 135/180 3D_SPK_06874 done
+  [enhance] 已完成 0，待处理 74
+  [enhance] 组 0/8
+  [enhance] 本轮完成 74
+[noise_0db] 136/180 3D_SPK_06875 done
+  [enhance] 已完成 0，待处理 113
+  [enhance] 组 0/13
+  [enhance] 本轮完成 113
+[noise_0db] 137/180 3D_SPK_06876 done
+  [enhance] 已完成 0，待处理 116
+  [enhance] 组 0/18
+  [enhance] 本轮完成 116
+[noise_0db] 138/180 3D_SPK_06877 done
+  [enhance] 已完成 0，待处理 133
+  [enhance] 组 0/27
+  [enhance] 组 20/27
+  [enhance] 本轮完成 133
+[noise_0db] 139/180 3D_SPK_06878 done
+  [enhance] 已完成 0，待处理 77
+  [enhance] 组 0/11
+  [enhance] 本轮完成 77
+[noise_0db] 140/180 3D_SPK_06879 done
+  [enhance] 已完成 0，待处理 209
+  [enhance] 组 0/27
+  [enhance] 组 20/27
+  [enhance] 本轮完成 209
+[noise_0db] 141/180 3D_SPK_06962 done
+  [enhance] 已完成 0，待处理 203
+  [enhance] 组 0/37
+  [enhance] 组 20/37
+  [enhance] 本轮完成 203
+[noise_0db] 142/180 3D_SPK_06963 done
+  [enhance] 已完成 0，待处理 213
+  [enhance] 组 0/33
+  [enhance] 组 20/33
+  [enhance] 本轮完成 213
+[noise_0db] 143/180 3D_SPK_06964 done
+  [enhance] 已完成 0，待处理 249
+  [enhance] 组 0/51
+  [enhance] 组 20/51
+  [enhance] 组 40/51
+  [enhance] 本轮完成 249
+[noise_0db] 144/180 3D_SPK_06965 done
+  [enhance] 已完成 0，待处理 303
+  [enhance] 组 0/38
+  [enhance] 组 20/38
+  [enhance] 本轮完成 303
+[noise_0db] 145/180 3D_SPK_06966 done
+  [enhance] 已完成 0，待处理 303
+  [enhance] 组 0/36
+  [enhance] 组 20/36
+  [enhance] 本轮完成 303
+[noise_0db] 146/180 3D_SPK_06967 done
+  [enhance] 已完成 0，待处理 272
+  [enhance] 组 0/41
+  [enhance] 组 20/41
+  [enhance] 组 40/41
+  [enhance] 本轮完成 272
+[noise_0db] 147/180 3D_SPK_06968 done
+  [enhance] 已完成 0，待处理 228
+  [enhance] 组 0/33
+  [enhance] 组 20/33
+  [enhance] 本轮完成 228
+[noise_0db] 148/180 3D_SPK_06969 done
+  [enhance] 已完成 0，待处理 265
+  [enhance] 组 0/52
+  [enhance] 组 20/52
+  [enhance] 组 40/52
+  [enhance] 本轮完成 265
+[noise_0db] 149/180 3D_SPK_06970 done
+  [enhance] 已完成 0，待处理 285
+  [enhance] 组 0/48
+  [enhance] 组 20/48
+  [enhance] 组 40/48
+  [enhance] 本轮完成 285
+[noise_0db] 150/180 3D_SPK_06971 done
+  [enhance] 已完成 0，待处理 217
+  [enhance] 组 0/37
+  [enhance] 组 20/37
+  [enhance] 本轮完成 217
+[noise_0db] 151/180 3D_SPK_06972 done
+  [enhance] 已完成 0，待处理 292
+  [enhance] 组 0/41
+  [enhance] 组 20/41
+  [enhance] 组 40/41
+  [enhance] 本轮完成 292
+[noise_0db] 152/180 3D_SPK_06973 done
+  [enhance] 已完成 0，待处理 337
+  [enhance] 组 0/52
+  [enhance] 组 20/52
+  [enhance] 组 40/52
+  [enhance] 本轮完成 337
+[noise_0db] 153/180 3D_SPK_06974 done
+  [enhance] 已完成 0，待处理 255
+  [enhance] 组 0/50
+  [enhance] 组 20/50
+  [enhance] 组 40/50
+  [enhance] 本轮完成 255
+[noise_0db] 154/180 3D_SPK_06975 done
+  [enhance] 已完成 0，待处理 268
+  [enhance] 组 0/47
+  [enhance] 组 20/47
+  [enhance] 组 40/47
+  [enhance] 本轮完成 268
+[noise_0db] 155/180 3D_SPK_06976 done
+  [enhance] 已完成 0，待处理 228
+  [enhance] 组 0/36
+  [enhance] 组 20/36
+  [enhance] 本轮完成 228
+[noise_0db] 156/180 3D_SPK_06977 done
+  [enhance] 已完成 0，待处理 297
+  [enhance] 组 0/39
+  [enhance] 组 20/39
+  [enhance] 本轮完成 297
+[noise_0db] 157/180 3D_SPK_06978 done
+  [enhance] 已完成 0，待处理 198
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 198
+[noise_0db] 158/180 3D_SPK_06979 done
+  [enhance] 已完成 0，待处理 282
+  [enhance] 组 0/45
+  [enhance] 组 20/45
+  [enhance] 组 40/45
+  [enhance] 本轮完成 282
+[noise_0db] 159/180 3D_SPK_06980 done
+  [enhance] 已完成 0，待处理 329
+  [enhance] 组 0/57
+  [enhance] 组 20/57
+  [enhance] 组 40/57
+  [enhance] 本轮完成 329
+[noise_0db] 160/180 3D_SPK_06981 done
+  [enhance] 已完成 0，待处理 201
+  [enhance] 组 0/25
+  [enhance] 组 20/25
+  [enhance] 本轮完成 201
+[noise_0db] 161/180 3D_SPK_06982 done
+  [enhance] 已完成 0，待处理 291
+  [enhance] 组 0/43
+  [enhance] 组 20/43
+  [enhance] 组 40/43
+  [enhance] 本轮完成 291
+[noise_0db] 162/180 3D_SPK_06983 done
+  [enhance] 已完成 0，待处理 256
+  [enhance] 组 0/33
+  [enhance] 组 20/33
+  [enhance] 本轮完成 256
+[noise_0db] 163/180 3D_SPK_06984 done
+  [enhance] 已完成 0，待处理 319
+  [enhance] 组 0/42
+  [enhance] 组 20/42
+  [enhance] 组 40/42
+  [enhance] 本轮完成 319
+[noise_0db] 164/180 3D_SPK_06985 done
+  [enhance] 已完成 0，待处理 271
+  [enhance] 组 0/39
+  [enhance] 组 20/39
+  [enhance] 本轮完成 271
+[noise_0db] 165/180 3D_SPK_06986 done
+  [enhance] 已完成 0，待处理 325
+  [enhance] 组 0/58
+  [enhance] 组 20/58
+  [enhance] 组 40/58
+  [enhance] 本轮完成 325
+[noise_0db] 166/180 3D_SPK_06987 done
+  [enhance] 已完成 0，待处理 237
+  [enhance] 组 0/39
+  [enhance] 组 20/39
+  [enhance] 本轮完成 237
+[noise_0db] 167/180 3D_SPK_06988 done
+  [enhance] 已完成 0，待处理 234
+  [enhance] 组 0/40
+  [enhance] 组 20/40
+  [enhance] 本轮完成 234
+[noise_0db] 168/180 3D_SPK_06989 done
+  [enhance] 已完成 0，待处理 309
+  [enhance] 组 0/43
+  [enhance] 组 20/43
+  [enhance] 组 40/43
+  [enhance] 本轮完成 309
+[noise_0db] 169/180 3D_SPK_06990 done
+  [enhance] 已完成 0，待处理 312
+  [enhance] 组 0/55
+  [enhance] 组 20/55
+  [enhance] 组 40/55
+  [enhance] 本轮完成 312
+[noise_0db] 170/180 3D_SPK_06991 done
+  [enhance] 已完成 0，待处理 298
+  [enhance] 组 0/51
+  [enhance] 组 20/51
+  [enhance] 组 40/51
+  [enhance] 本轮完成 298
+[noise_0db] 171/180 3D_SPK_06992 done
+  [enhance] 已完成 0，待处理 293
+  [enhance] 组 0/50
+  [enhance] 组 20/50
+  [enhance] 组 40/50
+  [enhance] 本轮完成 293
+[noise_0db] 172/180 3D_SPK_06993 done
+  [enhance] 已完成 0，待处理 305
+  [enhance] 组 0/54
+  [enhance] 组 20/54
+  [enhance] 组 40/54
+  [enhance] 本轮完成 305
+[noise_0db] 173/180 3D_SPK_06994 done
+  [enhance] 已完成 0，待处理 249
+  [enhance] 组 0/43
+  [enhance] 组 20/43
+  [enhance] 组 40/43
+  [enhance] 本轮完成 249
+[noise_0db] 174/180 3D_SPK_06995 done
+  [enhance] 已完成 0，待处理 234
+  [enhance] 组 0/34
+  [enhance] 组 20/34
+  [enhance] 本轮完成 234
+[noise_0db] 175/180 3D_SPK_06996 done
+  [enhance] 已完成 0，待处理 306
+  [enhance] 组 0/54
+  [enhance] 组 20/54
+  [enhance] 组 40/54
+  [enhance] 本轮完成 306
+[noise_0db] 176/180 3D_SPK_06997 done
+  [enhance] 已完成 0，待处理 227
+  [enhance] 组 0/43
+  [enhance] 组 20/43
+  [enhance] 组 40/43
+  [enhance] 本轮完成 227
+[noise_0db] 177/180 3D_SPK_06998 done
+  [enhance] 已完成 0，待处理 303
+  [enhance] 组 0/51
+  [enhance] 组 20/51
+  [enhance] 组 40/51
+  [enhance] 本轮完成 303
+[noise_0db] 178/180 3D_SPK_06999 done
+  [enhance] 已完成 0，待处理 248
+  [enhance] 组 0/32
+  [enhance] 组 20/32
+  [enhance] 本轮完成 248
+[noise_0db] 179/180 3D_SPK_07000 done
+  [enhance] 已完成 0，待处理 201
+  [enhance] 组 0/39
+  [enhance] 组 20/39
+  [enhance] 本轮完成 201
+[noise_0db] 180/180 3D_SPK_07001 done
+  [enhance] 已完成 0，待处理 117
+  [enhance] 组 0/13
+  [enhance] 本轮完成 117
+[noise_m5db] 1/180 3D_SPK_06154 done
+  [enhance] 已完成 0，待处理 89
+  [enhance] 组 0/13
+  [enhance] 本轮完成 89
+[noise_m5db] 2/180 3D_SPK_06155 done
+  [enhance] 已完成 0，待处理 138
+  [enhance] 组 0/20
+  [enhance] 本轮完成 138
+[noise_m5db] 3/180 3D_SPK_06156 done
+  [enhance] 已完成 0，待处理 113
+  [enhance] 组 0/15
+  [enhance] 本轮完成 113
+[noise_m5db] 4/180 3D_SPK_06157 done
+  [enhance] 已完成 0，待处理 185
+  [enhance] 组 0/30
+  [enhance] 组 20/30
+  [enhance] 本轮完成 185
+[noise_m5db] 5/180 3D_SPK_06158 done
+  [enhance] 已完成 0，待处理 136
+  [enhance] 组 0/15
+  [enhance] 本轮完成 136
+[noise_m5db] 6/180 3D_SPK_06159 done
+  [enhance] 已完成 0，待处理 146
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 146
+[noise_m5db] 7/180 3D_SPK_06160 done
+  [enhance] 已完成 0，待处理 126
+  [enhance] 组 0/16
+  [enhance] 本轮完成 126
+[noise_m5db] 8/180 3D_SPK_06161 done
+  [enhance] 已完成 0，待处理 156
+  [enhance] 组 0/19
+  [enhance] 本轮完成 156
+[noise_m5db] 9/180 3D_SPK_06162 done
+  [enhance] 已完成 0，待处理 112
+  [enhance] 组 0/17
+  [enhance] 本轮完成 112
+[noise_m5db] 10/180 3D_SPK_06163 done
+  [enhance] 已完成 0，待处理 184
+  [enhance] 组 0/35
+  [enhance] 组 20/35
+  [enhance] 本轮完成 184
+[noise_m5db] 11/180 3D_SPK_06164 done
+  [enhance] 已完成 0，待处理 126
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 126
+[noise_m5db] 12/180 3D_SPK_06165 done
+  [enhance] 已完成 0，待处理 154
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 154
+[noise_m5db] 13/180 3D_SPK_06166 done
+  [enhance] 已完成 0，待处理 173
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 173
+[noise_m5db] 14/180 3D_SPK_06167 done
+  [enhance] 已完成 0，待处理 130
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 130
+[noise_m5db] 15/180 3D_SPK_06168 done
+  [enhance] 已完成 0，待处理 127
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 127
+[noise_m5db] 16/180 3D_SPK_06169 done
+  [enhance] 已完成 0，待处理 117
+  [enhance] 组 0/15
+  [enhance] 本轮完成 117
+[noise_m5db] 17/180 3D_SPK_06170 done
+  [enhance] 已完成 0，待处理 67
+  [enhance] 组 0/11
+  [enhance] 本轮完成 67
+[noise_m5db] 18/180 3D_SPK_06171 done
+  [enhance] 已完成 0，待处理 133
+  [enhance] 组 0/19
+  [enhance] 本轮完成 133
+[noise_m5db] 19/180 3D_SPK_06172 done
+  [enhance] 已完成 0，待处理 120
+  [enhance] 组 0/17
+  [enhance] 本轮完成 120
+[noise_m5db] 20/180 3D_SPK_06173 done
+  [enhance] 已完成 0，待处理 136
+  [enhance] 组 0/19
+  [enhance] 本轮完成 136
+[noise_m5db] 21/180 3D_SPK_06174 done
+  [enhance] 已完成 0，待处理 99
+  [enhance] 组 0/14
+  [enhance] 本轮完成 99
+[noise_m5db] 22/180 3D_SPK_06175 done
+  [enhance] 已完成 0，待处理 147
+  [enhance] 组 0/24
+  [enhance] 组 20/24
+  [enhance] 本轮完成 147
+[noise_m5db] 23/180 3D_SPK_06176 done
+  [enhance] 已完成 0，待处理 96
+  [enhance] 组 0/14
+  [enhance] 本轮完成 96
+[noise_m5db] 24/180 3D_SPK_06177 done
+  [enhance] 已完成 0，待处理 184
+  [enhance] 组 0/34
+  [enhance] 组 20/34
+  [enhance] 本轮完成 184
+[noise_m5db] 25/180 3D_SPK_06178 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 152
+[noise_m5db] 26/180 3D_SPK_06179 done
+  [enhance] 已完成 0，待处理 146
+  [enhance] 组 0/27
+  [enhance] 组 20/27
+  [enhance] 本轮完成 146
+[noise_m5db] 27/180 3D_SPK_06180 done
+  [enhance] 已完成 0，待处理 157
+  [enhance] 组 0/20
+  [enhance] 本轮完成 157
+[noise_m5db] 28/180 3D_SPK_06181 done
+  [enhance] 已完成 0，待处理 157
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 157
+[noise_m5db] 29/180 3D_SPK_06182 done
+  [enhance] 已完成 0，待处理 144
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 144
+[noise_m5db] 30/180 3D_SPK_06183 done
+  [enhance] 已完成 0，待处理 153
+  [enhance] 组 0/17
+  [enhance] 本轮完成 153
+[noise_m5db] 31/180 3D_SPK_06184 done
+  [enhance] 已完成 0，待处理 115
+  [enhance] 组 0/19
+  [enhance] 本轮完成 115
+[noise_m5db] 32/180 3D_SPK_06185 done
+  [enhance] 已完成 0，待处理 158
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 158
+[noise_m5db] 33/180 3D_SPK_06186 done
+  [enhance] 已完成 0，待处理 145
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 145
+[noise_m5db] 34/180 3D_SPK_06187 done
+  [enhance] 已完成 0，待处理 174
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 174
+[noise_m5db] 35/180 3D_SPK_06188 done
+  [enhance] 已完成 0，待处理 124
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 124
+[noise_m5db] 36/180 3D_SPK_06189 done
+  [enhance] 已完成 0，待处理 96
+  [enhance] 组 0/15
+  [enhance] 本轮完成 96
+[noise_m5db] 37/180 3D_SPK_06190 done
+  [enhance] 已完成 0，待处理 81
+  [enhance] 组 0/15
+  [enhance] 本轮完成 81
+[noise_m5db] 38/180 3D_SPK_06191 done
+  [enhance] 已完成 0，待处理 136
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 136
+[noise_m5db] 39/180 3D_SPK_06192 done
+  [enhance] 已完成 0，待处理 133
+  [enhance] 组 0/18
+  [enhance] 本轮完成 133
+[noise_m5db] 40/180 3D_SPK_06193 done
+  [enhance] 已完成 0，待处理 157
+  [enhance] 组 0/20
+  [enhance] 本轮完成 157
+[noise_m5db] 41/180 3D_SPK_06194 done
+  [enhance] 已完成 0，待处理 161
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 161
+[noise_m5db] 42/180 3D_SPK_06195 done
+  [enhance] 已完成 0，待处理 154
+  [enhance] 组 0/25
+  [enhance] 组 20/25
+  [enhance] 本轮完成 154
+[noise_m5db] 43/180 3D_SPK_06196 done
+  [enhance] 已完成 0，待处理 91
+  [enhance] 组 0/16
+  [enhance] 本轮完成 91
+[noise_m5db] 44/180 3D_SPK_06197 done
+  [enhance] 已完成 0，待处理 184
+  [enhance] 组 0/30
+  [enhance] 组 20/30
+  [enhance] 本轮完成 184
+[noise_m5db] 45/180 3D_SPK_06198 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 152
+[noise_m5db] 46/180 3D_SPK_06199 done
+  [enhance] 已完成 0，待处理 121
+  [enhance] 组 0/17
+  [enhance] 本轮完成 121
+[noise_m5db] 47/180 3D_SPK_06200 done
+  [enhance] 已完成 0，待处理 105
+  [enhance] 组 0/13
+  [enhance] 本轮完成 105
+[noise_m5db] 48/180 3D_SPK_06201 done
+  [enhance] 已完成 0，待处理 108
+  [enhance] 组 0/20
+  [enhance] 本轮完成 108
+[noise_m5db] 49/180 3D_SPK_06202 done
+  [enhance] 已完成 0，待处理 95
+  [enhance] 组 0/16
+  [enhance] 本轮完成 95
+[noise_m5db] 50/180 3D_SPK_06203 done
+  [enhance] 已完成 0，待处理 167
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 167
+[noise_m5db] 51/180 3D_SPK_06204 done
+  [enhance] 已完成 0，待处理 131
+  [enhance] 组 0/14
+  [enhance] 本轮完成 131
+[noise_m5db] 52/180 3D_SPK_06205 done
+  [enhance] 已完成 0，待处理 154
+  [enhance] 组 0/20
+  [enhance] 本轮完成 154
+[noise_m5db] 53/180 3D_SPK_06206 done
+  [enhance] 已完成 0，待处理 124
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 124
+[noise_m5db] 54/180 3D_SPK_06207 done
+  [enhance] 已完成 0，待处理 107
+  [enhance] 组 0/13
+  [enhance] 本轮完成 107
+[noise_m5db] 55/180 3D_SPK_06208 done
+  [enhance] 已完成 0，待处理 82
+  [enhance] 组 0/13
+  [enhance] 本轮完成 82
+[noise_m5db] 56/180 3D_SPK_06209 done
+  [enhance] 已完成 0，待处理 148
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 148
+[noise_m5db] 57/180 3D_SPK_06210 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 152
+[noise_m5db] 58/180 3D_SPK_06211 done
+  [enhance] 已完成 0，待处理 95
+  [enhance] 组 0/14
+  [enhance] 本轮完成 95
+[noise_m5db] 59/180 3D_SPK_06212 done
+  [enhance] 已完成 0，待处理 79
+  [enhance] 组 0/9
+  [enhance] 本轮完成 79
+[noise_m5db] 60/180 3D_SPK_06213 done
+  [enhance] 已完成 0，待处理 179
+  [enhance] 组 0/32
+  [enhance] 组 20/32
+  [enhance] 本轮完成 179
+[noise_m5db] 61/180 3D_SPK_06214 done
+  [enhance] 已完成 0，待处理 100
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 100
+[noise_m5db] 62/180 3D_SPK_06215 done
+  [enhance] 已完成 0，待处理 178
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 178
+[noise_m5db] 63/180 3D_SPK_06216 done
+  [enhance] 已完成 0，待处理 111
+  [enhance] 组 0/16
+  [enhance] 本轮完成 111
+[noise_m5db] 64/180 3D_SPK_06217 done
+  [enhance] 已完成 0，待处理 166
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 166
+[noise_m5db] 65/180 3D_SPK_06218 done
+  [enhance] 已完成 0，待处理 117
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 117
+[noise_m5db] 66/180 3D_SPK_06219 done
+  [enhance] 已完成 0，待处理 178
+  [enhance] 组 0/27
+  [enhance] 组 20/27
+  [enhance] 本轮完成 178
+[noise_m5db] 67/180 3D_SPK_06220 done
+  [enhance] 已完成 0，待处理 125
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 125
+[noise_m5db] 68/180 3D_SPK_06221 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/30
+  [enhance] 组 20/30
+  [enhance] 本轮完成 152
+[noise_m5db] 69/180 3D_SPK_06222 done
+  [enhance] 已完成 0，待处理 102
+  [enhance] 组 0/13
+  [enhance] 本轮完成 102
+[noise_m5db] 70/180 3D_SPK_06223 done
+  [enhance] 已完成 0，待处理 143
+  [enhance] 组 0/24
+  [enhance] 组 20/24
+  [enhance] 本轮完成 143
+[noise_m5db] 71/180 3D_SPK_06810 done
+  [enhance] 已完成 0，待处理 74
+  [enhance] 组 0/17
+  [enhance] 本轮完成 74
+[noise_m5db] 72/180 3D_SPK_06811 done
+  [enhance] 已完成 0，待处理 134
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 134
+[noise_m5db] 73/180 3D_SPK_06812 done
+  [enhance] 已完成 0，待处理 106
+  [enhance] 组 0/17
+  [enhance] 本轮完成 106
+[noise_m5db] 74/180 3D_SPK_06813 done
+  [enhance] 已完成 0，待处理 101
+  [enhance] 组 0/14
+  [enhance] 本轮完成 101
+[noise_m5db] 75/180 3D_SPK_06814 done
+  [enhance] 已完成 0，待处理 106
+  [enhance] 组 0/16
+  [enhance] 本轮完成 106
+[noise_m5db] 76/180 3D_SPK_06815 done
+  [enhance] 已完成 0，待处理 123
+  [enhance] 组 0/25
+  [enhance] 组 20/25
+  [enhance] 本轮完成 123
+[noise_m5db] 77/180 3D_SPK_06816 done
+  [enhance] 已完成 0，待处理 94
+  [enhance] 组 0/17
+  [enhance] 本轮完成 94
+[noise_m5db] 78/180 3D_SPK_06817 done
+  [enhance] 已完成 0，待处理 110
+  [enhance] 组 0/20
+  [enhance] 本轮完成 110
+[noise_m5db] 79/180 3D_SPK_06818 done
+  [enhance] 已完成 0，待处理 82
+  [enhance] 组 0/12
+  [enhance] 本轮完成 82
+[noise_m5db] 80/180 3D_SPK_06819 done
+  [enhance] 已完成 0，待处理 101
+  [enhance] 组 0/11
+  [enhance] 本轮完成 101
+[noise_m5db] 81/180 3D_SPK_06820 done
+  [enhance] 已完成 0，待处理 97
+  [enhance] 组 0/13
+  [enhance] 本轮完成 97
+[noise_m5db] 82/180 3D_SPK_06821 done
+  [enhance] 已完成 0，待处理 111
+  [enhance] 组 0/14
+  [enhance] 本轮完成 111
+[noise_m5db] 83/180 3D_SPK_06822 done
+  [enhance] 已完成 0，待处理 71
+  [enhance] 组 0/14
+  [enhance] 本轮完成 71
+[noise_m5db] 84/180 3D_SPK_06823 done
+  [enhance] 已完成 0，待处理 153
+  [enhance] 组 0/23
+  [enhance] 组 20/23
+  [enhance] 本轮完成 153
+[noise_m5db] 85/180 3D_SPK_06824 done
+  [enhance] 已完成 0，待处理 108
+  [enhance] 组 0/16
+  [enhance] 本轮完成 108
+[noise_m5db] 86/180 3D_SPK_06825 done
+  [enhance] 已完成 0，待处理 140
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 140
+[noise_m5db] 87/180 3D_SPK_06826 done
+  [enhance] 已完成 0，待处理 92
+  [enhance] 组 0/16
+  [enhance] 本轮完成 92
+[noise_m5db] 88/180 3D_SPK_06827 done
+  [enhance] 已完成 0，待处理 153
+  [enhance] 组 0/24
+  [enhance] 组 20/24
+  [enhance] 本轮完成 153
+[noise_m5db] 89/180 3D_SPK_06828 done
+  [enhance] 已完成 0，待处理 72
+  [enhance] 组 0/7
+  [enhance] 本轮完成 72
+[noise_m5db] 90/180 3D_SPK_06829 done
+  [enhance] 已完成 0，待处理 138
+  [enhance] 组 0/19
+  [enhance] 本轮完成 138
+[noise_m5db] 91/180 3D_SPK_06830 done
+  [enhance] 已完成 0，待处理 72
+  [enhance] 组 0/13
+  [enhance] 本轮完成 72
+[noise_m5db] 92/180 3D_SPK_06831 done
+  [enhance] 已完成 0，待处理 138
+  [enhance] 组 0/26
+  [enhance] 组 20/26
+  [enhance] 本轮完成 138
+[noise_m5db] 93/180 3D_SPK_06832 done
+  [enhance] 已完成 0，待处理 102
+  [enhance] 组 0/11
+  [enhance] 本轮完成 102
+[noise_m5db] 94/180 3D_SPK_06833 done
+  [enhance] 已完成 0，待处理 122
+  [enhance] 组 0/20
+  [enhance] 本轮完成 122
+[noise_m5db] 95/180 3D_SPK_06834 done
+  [enhance] 已完成 0，待处理 96
+  [enhance] 组 0/17
+  [enhance] 本轮完成 96
+[noise_m5db] 96/180 3D_SPK_06835 done
+  [enhance] 已完成 0，待处理 152
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 152
+[noise_m5db] 97/180 3D_SPK_06836 done
+  [enhance] 已完成 0，待处理 62
+  [enhance] 组 0/9
+  [enhance] 本轮完成 62
+[noise_m5db] 98/180 3D_SPK_06837 done
+  [enhance] 已完成 0，待处理 105
+  [enhance] 组 0/22
+  [enhance] 组 20/22
+  [enhance] 本轮完成 105
+[noise_m5db] 99/180 3D_SPK_06838 done
+  [enhance] 已完成 0，待处理 82
+  [enhance] 组 0/16
+  [enhance] 本轮完成 82
+[noise_m5db] 100/180 3D_SPK_06839 done
+  [enhance] 已完成 0，待处理 117
+  [enhance] 组 0/17
+  [enhance] 本轮完成 117
+[noise_m5db] 101/180 3D_SPK_06840 done
+  [enhance] 已完成 0，待处理 97
+  [enhance] 组 0/18
+  [enhance] 本轮完成 97
+[noise_m5db] 102/180 3D_SPK_06841 done
+  [enhance] 已完成 0，待处理 134
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 134
+[noise_m5db] 103/180 3D_SPK_06842 done
+  [enhance] 已完成 0，待处理 59
+  [enhance] 组 0/10
+  [enhance] 本轮完成 59
+[noise_m5db] 104/180 3D_SPK_06843 done
+  [enhance] 已完成 0，待处理 96
+  [enhance] 组 0/19
+  [enhance] 本轮完成 96
+[noise_m5db] 105/180 3D_SPK_06844 done
+  [enhance] 已完成 0，待处理 67
+  [enhance] 组 0/13
+  [enhance] 本轮完成 67
+[noise_m5db] 106/180 3D_SPK_06845 done
+  [enhance] 已完成 0，待处理 105
+  [enhance] 组 0/10
+  [enhance] 本轮完成 105
+[noise_m5db] 107/180 3D_SPK_06846 done
+  [enhance] 已完成 0，待处理 106
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 106
+[noise_m5db] 108/180 3D_SPK_06847 done
+  [enhance] 已完成 0，待处理 121
+  [enhance] 组 0/14
+  [enhance] 本轮完成 121
+[noise_m5db] 109/180 3D_SPK_06848 done
+  [enhance] 已完成 0，待处理 74
+  [enhance] 组 0/12
+  [enhance] 本轮完成 74
+[noise_m5db] 110/180 3D_SPK_06849 done
+  [enhance] 已完成 0，待处理 157
+  [enhance] 组 0/25
+  [enhance] 组 20/25
+  [enhance] 本轮完成 157
+[noise_m5db] 111/180 3D_SPK_06850 done
+  [enhance] 已完成 0，待处理 66
+  [enhance] 组 0/16
+  [enhance] 本轮完成 66
+[noise_m5db] 112/180 3D_SPK_06851 done
+  [enhance] 已完成 0，待处理 107
+  [enhance] 组 0/20
+  [enhance] 本轮完成 107
+[noise_m5db] 113/180 3D_SPK_06852 done
+  [enhance] 已完成 0，待处理 88
+  [enhance] 组 0/16
+  [enhance] 本轮完成 88
+[noise_m5db] 114/180 3D_SPK_06853 done
+  [enhance] 已完成 0，待处理 135
+  [enhance] 组 0/20
+  [enhance] 本轮完成 135
+[noise_m5db] 115/180 3D_SPK_06854 done
+  [enhance] 已完成 0，待处理 87
+  [enhance] 组 0/10
+  [enhance] 本轮完成 87
+[noise_m5db] 116/180 3D_SPK_06855 done
+  [enhance] 已完成 0，待处理 125
+  [enhance] 组 0/19
+  [enhance] 本轮完成 125
+[noise_m5db] 117/180 3D_SPK_06856 done
+  [enhance] 已完成 0，待处理 72
+  [enhance] 组 0/14
+  [enhance] 本轮完成 72
+[noise_m5db] 118/180 3D_SPK_06857 done
+  [enhance] 已完成 0，待处理 184
+  [enhance] 组 0/31
+  [enhance] 组 20/31
+  [enhance] 本轮完成 184
+[noise_m5db] 119/180 3D_SPK_06858 done
+  [enhance] 已完成 0，待处理 105
+  [enhance] 组 0/18
+  [enhance] 本轮完成 105
+[noise_m5db] 120/180 3D_SPK_06859 done
+  [enhance] 已完成 0，待处理 149
+  [enhance] 组 0/21
+  [enhance] 组 20/21
+  [enhance] 本轮完成 149
+[noise_m5db] 121/180 3D_SPK_06860 done
+  [enhance] 已完成 0，待处理 70
+  [enhance] 组 0/8
+  [enhance] 本轮完成 70
+[noise_m5db] 122/180 3D_SPK_06861 done
+  [enhance] 已完成 0，待处理 88
+  [enhance] 组 0/9
+  [enhance] 本轮完成 88
+[noise_m5db] 123/180 3D_SPK_06862 done
+  [enhance] 已完成 0，待处理 86
+  [enhance] 组 0/15
+  [enhance] 本轮完成 86
+[noise_m5db] 124/180 3D_SPK_06863 done
+  [enhance] 已完成 0，待处理 146
+  [enhance] 组 0/24
+  [enhance] 组 20/24
+  [enhance] 本轮完成 146
+[noise_m5db] 125/180 3D_SPK_06864 done
+  [enhance] 已完成 0，待处理 82
+  [enhance] 组 0/12
+  [enhance] 本轮完成 82
+[noise_m5db] 126/180 3D_SPK_06865 done
+  [enhance] 已完成 0，待处理 99
+  [enhance] 组 0/17
+  [enhance] 本轮完成 99
+[noise_m5db] 127/180 3D_SPK_06866 done
+  [enhance] 已完成 0，待处理 94
+  [enhance] 组 0/14
+  [enhance] 本轮完成 94
+[noise_m5db] 128/180 3D_SPK_06867 done
+  [enhance] 已完成 0，待处理 112
+  [enhance] 组 0/19
+  [enhance] 本轮完成 112
+[noise_m5db] 129/180 3D_SPK_06868 done
+  [enhance] 已完成 0，待处理 81
+  [enhance] 组 0/9
+  [enhance] 本轮完成 81
+[noise_m5db] 130/180 3D_SPK_06869 done
+  [enhance] 已完成 0，待处理 110
+  [enhance] 组 0/15
+  [enhance] 本轮完成 110
+[noise_m5db] 131/180 3D_SPK_06870 done
+  [enhance] 已完成 0，待处理 95
+  [enhance] 组 0/11
+  [enhance] 本轮完成 95
+[noise_m5db] 132/180 3D_SPK_06871 done
+  [enhance] 已完成 0，待处理 92
+  [enhance] 组 0/14
+  [enhance] 本轮完成 92
+[noise_m5db] 133/180 3D_SPK_06872 done
+  [enhance] 已完成 0，待处理 95
+  [enhance] 组 0/19
+  [enhance] 本轮完成 95
+[noise_m5db] 134/180 3D_SPK_06873 done
+  [enhance] 已完成 0，待处理 126
+  [enhance] 组 0/28
+  [enhance] 组 20/28
+  [enhance] 本轮完成 126
+[noise_m5db] 135/180 3D_SPK_06874 done
+  [enhance] 已完成 0，待处理 74
+  [enhance] 组 0/8
+  [enhance] 本轮完成 74
+[noise_m5db] 136/180 3D_SPK_06875 done
+  [enhance] 已完成 0，待处理 113
+  [enhance] 组 0/13
+  [enhance] 本轮完成 113
+[noise_m5db] 137/180 3D_SPK_06876 done
+  [enhance] 已完成 0，待处理 116
+  [enhance] 组 0/18
+  [enhance] 本轮完成 116
+[noise_m5db] 138/180 3D_SPK_06877 done
+  [enhance] 已完成 0，待处理 133
+  [enhance] 组 0/27
+  [enhance] 组 20/27
+  [enhance] 本轮完成 133
+[noise_m5db] 139/180 3D_SPK_06878 done
+  [enhance] 已完成 0，待处理 77
+  [enhance] 组 0/11
+  [enhance] 本轮完成 77
+[noise_m5db] 140/180 3D_SPK_06879 done
+  [enhance] 已完成 0，待处理 209
+  [enhance] 组 0/27
+  [enhance] 组 20/27
+  [enhance] 本轮完成 209
+[noise_m5db] 141/180 3D_SPK_06962 done
+  [enhance] 已完成 0，待处理 203
+  [enhance] 组 0/37
+  [enhance] 组 20/37
+  [enhance] 本轮完成 203
+[noise_m5db] 142/180 3D_SPK_06963 done
+  [enhance] 已完成 0，待处理 213
+  [enhance] 组 0/33
+  [enhance] 组 20/33
+  [enhance] 本轮完成 213
+[noise_m5db] 143/180 3D_SPK_06964 done
+  [enhance] 已完成 0，待处理 249
+  [enhance] 组 0/51
+  [enhance] 组 20/51
+  [enhance] 组 40/51
+  [enhance] 本轮完成 249
+[noise_m5db] 144/180 3D_SPK_06965 done
+  [enhance] 已完成 0，待处理 303
+  [enhance] 组 0/38
+  [enhance] 组 20/38
+  [enhance] 本轮完成 303
+[noise_m5db] 145/180 3D_SPK_06966 done
+  [enhance] 已完成 0，待处理 303
+  [enhance] 组 0/36
+  [enhance] 组 20/36
+  [enhance] 本轮完成 303
+[noise_m5db] 146/180 3D_SPK_06967 done
+  [enhance] 已完成 0，待处理 272
+  [enhance] 组 0/41
+  [enhance] 组 20/41
+  [enhance] 组 40/41
+  [enhance] 本轮完成 272
+[noise_m5db] 147/180 3D_SPK_06968 done
+  [enhance] 已完成 0，待处理 228
+  [enhance] 组 0/33
+  [enhance] 组 20/33
+  [enhance] 本轮完成 228
+[noise_m5db] 148/180 3D_SPK_06969 done
+  [enhance] 已完成 0，待处理 265
+  [enhance] 组 0/52
+  [enhance] 组 20/52
+  [enhance] 组 40/52
+  [enhance] 本轮完成 265
+[noise_m5db] 149/180 3D_SPK_06970 done
+  [enhance] 已完成 0，待处理 285
+  [enhance] 组 0/48
+  [enhance] 组 20/48
+  [enhance] 组 40/48
+  [enhance] 本轮完成 285
+[noise_m5db] 150/180 3D_SPK_06971 done
+  [enhance] 已完成 0，待处理 217
+  [enhance] 组 0/37
+  [enhance] 组 20/37
+  [enhance] 本轮完成 217
+[noise_m5db] 151/180 3D_SPK_06972 done
+  [enhance] 已完成 0，待处理 292
+  [enhance] 组 0/41
+  [enhance] 组 20/41
+  [enhance] 组 40/41
+  [enhance] 本轮完成 292
+[noise_m5db] 152/180 3D_SPK_06973 done
+  [enhance] 已完成 0，待处理 337
+  [enhance] 组 0/52
+  [enhance] 组 20/52
+  [enhance] 组 40/52
+  [enhance] 本轮完成 337
+[noise_m5db] 153/180 3D_SPK_06974 done
+  [enhance] 已完成 0，待处理 255
+  [enhance] 组 0/50
+  [enhance] 组 20/50
+  [enhance] 组 40/50
+  [enhance] 本轮完成 255
+[noise_m5db] 154/180 3D_SPK_06975 done
+  [enhance] 已完成 0，待处理 268
+  [enhance] 组 0/47
+  [enhance] 组 20/47
+  [enhance] 组 40/47
+  [enhance] 本轮完成 268
+[noise_m5db] 155/180 3D_SPK_06976 done
+  [enhance] 已完成 0，待处理 228
+  [enhance] 组 0/36
+  [enhance] 组 20/36
+  [enhance] 本轮完成 228
+[noise_m5db] 156/180 3D_SPK_06977 done
+  [enhance] 已完成 0，待处理 297
+  [enhance] 组 0/39
+  [enhance] 组 20/39
+  [enhance] 本轮完成 297
+[noise_m5db] 157/180 3D_SPK_06978 done
+  [enhance] 已完成 0，待处理 198
+  [enhance] 组 0/29
+  [enhance] 组 20/29
+  [enhance] 本轮完成 198
+[noise_m5db] 158/180 3D_SPK_06979 done
+  [enhance] 已完成 0，待处理 282
+  [enhance] 组 0/45
+  [enhance] 组 20/45
+  [enhance] 组 40/45
+  [enhance] 本轮完成 282
+[noise_m5db] 159/180 3D_SPK_06980 done
+  [enhance] 已完成 0，待处理 329
+  [enhance] 组 0/57
+  [enhance] 组 20/57
+  [enhance] 组 40/57
+  [enhance] 本轮完成 329
+[noise_m5db] 160/180 3D_SPK_06981 done
+  [enhance] 已完成 0，待处理 201
+  [enhance] 组 0/25
+  [enhance] 组 20/25
+  [enhance] 本轮完成 201
+[noise_m5db] 161/180 3D_SPK_06982 done
+  [enhance] 已完成 0，待处理 291
+  [enhance] 组 0/43
+  [enhance] 组 20/43
+  [enhance] 组 40/43
+  [enhance] 本轮完成 291
+[noise_m5db] 162/180 3D_SPK_06983 done
+  [enhance] 已完成 0，待处理 256
+  [enhance] 组 0/33
+  [enhance] 组 20/33
+  [enhance] 本轮完成 256
+[noise_m5db] 163/180 3D_SPK_06984 done
+  [enhance] 已完成 0，待处理 319
+  [enhance] 组 0/42
+  [enhance] 组 20/42
+  [enhance] 组 40/42
+  [enhance] 本轮完成 319
+[noise_m5db] 164/180 3D_SPK_06985 done
+  [enhance] 已完成 0，待处理 271
+  [enhance] 组 0/39
+  [enhance] 组 20/39
+  [enhance] 本轮完成 271
+[noise_m5db] 165/180 3D_SPK_06986 done
+  [enhance] 已完成 0，待处理 325
+  [enhance] 组 0/58
+  [enhance] 组 20/58
+  [enhance] 组 40/58
+  [enhance] 本轮完成 325
+[noise_m5db] 166/180 3D_SPK_06987 done
+  [enhance] 已完成 0，待处理 237
+  [enhance] 组 0/39
+  [enhance] 组 20/39
+  [enhance] 本轮完成 237
+[noise_m5db] 167/180 3D_SPK_06988 done
+  [enhance] 已完成 0，待处理 234
+  [enhance] 组 0/40
+  [enhance] 组 20/40
+  [enhance] 本轮完成 234
+[noise_m5db] 168/180 3D_SPK_06989 done
+  [enhance] 已完成 0，待处理 309
+  [enhance] 组 0/43
+  [enhance] 组 20/43
+  [enhance] 组 40/43
+  [enhance] 本轮完成 309
+[noise_m5db] 169/180 3D_SPK_06990 done
+  [enhance] 已完成 0，待处理 312
+  [enhance] 组 0/55
+  [enhance] 组 20/55
+  [enhance] 组 40/55
+  [enhance] 本轮完成 312
+[noise_m5db] 170/180 3D_SPK_06991 done
+  [enhance] 已完成 0，待处理 298
+  [enhance] 组 0/51
+  [enhance] 组 20/51
+  [enhance] 组 40/51
+  [enhance] 本轮完成 298
+[noise_m5db] 171/180 3D_SPK_06992 done
+  [enhance] 已完成 0，待处理 293
+  [enhance] 组 0/50
+  [enhance] 组 20/50
+  [enhance] 组 40/50
+  [enhance] 本轮完成 293
+[noise_m5db] 172/180 3D_SPK_06993 done
+  [enhance] 已完成 0，待处理 305
+  [enhance] 组 0/54
+  [enhance] 组 20/54
+  [enhance] 组 40/54
+  [enhance] 本轮完成 305
+[noise_m5db] 173/180 3D_SPK_06994 done
+  [enhance] 已完成 0，待处理 249
+  [enhance] 组 0/43
+  [enhance] 组 20/43
+  [enhance] 组 40/43
+  [enhance] 本轮完成 249
+[noise_m5db] 174/180 3D_SPK_06995 done
+  [enhance] 已完成 0，待处理 234
+  [enhance] 组 0/34
+  [enhance] 组 20/34
+  [enhance] 本轮完成 234
+[noise_m5db] 175/180 3D_SPK_06996 done
+  [enhance] 已完成 0，待处理 306
+  [enhance] 组 0/54
+  [enhance] 组 20/54
+  [enhance] 组 40/54
+  [enhance] 本轮完成 306
+[noise_m5db] 176/180 3D_SPK_06997 done
+  [enhance] 已完成 0，待处理 227
+  [enhance] 组 0/43
+  [enhance] 组 20/43
+  [enhance] 组 40/43
+  [enhance] 本轮完成 227
+[noise_m5db] 177/180 3D_SPK_06998 done
+  [enhance] 已完成 0，待处理 303
+  [enhance] 组 0/51
+  [enhance] 组 20/51
+  [enhance] 组 40/51
+  [enhance] 本轮完成 303
+[noise_m5db] 178/180 3D_SPK_06999 done
+  [enhance] 已完成 0，待处理 248
+  [enhance] 组 0/32
+  [enhance] 组 20/32
+  [enhance] 本轮完成 248
+[noise_m5db] 179/180 3D_SPK_07000 done
+  [enhance] 已完成 0，待处理 201
+  [enhance] 组 0/39
+  [enhance] 组 20/39
+  [enhance] 本轮完成 201
+[noise_m5db] 180/180 3D_SPK_07001 done
+[flat] noise_0db: 27389 新链
+[flat] noise_m5db: 27389 新链
+[done] claim 增强 + 摊平完成

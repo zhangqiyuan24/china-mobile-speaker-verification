@@ -1,0 +1,16 @@
+{
+  "seed": 2026,
+  "num_train_utts": 90000,
+  "num_train_spks_selected": 9900,
+  "utts_per_spk": 0,
+  "num_train_spks_pool": 9900,
+  "num_val_spks": 100,
+  "num_val_utts_per_spk": 4,
+  "num_trials": 800,
+  "num_trials_target": 400,
+  "noise_train": 615,
+  "noise_val": 60,
+  "noise_test_isolated": 168,
+  "trial_spk_overlap_with_train": 0,
+  "val_bench_dir": "/data/home/ligangrui/china_mobile/AI/8.22/exp/data_90k/data/val_bench"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "frontend_noise_m5db",
+  "n_trials": 1378206,
+  "n_target": 211400,
+  "n_nontarget": 1166806,
+  "EER": 6.4613,
+  "EER_thr": 0.19134,
+  "minDCF(p=0.01)": 0.5608,
+  "minDCF_thr": 0.40634,
+  "fixed_thr": 0.2266,
+  "FAR@fixed": 3.697,
+  "FRR@fixed": 9.979
+}

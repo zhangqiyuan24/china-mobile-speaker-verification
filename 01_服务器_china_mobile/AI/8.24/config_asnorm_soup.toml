@@ -1,0 +1,15 @@
+# AS-Norm 配置 — soup_821_90k（8.21 robust 权重 + 90k 权重 50/50 平均单模型）
+# 配合 8.21/asnorm_proto.py 使用；base = 本文件所在目录（AI/8.24）
+# 跑法：
+#   cd AI/8.24 && python ../8.21/asnorm_proto.py --config config_asnorm_soup.toml #     --checkpoint exp/soup_821_90k/checkpoints/checkpoint_soup_w50.tar --gpu 1 --all
+
+[paths]
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+data_dir_820 = "../8.22/exp/data_90k/data"
+exp_dir = "exp/soup_821_90k"
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557

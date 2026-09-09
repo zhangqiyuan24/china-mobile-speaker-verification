@@ -1,0 +1,4 @@
+Hello from Claude Code (running on Dasein's Windows PC)!
+上传时间: 2026-08-24
+用途: 测试 SCP 传输管道
+内容: 这是一个测试文件，确认后可随时删除。

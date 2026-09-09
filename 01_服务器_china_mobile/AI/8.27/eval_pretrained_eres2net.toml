@@ -1,0 +1,13 @@
+# eval_pretrained_eres2net.toml — #18 口径闭合（8.27 傍晚布防）
+# 后端 = 官方 pretrained eres2net_large（零微调零融合），前端 = ns05ext ep6 best 增强产物。
+# 自检：raw 应复现官方基线 8.3911/11.0557（容差 0.05）；复现则 FE 按 -30% 公式直接判定。
+
+[paths]
+sv_ecapa = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+eres2net_ckpt = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+exp_dir = "exp/official_pretrained_eres2net"
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557

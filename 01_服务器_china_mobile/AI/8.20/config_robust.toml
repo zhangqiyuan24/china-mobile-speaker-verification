@@ -1,0 +1,54 @@
+# E2 多条件鲁棒微调配置（ERes2Net-large，clean/0dB/-5dB = 1:1:1）
+# 路径为相对本文件的路径（服务器上 AI/8.20 与 code/ 平级）
+
+[paths]
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+# 全量训练 scp（utt_id 相对路径）
+clean_scp = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/data_for_train/all_wav.scp"
+# 噪声池（train/test 划分沿用官方 divide；本方案再从 train 中切出 val）
+noise_train_list = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_train_freesound.txt"
+noise_test_list = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_test_freesound.txt"
+# 正式 trials（只用于隔离断言 + 正式评测，绝不参与训练）
+trials = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/data_for_test/clean/3s/trials_cross_device"
+# pretrained ERes2Net-large（只读，不会被覆盖）
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+# 输出目录（checkpoint / 验证集 / 评测结果都在这里）
+exp_dir = "exp/robust"
+
+[data]
+max_train_utts = 30000     # 训练语句数（clean 基底，三条件动态生成 → 每 epoch 90k 样本）
+utts_per_spk = 0           # 0 = 不限制（全说话人均匀抽）；N = 每人先取 N 句再总体抽
+num_val_speakers = 100     # 验证说话人（train 说话人排序末尾，与正式 test 说话人零交集）
+num_val_utts = 4           # 每人 4 句 = 2 注册 + 2 测试
+num_val_noises = 60        # 验证噪声（train noise 排序末尾，与 test noise 零交集）
+crop_seconds = 3.0         # 与正式评测一致的 3s 随机裁剪
+seed = 2026
+
+[model]
+embedding_size = 512
+m_channels = 64
+# AAM-softmax（固定，无 scheduler）
+margin = 0.2
+scale = 32.0
+
+[training]
+batch_size = 96            # 必须是 3 的倍数（每条件 B/3）
+accum = 1                  # 梯度累积：有效batch = batch_size×accum。共享卡 batch 调小时
+                           # 用 --accum 补偿（如 batch 12 配 --accum 8），保持每 epoch
+                           # 的优化器更新次数与 batch 96 一致，否则参数漂移被放大
+epochs = 8                 # 正式训练 epoch 数（方案要求 5~10）
+sanity_epochs = 3          # --sanity 模式
+lr = 2e-5                  # 固定学习率（方案要求 1e-5~2e-5）
+weight_decay = 5e-5
+num_workers = 8
+amp = false                # 混合精度（共享显卡显存紧张时 true，或命令行 --amp）
+val_batch_size = 24        # 验证/提特征 batch（P100 12G 满卡可到 64；共享卡建议 16~24）
+clean_degradation_max = 1.0  # 选最优 checkpoint 的 clean 门限（相对 epoch0，单位 pp）
+log_every = 50
+
+# 官方基线（results_summary.csv, eres2net 3s），用于相对降幅汇报
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+# -30% 目标：0dB ≤ 5.874, -5dB ≤ 7.739

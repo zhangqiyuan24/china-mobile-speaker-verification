@@ -1,0 +1,21 @@
+===== purefe overlap2_cn (Wed 02 Sep 2026 04:09:14 PM CST) =====
+[overlap2_cn] raw   : EER = 22.4158
+[overlap2_cn] purefe: EER = 23.1314
+[overlap2_cn] r5    : EER = 16.6305
+===== purefe overlap2_en (Wed 02 Sep 2026 04:46:12 PM CST) =====
+[overlap2_en] raw   : EER = 9.1334
+[overlap2_en] purefe: EER = 11.2449
+[overlap2_en] r5    : EER = 7.7602
+===== purefe overlap3_cn (Wed 02 Sep 2026 05:23:11 PM CST) =====
+[overlap3_cn] raw   : EER = 28.4272
+[overlap3_cn] purefe: EER = 28.9763
+[overlap3_cn] r5    : EER = 18.4205
+===== purefe overlap3_en (Wed 02 Sep 2026 05:59:17 PM CST) =====
+[overlap3_en] raw   : 
+[overlap3_en] purefe: EER = 16.8282
+[overlap3_en] r5    : 
+===== purefe reverb (Wed 02 Sep 2026 06:38:23 PM CST) =====
+[reverb] raw   : EER = 6.0885
+[reverb] purefe: EER = 6.1625
+[reverb] r5    : EER = 4.8737
+[purefe-scenes done] Wed 02 Sep 2026 07:19:58 PM CST

@@ -1,0 +1,29 @@
+# config_distill.toml — WavLM→ERes2Net-large 蒸馏训练配置（8.24）
+# 结构镜像 config_proto_90k.toml（已对照服务器真实文件核对）
+
+[paths]
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+trials = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/data_for_test/clean/3s/trials_cross_device"
+# pretrained ERes2Net-large（--student-init 不给时才用的冷启动路线）
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+proto_npz = "../8.21/exp/prototypes/prototypes.npz"
+# 复用 8.22 已生成的 90k 数据（train_utts.csv / noise_train.txt / val_bench / val_trials）
+data_dir_820 = "../8.22/exp/data_90k/data"
+exp_dir = "exp/consist"
+
+[data]
+seed = 2026
+
+[model]
+embedding_size = 512
+m_channels = 64
+margin = 0.2
+scale = 32.0
+
+[baseline]
+# 官方基线（results_summary.csv, eres2net 3s）
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+
+# 验收目标（-30%）：0dB ≤ 5.874，-5dB ≤ 7.739

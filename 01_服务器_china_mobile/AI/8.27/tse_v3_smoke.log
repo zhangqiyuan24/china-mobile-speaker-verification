@@ -1,0 +1,23 @@
+[labels] 90000 utts / 9900 spks
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[init] 续训自 /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v2_lam03/checkpoint_epoch3.tar
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[proto] 9900 行 × 512 维 (τ=0.3, K=8)
+[train] 32 样本 16 it/ep × 1 ep, lambda_ce=1.0, lambda_spk=0.3, lambda_ns=0.2 -> /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v3_smoke
+[cond] 100 spk 嵌入(soup5, 均值+L2)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v3_smoke_ep1/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v3_smoke_ep1/noise_m5db
+  [val-hard] ep1 0db=4.477 m5db=10.739 avg=7.608 (锚 lam03_ep3: 4.307/10.500 avg=7.403)
+  [val-hard] 新最优 avg=7.608 -> checkpoint_best.tar
+[done] λ_ns=0.2 best_hard_avg=7.608 (锚 7.403)

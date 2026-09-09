@@ -1,0 +1,33 @@
+[gen-probe start] Fri 28 Aug 2026 10:55:12 PM CST
+[enhance r2 1s] Fri 28 Aug 2026 10:55:12 PM CST
+[enhance r2 5s] Fri 28 Aug 2026 11:04:51 PM CST
+[enhance r2 3s] Fri 28 Aug 2026 11:43:09 PM CST
+[enhance ext3 1s] Sat 29 Aug 2026 12:07:28 AM CST
+[enhance all done] Sat 29 Aug 2026 12:17:04 AM CST
+[r2_eres_noise_0db_1s] EER = 14.1178
+[r2_eres_noise_0db_5s] EER = 4.6197
+[r2_eres_noise_0db_3s] EER = 5.1011
+[r2_b6_noise_0db_3s] 
+[ext3_eres_noise_0db_1s] EER = 14.5889
+[ext3_b6_noise_0db_3s] 
+[r2_eres_noise_m5db_1s] EER = 15.4305
+[r2_eres_noise_m5db_5s] EER = 5.1484
+[r2_eres_noise_m5db_3s] EER = 5.8725
+[r2_b6_noise_m5db_3s] 
+[ext3_eres_noise_m5db_1s] EER = 16.1485
+[ext3_b6_noise_m5db_3s] 
+
+===== 泛化哨兵汇总（FE EER，括号=ext2 ep9 参考）=====
+r2_eres_noise_0db_1s: EER = 14.1178
+r2_eres_noise_m5db_1s: EER = 15.4305
+r2_eres_noise_0db_5s: EER = 4.6197
+r2_eres_noise_m5db_5s: EER = 5.1484
+r2_eres_noise_0db_3s: EER = 5.1011
+r2_eres_noise_m5db_3s: EER = 5.8725
+r2_b6_noise_0db_3s: 
+r2_b6_noise_m5db_3s: 
+ext3_eres_noise_0db_1s: EER = 14.5889
+ext3_eres_noise_m5db_1s: EER = 16.1485
+ext3_b6_noise_0db_3s: 
+ext3_b6_noise_m5db_3s: 
+[gen-probe done] Sat 29 Aug 2026 03:36:55 AM CST  结果目录: /data/home/ligangrui/china_mobile/AI/8.28/gen_probe

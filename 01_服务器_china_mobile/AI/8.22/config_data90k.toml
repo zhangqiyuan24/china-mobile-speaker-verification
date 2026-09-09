@@ -1,0 +1,55 @@
+# 90k 训练数据生成配置 —— 本文件唯一用途：喂给 8.20 的 prepare_multicond_data.py
+#   python ../8.20/prepare_multicond_data.py --config config_data90k.toml
+#
+# 与 8.20/config_robust.toml 逐字段同源，只改两处：
+#   1) exp_dir: exp/robust -> exp/data_90k（落在 8.22 自己的 exp/，绝不碰 8.20 的产物）
+#   2) max_train_utts: 30000 -> 90000
+# 选样（uniform_select 等间隔确定性）、说话人三方隔离、噪声三方隔离、验证 bench
+# 全部走 8.20 已验证的同一份代码；相对路径 ../../code 在 8.22 下解析结果与 8.20 相同
+# （AI/8.20 与 AI/8.22 的上两级都是 china_mobile）。
+# 验证 bench/val_trials 与 8.20 那份内容一致（rng 消耗顺序与训练抽取量无关），
+# 因此 epoch0 基线、clean 门限、与 8.21 的 bench 数字仍然可比。
+
+[paths]
+sv_ecapa = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+clean_scp = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/data_for_train/all_wav.scp"
+noise_train_list = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_train_freesound.txt"
+noise_test_list = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/divide/noise_test_freesound.txt"
+trials = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/data/data_for_test/clean/3s/trials_cross_device"
+eres2net_ckpt = "../../code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+exp_dir = "exp/data_90k"
+
+[data]
+max_train_utts = 90000    # 训练语句数（clean 基底；五条件 -> 每 epoch 450k 样本）
+                          # 若全量训练池不足 90k，脚本会取全部并如实打印（以日志为准）
+utts_per_spk = 0
+num_val_speakers = 100
+num_val_utts = 4
+num_val_noises = 60
+crop_seconds = 3.0
+seed = 2026
+
+[model]
+embedding_size = 512
+m_channels = 64
+margin = 0.2
+scale = 32.0
+
+[training]
+batch_size = 96
+accum = 1
+epochs = 8
+sanity_epochs = 3
+lr = 2e-5
+weight_decay = 5e-5
+num_workers = 8
+amp = false
+val_batch_size = 24
+clean_degradation_max = 1.0
+log_every = 50
+
+# 官方基线（results_summary.csv, eres2net 3s），用于相对降幅汇报
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557

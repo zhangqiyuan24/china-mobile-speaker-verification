@@ -1,0 +1,13 @@
+{
+  "name": "frontend_noise_0db",
+  "n_trials": 1378206,
+  "n_target": 211400,
+  "n_nontarget": 1166806,
+  "EER": 5.4673,
+  "EER_thr": 0.20665,
+  "minDCF(p=0.01)": 0.5142,
+  "minDCF_thr": 0.40928,
+  "fixed_thr": 0.2266,
+  "FAR@fixed": 3.997,
+  "FRR@fixed": 7.071
+}

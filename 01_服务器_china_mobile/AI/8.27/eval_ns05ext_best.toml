@@ -1,0 +1,16 @@
+# eval_ns05ext_best.toml — ns05ext best 收官最优 ckpt 二次官方评测（8.27 午后布防）
+# 预声明规则：ns05ext ep5 hard <6.0 → 收官后二次官方确认。
+# ep5 实测 3.500/7.739/avg 5.619 < 6.0 触发；ckpt = 收官时 checkpoint_best.tar
+# （当前 best=ep5；若 ep6 更优自动覆盖）。与 eval_ns05ext4.toml 同构，仅 exp_dir 隔离。
+
+[paths]
+sv_ecapa = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+eres2net_ckpt = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_eres2net_large_sv_zh-cn_3dspeaker_16k/eres2net_large_model.ckpt"
+exp_dir = "exp/official_ns05ext_best"
+
+[baseline]
+clean = 5.8248
+noise_0db = 8.3911
+noise_m5db = 11.0557
+noise_0db_frontend_only = 7.7902
+noise_m5db_frontend_only = 9.9186

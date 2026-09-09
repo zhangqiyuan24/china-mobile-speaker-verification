@@ -1,0 +1,15 @@
+[enrol] 200 条, 每人 trial 注册 100
+[hard] noise_0db: 400 target + 2200 nontarget (负对均余弦 0.293) -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/trials_hard_noise_0db.txt
+[sanity] soup5 hard-trials EER = 5.500%（旧随机负对 proxy: 2.000%）
+[hard] noise_m5db: 400 target + 2200 nontarget (负对均余弦 0.286) -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/trials_hard_noise_m5db.txt
+[sanity] soup5 hard-trials EER = 13.000%（旧随机负对 proxy: 4.261%）
+[done]
+[backend] 821 <- checkpoint_best.tar
+[score] 821_raw      noise_0db   hard EER=5.977%（旧 2.239）
+[score] 821_raw      noise_m5db  hard EER=13.000%（旧 6.000）
+Traceback (most recent call last):
+  File "/data/home/ligangrui/china_mobile/AI/8.27/score_proxy_hard.py", line 181, in <module>
+    main()
+  File "/data/home/ligangrui/china_mobile/AI/8.27/score_proxy_hard.py", line 157, in main
+    c = cos(e_enrol[e_stem], e_test[t_stem])
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices

@@ -1,0 +1,18 @@
+{
+  "complete": true,
+  "num_utts": 90000,
+  "frontend_ckpt": "/data/home/ligangrui/china_mobile/AI/8.18/exp/spk_preserve/checkpoint_epoch10.tar",
+  "fsn_code": "/data/home/ligangrui/china_mobile/AI/8.17/code",
+  "seed": 2026,
+  "snrs": [
+    0.0,
+    -5.0
+  ],
+  "snr_tags": [
+    "snr0",
+    "snrm5"
+  ],
+  "enh_root": "/data/home/ligangrui/china_mobile/AI/8.22/exp/enh_corpus_90k/enhanced",
+  "num_enhanced_snr0": 90000,
+  "num_enhanced_snrm5": 90000
+}

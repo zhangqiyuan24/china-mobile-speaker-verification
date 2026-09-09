@@ -1,0 +1,17 @@
+[fix start] Thu 03 Sep 2026 09:07:05 AM CST
+[eres_m5db_5s] EER = 4.7999
+[ecapa_m5db_5s] EER = 6.1797
+[b6_m5db_5s] EER = 8.7767
+[leg1 done] Thu 03 Sep 2026 09:07:05 AM CST
+[skip] speech_m5db
+[skip] soundbible_0db
+[skip] soundbible_m5db
+[leg2 done] Thu 03 Sep 2026 09:07:05 AM CST
+===== fix summary =====
+v8d_eres_noise_m5db_5s: EER = 4.7999
+v8d_ecapa_noise_m5db_5s: EER = 6.1797
+v8d_b6_noise_m5db_5s: EER = 8.7767
+nd_v8d_eres_speech_m5db: EER = 8.9622
+nd_v8d_eres_soundbible_0db: EER = 4.8330
+nd_v8d_eres_soundbible_m5db: EER = 5.4192
+[fix all done] Thu 03 Sep 2026 09:07:05 AM CST

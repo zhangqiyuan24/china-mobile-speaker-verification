@@ -1,0 +1,13 @@
+{
+  "name": "raw_noise_m5db",
+  "n_trials": 1378206,
+  "n_target": 211400,
+  "n_nontarget": 1166806,
+  "EER": 9.7147,
+  "EER_thr": 0.16754,
+  "minDCF(p=0.01)": 0.649,
+  "minDCF_thr": 0.41387,
+  "fixed_thr": 0.2266,
+  "FAR@fixed": 3.939,
+  "FRR@fixed": 17.245
+}

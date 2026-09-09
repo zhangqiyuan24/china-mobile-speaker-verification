@@ -1,0 +1,15 @@
+[enrol] clean wav 16401
+  [enrol-emb] 1680 utts / 210 spks
+  [enrol-emb] 0/1680
+  [enrol-emb] 400/1680
+  [enrol-emb] 800/1680
+  [enrol-emb] 1200/1680
+  [enrol-emb] 1600/1680
+[cond] 210 个说话人注册嵌入(512, L2)
+[tse] 8.18 权重装载: 缺 4 键(全部 film.*, 零初始化恒等)
+[tse] 装载 exp/tse/checkpoint_epoch3.tar(epoch=3)
+[noise_0db] 16401 条带噪待增强
+  [enhance] 已完成 16401，待处理 0
+[noise_m5db] 16401 条带噪待增强
+  [enhance] 已完成 16401，待处理 0
+[done] 增强产物 -> exp/tse/enhanced/noise_0db noise_m5db

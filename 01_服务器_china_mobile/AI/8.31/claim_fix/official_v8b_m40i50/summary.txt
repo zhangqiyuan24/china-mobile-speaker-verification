@@ -1,0 +1,9 @@
+targets=211400 sampled_nontarget=30000
+
+===== noise_0db ===== raw=16401 fe=16401 claim=27389
+  raw=8.3667 oracleFE=4.7914 claimFE=11.4233 CI95=[11.263,11.630] nt_med={'raw': 0.043661847710609436, 'oracle': 0.04549381509423256, 'claim': 0.14047753810882568}
+
+===== noise_m5db ===== raw=16401 fe=16401 claim=27389
+  raw=11.0867 oracleFE=5.4801 claimFE=13.4939 CI95=[13.280,13.694] nt_med={'raw': 0.04081098735332489, 'oracle': 0.04416363313794136, 'claim': 0.14825285971164703}
+
+[done] /data/home/ligangrui/china_mobile/AI/8.31/claim_fix/official_v8b_m40i50/summary.json

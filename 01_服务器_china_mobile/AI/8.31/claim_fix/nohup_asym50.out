@@ -1,0 +1,16 @@
+[① 选ckpt] Tue 01 Sep 2026 02:59:15 PM CST
+  ckpt=/data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v5_asym50/checkpoint_epoch1.tar (proxy-claim 最优 ep=1)
+[② 全集oracle增强] Tue 01 Sep 2026 02:59:15 PM CST
+[③ 冒认claim增强] Tue 01 Sep 2026 03:23:09 PM CST
+[④ 提嵌入] Tue 01 Sep 2026 04:02:08 PM CST
+[⑤ 分析] Tue 01 Sep 2026 04:49:42 PM CST
+targets=211400 sampled_nontarget=30000
+
+===== noise_0db ===== raw=16401 fe=16401 claim=27389
+  raw=8.3667 oracleFE=6.0500 claimFE=8.3900 CI95=[8.235,8.537] nt_med={'raw': 0.043661847710609436, 'oracle': 0.048861972987651825, 'claim': 0.0824502557516098}
+
+===== noise_m5db ===== raw=16401 fe=16401 claim=27389
+  raw=11.0867 oracleFE=7.1353 claimFE=10.2535 CI95=[10.090,10.449] nt_med={'raw': 0.04081098735332489, 'oracle': 0.047849368304014206, 'claim': 0.08745644986629486}
+
+[done] /data/home/ligangrui/china_mobile/AI/8.31/claim_fix/official_asym50/summary.json
+[done asym50] Tue 01 Sep 2026 04:50:09 PM CST

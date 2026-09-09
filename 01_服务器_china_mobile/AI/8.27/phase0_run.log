@@ -1,0 +1,29 @@
+[tse] 8.18 权重装载: 缺 4 键(全部 film.*, 零初始化恒等)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/enh818_noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/enh818_noise_m5db
+[done]
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[cond] 100 spk 嵌入(soup5, 均值+L2)
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/enhtse_noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/enhtse_noise_m5db
+[done]
+Traceback (most recent call last):
+  File "score_proxy.py", line 32, in <module>
+    from common_utils import setup_speakerlab
+ModuleNotFoundError: No module named 'common_utils'

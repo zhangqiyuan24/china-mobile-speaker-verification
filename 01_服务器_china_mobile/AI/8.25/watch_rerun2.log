@@ -1,0 +1,6 @@
+[watch] 2026-08-25 21:11:18 等 voiceid 完成...
+[watch] 2026-08-25 21:12:18 用 /data/home/ligangrui/china_mobile/AI/8.25/exp/spk_voiceid/checkpoint_epoch3.tar 开始降噪
+[watch] 2026-08-25 21:45:52 noise_0db 降噪退出码 0
+[watch] 2026-08-25 22:19:19 noise_m5db 降噪退出码 0
+[watch] 增强目录: /data/home/ligangrui/china_mobile/AI/8.25/exp/spk_voiceid/eval_auto/denoised/noise_0db/enhanced_0003 / /data/home/ligangrui/china_mobile/AI/8.25/exp/spk_voiceid/eval_auto/denoised/noise_m5db/enhanced_0003
+[watch] 2026-08-25 22:23:06 评测退出码 0 — 结果: voiceid_combo.log + combo_summary.json

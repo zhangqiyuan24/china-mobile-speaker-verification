@@ -1,0 +1,43 @@
+{
+  "noise_0db": {
+    "w_new": {
+      "821_raw": 0.0,
+      "821_fe": 0.0,
+      "30k_fe": 0.0,
+      "90k_raw": 0.0,
+      "90k_fe": 0.0,
+      "soup_raw": 0.5,
+      "soup_fe": 0.0,
+      "p90k_raw": 0.0,
+      "p90k_fe": 0.0,
+      "tse_soup5": 0.5
+    },
+    "e_proxy_old": 2.0,
+    "e_proxy_new": 1.7613636363636367,
+    "e_official_old_repro": 7.2048536823400315,
+    "e_official_new": 7.359993898860831,
+    "rel_vs_baseline": 12.288092158825046,
+    "rel_vs_oldfusion": -2.1526169531961723
+  },
+  "noise_m5db": {
+    "w_new": {
+      "821_raw": 0.0,
+      "821_fe": 0.0,
+      "30k_raw": 0.0,
+      "30k_fe": 0.0,
+      "90k_raw": 0.0,
+      "90k_fe": 0.5,
+      "soup_raw": 0.0,
+      "soup_fe": 0.0,
+      "p90k_raw": 0.0,
+      "p90k_fe": 0.0,
+      "tse_soup5": 0.5
+    },
+    "e_proxy_old": 5.0,
+    "e_proxy_new": 4.238636363636364,
+    "e_official_old_repro": 9.153271110106367,
+    "e_official_new": 9.358185642322042,
+    "rel_vs_baseline": 15.354200617581505,
+    "rel_vs_oldfusion": -2.2383800631689312
+  }
+}

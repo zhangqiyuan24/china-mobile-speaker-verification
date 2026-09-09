@@ -1,0 +1,12 @@
+[load_pretrained] missing=0 unexpected=0
+[gate] GateNet 参数 0.19M(残差软门控, 4 层空洞卷积)
+[freeze] 冻结模块: ['bn1', 'conv1', 'fuse_mode12', 'layer1', 'layer1_downsample', 'layer2']
+[freeze] 训练模块: ['fuse_mode123', 'fuse_mode1234', 'layer2_downsample', 'layer3', 'layer3_downsample', 'layer4', 'pool', 'seg_1', 'seg_2', 'seg_bn_1']
+Traceback (most recent call last):
+  File "train_feature_gate.py", line 205, in <module>
+    main()
+  File "train_feature_gate.py", line 117, in main
+    freeze_report(encoder, None)
+  File "/data/home/ligangrui/china_mobile/AI/8.20/trainer_eres2net_robust.py", line 96, in freeze_report
+    n_cls = sum(p.numel() for p in classifier.parameters())
+AttributeError: 'NoneType' object has no attribute 'parameters'

@@ -1,0 +1,17 @@
+[load] trials ...
+trials: 1378206
+
+===== noise_0db =====
+  单路 821_raw  EER=7.6911%
+  单路 821_fe   EER=7.5000%
+  单路 30k_fe   EER=7.7914%
+  uniform z 融合(821_raw+821_fe+30k_fe) EER=7.2522%
+  grid 最优 EER=7.2715%  (0.50*821_raw+0.25*821_fe+0.25*30k_fe)  相对基线 -13.3%
+
+===== noise_m5db =====
+  单路 821_raw  EER=9.8784%
+  单路 821_fe   EER=9.5085%
+  单路 30k_fe   EER=9.7834%
+  单路 30k_raw  EER=10.1244%
+  uniform z 融合(821_raw+821_fe+30k_fe+30k_raw) EER=9.2678%
+  grid 最优 EER=9.2286%  (0.50*821_fe+0.25*30k_fe+0.25*30k_raw)  相对基线 -16.5%

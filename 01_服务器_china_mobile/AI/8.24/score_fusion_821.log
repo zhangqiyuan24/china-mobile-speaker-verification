@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "test_score_fusion.py", line 127, in <module>
+    main()
+  File "test_score_fusion.py", line 68, in main
+    E = _norm_rows(np.stack([enroll[e] for e in ekeys]))
+  File "test_score_fusion.py", line 68, in <listcomp>
+    E = _norm_rows(np.stack([enroll[e] for e in ekeys]))
+NameError: name 'enroll' is not defined

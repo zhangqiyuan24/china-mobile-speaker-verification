@@ -1,0 +1,34 @@
+本周目标：
+完成 ERes2Net-large 首版鲁棒微调实验，打通训练-评测闭环，分析微调效果并确定后续改进方向。
+
+已完成工作：
+搭建了 ERes2Net-large 微调训练管线。基于 3D-Speaker speakerlab 框架，在 train.py 中新增冻结逻辑和分层学习率支持，扩展 augmentation.py 实现在线负 SNR 噪声（-5~0dB）、混响（simulated mediumroom）和多说话人重叠（overlap2/overlap3, TIR=0dB）三类增强。从 10,000 个训练说话人中选取约 60,000 条语音（744 speakers），按 speaker 8:2 划分训练/验证集，经检查与正式测试集零重叠。
+
+在实验室 4×Tesla P100 16GB 服务器上完成首版微调训练。冻结 conv1/bn1/layer1-3，仅训练 layer4/融合模块/pooling/embedding/classifier（可训练参数 17.3M，占总参数 59.7%）。训练 15 epochs，batch_size=128，loss 从 8.6 收敛至 0.91。
+
+在 RTX 3090 上完成微调模型的全量评测（8 条件 × 3s × cross_device），与原始 ERes2Net-large 逐项对比。
+
+核心结果（3s cross-device）：
+  条件           原始 EER    微调 EER    变化
+  clean          5.82%       6.62%       +0.80 (变差)
+  noise_0db      8.39%       9.71%       +1.32 (变差)
+  noise_m5db     11.06%      12.05%      +0.99 (变差)
+  reverb         6.09%       7.19%       +1.10 (变差)
+  overlap2_cn    22.41%      21.15%      -1.26 (改善)
+  overlap2_en    9.13%       10.62%      +1.49 (变差)
+  overlap3_cn    28.43%      27.58%      -0.85 (改善)
+  overlap3_en    12.87%      14.80%      +1.93 (变差)
+
+微调效果分析：
+首版微调在 6/8 条件上 EER 不降反升，仅中文重叠语音（overlap2_cn、overlap3_cn）有微弱改善。分析原因有三：（1）冻结策略过于保守——conv1~layer3 被冻结后无法适配负 SNR 和重叠语音的底层声学特征，上层虽在训练但输入特征未变，整体迁移能力不足；（2）训练数据中 clean 比例仅 15%，模型几乎完全暴露在增强数据下，导致 clean、0dB 噪声和混响等相对干净场景出现灾难性遗忘；（3）分层学习率偏高（layer4 5×base、classifier 10×base），上层快速过拟合增强数据分布，底层保持原始权重，形成结构性不匹配。
+
+中文 overlap 的提升验证了增强方向正确——overlap 是原模型完全未见的场景，即使只有部分层参与训练也能获得增益。其他条件的退化表明：全参数微调（不冻结）+ 提高 clean 比例 + 降低学习率是下版训练的必要调整。
+
+遇到的问题：
+训练环境部署耗时。P100 服务器与 3090 服务器之间数据同步（pretrained 权重、MUSAN/RIRS_NOISES 文件）和 PyTorch 版本差异（1.10 vs 1.13）引入了多个兼容性问题（torchaudio backend、采样率检查、cuDNN 非连续内存），逐一修复后方可正常运行。此外，当前 trial 规模（约 122 万条）在 3090 上跑完全量 8 条件评测需要大量时间，仍然制约实验迭代速度。
+
+下周计划：
+1. 修改微调策略：取消冻结，全参数训练；提高 clean 比例为 25-30%；降低学习率至 lr=0.001，去掉分层 LR。
+2. 重新训练 ERes2Net-large（eres2net_2），目标在 noise -5dB 和 overlap 场景上实现稳定的 EER 下降。
+3. 若全参数微调有效，将训练流程迁移至 ReDimNet2-B6，验证跨模型泛化性。
+4. 将 trial 规模从全量缩减至约 18 万（对标官方），评测策略调整为 Clean 保留三时长、其余条件统一 3s。

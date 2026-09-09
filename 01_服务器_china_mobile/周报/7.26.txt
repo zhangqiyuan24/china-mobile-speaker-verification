@@ -1,0 +1,43 @@
+本周目标：
+完成子课题一需求收敛与环境搭建，实现三模型全量基线评测闭环，为后续微调与多条件鲁棒实验建立参照体系。
+
+已完成工作：
+完成子课题一需求分解与硬性条件分析，明确以 ECAPA-TDNN、ERes2Net-large 和 ReDimNet2-B6 三个模型形成经典基线—强基线—跨框架 SOTA 三级参照系，并结合课题要求梳理了六种声学测试场景的评测维度。
+在租用的 RTX 3090 云服务器上搭建完整开发环境，完成 PyTorch、3D-Speaker 工具链（speakerlab）及 ReDimNet2 代码库的部署，打通 ModelScope 和 GitHub Releases 双来源预训练权重的加载与推理管线。
+下载并校验 3D-Speaker 完整数据集（训练集约 190GB 压缩 / ~160GB 解压，579,003 条语音；测试集 240 说话人，18,782 条语音），以及 MUSAN 噪声和 RIRS_NOISES 混响数据。将全部数据与代码整合为统一相对路径结构，整体拷贝至任意服务器后无需改动路径即可复现全部实验。
+搭建从预训练模型加载、批量嵌入提取到 EER/minDCF 评测的完整自动化管线，支持一键跑通整个评测流程，为后续多模型迭代提供标准化基础设施。
+在 3D-Speaker 全量测试集上完成 ECAPA-TDNN、ERes2Net-large、ReDimNet2-B6 三个模型的基线评测，覆盖 cross-device（180,000 条试验）、cross-distance（175,163 条试验）、cross-dialect（180,000 条试验）三类评测协议，总计 535,163 条试验。
+
+数据与实验配置：
+模型 1：ECAPA-TDNN，3D-Speaker 训练，20.8M 参数，嵌入维度 192。
+模型 2：ERes2Net-large，3D-Speaker 训练，22.46M 参数，嵌入维度 512。
+模型 3：ReDimNet2-B6，VoxBlink2 + VoxCeleb2 + CN-Celeb2 混合训练，12.3M 参数，嵌入维度 192。
+测试数据：3D-Speaker 官方测试子集，240 说话人，18,782 条 16kHz 单声道 PCM WAV。
+评测协议：3D-Speaker 官方 cross-device、cross-distance、cross-dialect 三类 trial，正负例分离，阈值在验证集确定后在测试集冻结。
+评测指标：EER（等错误率）、minDCF（p_target=0.01, c_miss=1, c_fa=1）。
+推理硬件：租用云服务器 NVIDIA RTX 3090 24GB × 1。
+
+核心结果：
+ECAPA-TDNN：
+Cross-Device EER = 9.31%，minDCF = 0.7276
+Cross-Distance EER = 12.74%，minDCF = 0.8287
+Cross-Dialect EER = 15.12%，minDCF = 0.9312
+ERes2Net-large：
+Cross-Device EER = 6.87%，minDCF = 0.6517
+Cross-Distance EER = 10.11%，minDCF = 0.7383
+Cross-Dialect EER = 12.05%，minDCF = 0.8519
+ReDimNet2-B6（vb2+vox2+cnc2）：
+Cross-Device EER = 8.91%，minDCF = 0.7520
+Cross-Distance EER = 9.22%，minDCF = 0.7230
+Cross-Dialect EER = 12.31%，minDCF = 0.8523
+
+相对基线变化：
+运行完了首个全量基线评测。ECAPA-TDNN 实测 Cross-Device EER = 9.31%（官方报告 8.87%，偏差 0.44%），ERes2Net-large Cross-Device EER = 6.87%（官方报告 6.34%，偏差 0.53%），均在合理误差范围内，确认评测管线可靠。
+横向分析三点发现：（1）cross-dialect 为三个场景中最难（EER 普遍在 12-15%），表明方言差异是当前中文声纹识别的主要退化因素之一；（2）ERes2Net-large 全面领先 ECAPA-TDNN，各场景相对降幅约 20-26%；（3）ReDimNet2-B6 仅 12.3M 参数，在 cross-distance 场景上 EER 达到 9.22%，反超 22.46M 的 ERes2Net-large（10.11%），展现了该架构在远场条件下的参数效率优势。后续微调和鲁棒增强的效果均以此三级基线体系为参照。
+
+遇到的问题：
+硬件上：在本地实验室服务器我有8张A40的显卡用于项目实验，但因为本地服务器是断网服务器，而3D-speaker的训练数据有190GB，而我导入数据只能用4GB的光盘导入，导入数据耗时过长且不方便，于是现在换用云服务器进行课题推进；而现在租用的云服务器存储配额有限（只有 50GB），3D-Speaker 训练集压缩包（190GB）加解压后 wav（~160GB）加噪声和混响数据（~12GB）共需约 350GB 空间，压缩包和解压数据无法长期共存，需边解压边删除压缩包来周转。且云端实例存储不持久，意外释放后需重新上传，数据准备的不确定性拉长了实验前置周期。本周优先完成了测试集的评测管线验证，训练数据的最终就绪和首次微调实验需顺延至下周，看看能不能进行云服务器的存储扩容。
+模型上：ReDimNet2 与 3D-Speaker 分属不同开发框架（wespeaker_lite vs speakerlab），推理输出格式、权重加载方式均需适配对齐方能与 ECAPA-TDNN、ERes2Net 在同一评测管线上公平对比，在这个方面稍微花费了一点时间进行适配。
+
+下周计划：
+在云服务器上完成训练数据最终就绪，跑通首个 ECAPA-TDNN 微调实验，对比微调前后三场景 EER 变化。构造 -5dB 和 0dB 单说话人噪声测试集，跑出三模型在噪声条件下的退化基线，为子课题一核心挑战指标（EER ≤ 0.5% 或相对降幅 ≥ 30%）建立完整参照坐标。搭建多条件评测自动化框架（噪声 / 回声 / 混响 / 重叠 / 跨设备 / 短语音），实现一键跑通六场景 × 三模型的评测矩阵。若微调管线稳定，尝试对 ReDimNet2-B6 做 3D-Speaker 适配微调，利用其参数效率优势争取更优的跨距离鲁棒性。

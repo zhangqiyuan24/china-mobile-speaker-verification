@@ -1,0 +1,12 @@
+Results of trials_all is:
+EER = 17.8162
+minDCF (p_target:0.01 c_miss:1 c_fa:1) = 0.8924
+Results of trials_cross_device is:
+EER = 18.5458
+minDCF (p_target:0.01 c_miss:1 c_fa:1) = 0.9046
+Results of trials_cross_distance is:
+EER = 17.4793
+minDCF (p_target:0.01 c_miss:1 c_fa:1) = 0.8914
+Results of trials_cross_dialect is:
+EER = 19.3018
+minDCF (p_target:0.01 c_miss:1 c_fa:1) = 0.9534

@@ -1,0 +1,32 @@
+[project]
+name = "redimnet2-speaker-rec"
+version = "0.1.0"
+description = "Lightweight dependencies for ReDimNet2 speaker-recognition training recipes."
+authors = [{name = "PalabraAI"}]
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "torch>=2.1,<3.0",
+    "torchaudio>=2.1,<3.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "pandas>=2.0",
+    "pyyaml>=6.0",
+    "soundfile>=0.12",
+    "resampy>=0.4",
+    "lmdb>=1.4",
+    "fire>=0.5",
+    "tableprint>=0.9",
+    "tqdm>=4.65",
+    "torchnet>=0.0.4",
+    "scikit-learn>=1.3",
+    "six>=1.16",
+    "pyarrow>=12.0",
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry.core.masonry.api"

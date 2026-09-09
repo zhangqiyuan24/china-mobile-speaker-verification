@@ -1,0 +1,37 @@
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[diag] ckpt=tse_v3_ns05duraug_r5 noise=168 enrol=200 snrs=[15, 10, 5, 0]
+[raw-emb] noise_0db 400 条
+[raw-emb] noise_m5db 400 条
+[enhance] noise_0db 待处理 400
+  [clean] noise_0db fe=1.807 raw=5.500
+[enhance] noise_m5db 待处理 400
+  [clean] noise_m5db fe=3.739 raw=13.000
+[corrupt] snr15 -> 200 条
+[enhance] noise_0db 待处理 400
+  [snr15] noise_0db fe=2.477 raw=6.000
+[enhance] noise_m5db 待处理 400
+  [snr15] noise_m5db fe=4.216 raw=12.761
+[corrupt] snr10 -> 200 条
+[enhance] noise_0db 待处理 400
+  [snr10] noise_0db fe=2.261 raw=6.239
+[enhance] noise_m5db 待处理 400
+  [snr10] noise_m5db fe=4.000 raw=12.239
+[corrupt] snr5 -> 200 条
+[enhance] noise_0db 待处理 400
+  [snr5] noise_0db fe=2.523 raw=7.239
+[enhance] noise_m5db 待处理 400
+  [snr5] noise_m5db fe=4.739 raw=12.239
+[corrupt] snr0 -> 200 条
+[enhance] noise_0db 待处理 400
+  [snr0] noise_0db fe=4.500 raw=9.000
+[enhance] noise_m5db 待处理 400
+  [snr0] noise_m5db fe=6.239 raw=12.716
+
+==== 注册侧退化曲线（EER，越低越好） ====
+  enroll | 0dB_raw  0dB_FE    gap | -5dB_raw -5dB_FE    gap
+   clean |   5.500   1.807 +3.693 |   13.000   3.739 +9.261
+   snr15 |   6.000   2.477 +3.523 |   12.761   4.216 +8.545
+   snr10 |   6.239   2.261 +3.977 |   12.239   4.000 +8.239
+    snr5 |   7.239   2.523 +4.716 |   12.239   4.739 +7.500
+    snr0 |   9.000   4.500 +4.500 |   12.716   6.239 +6.477
+[自校验] clean 行 FE 应≈r5 oracle_hard 1.807/3.739（proxy 口径）

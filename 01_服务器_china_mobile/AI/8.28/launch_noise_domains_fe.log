@@ -1,0 +1,16 @@
+[stage-fe1] 增强六条件 GPU0 Fri 28 Aug 2026 05:45:26 PM CST
+[stage-fe1 done] Fri 28 Aug 2026 06:53:32 PM CST
+[stage-fe2] FE 评测 GPU0 Fri 28 Aug 2026 06:53:32 PM CST
+--- fe music_0db ---
+[music_0db fe] EER = 6.3326
+--- fe music_m5db ---
+[music_m5db fe] EER = 8.2614
+--- fe speech_0db ---
+[speech_0db fe] EER = 8.2474
+--- fe speech_m5db ---
+[speech_m5db fe] EER = 12.0634
+--- fe soundbible_0db ---
+[soundbible_0db fe] EER = 5.3736
+--- fe soundbible_m5db ---
+[soundbible_m5db fe] EER = 6.1632
+[all done] Fri 28 Aug 2026 09:24:04 PM CST  FE 结果: /data/home/ligangrui/china_mobile/AI/8.28/noise_domains/eval_fe

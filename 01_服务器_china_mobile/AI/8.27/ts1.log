@@ -1,0 +1,79 @@
+[data] 90000 utts / 9900 spk -> 27636 对（跨设备 99.8%）/ 噪声 675
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[train] 5181 it/ep × 3 ep, batch=16 对(32 样本), lr=2e-05, 学生=checkpoint_soup5.tar, 教师=checkpoint_soup5.tar
+  ep1 it 100/5181 anchor=0.1366 xdev=0.5013 hard=0.0025 ce=1.7638 w={'anchor': '1.10', 'xdev': '0.55', 'hard': '0.33', 'ce': '0.93'}
+  ep1 it 200/5181 anchor=0.1364 xdev=0.4988 hard=0.0030 ce=1.7313 w={'anchor': '1.22', 'xdev': '0.61', 'hard': '0.37', 'ce': '0.87'}
+  ep1 it 300/5181 anchor=0.1339 xdev=0.4967 hard=0.0020 ce=1.7015 w={'anchor': '1.35', 'xdev': '0.67', 'hard': '0.40', 'ce': '0.83'}
+  ep1 it 400/5181 anchor=0.1387 xdev=0.5041 hard=0.0022 ce=1.7905 w={'anchor': '1.48', 'xdev': '0.74', 'hard': '0.45', 'ce': '0.78'}
+  ep1 it 500/5181 anchor=0.1401 xdev=0.5059 hard=0.0025 ce=1.7858 w={'anchor': '1.63', 'xdev': '0.80', 'hard': '0.49', 'ce': '0.74'}
+  ep1 it 600/5181 anchor=0.1406 xdev=0.5076 hard=0.0019 ce=1.8451 w={'anchor': '1.79', 'xdev': '0.88', 'hard': '0.55', 'ce': '0.71'}
+  ep1 it 700/5181 anchor=0.1356 xdev=0.5002 hard=0.0022 ce=1.7060 w={'anchor': '1.96', 'xdev': '0.95', 'hard': '0.60', 'ce': '0.69'}
+  ep1 it 800/5181 anchor=0.1354 xdev=0.4987 hard=0.0024 ce=1.7634 w={'anchor': '2.15', 'xdev': '1.04', 'hard': '0.67', 'ce': '0.67'}
+  ep1 it 900/5181 anchor=0.1382 xdev=0.4952 hard=0.0026 ce=1.6480 w={'anchor': '2.35', 'xdev': '1.12', 'hard': '0.74', 'ce': '0.66'}
+  ep1 it 1000/5181 anchor=0.1399 xdev=0.5116 hard=0.0023 ce=1.8260 w={'anchor': '2.56', 'xdev': '1.20', 'hard': '0.82', 'ce': '0.64'}
+  ep1 it 1100/5181 anchor=0.1315 xdev=0.4961 hard=0.0019 ce=1.6736 w={'anchor': '2.80', 'xdev': '1.29', 'hard': '0.90', 'ce': '0.63'}
+  ep1 it 1200/5181 anchor=0.1363 xdev=0.4998 hard=0.0023 ce=1.7280 w={'anchor': '3.04', 'xdev': '1.37', 'hard': '1.00', 'ce': '0.62'}
+  ep1 it 1300/5181 anchor=0.1384 xdev=0.5057 hard=0.0023 ce=1.8229 w={'anchor': '3.29', 'xdev': '1.45', 'hard': '1.10', 'ce': '0.61'}
+  ep1 it 1400/5181 anchor=0.1415 xdev=0.5123 hard=0.0018 ce=1.8264 w={'anchor': '3.54', 'xdev': '1.53', 'hard': '1.22', 'ce': '0.60'}
+  ep1 it 1500/5181 anchor=0.1373 xdev=0.5034 hard=0.0028 ce=1.7338 w={'anchor': '3.81', 'xdev': '1.60', 'hard': '1.34', 'ce': '0.59'}
+  ep1 it 1600/5181 anchor=0.1381 xdev=0.5057 hard=0.0018 ce=1.7846 w={'anchor': '4.09', 'xdev': '1.67', 'hard': '1.48', 'ce': '0.59'}
+  ep1 it 1700/5181 anchor=0.1332 xdev=0.5016 hard=0.0019 ce=1.7299 w={'anchor': '4.38', 'xdev': '1.73', 'hard': '1.64', 'ce': '0.59'}
+  ep1 it 1800/5181 anchor=0.1390 xdev=0.5086 hard=0.0021 ce=1.8327 w={'anchor': '4.66', 'xdev': '1.78', 'hard': '1.81', 'ce': '0.58'}
+  ep1 it 1900/5181 anchor=0.1397 xdev=0.5027 hard=0.0033 ce=1.7939 w={'anchor': '4.92', 'xdev': '1.82', 'hard': '2.00', 'ce': '0.57'}
+  ep1 it 2000/5181 anchor=0.1358 xdev=0.4998 hard=0.0023 ce=1.7307 w={'anchor': '5.20', 'xdev': '1.86', 'hard': '2.21', 'ce': '0.57'}
+  ep1 it 2100/5181 anchor=0.1371 xdev=0.5022 hard=0.0023 ce=1.7565 w={'anchor': '5.46', 'xdev': '1.90', 'hard': '2.45', 'ce': '0.57'}
+  ep1 it 2200/5181 anchor=0.1389 xdev=0.5016 hard=0.0027 ce=1.7650 w={'anchor': '5.70', 'xdev': '1.92', 'hard': '2.70', 'ce': '0.57'}
+  ep1 it 2300/5181 anchor=0.1380 xdev=0.5048 hard=0.0033 ce=1.8139 w={'anchor': '5.93', 'xdev': '1.94', 'hard': '2.98', 'ce': '0.57'}
+  ep1 it 2400/5181 anchor=0.1412 xdev=0.5102 hard=0.0026 ce=1.7987 w={'anchor': '6.11', 'xdev': '1.94', 'hard': '3.30', 'ce': '0.56'}
+  ep1 it 2500/5181 anchor=0.1359 xdev=0.5027 hard=0.0029 ce=1.7174 w={'anchor': '6.32', 'xdev': '1.96', 'hard': '3.64', 'ce': '0.57'}
+  ep1 it 2600/5181 anchor=0.1408 xdev=0.5025 hard=0.0020 ce=1.8134 w={'anchor': '6.46', 'xdev': '1.97', 'hard': '4.02', 'ce': '0.56'}
+  ep1 it 2700/5181 anchor=0.1352 xdev=0.4999 hard=0.0028 ce=1.6914 w={'anchor': '6.63', 'xdev': '1.98', 'hard': '4.44', 'ce': '0.57'}
+  ep1 it 2800/5181 anchor=0.1386 xdev=0.5091 hard=0.0029 ce=1.7650 w={'anchor': '6.75', 'xdev': '1.97', 'hard': '4.91', 'ce': '0.57'}
+  ep1 it 2900/5181 anchor=0.1367 xdev=0.5031 hard=0.0022 ce=1.7525 w={'anchor': '6.87', 'xdev': '1.98', 'hard': '5.42', 'ce': '0.57'}
+  ep1 it 3000/5181 anchor=0.1385 xdev=0.5086 hard=0.0028 ce=1.7992 w={'anchor': '6.95', 'xdev': '1.97', 'hard': '5.99', 'ce': '0.57'}
+  ep1 it 3100/5181 anchor=0.1372 xdev=0.4971 hard=0.0030 ce=1.6803 w={'anchor': '7.03', 'xdev': '1.99', 'hard': '6.61', 'ce': '0.57'}
+  ep1 it 3200/5181 anchor=0.1391 xdev=0.5039 hard=0.0019 ce=1.8281 w={'anchor': '7.07', 'xdev': '1.99', 'hard': '7.30', 'ce': '0.57'}
+  ep1 it 3300/5181 anchor=0.1379 xdev=0.5096 hard=0.0030 ce=1.8244 w={'anchor': '7.12', 'xdev': '1.98', 'hard': '8.06', 'ce': '0.56'}
+  ep1 it 3400/5181 anchor=0.1332 xdev=0.5025 hard=0.0020 ce=1.7385 w={'anchor': '7.20', 'xdev': '1.98', 'hard': '8.90', 'ce': '0.56'}
+  ep1 it 3500/5181 anchor=0.1404 xdev=0.5063 hard=0.0028 ce=1.8224 w={'anchor': '7.20', 'xdev': '1.98', 'hard': '9.83', 'ce': '0.56'}
+  ep1 it 3600/5181 anchor=0.1403 xdev=0.5077 hard=0.0023 ce=1.8376 w={'anchor': '7.18', 'xdev': '1.98', 'hard': '10.85', 'ce': '0.56'}
+  ep1 it 3700/5181 anchor=0.1384 xdev=0.5065 hard=0.0027 ce=1.8005 w={'anchor': '7.18', 'xdev': '1.97', 'hard': '11.97', 'ce': '0.56'}
+  ep1 it 3800/5181 anchor=0.1314 xdev=0.4942 hard=0.0022 ce=1.6594 w={'anchor': '7.29', 'xdev': '2.00', 'hard': '13.21', 'ce': '0.57'}
+  ep1 it 3900/5181 anchor=0.1404 xdev=0.5108 hard=0.0032 ce=1.8296 w={'anchor': '7.23', 'xdev': '1.98', 'hard': '14.56', 'ce': '0.56'}
+  ep1 it 4000/5181 anchor=0.1379 xdev=0.5032 hard=0.0026 ce=1.7769 w={'anchor': '7.25', 'xdev': '1.98', 'hard': '16.06', 'ce': '0.56'}
+  ep1 it 4100/5181 anchor=0.1405 xdev=0.5075 hard=0.0025 ce=1.7908 w={'anchor': '7.19', 'xdev': '1.97', 'hard': '17.71', 'ce': '0.56'}
+  ep1 it 4200/5181 anchor=0.1369 xdev=0.5066 hard=0.0035 ce=1.8258 w={'anchor': '7.25', 'xdev': '1.97', 'hard': '19.50', 'ce': '0.56'}
+  ep1 it 4300/5181 anchor=0.1338 xdev=0.4997 hard=0.0021 ce=1.7209 w={'anchor': '7.30', 'xdev': '1.99', 'hard': '21.50', 'ce': '0.56'}
+  ep1 it 4400/5181 anchor=0.1348 xdev=0.4982 hard=0.0018 ce=1.6786 w={'anchor': '7.34', 'xdev': '2.00', 'hard': '23.74', 'ce': '0.57'}
+  ep1 it 4500/5181 anchor=0.1382 xdev=0.5027 hard=0.0029 ce=1.7140 w={'anchor': '7.28', 'xdev': '1.99', 'hard': '26.13', 'ce': '0.57'}
+  ep1 it 4600/5181 anchor=0.1368 xdev=0.5060 hard=0.0021 ce=1.7405 w={'anchor': '7.32', 'xdev': '1.99', 'hard': '28.79', 'ce': '0.57'}
+  ep1 it 4700/5181 anchor=0.1335 xdev=0.4977 hard=0.0024 ce=1.6949 w={'anchor': '7.37', 'xdev': '2.00', 'hard': '31.72', 'ce': '0.58'}
+  ep1 it 4800/5181 anchor=0.1353 xdev=0.5027 hard=0.0021 ce=1.7341 w={'anchor': '7.36', 'xdev': '1.99', 'hard': '34.92', 'ce': '0.58'}
+  ep1 it 4900/5181 anchor=0.1321 xdev=0.4999 hard=0.0033 ce=1.6801 w={'anchor': '7.41', 'xdev': '1.99', 'hard': '38.29', 'ce': '0.58'}
+  ep1 it 5000/5181 anchor=0.1368 xdev=0.4980 hard=0.0029 ce=1.6910 w={'anchor': '7.40', 'xdev': '2.00', 'hard': '42.00', 'ce': '0.58'}
+  ep1 it 5100/5181 anchor=0.1338 xdev=0.5043 hard=0.0025 ce=1.7601 w={'anchor': '7.42', 'xdev': '1.99', 'hard': '46.19', 'ce': '0.58'}
+  [val-hard] ep1 0db=5.761 m5db=13.000 avg=9.381 (锚 soup5 本体: 4.716/11.193 avg=7.955)
+  [val-hard] 新最优 avg=9.381 -> checkpoint_best.tar
+  ep2 it 100/5181 anchor=0.1362 xdev=0.5003 hard=0.0028 ce=1.7701 w={'anchor': '7.44', 'xdev': '2.00', 'hard': '54.67', 'ce': '0.58'}
+  ep2 it 200/5181 anchor=0.1401 xdev=0.5102 hard=0.0026 ce=1.8702 w={'anchor': '7.34', 'xdev': '1.98', 'hard': '59.83', 'ce': '0.57'}
+  ep2 it 300/5181 anchor=0.1453 xdev=0.5098 hard=0.0026 ce=1.8621 w={'anchor': '7.19', 'xdev': '1.97', 'hard': '65.49', 'ce': '0.56'}
+  ep2 it 400/5181 anchor=0.1406 xdev=0.5057 hard=0.0027 ce=1.8668 w={'anchor': '7.15', 'xdev': '1.97', 'hard': '71.59', 'ce': '0.55'}
+  ep2 it 500/5181 anchor=0.1307 xdev=0.4986 hard=0.0024 ce=1.7073 w={'anchor': '7.30', 'xdev': '2.00', 'hard': '78.22', 'ce': '0.56'}
+  ep2 it 600/5181 anchor=0.1373 xdev=0.4995 hard=0.0026 ce=1.7478 w={'anchor': '7.31', 'xdev': '2.00', 'hard': '85.29', 'ce': '0.56'}
+  ep2 it 700/5181 anchor=0.1383 xdev=0.5082 hard=0.0022 ce=1.7373 w={'anchor': '7.26', 'xdev': '1.97', 'hard': '93.30', 'ce': '0.56'}
+  ep2 it 800/5181 anchor=0.1366 xdev=0.5000 hard=0.0021 ce=1.6600 w={'anchor': '7.28', 'xdev': '1.99', 'hard': '101.73', 'ce': '0.57'}
+  ep2 it 900/5181 anchor=0.1320 xdev=0.5001 hard=0.0022 ce=1.7211 w={'anchor': '7.39', 'xdev': '2.00', 'hard': '110.72', 'ce': '0.58'}
+  ep2 it 1000/5181 anchor=0.1329 xdev=0.4998 hard=0.0029 ce=1.7070 w={'anchor': '7.42', 'xdev': '2.00', 'hard': '119.65', 'ce': '0.58'}
+  ep2 it 1100/5181 anchor=0.1394 xdev=0.5088 hard=0.0026 ce=1.7731 w={'anchor': '7.35', 'xdev': '1.98', 'hard': '128.69', 'ce': '0.58'}
+  ep2 it 1200/5181 anchor=0.1307 xdev=0.4983 hard=0.0026 ce=1.6530 w={'anchor': '7.42', 'xdev': '1.99', 'hard': '138.74', 'ce': '0.58'}
+  ep2 it 1300/5181 anchor=0.1421 xdev=0.5090 hard=0.0026 ce=1.8203 w={'anchor': '7.31', 'xdev': '1.98', 'hard': '148.52', 'ce': '0.57'}
+  ep2 it 1400/5181 anchor=0.1373 xdev=0.5050 hard=0.0022 ce=1.7122 w={'anchor': '7.31', 'xdev': '1.98', 'hard': '159.72', 'ce': '0.58'}
+  ep2 it 1500/5181 anchor=0.1392 xdev=0.5021 hard=0.0026 ce=1.8056 w={'anchor': '7.27', 'xdev': '1.99', 'hard': '170.19', 'ce': '0.57'}
+  ep2 it 1600/5181 anchor=0.1352 xdev=0.5039 hard=0.0018 ce=1.7419 w={'anchor': '7.32', 'xdev': '1.99', 'hard': '183.84', 'ce': '0.57'}
+  ep2 it 1700/5181 anchor=0.1361 xdev=0.5012 hard=0.0028 ce=1.7316 w={'anchor': '7.31', 'xdev': '1.99', 'hard': '193.91', 'ce': '0.57'}
+  ep2 it 1800/5181 anchor=0.1439 xdev=0.5098 hard=0.0023 ce=1.8512 w={'anchor': '7.22', 'xdev': '1.97', 'hard': '204.61', 'ce': '0.57'}
+  ep2 it 1900/5181 anchor=0.1365 xdev=0.5031 hard=0.0025 ce=1.7829 w={'anchor': '7.23', 'xdev': '1.99', 'hard': '215.42', 'ce': '0.56'}
+  ep2 it 2000/5181 anchor=0.1402 xdev=0.5122 hard=0.0032 ce=1.8277 w={'anchor': '7.22', 'xdev': '1.96', 'hard': '222.46', 'ce': '0.56'}

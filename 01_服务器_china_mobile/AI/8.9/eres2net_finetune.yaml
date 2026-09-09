@@ -1,0 +1,192 @@
+# ============================================================
+# ERes2Net-large 鲁棒微调配置
+# 冻结 conv1~layer3，训练 layer4 / fusion / pooling / embedding
+# 在线增强: Clean + Positive SNR + Negative SNR + Overlap
+# ============================================================
+
+# ---- inputs (set via run script) ----
+data:
+noise:
+reverb:
+overlap_spk2utt:        # dict: spk_id → [wav_path, ...] for overlap interferer pool
+
+# ---- outputs ----
+exp_dir:
+
+# ---- basic ----
+num_epoch: 15
+save_epoch_freq: 5
+log_batch_freq: 50
+seed: 2026
+
+wav_len: 3.0
+sample_rate: 16000
+aug_prob: 0.6
+speed_pertub: True
+lr: 0.01
+
+# ---- dataloader ----
+batch_size: 128
+num_workers: 8
+
+# ---- model ----
+fbank_dim: 80
+embedding_size: 512
+m_channels: 64            # ERes2Net-large
+num_classes: 10000
+
+# ---- frozen modules (stem + layer1-3) ----
+frozen_modules:
+  - conv1
+  - bn1
+  - layer1
+  - layer2
+  - layer3
+
+# ---- layerwise LR multipliers (relative to base lr) ----
+layerwise_lr:
+  layer4: 5.0
+  layer4_downsample: 3.0
+  fuse_mode12: 3.0
+  fuse_mode123: 3.0
+  fuse_mode1234: 3.0
+  pool: 2.0
+  seg_1: 2.0
+  classifier: 10.0
+
+# ---- wav reader ----
+wav_reader:
+  obj: speakerlab.process.processor.WavReader
+  args:
+    duration: <wav_len>
+    sample_rate: <sample_rate>
+    speed_pertub: <speed_pertub>
+
+# ---- label encoder ----
+label_encoder:
+  obj: speakerlab.process.processor.SpkLabelEncoder
+  args:
+    data_file: <data>
+
+# ---- feature extractor ----
+feature_extractor:
+  obj: speakerlab.process.processor.FBank
+  args:
+    n_mels: <fbank_dim>
+    sample_rate: <sample_rate>
+    mean_nor: True
+
+# ---- custom augmentation (robust multi-condition) ----
+augmentations:
+  obj: speakerlab.process.processor.RobustSpkAug
+  args:
+    aug_prob: <aug_prob>
+    noise_file: <noise>
+    reverb_file: <reverb>
+    clean_prob: 0.15
+    pos_noise_prob: 0.20
+    neg_noise_prob: 0.30
+    reverb_prob: 0.10
+    noise_reverb_prob: 0.10
+    overlap2_prob: 0.10
+    overlap3_prob: 0.05
+    pos_snr_low: 0.0
+    pos_snr_high: 15.0
+    neg_snr_low: -5.0
+    neg_snr_high: 0.0
+    overlap_tir_db: 0.0
+    overlap_spk2utt: <overlap_spk2utt>
+
+preprocessor:
+  wav_reader: <wav_reader>
+  label_encoder: <label_encoder>
+  augmentations: <augmentations>
+  feature_extractor: <feature_extractor>
+
+# ---- epoch counter ----
+epoch_counter:
+  obj: speakerlab.utils.epoch.EpochCounter
+  args:
+    limit: <num_epoch>
+
+# ---- dataset ----
+dataset:
+  obj: speakerlab.dataset.dataset.WavSVDataset
+  args:
+    data_file: <data>
+    preprocessor: <preprocessor>
+
+# ---- dataloader ----
+dataloader:
+  obj: torch.utils.data.DataLoader
+  args:
+    dataset: <dataset>
+    batch_size: <batch_size>
+    num_workers: <num_workers>
+    pin_memory: True
+    drop_last: True
+
+# ---- embedding model ----
+embedding_model:
+  obj: speakerlab.models.eres2net.ERes2Net.ERes2Net
+  args:
+    feat_dim: <fbank_dim>
+    embedding_size: <embedding_size>
+    m_channels: <m_channels>
+
+# ---- classifier ----
+classifier:
+  obj: speakerlab.models.campplus.classifier.CosineClassifier
+  args:
+    input_dim: <embedding_size>
+    out_neurons: <num_classes>
+
+# ---- optimizer ----
+optimizer:
+  obj: torch.optim.SGD
+  args:
+    params:
+    lr: <lr>
+    momentum: 0.9
+    nesterov: True
+    weight_decay: 0.0001
+
+# ---- lr scheduler ----
+lr_scheduler:
+  obj: speakerlab.process.scheduler.WarmupCosineScheduler
+  args:
+    optimizer: <optimizer>
+    min_lr: !!float 1e-5
+    max_lr: <lr>
+    warmup_epoch: 2
+    fix_epoch: <num_epoch>
+    step_per_epoch:
+
+# ---- loss (ArcFace) ----
+loss:
+  obj: speakerlab.loss.margin_loss.ArcMarginLoss
+  args:
+    scale: 32.0
+    margin: 0.2
+    easy_margin: False
+
+# ---- margin scheduler ----
+margin_scheduler:
+  obj: speakerlab.process.scheduler.MarginScheduler
+  args:
+    criterion: <loss>
+    initial_margin: 0.05
+    final_margin: 0.2
+    increase_start_epoch: 3
+    fix_epoch: 12
+    step_per_epoch:
+
+# ---- checkpoint ----
+checkpointer:
+  obj: speakerlab.utils.checkpoint.Checkpointer
+  args:
+    checkpoints_dir: <exp_dir>/models
+    recoverables:
+      embedding_model: <embedding_model>
+      classifier: <classifier>
+      epoch_counter: <epoch_counter>

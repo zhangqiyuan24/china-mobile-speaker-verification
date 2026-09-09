@@ -1,0 +1,272 @@
+[labels] 90000 utts / 9900 spks
+[tse] 8.18 权重装载: 缺 0 键(全部 film.*, 零初始化恒等)
+[init] 续训自 /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v3_ns05ext/checkpoint_best.tar
+[proto-init] classifier weight shape = (9900, 512)
+[proto-init] prototype matrix shape = (9900, 512)
+[proto-init] 行范数 mean/min/max = 1.000000/0.999999/1.000000（应 ≈1；forward 内部还会再归一化）
+[proto-init] spk2id 行映射已逐位回读校验 ✓（9900/9900 类用 prototype 初始化）
+[proto] 9900 行 × 512 维 (τ=0.3, K=8)
+[train] 30000 样本 15000 it/ep × 3 ep, lambda_ce=1.0, lambda_spk=0.3, lambda_ns=0.5 -> /data/home/ligangrui/china_mobile/AI/8.27/exp/tse_v3_ns05ext2
+[cond] 100 spk 嵌入(soup5, 均值+L2)
+  ep1 it 200/15000 L=1.2309 se=0.0603 ce=1.0686 spk=0.1668 ns=0.1039 hardcos=0.4038 cos=0.8332
+  ep1 it 400/15000 L=1.2681 se=0.0582 ce=1.1127 spk=0.1542 ns=0.1018 hardcos=0.4016 cos=0.8458
+  ep1 it 600/15000 L=1.7030 se=0.0631 ce=1.5396 spk=0.1689 ns=0.0992 hardcos=0.3988 cos=0.8311
+  ep1 it 800/15000 L=1.3988 se=0.0606 ce=1.2418 spk=0.1541 ns=0.1003 hardcos=0.4001 cos=0.8459
+  ep1 it 1000/15000 L=1.0868 se=0.0622 ce=0.9266 spk=0.1584 ns=0.1011 hardcos=0.4010 cos=0.8416
+  ep1 it 1200/15000 L=1.1967 se=0.0608 ce=1.0388 spk=0.1527 ns=0.1024 hardcos=0.4024 cos=0.8473
+  ep1 it 1400/15000 L=1.4884 se=0.0615 ce=1.3267 spk=0.1668 ns=0.1001 hardcos=0.3998 cos=0.8332
+  ep1 it 1600/15000 L=1.2240 se=0.0611 ce=1.0633 spk=0.1627 ns=0.1015 hardcos=0.4015 cos=0.8373
+  ep1 it 1800/15000 L=1.4860 se=0.0618 ce=1.3206 spk=0.1769 ns=0.1009 hardcos=0.4007 cos=0.8231
+  ep1 it 2000/15000 L=1.3591 se=0.0622 ce=1.1942 spk=0.1695 ns=0.1038 hardcos=0.4037 cos=0.8305
+  ep1 it 2200/15000 L=1.4296 se=0.0612 ce=1.2668 spk=0.1718 ns=0.1001 hardcos=0.4000 cos=0.8282
+  ep1 it 2400/15000 L=1.4571 se=0.0592 ce=1.2973 spk=0.1676 ns=0.1007 hardcos=0.4006 cos=0.8324
+  ep1 it 2600/15000 L=1.0750 se=0.0610 ce=0.9164 spk=0.1546 ns=0.1024 hardcos=0.4023 cos=0.8454
+  ep1 it 2800/15000 L=1.3749 se=0.0597 ce=1.2146 spk=0.1710 ns=0.0986 hardcos=0.3985 cos=0.8290
+  ep1 it 3000/15000 L=1.2668 se=0.0625 ce=1.1037 spk=0.1633 ns=0.1032 hardcos=0.4032 cos=0.8367
+  ep1 it 3200/15000 L=1.4388 se=0.0602 ce=1.2787 spk=0.1638 ns=0.1016 hardcos=0.4015 cos=0.8362
+  ep1 it 3400/15000 L=1.4589 se=0.0593 ce=1.3003 spk=0.1601 ns=0.1024 hardcos=0.4021 cos=0.8399
+  ep1 it 3600/15000 L=1.2211 se=0.0610 ce=1.0605 spk=0.1697 ns=0.0974 hardcos=0.3972 cos=0.8303
+  ep1 it 3800/15000 L=1.5150 se=0.0616 ce=1.3539 spk=0.1692 ns=0.0975 hardcos=0.3971 cos=0.8308
+  ep1 it 4000/15000 L=1.1577 se=0.0625 ce=0.9970 spk=0.1564 ns=0.1026 hardcos=0.4025 cos=0.8436
+  ep1 it 4200/15000 L=1.3149 se=0.0604 ce=1.1566 spk=0.1577 ns=0.1013 hardcos=0.4011 cos=0.8423
+  ep1 it 4400/15000 L=1.5184 se=0.0615 ce=1.3573 spk=0.1662 ns=0.0993 hardcos=0.3992 cos=0.8338
+  ep1 it 4600/15000 L=1.1306 se=0.0621 ce=0.9694 spk=0.1553 ns=0.1049 hardcos=0.4049 cos=0.8447
+  ep1 it 4800/15000 L=1.4224 se=0.0635 ce=1.2581 spk=0.1635 ns=0.1036 hardcos=0.4033 cos=0.8365
+  ep1 it 5000/15000 L=1.4472 se=0.0625 ce=1.2810 spk=0.1779 ns=0.1006 hardcos=0.4005 cos=0.8221
+  ep1 it 5200/15000 L=1.2367 se=0.0603 ce=1.0772 spk=0.1606 ns=0.1020 hardcos=0.4020 cos=0.8394
+  ep1 it 5400/15000 L=1.5624 se=0.0618 ce=1.3998 spk=0.1677 ns=0.1010 hardcos=0.4007 cos=0.8323
+  ep1 it 5600/15000 L=1.2918 se=0.0603 ce=1.1296 spk=0.1743 ns=0.0992 hardcos=0.3992 cos=0.8257
+  ep1 it 5800/15000 L=1.6280 se=0.0612 ce=1.4637 spk=0.1823 ns=0.0968 hardcos=0.3965 cos=0.8177
+  ep1 it 6000/15000 L=1.3273 se=0.0600 ce=1.1675 spk=0.1626 ns=0.1022 hardcos=0.4019 cos=0.8374
+  ep1 it 6200/15000 L=1.3115 se=0.0612 ce=1.1487 spk=0.1700 ns=0.1011 hardcos=0.4010 cos=0.8300
+  ep1 it 6400/15000 L=1.4470 se=0.0611 ce=1.2842 spk=0.1761 ns=0.0978 hardcos=0.3977 cos=0.8239
+  ep1 it 6600/15000 L=1.3459 se=0.0613 ce=1.1816 spk=0.1729 ns=0.1021 hardcos=0.4020 cos=0.8271
+  ep1 it 6800/15000 L=1.5488 se=0.0619 ce=1.3836 spk=0.1725 ns=0.1029 hardcos=0.4029 cos=0.8275
+  ep1 it 7000/15000 L=1.3300 se=0.0610 ce=1.1695 spk=0.1644 ns=0.1003 hardcos=0.4001 cos=0.8356
+  ep1 it 7200/15000 L=1.4324 se=0.0611 ce=1.2726 spk=0.1679 ns=0.0967 hardcos=0.3965 cos=0.8321
+  ep1 it 7400/15000 L=1.3507 se=0.0626 ce=1.1872 spk=0.1667 ns=0.1018 hardcos=0.4016 cos=0.8333
+  ep1 it 7600/15000 L=1.3169 se=0.0620 ce=1.1546 spk=0.1646 ns=0.1018 hardcos=0.4016 cos=0.8354
+  ep1 it 7800/15000 L=1.4089 se=0.0633 ce=1.2458 spk=0.1613 ns=0.1030 hardcos=0.4028 cos=0.8387
+  ep1 it 8000/15000 L=1.4095 se=0.0617 ce=1.2476 spk=0.1651 ns=0.1015 hardcos=0.4012 cos=0.8349
+  ep1 it 8200/15000 L=1.4192 se=0.0594 ce=1.2606 spk=0.1613 ns=0.1017 hardcos=0.4016 cos=0.8387
+  ep1 it 8400/15000 L=1.2085 se=0.0618 ce=1.0500 spk=0.1557 ns=0.1000 hardcos=0.3998 cos=0.8443
+  ep1 it 8600/15000 L=1.3608 se=0.0576 ce=1.1974 spk=0.1775 ns=0.1050 hardcos=0.4048 cos=0.8225
+  ep1 it 8800/15000 L=1.5530 se=0.0630 ce=1.3883 spk=0.1698 ns=0.1016 hardcos=0.4015 cos=0.8302
+  ep1 it 9000/15000 L=1.2010 se=0.0615 ce=1.0404 spk=0.1604 ns=0.1020 hardcos=0.4019 cos=0.8396
+  ep1 it 9200/15000 L=1.3621 se=0.0610 ce=1.2006 spk=0.1669 ns=0.1008 hardcos=0.4006 cos=0.8331
+  ep1 it 9400/15000 L=1.2795 se=0.0594 ce=1.1180 spk=0.1698 ns=0.1024 hardcos=0.4022 cos=0.8302
+  ep1 it 9600/15000 L=1.5016 se=0.0595 ce=1.3410 spk=0.1659 ns=0.1027 hardcos=0.4026 cos=0.8341
+  ep1 it 9800/15000 L=1.5049 se=0.0592 ce=1.3443 spk=0.1644 ns=0.1043 hardcos=0.4041 cos=0.8356
+  ep1 it 10000/15000 L=1.3711 se=0.0627 ce=1.2075 spk=0.1696 ns=0.1003 hardcos=0.4000 cos=0.8304
+  ep1 it 10200/15000 L=1.2330 se=0.0634 ce=1.0704 spk=0.1632 ns=0.1005 hardcos=0.4004 cos=0.8368
+  ep1 it 10400/15000 L=1.2518 se=0.0620 ce=1.0892 spk=0.1634 ns=0.1031 hardcos=0.4030 cos=0.8366
+  ep1 it 10600/15000 L=1.4457 se=0.0610 ce=1.2863 spk=0.1579 ns=0.1020 hardcos=0.4018 cos=0.8421
+  ep1 it 10800/15000 L=1.2015 se=0.0592 ce=1.0419 spk=0.1633 ns=0.1027 hardcos=0.4026 cos=0.8367
+  ep1 it 11000/15000 L=1.2839 se=0.0635 ce=1.1190 spk=0.1716 ns=0.0999 hardcos=0.3999 cos=0.8284
+  ep1 it 11200/15000 L=1.4760 se=0.0602 ce=1.3167 spk=0.1565 ns=0.1044 hardcos=0.4040 cos=0.8435
+  ep1 it 11400/15000 L=1.2100 se=0.0625 ce=1.0488 spk=0.1624 ns=0.0999 hardcos=0.3997 cos=0.8376
+  ep1 it 11600/15000 L=1.2815 se=0.0591 ce=1.1209 spk=0.1706 ns=0.1006 hardcos=0.4005 cos=0.8294
+  ep1 it 11800/15000 L=1.0983 se=0.0617 ce=0.9402 spk=0.1482 ns=0.1039 hardcos=0.4039 cos=0.8518
+  ep1 it 12000/15000 L=1.2748 se=0.0611 ce=1.1184 spk=0.1513 ns=0.0999 hardcos=0.3995 cos=0.8487
+  ep1 it 12200/15000 L=1.4051 se=0.0617 ce=1.2421 spk=0.1685 ns=0.1014 hardcos=0.4013 cos=0.8315
+  ep1 it 12400/15000 L=1.4248 se=0.0627 ce=1.2616 spk=0.1668 ns=0.1011 hardcos=0.4009 cos=0.8332
+  ep1 it 12600/15000 L=1.3767 se=0.0616 ce=1.2169 spk=0.1614 ns=0.0995 hardcos=0.3992 cos=0.8386
+  ep1 it 12800/15000 L=1.4148 se=0.0626 ce=1.2541 spk=0.1577 ns=0.1014 hardcos=0.4012 cos=0.8423
+  ep1 it 13000/15000 L=1.2452 se=0.0609 ce=1.0850 spk=0.1642 ns=0.1000 hardcos=0.3998 cos=0.8358
+  ep1 it 13200/15000 L=1.1854 se=0.0626 ce=1.0236 spk=0.1623 ns=0.1010 hardcos=0.4009 cos=0.8377
+  ep1 it 13400/15000 L=1.4619 se=0.0635 ce=1.2982 spk=0.1623 ns=0.1028 hardcos=0.4027 cos=0.8377
+  ep1 it 13600/15000 L=1.2463 se=0.0636 ce=1.0817 spk=0.1654 ns=0.1027 hardcos=0.4026 cos=0.8346
+  ep1 it 13800/15000 L=1.4296 se=0.0639 ce=1.2619 spk=0.1738 ns=0.1033 hardcos=0.4031 cos=0.8262
+  ep1 it 14000/15000 L=1.4604 se=0.0598 ce=1.3031 spk=0.1551 ns=0.1019 hardcos=0.4017 cos=0.8449
+  ep1 it 14200/15000 L=1.2890 se=0.0631 ce=1.1265 spk=0.1594 ns=0.1032 hardcos=0.4031 cos=0.8406
+  ep1 it 14400/15000 L=1.2329 se=0.0628 ce=1.0717 spk=0.1588 ns=0.1014 hardcos=0.4013 cos=0.8412
+  ep1 it 14600/15000 L=1.3033 se=0.0609 ce=1.1427 spk=0.1620 ns=0.1022 hardcos=0.4020 cos=0.8380
+  ep1 it 14800/15000 L=1.1556 se=0.0625 ce=0.9931 spk=0.1640 ns=0.1015 hardcos=0.4014 cos=0.8360
+  ep1 it 15000/15000 L=1.0676 se=0.0625 ce=0.9070 spk=0.1530 ns=0.1046 hardcos=0.4045 cos=0.8470
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v3_ns05ext2_ep1/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v3_ns05ext2_ep1/noise_m5db
+  [val-hard] ep1 0db=2.807 m5db=6.784 avg=4.795 (锚 lam03_ep3: 4.307/10.500 avg=7.403)
+  [val-hard] 新最优 avg=4.795 -> checkpoint_best.tar
+  ep2 it 200/15000 L=1.2548 se=0.0625 ce=1.0945 spk=0.1575 ns=0.1011 hardcos=0.4009 cos=0.8425
+  ep2 it 400/15000 L=1.1553 se=0.0610 ce=0.9964 spk=0.1583 ns=0.1008 hardcos=0.4007 cos=0.8417
+  ep2 it 600/15000 L=1.2192 se=0.0618 ce=1.0600 spk=0.1585 ns=0.0996 hardcos=0.3995 cos=0.8415
+  ep2 it 800/15000 L=1.3541 se=0.0594 ce=1.1944 spk=0.1679 ns=0.0999 hardcos=0.3995 cos=0.8321
+  ep2 it 1000/15000 L=1.3689 se=0.0600 ce=1.2081 spk=0.1662 ns=0.1018 hardcos=0.4017 cos=0.8338
+  ep2 it 1200/15000 L=1.2505 se=0.0625 ce=1.0861 spk=0.1727 ns=0.1000 hardcos=0.3999 cos=0.8273
+  ep2 it 1400/15000 L=1.4415 se=0.0607 ce=1.2812 spk=0.1700 ns=0.0972 hardcos=0.3970 cos=0.8300
+  ep2 it 1600/15000 L=1.2745 se=0.0608 ce=1.1133 spk=0.1670 ns=0.1006 hardcos=0.4004 cos=0.8330
+  ep2 it 1800/15000 L=1.1972 se=0.0611 ce=1.0368 spk=0.1581 ns=0.1040 hardcos=0.4040 cos=0.8419
+  ep2 it 2000/15000 L=1.3430 se=0.0589 ce=1.1859 spk=0.1629 ns=0.0987 hardcos=0.3984 cos=0.8371
+  ep2 it 2200/15000 L=1.1297 se=0.0605 ce=0.9695 spk=0.1592 ns=0.1040 hardcos=0.4039 cos=0.8408
+  ep2 it 2400/15000 L=1.3635 se=0.0637 ce=1.1991 spk=0.1702 ns=0.0993 hardcos=0.3992 cos=0.8298
+  ep2 it 2600/15000 L=1.1795 se=0.0605 ce=1.0239 spk=0.1474 ns=0.1017 hardcos=0.4016 cos=0.8526
+  ep2 it 2800/15000 L=1.4886 se=0.0624 ce=1.3265 spk=0.1636 ns=0.1013 hardcos=0.4012 cos=0.8364
+  ep2 it 3000/15000 L=1.1258 se=0.0625 ce=0.9632 spk=0.1635 ns=0.1021 hardcos=0.4020 cos=0.8365
+  ep2 it 3200/15000 L=1.2952 se=0.0612 ce=1.1326 spk=0.1656 ns=0.1033 hardcos=0.4032 cos=0.8344
+  ep2 it 3400/15000 L=1.1935 se=0.0613 ce=1.0354 spk=0.1492 ns=0.1040 hardcos=0.4038 cos=0.8508
+  ep2 it 3600/15000 L=1.5320 se=0.0607 ce=1.3714 spk=0.1677 ns=0.0993 hardcos=0.3991 cos=0.8323
+  ep2 it 3800/15000 L=1.1990 se=0.0622 ce=1.0378 spk=0.1625 ns=0.1005 hardcos=0.4003 cos=0.8375
+  ep2 it 4000/15000 L=1.3757 se=0.0629 ce=1.2151 spk=0.1565 ns=0.1015 hardcos=0.4014 cos=0.8435
+  ep2 it 4200/15000 L=1.4295 se=0.0624 ce=1.2660 spk=0.1733 ns=0.0984 hardcos=0.3982 cos=0.8267
+  ep2 it 4400/15000 L=1.2001 se=0.0608 ce=1.0393 spk=0.1635 ns=0.1019 hardcos=0.4018 cos=0.8365
+  ep2 it 4600/15000 L=1.4838 se=0.0627 ce=1.3221 spk=0.1675 ns=0.0975 hardcos=0.3975 cos=0.8325
+  ep2 it 4800/15000 L=1.3891 se=0.0633 ce=1.2238 spk=0.1767 ns=0.0981 hardcos=0.3978 cos=0.8233
+  ep2 it 5000/15000 L=1.4371 se=0.0632 ce=1.2755 spk=0.1665 ns=0.0969 hardcos=0.3967 cos=0.8335
+  ep2 it 5200/15000 L=1.4227 se=0.0633 ce=1.2613 spk=0.1571 ns=0.1019 hardcos=0.4017 cos=0.8429
+  ep2 it 5400/15000 L=1.2194 se=0.0596 ce=1.0604 spk=0.1576 ns=0.1042 hardcos=0.4040 cos=0.8424
+  ep2 it 5600/15000 L=1.4928 se=0.0627 ce=1.3282 spk=0.1714 ns=0.1010 hardcos=0.4009 cos=0.8286
+  ep2 it 5800/15000 L=1.2814 se=0.0631 ce=1.1172 spk=0.1645 ns=0.1035 hardcos=0.4033 cos=0.8355
+  ep2 it 6000/15000 L=1.2689 se=0.0607 ce=1.1092 spk=0.1586 ns=0.1028 hardcos=0.4026 cos=0.8414
+  ep2 it 6200/15000 L=1.0828 se=0.0639 ce=0.9214 spk=0.1565 ns=0.1010 hardcos=0.4009 cos=0.8435
+  ep2 it 6400/15000 L=1.1422 se=0.0655 ce=0.9751 spk=0.1703 ns=0.1010 hardcos=0.4009 cos=0.8297
+  ep2 it 6600/15000 L=1.5149 se=0.0600 ce=1.3554 spk=0.1641 ns=0.1006 hardcos=0.4004 cos=0.8359
+  ep2 it 6800/15000 L=1.4076 se=0.0614 ce=1.2473 spk=0.1628 ns=0.1001 hardcos=0.3999 cos=0.8372
+  ep2 it 7000/15000 L=1.0221 se=0.0612 ce=0.8658 spk=0.1492 ns=0.1007 hardcos=0.4007 cos=0.8508
+  ep2 it 7200/15000 L=1.2112 se=0.0631 ce=1.0496 spk=0.1623 ns=0.0997 hardcos=0.3995 cos=0.8377
+  ep2 it 7400/15000 L=1.3869 se=0.0589 ce=1.2298 spk=0.1557 ns=0.1031 hardcos=0.4030 cos=0.8443
+  ep2 it 7600/15000 L=1.1575 se=0.0619 ce=0.9993 spk=0.1516 ns=0.1016 hardcos=0.4014 cos=0.8484
+  ep2 it 7800/15000 L=1.5326 se=0.0609 ce=1.3708 spk=0.1701 ns=0.0999 hardcos=0.3998 cos=0.8299
+  ep2 it 8000/15000 L=1.3564 se=0.0628 ce=1.1924 spk=0.1706 ns=0.1000 hardcos=0.4000 cos=0.8294
+  ep2 it 8200/15000 L=1.2569 se=0.0637 ce=1.0961 spk=0.1533 ns=0.1023 hardcos=0.4022 cos=0.8467
+  ep2 it 8400/15000 L=1.3460 se=0.0633 ce=1.1816 spk=0.1672 ns=0.1017 hardcos=0.4016 cos=0.8328
+  ep2 it 8600/15000 L=1.3257 se=0.0614 ce=1.1646 spk=0.1630 ns=0.1016 hardcos=0.4014 cos=0.8370
+  ep2 it 8800/15000 L=1.2592 se=0.0611 ce=1.0986 spk=0.1607 ns=0.1025 hardcos=0.4024 cos=0.8393
+  ep2 it 9000/15000 L=1.3687 se=0.0617 ce=1.2056 spk=0.1653 ns=0.1035 hardcos=0.4033 cos=0.8347
+  ep2 it 9200/15000 L=1.1815 se=0.0605 ce=1.0191 spk=0.1670 ns=0.1035 hardcos=0.4035 cos=0.8330
+  ep2 it 9400/15000 L=1.3080 se=0.0621 ce=1.1447 spk=0.1738 ns=0.0980 hardcos=0.3978 cos=0.8262
+  ep2 it 9600/15000 L=1.3478 se=0.0604 ce=1.1866 spk=0.1689 ns=0.1003 hardcos=0.4001 cos=0.8311
+  ep2 it 9800/15000 L=1.2151 se=0.0617 ce=1.0553 spk=0.1603 ns=0.1001 hardcos=0.4001 cos=0.8397
+  ep2 it 10000/15000 L=1.1463 se=0.0623 ce=0.9862 spk=0.1605 ns=0.0991 hardcos=0.3989 cos=0.8395
+  ep2 it 10200/15000 L=1.2063 se=0.0620 ce=1.0448 spk=0.1620 ns=0.1018 hardcos=0.4016 cos=0.8380
+  ep2 it 10400/15000 L=1.0691 se=0.0614 ce=0.9090 spk=0.1636 ns=0.0993 hardcos=0.3992 cos=0.8364
+  ep2 it 10600/15000 L=1.3917 se=0.0606 ce=1.2312 spk=0.1685 ns=0.0987 hardcos=0.3985 cos=0.8315
+  ep2 it 10800/15000 L=1.2089 se=0.0613 ce=1.0476 spk=0.1648 ns=0.1011 hardcos=0.4010 cos=0.8352
+  ep2 it 11000/15000 L=1.4121 se=0.0622 ce=1.2461 spk=0.1754 ns=0.1024 hardcos=0.4024 cos=0.8246
+  ep2 it 11200/15000 L=0.9317 se=0.0598 ce=0.7763 spk=0.1542 ns=0.0988 hardcos=0.3988 cos=0.8458
+  ep2 it 11400/15000 L=1.0375 se=0.0600 ce=0.8821 spk=0.1447 ns=0.1039 hardcos=0.4038 cos=0.8553
+  ep2 it 11600/15000 L=1.1627 se=0.0615 ce=1.0032 spk=0.1576 ns=0.1015 hardcos=0.4014 cos=0.8424
+  ep2 it 11800/15000 L=1.1067 se=0.0612 ce=0.9477 spk=0.1558 ns=0.1023 hardcos=0.4021 cos=0.8442
+  ep2 it 12000/15000 L=1.1589 se=0.0638 ce=0.9991 spk=0.1516 ns=0.1010 hardcos=0.4008 cos=0.8484
+  ep2 it 12200/15000 L=1.2493 se=0.0621 ce=1.0834 spk=0.1749 ns=0.1027 hardcos=0.4027 cos=0.8251
+  ep2 it 12400/15000 L=1.2855 se=0.0626 ce=1.1249 spk=0.1642 ns=0.0976 hardcos=0.3973 cos=0.8358
+  ep2 it 12600/15000 L=1.2228 se=0.0609 ce=1.0627 spk=0.1601 ns=0.1023 hardcos=0.4022 cos=0.8399
+  ep2 it 12800/15000 L=1.1757 se=0.0594 ce=1.0159 spk=0.1612 ns=0.1040 hardcos=0.4040 cos=0.8388
+  ep2 it 13000/15000 L=1.0605 se=0.0607 ce=0.9036 spk=0.1528 ns=0.1006 hardcos=0.4003 cos=0.8472
+  ep2 it 13200/15000 L=1.2603 se=0.0625 ce=1.1016 spk=0.1534 ns=0.1005 hardcos=0.4004 cos=0.8466
+  ep2 it 13400/15000 L=1.1896 se=0.0603 ce=1.0294 spk=0.1620 ns=0.1027 hardcos=0.4027 cos=0.8380
+  ep2 it 13600/15000 L=1.1406 se=0.0614 ce=0.9815 spk=0.1513 ns=0.1047 hardcos=0.4046 cos=0.8487
+  ep2 it 13800/15000 L=1.5380 se=0.0596 ce=1.3776 spk=0.1690 ns=0.1002 hardcos=0.4000 cos=0.8310
+  ep2 it 14000/15000 L=1.3447 se=0.0633 ce=1.1789 spk=0.1761 ns=0.0993 hardcos=0.3992 cos=0.8239
+  ep2 it 14200/15000 L=1.5336 se=0.0600 ce=1.3705 spk=0.1773 ns=0.0997 hardcos=0.3995 cos=0.8227
+  ep2 it 14400/15000 L=1.1021 se=0.0614 ce=0.9416 spk=0.1658 ns=0.0987 hardcos=0.3986 cos=0.8342
+  ep2 it 14600/15000 L=1.2097 se=0.0600 ce=1.0515 spk=0.1589 ns=0.1011 hardcos=0.4009 cos=0.8411
+  ep2 it 14800/15000 L=1.3312 se=0.0614 ce=1.1696 spk=0.1647 ns=0.1015 hardcos=0.4014 cos=0.8353
+  ep2 it 15000/15000 L=1.1982 se=0.0598 ce=1.0407 spk=0.1576 ns=0.1010 hardcos=0.4009 cos=0.8424
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v3_ns05ext2_ep2/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v3_ns05ext2_ep2/noise_m5db
+  [val-hard] ep2 0db=2.977 m5db=6.239 avg=4.608 (锚 lam03_ep3: 4.307/10.500 avg=7.403)
+  [val-hard] 新最优 avg=4.608 -> checkpoint_best.tar
+  ep3 it 200/15000 L=1.2974 se=0.0630 ce=1.1355 spk=0.1593 ns=0.1022 hardcos=0.4021 cos=0.8407
+  ep3 it 400/15000 L=1.2435 se=0.0618 ce=1.0831 spk=0.1589 ns=0.1020 hardcos=0.4019 cos=0.8411
+  ep3 it 600/15000 L=1.4730 se=0.0639 ce=1.3063 spk=0.1804 ns=0.0974 hardcos=0.3971 cos=0.8196
+  ep3 it 800/15000 L=1.2047 se=0.0620 ce=1.0414 spk=0.1714 ns=0.0997 hardcos=0.3996 cos=0.8286
+  ep3 it 1000/15000 L=1.2669 se=0.0623 ce=1.1032 spk=0.1699 ns=0.1008 hardcos=0.4007 cos=0.8301
+  ep3 it 1200/15000 L=1.3125 se=0.0617 ce=1.1494 spk=0.1661 ns=0.1031 hardcos=0.4030 cos=0.8339
+  ep3 it 1400/15000 L=1.1020 se=0.0615 ce=0.9420 spk=0.1614 ns=0.1001 hardcos=0.3999 cos=0.8386
+  ep3 it 1600/15000 L=1.3083 se=0.0618 ce=1.1441 spk=0.1716 ns=0.1017 hardcos=0.4015 cos=0.8284
+  ep3 it 1800/15000 L=1.0609 se=0.0602 ce=0.9033 spk=0.1598 ns=0.0988 hardcos=0.3988 cos=0.8402
+  ep3 it 2000/15000 L=0.9702 se=0.0609 ce=0.8122 spk=0.1537 ns=0.1019 hardcos=0.4017 cos=0.8463
+  ep3 it 2200/15000 L=1.1846 se=0.0597 ce=1.0261 spk=0.1600 ns=0.1016 hardcos=0.4014 cos=0.8400
+  ep3 it 2400/15000 L=1.3175 se=0.0610 ce=1.1545 spk=0.1706 ns=0.1016 hardcos=0.4014 cos=0.8294
+  ep3 it 2600/15000 L=1.3144 se=0.0616 ce=1.1550 spk=0.1590 ns=0.1002 hardcos=0.4001 cos=0.8410
+  ep3 it 2800/15000 L=1.2618 se=0.0636 ce=1.0944 spk=0.1742 ns=0.1031 hardcos=0.4028 cos=0.8258
+  ep3 it 3000/15000 L=1.2968 se=0.0606 ce=1.1383 spk=0.1614 ns=0.0991 hardcos=0.3987 cos=0.8386
+  ep3 it 3200/15000 L=1.2758 se=0.0600 ce=1.1180 spk=0.1581 ns=0.1008 hardcos=0.4006 cos=0.8419
+  ep3 it 3400/15000 L=1.0480 se=0.0613 ce=0.8878 spk=0.1623 ns=0.1005 hardcos=0.4004 cos=0.8377
+  ep3 it 3600/15000 L=1.2911 se=0.0611 ce=1.1291 spk=0.1716 ns=0.0988 hardcos=0.3987 cos=0.8284
+  ep3 it 3800/15000 L=1.3066 se=0.0642 ce=1.1431 spk=0.1642 ns=0.1001 hardcos=0.4000 cos=0.8358
+  ep3 it 4000/15000 L=1.2880 se=0.0608 ce=1.1276 spk=0.1624 ns=0.1018 hardcos=0.4015 cos=0.8376
+  ep3 it 4200/15000 L=1.0000 se=0.0603 ce=0.8428 spk=0.1545 ns=0.1010 hardcos=0.4009 cos=0.8455
+  ep3 it 4400/15000 L=1.2551 se=0.0592 ce=1.0970 spk=0.1625 ns=0.1001 hardcos=0.3999 cos=0.8375
+  ep3 it 4600/15000 L=1.3396 se=0.0596 ce=1.1782 spk=0.1653 ns=0.1044 hardcos=0.4044 cos=0.8347
+  ep3 it 4800/15000 L=1.1562 se=0.0609 ce=0.9984 spk=0.1560 ns=0.1001 hardcos=0.4001 cos=0.8440
+  ep3 it 5000/15000 L=1.0848 se=0.0625 ce=0.9236 spk=0.1605 ns=0.1011 hardcos=0.4009 cos=0.8395
+  ep3 it 5200/15000 L=1.4900 se=0.0625 ce=1.3252 spk=0.1764 ns=0.0987 hardcos=0.3986 cos=0.8236
+  ep3 it 5400/15000 L=1.1780 se=0.0636 ce=1.0145 spk=0.1605 ns=0.1036 hardcos=0.4035 cos=0.8395
+  ep3 it 5600/15000 L=1.1441 se=0.0612 ce=0.9859 spk=0.1589 ns=0.0986 hardcos=0.3986 cos=0.8411
+  ep3 it 5800/15000 L=1.0957 se=0.0609 ce=0.9341 spk=0.1631 ns=0.1036 hardcos=0.4035 cos=0.8369
+  ep3 it 6000/15000 L=1.4576 se=0.0602 ce=1.2964 spk=0.1697 ns=0.1002 hardcos=0.4000 cos=0.8303
+  ep3 it 6200/15000 L=1.4798 se=0.0608 ce=1.3160 spk=0.1758 ns=0.1007 hardcos=0.4005 cos=0.8242
+  ep3 it 6400/15000 L=1.3727 se=0.0607 ce=1.2119 spk=0.1636 ns=0.1021 hardcos=0.4020 cos=0.8364
+  ep3 it 6600/15000 L=1.2211 se=0.0616 ce=1.0596 spk=0.1647 ns=0.1012 hardcos=0.4012 cos=0.8353
+  ep3 it 6800/15000 L=1.3887 se=0.0598 ce=1.2271 spk=0.1685 ns=0.1024 hardcos=0.4021 cos=0.8315
+  ep3 it 7000/15000 L=1.2024 se=0.0611 ce=1.0407 spk=0.1667 ns=0.1014 hardcos=0.4013 cos=0.8333
+  ep3 it 7200/15000 L=1.3151 se=0.0637 ce=1.1483 spk=0.1715 ns=0.1033 hardcos=0.4032 cos=0.8285
+  ep3 it 7400/15000 L=1.1948 se=0.0610 ce=1.0352 spk=0.1632 ns=0.0993 hardcos=0.3993 cos=0.8368
+  ep3 it 7600/15000 L=1.1625 se=0.0603 ce=1.0067 spk=0.1535 ns=0.0991 hardcos=0.3991 cos=0.8465
+  ep3 it 7800/15000 L=1.2915 se=0.0622 ce=1.1300 spk=0.1670 ns=0.0984 hardcos=0.3981 cos=0.8330
+  ep3 it 8000/15000 L=1.2950 se=0.0607 ce=1.1362 spk=0.1626 ns=0.0986 hardcos=0.3985 cos=0.8374
+  ep3 it 8200/15000 L=1.4065 se=0.0619 ce=1.2457 spk=0.1673 ns=0.0975 hardcos=0.3972 cos=0.8327
+  ep3 it 8400/15000 L=1.0562 se=0.0584 ce=0.9001 spk=0.1551 ns=0.1024 hardcos=0.4022 cos=0.8449
+  ep3 it 8600/15000 L=1.3728 se=0.0596 ce=1.2151 spk=0.1629 ns=0.0987 hardcos=0.3984 cos=0.8371
+  ep3 it 8800/15000 L=1.1802 se=0.0627 ce=1.0192 spk=0.1607 ns=0.1001 hardcos=0.3999 cos=0.8393
+  ep3 it 9000/15000 L=1.2133 se=0.0601 ce=1.0527 spk=0.1671 ns=0.1007 hardcos=0.4005 cos=0.8329
+  ep3 it 9200/15000 L=1.2152 se=0.0623 ce=1.0509 spk=0.1720 ns=0.1008 hardcos=0.4007 cos=0.8280
+  ep3 it 9400/15000 L=1.2197 se=0.0621 ce=1.0562 spk=0.1672 ns=0.1024 hardcos=0.4024 cos=0.8328
+  ep3 it 9600/15000 L=1.2821 se=0.0607 ce=1.1200 spk=0.1662 ns=0.1032 hardcos=0.4031 cos=0.8338
+  ep3 it 9800/15000 L=1.1920 se=0.0612 ce=1.0305 spk=0.1642 ns=0.1021 hardcos=0.4019 cos=0.8358
+  ep3 it 10000/15000 L=1.1556 se=0.0622 ce=0.9945 spk=0.1599 ns=0.1018 hardcos=0.4018 cos=0.8401
+  ep3 it 10200/15000 L=1.4445 se=0.0617 ce=1.2804 spk=0.1810 ns=0.0962 hardcos=0.3960 cos=0.8190
+  ep3 it 10400/15000 L=1.3521 se=0.0639 ce=1.1845 spk=0.1776 ns=0.1007 hardcos=0.4006 cos=0.8224
+  ep3 it 10600/15000 L=1.2236 se=0.0615 ce=1.0643 spk=0.1555 ns=0.1026 hardcos=0.4024 cos=0.8445
+  ep3 it 10800/15000 L=1.2578 se=0.0630 ce=1.0925 spk=0.1729 ns=0.1009 hardcos=0.4008 cos=0.8271
+  ep3 it 11000/15000 L=1.2085 se=0.0600 ce=1.0521 spk=0.1553 ns=0.0996 hardcos=0.3996 cos=0.8447
+  ep3 it 11200/15000 L=1.1852 se=0.0622 ce=1.0231 spk=0.1606 ns=0.1035 hardcos=0.4034 cos=0.8394
+  ep3 it 11400/15000 L=1.4951 se=0.0621 ce=1.3342 spk=0.1633 ns=0.0996 hardcos=0.3994 cos=0.8367
+  ep3 it 11600/15000 L=1.4676 se=0.0581 ce=1.3080 spk=0.1727 ns=0.0993 hardcos=0.3990 cos=0.8273
+  ep3 it 11800/15000 L=1.3816 se=0.0595 ce=1.2218 spk=0.1676 ns=0.1001 hardcos=0.4001 cos=0.8324
+  ep3 it 12000/15000 L=1.1062 se=0.0612 ce=0.9468 spk=0.1606 ns=0.1001 hardcos=0.4000 cos=0.8394
+  ep3 it 12200/15000 L=1.1835 se=0.0600 ce=1.0210 spk=0.1722 ns=0.1017 hardcos=0.4016 cos=0.8278
+  ep3 it 12400/15000 L=1.0404 se=0.0604 ce=0.8816 spk=0.1559 ns=0.1035 hardcos=0.4034 cos=0.8441
+  ep3 it 12600/15000 L=1.2202 se=0.0640 ce=1.0542 spk=0.1713 ns=0.1011 hardcos=0.4010 cos=0.8287
+  ep3 it 12800/15000 L=1.3447 se=0.0596 ce=1.1841 spk=0.1681 ns=0.1010 hardcos=0.4007 cos=0.8319
+  ep3 it 13000/15000 L=1.1504 se=0.0610 ce=0.9908 spk=0.1605 ns=0.1009 hardcos=0.4008 cos=0.8395
+  ep3 it 13200/15000 L=1.4939 se=0.0608 ce=1.3320 spk=0.1684 ns=0.1011 hardcos=0.4009 cos=0.8316
+  ep3 it 13400/15000 L=1.6075 se=0.0612 ce=1.4459 spk=0.1673 ns=0.1005 hardcos=0.4003 cos=0.8327
+  ep3 it 13600/15000 L=1.1496 se=0.0617 ce=0.9890 spk=0.1623 ns=0.1005 hardcos=0.4002 cos=0.8377
+  ep3 it 13800/15000 L=1.0928 se=0.0636 ce=0.9282 spk=0.1671 ns=0.1016 hardcos=0.4015 cos=0.8329
+  ep3 it 14000/15000 L=1.0494 se=0.0629 ce=0.8896 spk=0.1567 ns=0.0998 hardcos=0.3997 cos=0.8433
+  ep3 it 14200/15000 L=0.9986 se=0.0637 ce=0.8344 spk=0.1648 ns=0.1020 hardcos=0.4019 cos=0.8352
+  ep3 it 14400/15000 L=1.3007 se=0.0624 ce=1.1374 spk=0.1704 ns=0.0995 hardcos=0.3993 cos=0.8296
+  ep3 it 14600/15000 L=1.0447 se=0.0622 ce=0.8839 spk=0.1609 ns=0.1008 hardcos=0.4008 cos=0.8391
+  ep3 it 14800/15000 L=1.2308 se=0.0618 ce=1.0665 spk=0.1714 ns=0.1020 hardcos=0.4018 cos=0.8286
+  ep3 it 15000/15000 L=1.4533 se=0.0616 ce=1.2931 spk=0.1644 ns=0.0985 hardcos=0.3984 cos=0.8356
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v3_ns05ext2_ep3/noise_0db
+[enhance] 待处理 400
+  0/400
+  160/400
+  320/400
+[enhance] done -> /data/home/ligangrui/china_mobile/AI/8.27/exp/proxy/val_v3_ns05ext2_ep3/noise_m5db
+  [val-hard] ep3 0db=2.739 m5db=6.023 avg=4.381 (锚 lam03_ep3: 4.307/10.500 avg=7.403)
+  [val-hard] 新最优 avg=4.381 -> checkpoint_best.tar
+[done] λ_ns=0.5 best_hard_avg=4.381 (锚 7.403)
