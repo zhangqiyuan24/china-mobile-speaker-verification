@@ -1,0 +1,21 @@
+# ECAPA-TDNN 鲁棒多条件训练配置（8.26 换靶子线）
+# 基线(ECAPA 自己, 8.24 README 口径): 0dB 11.150 / -5dB 14.360
+# 达标线(-30%): 0dB <= 7.805 / -5dB <= 10.052
+
+[paths]
+sv_ecapa = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa"
+ecapa_ckpt = "/data/home/ligangrui/china_mobile/code/3D-speaker/3D-speaker/egs/3dspeaker/sv-ecapa/pretrained/speech_ecapa-tdnn_sv_zh-cn_3dspeaker_16k/ecapa-tdnn.ckpt"
+data_dir_820 = "/data/home/ligangrui/china_mobile/AI/8.22/exp/data_90k/data"
+exp_dir = "exp/ecapa_robust_90k"
+
+[data]
+seed = 2026
+
+[model]
+scale = 32.0
+margin = 0.2
+
+[baseline]
+clean = 9.31
+noise_0db = 11.150
+noise_m5db = 14.360

@@ -1,0 +1,3 @@
+Results of trials_cross_device is:
+EER = 25.5545
+minDCF (p_target:0.01 c_miss:1 c_fa:1) = 1.0000
