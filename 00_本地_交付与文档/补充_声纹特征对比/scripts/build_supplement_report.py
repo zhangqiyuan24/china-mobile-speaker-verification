@@ -1,0 +1,643 @@
+# -*- coding: utf-8 -*-
+"""Build the supplementary PDF report in the style of the original formal report."""
+import html
+import os
+import subprocess
+from pathlib import Path
+
+from latex2mathml.converter import convert
+
+ROOT = Path(r"E:\china_mobile_review\声纹特征对比")
+DATE = "2026 年 10 月 17 日"
+CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+OUT_HTML = ROOT / "report_supplement.html"
+OUT_PDF = ROOT / "中国移动实习_声纹特征对比_补充报告.pdf"
+
+
+def im(latex):
+    return convert(latex)
+
+
+def eq(latex, tag):
+    m = convert(latex).replace('display="inline"', 'display="block"')
+    return f'<div class="equation"><div class="equation-body">{m}</div><div class="equation-number">({tag})</div></div>'
+
+
+def fig(rel, caption, maxh="105mm"):
+    p = ROOT / rel
+    if not p.exists():
+        print("WARN missing figure", p)
+    return (f'<figure><img src="{rel}" style="max-height:{maxh};">'
+            f'<figcaption>{caption}</figcaption></figure>')
+
+
+def link(rel, text=None):
+    p = ROOT / rel
+    text = text or rel
+    return f'<a href="{p.as_uri()}">{html.escape(text)}</a>'
+
+
+# formulas
+F_COS = eq(r"s(\mathbf{a},\mathbf{b})=\frac{\langle\mathbf{a},\mathbf{b}\rangle}{\|\mathbf{a}\|_{2}\|\mathbf{b}\|_{2}}", 1)
+F_SCORE = eq(r"s_{t}=\cos\left(\mathbf{e}_{t},\mathbf{e}_{\mathrm{enr}}\right),\qquad d_{t}=\cos\left(\mathbf{e}_{t}^{\mathrm{cond}},\mathbf{e}_{t}^{\mathrm{clean}}\right)", 2)
+F_SISDR_DECOMP = eq(r"\hat{\mathbf{s}}=\alpha\mathbf{s}+\mathbf{e},\qquad \alpha=\frac{\langle\hat{\mathbf{s}},\mathbf{s}\rangle}{\langle\mathbf{s},\mathbf{s}\rangle}", 3)
+F_SISDR = eq(r"\mathrm{SI\text{-}SDR}=10\log_{10}\frac{\|\alpha\mathbf{s}\|_{2}^{2}}{\|\hat{\mathbf{s}}-\alpha\mathbf{s}\|_{2}^{2}}", 4)
+F_SISDRI = eq(r"\mathrm{SI\text{-}SDRi}=\mathrm{SI\text{-}SDR}(\hat{\mathbf{s}})-\mathrm{SI\text{-}SDR}(\mathbf{x})", 5)
+F_SNRIN = eq(r"\mathrm{SNR}_{\mathrm{in}}=10\log_{10}\frac{\|\mathbf{s}\|_{2}^{2}}{\|\mathbf{x}-\mathbf{s}\|_{2}^{2}}", 6)
+F_SNROUT = eq(r"\beta=\frac{\|\mathbf{x}\|_{2}}{\|\hat{\mathbf{s}}\|_{2}},\qquad \mathrm{SNR}_{\mathrm{out}}=10\log_{10}\frac{\|\mathbf{s}\|_{2}^{2}}{\|\beta\hat{\mathbf{s}}-\mathbf{s}\|_{2}^{2}}", 7)
+F_DSNR = eq(r"\Delta\mathrm{SNR}=\mathrm{SNR}_{\mathrm{out}}-\mathrm{SNR}_{\mathrm{in}}", 8)
+F_VADSNR = eq(r"\mathrm{SNR}_{\mathrm{VAD}}=10\log_{10}\frac{\frac{1}{|S|}\sum_{n\in S}\hat{s}^{2}(n)}{\frac{1}{|N|}\sum_{n\in N}\hat{s}^{2}(n)}", 10)
+F_FRAME = eq(r"e(n)=\frac{1}{W}\sum_{k=0}^{W-1}s^{2}(n+k)", 9)
+F_PESQ_SYM = eq(r"D_{\mathrm{sym}}(f,t)=\left|L_{X}(f,t)-L_{Y}(f,t)\right|", 11)
+F_PESQ_ASYM = eq(r"D_{\mathrm{asym}}(f,t)=\max\left(D_{\mathrm{sym}}(f,t)-m(f,t),0\right)", 12)
+F_PESQ_MAP = eq(r"\mathrm{PESQ}=f_{\mathrm{MOS}}\left(\mathcal{A}\left[D_{\mathrm{sym}},D_{\mathrm{asym}}\right]\right)", 13)
+F_STOI_CORR = eq(r"d_{j,m}=\frac{\sum_{n}\left(x_{j,m}(n)-\bar{x}_{j,m}\right)\left(y_{j,m}(n)-\bar{y}_{j,m}\right)}{\sqrt{\sum_{n}\left(x_{j,m}(n)-\bar{x}_{j,m}\right)^{2}}\sqrt{\sum_{n}\left(y_{j,m}(n)-\bar{y}_{j,m}\right)^{2}}}", 14)
+F_STOI = eq(r"\mathrm{STOI}=\frac{1}{JM}\sum_{j=1}^{J}\sum_{m=1}^{M}d_{j,m}", 15)
+F_DPRIME = eq(r"d^{\prime}=\frac{\mu_{\mathrm{target}}-\mu_{\mathrm{nontarget}}}{\sqrt{\frac{1}{2}\left(\sigma_{\mathrm{target}}^{2}+\sigma_{\mathrm{nontarget}}^{2}\right)}}", 16)
+F_MEL = eq(r"X_{\mathrm{dB}}(m,t)=10\log_{10}\left(\sum_{k}\left|X(k,t)\right|^{2}H_{m}(k)\right)", 17)
+F_SHAPE = eq(r"\mathrm{RMSE}_{\mathrm{shape}}=\sqrt{\frac{1}{|\Omega|}\sum_{(m,t)\in\Omega}\left[\left(X_{\mathrm{dB}}^{\mathrm{cond}}(m,t)-X_{\mathrm{dB}}^{\mathrm{clean}}(m,t)\right)-\overline{\Delta}\right]^{2}}", 18)
+
+CSS = r"""
+@page { size: A4; margin: 20mm 20mm 18mm 20mm; }
+* { box-sizing: border-box; }
+body { font-family: "SimSun", "Songti SC", serif; font-size: 10.5pt; line-height: 1.78; color: #1a1a1a; margin: 0; }
+h1, h2, h3, h4 { font-family: "Microsoft YaHei", "SimHei", sans-serif; color: #1F3864; }
+h1 { font-size: 26pt; line-height: 1.35; margin: 0; font-weight: bold; }
+h2 { font-size: 16pt; margin: 0 0 12px; padding-bottom: 6px; border-bottom: 1.4pt solid #1F3864; page-break-after: avoid; font-weight: bold; }
+h3 { font-size: 12.5pt; margin: 16px 0 7px; page-break-after: avoid; font-weight: bold; }
+h4 { font-size: 11pt; margin: 12px 0 5px; page-break-after: avoid; font-weight: bold; }
+p { margin: 6px 0; text-align: justify; }
+ul, ol { margin: 5px 0 7px 20px; padding: 0; }
+li { margin: 3px 0; }
+.section { page-break-before: always; }
+.cover { page-break-after: always; text-align: center; padding-top: 30mm; }
+.cover .project { font-family: "Microsoft YaHei", sans-serif; font-size: 11pt; color: #1F3864; letter-spacing: 1px; }
+.cover .rule { width: 72%; height: 1.6pt; background: #1F3864; margin: 10px auto 34px; }
+.cover h1 { color: #1F3864; }
+.cover .subtitle { font-family: "Microsoft YaHei", sans-serif; font-size: 15pt; color: #2F5597; margin-top: 12px; letter-spacing: 2px; }
+.cover .tagline { font-size: 10.5pt; color: #333; margin-top: 34px; }
+.cover .meta { font-size: 11pt; line-height: 2.0; margin-top: 70mm; color: #222; }
+.cover .note { margin: 32mm 12% 0; font-size: 8.5pt; color: #666; line-height: 1.7; text-align: center; border-top: 0.6pt solid #bbb; padding-top: 10px; }
+.toc { page-break-after: always; }
+.toc h2 { margin-bottom: 10px; }
+.toc ul { list-style: none; margin: 6px 0 0; padding: 0; }
+.toc li { margin: 5px 0; font-size: 10.5pt; }
+.toc li.front { font-weight: bold; }
+.toc .sub { margin-left: 20px; font-size: 9.5pt; color: #333; }
+.toc .abs { margin-top: 26px; }
+.callout { border-left: 3pt solid #1F3864; background: #EAF1F8; padding: 9px 12px; margin: 10px 0; page-break-inside: avoid; }
+.callout .label { font-family: "Microsoft YaHei", sans-serif; font-weight: bold; color: #1F3864; }
+.warn { border-left: 3pt solid #C00000; background: #FDECEA; padding: 9px 12px; margin: 10px 0; page-break-inside: avoid; }
+.warn .label { font-family: "Microsoft YaHei", sans-serif; font-weight: bold; color: #C00000; }
+.note { font-size: 9pt; color: #555; margin: 4px 0 8px; text-align: left; }
+.small { font-size: 9pt; }
+.mono { font-family: Consolas, "Courier New", monospace; font-size: 8.5pt; background: #f2f2f2; padding: 1px 3px; border-radius: 2px; overflow-wrap: anywhere; }
+a { color: #1F3864; text-decoration: none; }
+.key { color: #1F3864; font-weight: bold; }
+.red { color: #C00000; font-weight: bold; }
+.green { color: #2E7D32; font-weight: bold; }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 11px; font-size: 9pt; page-break-inside: avoid; }
+th, td { border: 0.5pt solid #8EA9C1; padding: 4px 6px; vertical-align: top; }
+th { background: #1F3864; color: #fff; font-family: "Microsoft YaHei", sans-serif; font-weight: bold; text-align: center; }
+tr:nth-child(even) td { background: #EAF1F8; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+table.tight { font-size: 8.2pt; }
+figure { margin: 8px 0 12px; text-align: center; page-break-inside: avoid; }
+figure img { width: 100%; height: auto; border: 0.5pt solid #C9D6E4; }
+figcaption { font-size: 8.8pt; color: #444; margin-top: 4px; text-align: center; line-height: 1.5; }
+.equation { display: flex; align-items: center; margin: 6px 0; page-break-inside: avoid; }
+.equation-body { flex: 1; text-align: center; font-size: 11pt; }
+.equation-number { width: 38px; text-align: right; font-size: 10pt; }
+math { font-size: 1.06em; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: start; }
+.left { text-align: left; }
+"""
+
+parts = []
+
+# ---------------- Cover ----------------
+parts.append(f"""
+<div class="cover">
+  <div class="project">中国移动研究项目 · 子课题一</div>
+  <div class="rule"></div>
+  <h1>通用降噪与注册条件化 TSE<br>的声纹特征对比</h1>
+  <div class="subtitle">补 充 技 术 报 告</div>
+  <div class="tagline">—— 面向声纹验证的降噪前端失效机理与指标分析 ——</div>
+  <div class="meta">张启元（中国科学院大学）<br>中国移动研究项目 · 子课题一<br>{DATE}</div>
+  <div class="note">本报告是原《多条件中文声纹识别与噪声鲁棒性增强》技术报告的补充分析。原报告已给出的任务背景、数据协议、TSE 结构与主 EER 结果不再重复；本报告只讨论这次新增的四路对比、指标口径、失效机理与结果索引。</div>
+</div>
+""")
+
+# ---------------- TOC + abstract ----------------
+parts.append("""
+<div class="toc">
+<h2>目录</h2>
+<ul>
+<li class="front">摘要</li>
+<li>1　本补充报告的范围与结论</li>
+<li>2　分析对象与新增口径</li>
+<li>3　新增评测指标与公式</li>
+<li>4　四路对比结果</li>
+<li>5　失效机理：为什么原方法会坏</li>
+<li>6　结果查看指南：wav、图、数据分别在哪里</li>
+<li>7　面试速答与口径建议</li>
+<li>附录 A　产物、参数与复现</li>
+<li>附录 B　新增参考</li>
+</ul>
+
+<h2 class="abs">摘要</h2>
+<p>本报告是原技术报告的<b>补充分析</b>，不重复原报告已经给出的任务背景、数据协议、TSE 网络结构与主 EER 结果。它只回答三个问题：</p>
+<ol>
+<li><b>为什么原通用 FullSubNet+ 降噪后，声纹 EER 反而变差？</b></li>
+<li><b>原方法与注册条件化 TSE 在 embedding、时频、信号/感知指标上到底差在哪里？</b></li>
+<li><b>这些指标怎么定义、结果在哪里查、面试怎么讲？</b></li>
+</ol>
+<div class="callout">
+<span class="label">一句话结论：</span>原 FullSubNet+ 在 SI-SDR、全局 SNR、STOI 等“降噪/可懂度”指标上更好，却把 ERes2Net 的说话人 embedding 推离了 clean 的说话人流形；因此 EER 从 8.39% 升到 10.11%，比不处理还差。注册条件化 TSE 不是更“干净”的降噪器，但它是身份条件化的前端，target 分数、embedding 和 EER 全面改善（4.89%）。
+</div>
+<p><b>关键数字：</b>EER 8.391 → 10.113 → 4.892；target 0.422 → 0.391 → 0.471；同句 embedding 漂移 0.820 → 0.714 → 0.816（Noisy → 原方法 → TSE，0 dB）。完整四路对比表见 4.1。</p>
+<p class="note"><b>本报告不重复：</b>任务背景与验收要求、3D-Speaker 数据与 trial 协议、ERes2Net 三后端、TSE 的训练细节、主 EER 交付大表——这些均见原技术报告《多条件中文声纹识别与噪声鲁棒性增强》。</p>
+</div>
+""")
+
+# ---------------- 1. Scope ----------------
+parts.append(f"""
+<div class="section">
+<h2>1　本补充报告的范围与结论</h2>
+
+<h3>1.1 原报告已经回答什么，本补充新增什么</h3>
+<p>原技术报告《多条件中文声纹识别与噪声鲁棒性增强》已经完整给出了任务背景、3D-Speaker 数据与 trial 协议、ERes2Net 三后端、TSE 的网络结构与训练方法，以及主 EER 交付大表。这些内容本报告<b>不再重复</b>；需要时请直接查阅原报告对应章节。</p>
+<table>
+<tr><th style="width:38%">原报告已有（本报告不重复）</th><th>本补充报告新增</th></tr>
+<tr><td>任务目标、验收线、数据与噪声协议</td><td>clean / Noisy / 原 FullSubNet+ / TSE <b>四路同句对比</b></td></tr>
+<tr><td>ERes2Net 三后端、注册/trial 协议、EER/minDCF 定义</td><td><b>embedding 漂移</b>、target/gap/d′ 的逐句分析</td></tr>
+<tr><td>TSE 的 FiLM 结构、四项损失、训练与消融</td><td>SI-SDR / 全局 SNR / VAD-SNR / PESQ / STOI <b>新增指标</b></td></tr>
+<tr><td>主 EER 交付大表与 claim 口径分析</td><td>“为什么通用降噪会让 EER 变差”的<b>机理分析</b></td></tr>
+<tr><td>论文/答辩用的主结果与结论</td><td>时频/谱形证据、结果查看索引、面试口径</td></tr>
+</table>
+
+<h3>1.2 结论摘要</h3>
+<p>原 FullSubNet+ 是一个<b>无注册条件的通用降噪器</b>：它把带噪语音往“clean 波形”方向重建，但不负责“保留谁”。在这批跨设备中文语音上，它确实让波形更接近 clean（SI-SDRi +8.59 dB、STOI +0.096、PESQ +0.584），却把 ERes2Net 的说话人 embedding 推离了 clean 的说话人流形（同句余弦 0.820 → <b>0.714</b>），导致 target 分数下降（0.422 → 0.391）、target−nontarget gap 收窄（0.371 → 0.332）、EER 从 8.391% 升到 <b>10.113%</b>。</p>
+<p>注册条件化 TSE 的波形指标并不全面占优（SI-SDRi +7.62 dB、STOI 0.739，均略低于原方法），但它的 embedding 留在说话人流形附近（余弦 0.816），target 分数升到 <b>0.471</b>，EER 降到 <b>4.892%</b>。这说明：<b>“降噪指标更好”不等于“声纹前端更好”</b>；声纹验证需要的是身份保持，不是波形保真。</p>
+<div class="callout">
+<span class="label">本报告最想让你记住的三个数字：</span>
+<b>0.714</b>（原方法 embedding 到 clean 的余弦，比 Noisy 的 0.820 还低）；<b>10.113%</b>（原方法 EER，比不处理还差）；<b>4.892%</b>（TSE EER）。它们分别对应“embedding 被推远”“验证变差”“身份条件化修复”三步。
+</div>
+<h3>1.3 阅读顺序</h3>
+<ol>
+<li>想快速知道“做了什么、结论是什么”：看本节 + 4.7 小结。</li>
+<li>想弄清指标口径（尤其三个 SNR）：看 3.3、3.4、3.8。</li>
+<li>想看证据：看 4.1–4.6 的表和图；想听声音/查更多数字：看第 6 节。</li>
+<li>面试前：看第 7 节的三句话版本与 Q&amp;A。</li>
+</ol>
+</div>
+""")
+
+# ---------------- 2. Objects ----------------
+parts.append(f"""
+<div class="section">
+<h2>2　分析对象与新增口径</h2>
+
+<h3>2.1 沿用原报告、不重复的部分</h3>
+<p>本报告沿用原报告的 3D-Speaker 跨设备中文测试集、clean 注册、官方 1,378,206 条 trial、ERes2Net-large 后端与 EER/minDCF 定义；这些协议细节与数据划分见原报告第 2–3 章，主 EER 大表见第 6 章，本文不再重复。TSE 的网络结构、FiLM 注入与四项损失见原报告第 5 章；本文只在第 5 节解释“为什么它能保住 embedding”，不重新介绍模型。</p>
+
+<h3>2.2 本报告新增的四路条件</h3>
+<table>
+<tr><th>条件</th><th>具体内容</th><th>本报告用途</th></tr>
+<tr><td>Clean</td><td>干净测试语音，作为参考上界</td><td>PESQ/STOI 的参考、embedding 漂移的锚点</td></tr>
+<tr><td>Noisy 0 dB / −5 dB</td><td>clean + 噪声，输入混合 SNR 为 0 / −5 dB</td><td>对照基线；−5 dB 只补充 EER 与全局 SNR</td></tr>
+<tr><td><b>FullSubNet+（原方法）</b></td><td>通用 cIRM 降噪；无注册条件；输出峰值归一化到 0.8</td><td>失效分析的主角</td></tr>
+<tr><td><b>TSE（现有方法）</b></td><td>注册条件化 FullSubNet+；FiLM + 说话人保持 + 难负原型抑制；r5 版</td><td>身份条件化的对照</td></tr>
+</table>
+<p>两个前端后接同一个冻结的 ERes2Net-large；因此 EER/embedding 差异来自前端增强后的语音，而不是后端变化。原方法的 checkpoint、增强 wav、embedding 与 TSE 的对应产物路径见附录 A；所有数字均来自这些原始产物，没有重训或重跑降噪。</p>
+
+<h3>2.3 本报告的分析子集</h3>
+<table>
+<tr><th>子集</th><th>规模</th><th>用途</th></tr>
+<tr><td>全部测试句</td><td>8,507 条 / 1,378,206 trial</td><td>EER、target、gap、d′、embedding 漂移</td></tr>
+<tr><td>随机子集</td><td>120 条（种子 2026）</td><td>SI-SDR / 全局 SNR / VAD-SNR / PESQ / STOI / 谱形统计</td></tr>
+<tr><td>展示样本</td><td>5 条</td><td>试听、时频图、embedding 轨迹、逐句指标</td></tr>
+<tr><td>PESQ-SNR 扫描</td><td>20 条</td><td>解释 0 dB 下 PESQ 的绝对量级</td></tr>
+</table>
+<div class="note">主分析条件是 0 dB；−5 dB 只补充 EER 与“降噪后全局 SNR”，用于回答“相对于原来的 0 / −5 dB 噪声数据，SNR 提升了多少”。EER 的完整交付主表仍以原报告为准；本报告 4.1 的总表只作为四路对比的阅读背景。</div>
+</div>
+""")
+
+# ---------------- 3. Metrics ----------------
+parts.append(f"""
+<div class="section">
+<h2>3　新增评测指标与公式</h2>
+<p>EER、minDCF、FAR/FRR、trial 协议在原报告中已有完整定义与主结果，本文<b>不重复</b>。下面只列本报告新增或重点使用的指标：它们回答的是“增强后的语音在信号、感知、身份三个层面发生了什么”，而不是重新评价主系统。</p>
+
+<h3>3.1 Embedding 余弦、target 分数与 embedding 漂移</h3>
+<p>ERes2Net 把每条语音映射成 512 维单位向量。两个 embedding 的余弦相似度衡量“像不像同一个人”：</p>
+{F_COS}
+<p>对测试语音 <i>t</i>，用同说话人的 clean 注册语音得到注册 embedding 均值 <i>e</i><sub>enr</sub>，target 分数为 <i>s<sub>t</sub></i> = cos(<i>e<sub>t</sub></i>, <i>e</i><sub>enr</sub>)。同时把同句在 clean 与增强条件下的 embedding 做余弦，得到 <b>embedding 漂移</b> <i>d<sub>t</sub></i>：</p>
+{F_SCORE}
+<p>target 分数越高，说明越像注册者；漂移越接近 1，说明增强后 ERes2Net 仍把这句话放在原来的说话人位置。两者一个看“注册相似度”，一个看“增强把 embedding 挪了多远”，本报告同时报告。</p>
+
+<h3>3.2 SI-SDR 与 SI-SDRi</h3>
+<p>SI-SDR 把估计信号 ŝ 分解为“clean 的最优缩放副本 + 残差”：</p>
+{F_SISDR_DECOMP}
+{F_SISDR}
+{F_SISDRI}
+<p>SI-SDR 是<b>尺度不变</b>的：整体音量不影响数值；残差 e 包含残余噪声、语音失真、增强伪影与对齐误差。对纯加噪输入，SI-SDR 近似输入 SNR；对增强后，它衡量“离 clean 有多远”。SI-SDRi 是相对带噪输入的提升，单位 dB，越高越好。</p>
+
+<h3>3.3 全局 SNR：与输入同电平的残差比</h3>
+<p>输入混合 SNR 是 clean 与噪声的能量比：</p>
+{F_SNRIN}
+<div style="page-break-inside: avoid;">
+<p>对增强后的信号，直接算“clean 能量 / 残差能量”会遇到增益陷阱：原 FullSubNet+ 把输出峰值归一化到 0.8，整体增益比 clean 高约 20 dB；不匹配电平会得到无意义的负 SNR。因此本报告先把增强输出缩放到与带噪输入相同的整体 RMS，再算：</p>
+{F_SNROUT}
+{F_DSNR}
+</div>
+<p>其中 β = ‖x‖<sub>2</sub> / ‖ŝ‖<sub>2</sub>。这样带噪基线就是它原本的输入 SNR（0 dB 数据实测 0.16 dB，−5 dB 实测 −4.53 dB），增强后的数值与它同电平可比。报告中的“全局 SNR 提升”均指这个 ΔSNR。</p>
+<div class="warn">
+<span class="label">三个 SNR 不要混：</span>你最初设置的 0 / −5 dB 是<b>输入混合 SNR</b>；SI-SDR 是<b>尺度不变的全参考失真比</b>；本文的 VAD-SNR 是<b>分段语音帧/噪声帧功率比</b>。同一批 noisy 数据上实测：0 dB 数据的全局 SNR 0.16 dB、SI-SDR −0.52 dB、VAD-SNR 5.03 dB；−5 dB 数据分别为 −4.53 / −5.52 / 3.06 dB。VAD-SNR 的绝对值本来就不等于输入 SNR，不能把“VAD-SNRi +15.67 dB”加到 0 dB 上当作输出 SNR。
+</div>
+
+<h3>3.4 VAD 分段 SNR</h3>
+<p>先用帧能量：</p>
+{F_FRAME}
+<p>用 clean 的帧能量选出语音帧 S（能量最高 60%）与噪声帧 N（最低 20%），再在同一信号内算语音帧平均功率与噪声帧平均功率之比：</p>
+{F_VADSNR}
+<p>它衡量“语音段相对噪声段高多少”，对噪声底抑制敏感，但不惩罚语音失真；因此通常比全局 SNR 高很多。正确用法是在同一定义下比较不同前端，例如原方法 20.69 dB、TSE 13.43 dB，而不是拿它和 0 / −5 dB 直接换算。</p>
+
+<h3>3.5 PESQ-WB</h3>
+<p>PESQ 是 ITU-T P.862 的全参考感知质量指标，16 kHz 版本为 P.862.2（PESQ-WB）。流程是：电平对齐 → IRS 滤波 → 时间对齐 → Bark 域感知变换 → 对称/非对称扰动 → 聚合 → MOS-LQO 映射。可用下面的框架理解：</p>
+{F_PESQ_SYM}
+{F_PESQ_ASYM}
+{F_PESQ_MAP}
+<p>L<sub>X</sub>、L<sub>Y</sub> 是 Bark 频带响度；D<sub>sym</sub> 是对称扰动，D<sub>asym</sub> 是对“参考有、待测没有”的成分加罚；𝒜 是时间/频带聚合，f<sub>MOS</sub> 是标准映射。精确常数由 ITU-T P.862 规定，没有简单闭式公式。</p>
+<p>PESQ 范围约 −0.5–4.5（本报告用官方 <span class="mono">pesq</span> 0.0.4，clean-vs-clean 为 <b>4.644</b>），而且<b>非线性</b>：1.3 → 1.9 不是“28% → 41%”。0 dB 下 PESQ 1.3–2.0 是正常量级；本数据 20 dB 也只有 3.18。请看同条件下的相对提升，不要拿它对 clean 的 4.644 做百分比。</p>
+
+<h3>3.6 STOI</h3>
+<p>STOI 在 1/3 倍频带上比较短时包络的归一化相关：</p>
+{F_STOI_CORR}
+{F_STOI}
+<p>范围 0–1，越高越好；比 PESQ 更“线性”、更少饱和，但同样衡量可懂度/包络保真，不是说话人身份。标准实现还会对相关值做裁剪/归一化，具体以原文和 <span class="mono">pystoi</span> 为准。</p>
+
+<h3>3.7 d′ 与 shape RMSE</h3>
+<p>d′ 衡量 target 与 nontarget 两个分数分布的分离度：</p>
+{F_DPRIME}
+<p>d′ 越大，两个分布越分开。shape RMSE 用 80 维 log-mel 谱形衡量增强后“精细谱包络”离 clean 多远：</p>
+{F_MEL}
+{F_SHAPE}
+<p>其中 Ω 是 clean 的活跃时频点，Δ̄ 是整体偏移；去掉偏移后只看谱形。shape RMSE 越低，谱形越接近 clean；它和 embedding 漂移有较强相关性（本报告 360 个“语句×条件”点 r = −0.54），是解释“为什么声纹会坏”的中间层证据。</p>
+
+<h3>3.8 指标对照与报告建议</h3>
+<table class="tight">
+<tr><th>指标</th><th>衡量什么</th><th>能否与输入 SNR 直接比</th><th>本报告用途</th></tr>
+<tr><td>target / gap / d′</td><td>注册相似度与分布分离度</td><td>否</td><td>验证层面的直接证据</td></tr>
+<tr><td>embedding 漂移</td><td>增强后 embedding 离 clean 多远</td><td>否</td><td>解释“为什么 EER 变差”</td></tr>
+<tr><td>SI-SDRi</td><td>尺度不变的全参考失真比</td><td>带噪时近似；增强后不是</td><td>信号保真</td></tr>
+<tr><td>全局 SNR Δ</td><td>与输入同电平后的残差比</td><td>是（本文定义）</td><td>回答“SNR 提升多少”</td></tr>
+<tr><td>VAD-SNRi</td><td>语音帧/噪声帧功率比</td><td>否（绝对值不可比）</td><td>噪声底抑制</td></tr>
+<tr><td>PESQ-WB / STOI</td><td>感知质量 / 可懂度</td><td>否</td><td>说明“降噪器更好 ≠ 声纹更好”</td></tr>
+<tr><td>shape RMSE</td><td>谱形误差（去整体偏移）</td><td>否</td><td>连接频谱畸变与 embedding 漂移</td></tr>
+</table>
+</div>
+""")
+
+# ---------------- 4. Results ----------------
+parts.append(f"""
+<div class="section">
+<h2>4　四路对比结果</h2>
+<p>本节只报告本补充新增的对比；EER 的完整交付表、三后端结果与 claim 口径见原报告。为便于阅读，4.1 保留四路 EER 作为对比背景，后面的表格/图才是本报告新增的分析。</p>
+
+<h3>4.1 四路总表</h3>
+<table class="tight">
+<tr><th>条件（0 dB）</th><th>EER (%)</th><th>target 均值</th><th>target−nontarget</th><th>d′</th><th>同句 cos 到 clean</th><th>SI-SDRi (dB)</th><th>全局 SNR Δ (dB)</th><th>PESQ-WB</th><th>STOI</th></tr>
+<tr><td>Clean</td><td class="num">5.293</td><td class="num">0.490</td><td class="num">0.431</td><td class="num">3.322</td><td class="num">1.000</td><td class="num">—</td><td class="num">—</td><td class="num">4.644</td><td class="num">1.000</td></tr>
+<tr><td>Noisy</td><td class="num">8.391</td><td class="num">0.422</td><td class="num">0.371</td><td class="num">2.752</td><td class="num">0.820</td><td class="num">0</td><td class="num">0</td><td class="num">1.305</td><td class="num">0.654</td></tr>
+<tr><td><b>FullSubNet+（原）</b></td><td class="num"><b>10.113</b></td><td class="num"><b>0.391</b></td><td class="num"><b>0.332</b></td><td class="num"><b>2.544</b></td><td class="num"><b>0.714</b></td><td class="num"><b>+8.59</b></td><td class="num"><b>+3.80</b></td><td class="num">1.889</td><td class="num"><b>0.750</b></td></tr>
+<tr><td><b>TSE（现有）</b></td><td class="num"><b>4.892</b></td><td class="num"><b>0.471</b></td><td class="num"><b>0.418</b></td><td class="num"><b>3.416</b></td><td class="num">0.816</td><td class="num">+7.62</td><td class="num">+3.32</td><td class="num"><b>1.958</b></td><td class="num">0.739</td></tr>
+</table>
+<div class="note">EER/target/gap/d′/drift 覆盖 8,507 条测试句、1,378,206 条 trial；SI-SDRi/全局 SNR/PESQ/STOI 覆盖 120 条随机测试句。EER 的完整主表见原报告；本表只用于四路对比。</div>
+{fig("figs/metrics_summary.png", "图 4-1　EER、target 均值、target−nontarget gap、d′ 四联图。原方法在四个指标上全面劣于 Noisy；TSE 全面优于 Noisy，且 EER/d′ 优于 Clean。", "78mm")}
+<p>在 8,507 条测试句中，<b>70.7%</b> 被原方法拉低 target 分数；TSE 相对原方法恢复了 <b>91.7%</b>，相对 Noisy 恢复了 <b>85.8%</b>。原方法不是个别样本翻车，而是系统性地把 embedding 推向错误方向。</p>
+
+<h3>4.2 分数分布与 embedding 漂移</h3>
+{fig("figs/target_score_distributions.png", "图 4-2　8,507 条测试语音的逐句 target 分数分布。原方法整体左移（均值 0.393），Noisy 为 0.425，TSE 右移到 0.474。", "82mm")}
+{fig("figs/cos_to_clean_distributions.png", "图 4-3　同一句 clean 与各条件 embedding 的余弦。原方法均值 0.714，Noisy 0.820，TSE 0.816；原方法比“完全不处理”还远。", "82mm")}
+<p>图 4-2 与图 4-3 是同一件事的两个视角：target 分数回答“像不像注册者”，漂移回答“增强把这句话挪了多远”。原方法在两个视角上都变差；TSE 的漂移与 Noisy 接近，但 target 明显更高，说明它把测试语音往“注册的这个人”方向拉，而不是简单复刻 clean。</p>
+
+<h3>4.3 五条展示样本</h3>
+<table class="tight">
+<tr><th>#</th><th>测试语句</th><th>Clean</th><th>Noisy</th><th>FullSubNet+</th><th>TSE</th><th>试听</th></tr>
+<tr><td>1</td><td>3D_SPK_06975_005_Device03...</td><td class="num">0.662</td><td class="num">0.534</td><td class="num"><b>0.173</b></td><td class="num">0.593</td><td>{link("wav_listen/3D_SPK_06975_005_Device03_Distance03_Dialect04_3s", "文件夹")}</td></tr>
+<tr><td>2</td><td>3D_SPK_06868_001_Device04...</td><td class="num">0.746</td><td class="num">0.436</td><td class="num"><b>0.175</b></td><td class="num">0.591</td><td>{link("wav_listen/3D_SPK_06868_001_Device04_Distance00_Dialect00_3s", "文件夹")}</td></tr>
+<tr><td>3</td><td>3D_SPK_06979_001_Device02...</td><td class="num">0.603</td><td class="num">0.460</td><td class="num"><b>0.148</b></td><td class="num">0.499</td><td>{link("wav_listen/3D_SPK_06979_001_Device02_Distance07_Dialect06_3s", "文件夹")}</td></tr>
+<tr><td>4</td><td>3D_SPK_06811_006_Device04...</td><td class="num">0.637</td><td class="num">0.415</td><td class="num"><b>0.136</b></td><td class="num">0.494</td><td>{link("wav_listen/3D_SPK_06811_006_Device04_Distance00_Dialect00_3s", "文件夹")}</td></tr>
+<tr><td>5</td><td>3D_SPK_06182_009_Device03...</td><td class="num">0.570</td><td class="num">0.441</td><td class="num"><b>0.157</b></td><td class="num">0.494</td><td>{link("wav_listen/3D_SPK_06182_009_Device03_Distance00_Dialect00_3s", "文件夹")}</td></tr>
+</table>
+<div class="note">数字为与 clean 注册语音的平均余弦（官方 trial 口径）。5 条样本都呈现“Noisy 能认对 → 原方法掉到 0.13–0.18 → TSE 恢复到 0.49–0.59”。试听打开 {link("listen.html", "listen.html")}，或进入文件夹的 <span class="mono">clean.wav / noisy_0db.wav / fullsubnetplus.wav / tse.wav</span>。</div>
+{fig("figs/target_scores_selected.png", "图 4-4　5 条展示样本的四路 target 分数。原方法在每条样本上都从 Noisy 的 0.42–0.53 掉到 0.14–0.18；TSE 恢复到 0.49–0.59。", "78mm")}
+<p>这 5 条的信号指标同样值得注意：原方法的 SI-SDRi / VAD-SNRi / ΔPESQ / ΔSTOI 往往比 TSE 更好，但 target 更低。例如样本 1：原方法 +4.23 / +2.36 / +0.119 / +0.182，target 0.173；TSE +3.44 / +1.28 / +0.095 / +0.107，target 0.593。逐句数据见 <span class="mono">data/selected_intrusive_metrics.csv</span>。</p>
+
+<h3>4.4 信号与感知指标（120 条随机样本）</h3>
+<table>
+<tr><th>条件</th><th>SI-SDR (dB)</th><th>VAD 分段 SNR (dB)</th><th>PESQ-WB</th><th>STOI</th></tr>
+<tr><td>Clean（参考）</td><td class="num">—</td><td class="num">—</td><td class="num">4.644</td><td class="num">1.000</td></tr>
+<tr><td>Noisy 0 dB</td><td class="num">−0.52</td><td class="num">5.03</td><td class="num">1.305</td><td class="num">0.654</td></tr>
+<tr><td>FullSubNet+（原）</td><td class="num">8.07</td><td class="num">20.69</td><td class="num">1.889</td><td class="num">0.750</td></tr>
+<tr><td>TSE（现有）</td><td class="num">7.09</td><td class="num">13.43</td><td class="num">1.958</td><td class="num">0.739</td></tr>
+</table>
+<table>
+<tr><th>条件</th><th>SI-SDRi (dB)</th><th>VAD-SNR 提升 (dB)</th><th>ΔPESQ</th><th>ΔSTOI</th></tr>
+<tr><td>FullSubNet+（原）</td><td class="num">+8.59</td><td class="num">+15.67</td><td class="num">+0.584</td><td class="num">+0.096</td></tr>
+<tr><td>TSE（现有）</td><td class="num">+7.62</td><td class="num">+8.40</td><td class="num">+0.653</td><td class="num">+0.085</td></tr>
+</table>
+{fig("figs/intrusive_metrics.png", "图 4-5　120 条随机样本的 SI-SDR / PESQ-WB / STOI（mean ± std）。原方法 SI-SDR、STOI 更高；TSE PESQ 略高。三项信号/感知指标与 EER 方向相反。", "78mm")}
+<p><b>逐句改善比例：</b>原方法 PESQ 85.8%、STOI 87.5%、SI-SDR 95.8%、VAD-SNR 99.2%；TSE 分别为 99.2%、95.0%、96.7%、95.0%。TSE 在 PESQ 上更稳定，但均值上原方法在 SI-SDR/SNR/STOI 更高。原方法更像“更好的降噪器”，但不是“更好的声纹前端”。</p>
+<h4>为什么 PESQ 离 clean 这么远</h4>
+<table>
+<tr><th>输入 SNR</th><th>20 dB</th><th>10 dB</th><th>5 dB</th><th>0 dB</th><th>−5 dB</th><th>Clean</th></tr>
+<tr><td>PESQ-WB</td><td class="num">3.18</td><td class="num">2.15</td><td class="num">1.69</td><td class="num">1.32</td><td class="num">1.19</td><td class="num">4.644</td></tr>
+<tr><td>STOI</td><td class="num">0.925</td><td class="num">0.832</td><td class="num">0.762</td><td class="num">0.660</td><td class="num">0.593</td><td class="num">1.000</td></tr>
+</table>
+{fig("figs/pesq_vs_snr.png", "图 4-6　PESQ-WB / STOI 随输入 SNR 的变化（20 条测试语音，实际噪声残差）。0 dB 下 PESQ ~1.3 是正常量级；20 dB 也只有 3.18，4.644 是“完全相同”的上限。", "72mm")}
+<div class="callout"><span class="label">结论：</span>0 dB 下 PESQ 1.3–2.0 并不奇怪；PESQ 是非线性、全参考指标，4.644 只对 clean-vs-clean 成立。实际 noisy 的 PESQ 1.333，与 0 dB 扫描点 1.323 吻合；120 条主统计的全局输入 SNR 为 0.16 dB。报告应看同条件下的相对提升。</div>
+
+<h3>4.5 降噪后数据的全局 SNR（0 dB / −5 dB）</h3>
+<p>按 3.3 的“与输入同电平”口径：把每个条件的输出缩放到与带噪输入相同的整体 RMS，再算相对 clean 的残差 SNR；带噪基线就是它原本的输入 SNR。</p>
+<table>
+<tr><th>数据</th><th>Noisy</th><th>FullSubNet+</th><th>Δ vs Noisy</th><th>TSE</th><th>Δ vs Noisy</th></tr>
+<tr><td>0 dB</td><td class="num">0.16</td><td class="num">3.96</td><td class="num"><b>+3.80</b></td><td class="num">3.48</td><td class="num"><b>+3.32</b></td></tr>
+<tr><td>−5 dB</td><td class="num">−4.53</td><td class="num">−1.37</td><td class="num"><b>+3.16</b></td><td class="num">−1.96</td><td class="num"><b>+2.57</b></td></tr>
+</table>
+{fig("figs/global_snr_inputmatched.png", "图 4-7　降噪后数据的全局 SNR（与输入同电平）。0 dB：0.16 → 3.96 / 3.48；−5 dB：−4.53 → −1.37 / −1.96。", "78mm")}
+<p>作为对照：0 dB 下 SI-SDR 从 −0.52 到 8.07（原方法，+8.59）/ 7.09（TSE，+7.62）；VAD-SNR 从 5.03 到 20.69（+15.67）/ 13.43（+8.40）。三个数字不同不是矛盾，而是三个口径。</p>
+<div class="warn"><span class="label">增益陷阱：</span>未做电平匹配的 raw 全局 SNR 对原方法是 <b>−18.1 dB</b>，不是“降噪把语音弄坏了 18 dB”，而是峰值归一化（0.8 × enhanced / max|enhanced|）带来的约 +20 dB 增益差；TSE raw 为 5.82 dB。不同增益的增强输出必须先电平匹配再比。</div>
+
+<h3>4.6 谱形证据：原方法改了什么</h3>
+<table class="tight">
+<tr><th>条件（120 条，0 dB）</th><th>low 20–500 Hz</th><th>mid 0.5–2 kHz</th><th>high 2–7.6 kHz</th><th>谱倾斜</th><th>RMS 增益</th><th>SI-SDR</th><th>shape RMSE</th><th>平均 dB 差</th></tr>
+<tr><td>Clean</td><td class="num">0.692</td><td class="num">0.281</td><td class="num">0.027</td><td class="num">−25.1</td><td class="num">−33.5 dBFS</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+<tr><td>Noisy</td><td class="num">0.549</td><td class="num">0.285</td><td class="num">0.166</td><td class="num">−18.9</td><td class="num">+2.6 dB</td><td class="num">−0.52</td><td class="num">3.97</td><td class="num">+1.35</td></tr>
+<tr><td><b>FullSubNet+（原）</b></td><td class="num">0.682</td><td class="num">0.300</td><td class="num"><b>0.018</b></td><td class="num"><b>−28.2</b></td><td class="num"><b>+19.7 dB</b></td><td class="num"><b>8.07</b></td><td class="num"><b>7.19</b></td><td class="num"><b>+15.42</b></td></tr>
+<tr><td>TSE（现有）</td><td class="num">0.600</td><td class="num">0.364</td><td class="num">0.036</td><td class="num">−22.2</td><td class="num">−4.4 dB</td><td class="num">7.09</td><td class="num">3.89</td><td class="num">−4.29</td></tr>
+</table>
+<div class="note">low/mid/high 为频带能量占比；谱倾斜越负=高频衰减越强；shape RMSE 为去掉整体偏移后的 log-mel 谱形误差；RMS 增益相对 clean。</div>
+{fig("figs/spectrogram_3D_SPK_06975_005_Device03_Distance03_Dialect04_3s.png", "图 4-8　样本 1 的四路 log-mel 时频图。原方法（第三格）在低频/宽带出现明显能量抬升，高频细节被压暗；TSE（第四格）更接近 clean 的谱形。", "88mm")}
+{fig("figs/spectrogram_diff_3D_SPK_06975_005_Device03_Distance03_Dialect04_3s.png", "图 4-9　Noisy / 原方法 / TSE 分别减去 clean 的时频差（红=能量更高，蓝=更低）。原方法整体偏红并在高频出现负差；TSE 差异更小、更均匀。", "72mm")}
+{fig("figs/mel_band_diff.png", "图 4-10　各频带相对 clean 的平均 dB 差（左：原始；右：去掉整体偏移）。原方法低频/中低频抬升、高频压低；TSE 更平。", "78mm")}
+<p>原方法把 high 频带能量占比从 Noisy 的 0.166 压到 <b>0.018</b>（clean 0.027），谱倾斜从 −18.9 变到 <b>−28.2</b>，shape RMSE 达到 <b>7.19 dB</b>（TSE 3.89 dB）。高频共振峰、辅音细节和精细谱包络正是声纹模型依赖的线索；这些被改写后，embedding 就会漂。谱形畸变与 embedding 漂移的相关系数为 <b>−0.54</b>（360 个“语句×条件”点），而 SI-SDR 与漂移只有 <b>+0.13</b>——坏在谱形，不在残余噪声。</p>
+
+<h3>4.7 Embedding 轨迹</h3>
+{fig("figs/embedding_pca.png", "图 4-11　5 条样本的 ERes2Net embedding 轨迹（clean → noisy → 原方法 → TSE）；菱形为 clean 注册均值。原方法通常被推到远离 clean 的位置；TSE 更靠近 clean/注册中心。", "105mm")}
+<p>PCA 图只有 5 条样本，是示意性的，但与 8,507 条统计一致。注意 TSE 的 cos 到 clean 只有 0.816，和 Noisy 的 0.820 接近；但 TSE 的 target 更高（0.471 vs 0.422）。它不是“更像 clean 的录音”，而是“更像注册的这个人”——这是注册条件化的本质。</p>
+
+<h3>4.8 结果小结</h3>
+<ul>
+<li><b>验证：</b>原方法 EER 10.113%、target 0.391、gap 0.332、d′ 2.544、drift 0.714；TSE 4.892%、0.471、0.418、3.416、0.816。</li>
+<li><b>信号/感知：</b>原方法 SI-SDRi +8.59 dB、VAD-SNRi +15.67 dB、PESQ 1.889、STOI 0.750；TSE +7.62、+8.40、1.958、0.739。原方法三项更好，PESQ 略低。</li>
+<li><b>全局 SNR（输入同电平）：</b>0 dB 原方法 +3.80 dB、TSE +3.32 dB；−5 dB +3.16 / +2.57 dB。</li>
+<li><b>频谱：</b>原方法 high 占比 0.018（clean 0.027）、谱倾斜 −28.2、shape RMSE 7.19；TSE 0.036、−22.2、3.89。</li>
+<li><b>一句话：</b>原方法是一个更好的“降噪器”，但 TSE 是一个更好的“声纹前端”。</li>
+</ul>
+</div>
+""")
+
+# ---------------- 5. Mechanism ----------------
+parts.append(f"""
+<div class="section">
+<h2>5　失效机理：为什么原方法会坏</h2>
+<p>原报告已经给出了 TSE 的网络结构、FiLM 注入与四项损失；本节不重复模型介绍，只解释“为什么通用降噪会让声纹变差”，以及 TSE 为什么能避开这个问题。</p>
+
+<h3>5.1 原 FullSubNet+ 的失效链</h3>
+<table>
+<tr><th>环节</th><th>观察</th><th>解释</th></tr>
+<tr><td>① 目标函数</td><td>FullSubNet+ 优化 cIRM/信号重建，训练分布是 DNS 类通用数据；没有注册条件。</td><td>它优化“增强信号像 clean”，不优化“增强后仍像同一个人”；也不知道要保留谁。</td></tr>
+<tr><td>② 频谱行为</td><td>high 频带占比 0.166 → <b>0.018</b>；谱倾斜 −18.9 → <b>−28.2</b>；shape RMSE 7.19 dB；输出峰值归一化到 0.8。</td><td>高频目标语音细节被过度压制，低频/宽带能量被抬升；增益和伪影进一步改变谱包络。</td></tr>
+<tr><td>③ embedding</td><td>同句 cos 到 clean：0.820 → <b>0.714</b>；target 0.422 → 0.391；gap 0.371 → 0.332；d′ 2.752 → 2.544。</td><td>ERes2Net 依赖的精细谱结构被改写，embedding 离开说话人流形；注册相似度和类间可分性同时下降。</td></tr>
+<tr><td>④ 系统结果</td><td>EER 8.391% → <b>10.113%</b>，比不处理还差 1.72pp。</td><td>波形/感知指标可以更好，但验证指标由 embedding 决定，所以“降噪更好”没有转化为“声纹更好”。</td></tr>
+</table>
+<p>这条链的关键是 <b>②→③</b>：如果只看波形，原方法确实更接近 clean（SI-SDR 8.07 dB、VAD-SNR 20.69 dB、STOI 0.750）；但 ERes2Net 不直接“看波形”，它看的是 FBank 的精细谱包络。谱形被改写后，embedding 漂移比“完全不处理”还大。这也是为什么“降噪指标”和“声纹指标”会背离。</p>
+<div class="callout"><span class="label">一句话：</span>原方法不是“降噪把语音压没了”，而是“降噪把说话人 embedding 推到了错误方向”。它优化的是信号重建，不是身份保持；高频细节的过度压制和低频/增益伪影是中间机制，embedding 漂移和 target 下降是直接原因，EER 变差是最终结果。</div>
+
+<h3>5.2 TSE 为什么能保住身份</h3>
+<ul>
+<li><b>注册条件化：</b>注册 embedding 经 FiLM 注入 FullSubNet+，增强时模型知道“保留谁”，可以把非目标语音/噪声压掉，而不是把所有语音能量都当目标。</li>
+<li><b>说话人保持损失：</b>训练时约束增强前后 embedding 的余弦，使增强后的语音仍然落在注册者的 embedding 附近；这直接对齐了声纹目标。</li>
+<li><b>难负原型抑制：</b>对最难的干扰说话人原型做间隔惩罚，增大 target 与 hard negative 的分离度；d′ 从 2.752 提到 3.416。</li>
+<li><b>不是复刻 clean：</b>TSE 的 cos 到 clean 只有 0.816（与 Noisy 0.820 接近），但 target 是 0.471（Noisy 0.422）。它把语音往“注册的这个人”方向拉，而不是简单复制 clean 录音。</li>
+</ul>
+<p>TSE 的 FiLM 结构、四项损失、消融链与训练细节见原报告第 5 章；本报告只保留“它为什么能改善声纹”这条因果链。</p>
+
+<h3>5.3 边界与引用注意</h3>
+<ul>
+<li><b>Oracle 口径：</b>本报告 TSE 的 4.892% 是 oracle 口径（用测试句真实说话人的注册语音做条件），对应交付主表；claim 口径（冒认句用声称者的注册条件）存在条件信息泄漏，EER 会反弹，不能把 4.892% 直接外推到真实部署。完整分析见原报告附录 C（部署口径与局限性）。</li>
+<li><b>条件：</b>主分析是 0 dB；−5 dB 只补充了 EER/全局 SNR/SI-SDR。PESQ/STOI 的绝对值受跨设备 clean 参考和 0 dB 条件影响，应看相对提升。</li>
+<li><b>样本量：</b>信号/感知/频谱指标在 120 条随机测试句上统计；5 条展示样本用于可视化，不是统计结论的全部依据；逐句 target/漂移覆盖 8,507 条测试句。</li>
+<li><b>对比：</b>原方法是通用 FullSubNet+，TSE 是在其基础上加入注册条件与身份损失训练得到的；这是“两条工程路线”的对比，不是“同预算、同目标”的消融。结论是“在本项目的数据和协议上，身份条件化更适合声纹前端”，不是“所有通用降噪都一定有害”。</li>
+<li><b>指标：</b>SI-SDR/SNR/PESQ/STOI 是信号/感知指标，不是说话人身份指标；全局 SNR 与 VAD-SNR 是不同定义，不能互换或相加。</li>
+</ul>
+</div>
+""")
+
+# ---------------- 6. Guide ----------------
+parts.append(f"""
+<div class="section">
+<h2>6　结果查看指南：wav、图、数据分别在哪里</h2>
+<p>本 PDF 是结论与图的静态版本；如果看完想听声音、看原始图或查更多数字，按下面索引去对应文件。所有路径以 <span class="mono">E:\\china_mobile_review\\声纹特征对比\\</span> 为根目录。</p>
+
+<h3>6.1 一分钟上手</h3>
+<table>
+<tr><th>我想…</th><th>打开/查看</th><th>说明</th></tr>
+<tr><td>边听边看结论</td><td>{link("listen.html", "listen.html")}</td><td>交互式 HTML：5 条样本四路音频、时频图、target 分数、全部关键图。</td></tr>
+<tr><td>看正式补充报告</td><td>{link("中国移动实习_声纹特征对比_补充报告.pdf", "本 PDF")}</td><td>你正在看的文件；指标公式、定量结果、查看指南。</td></tr>
+<tr><td>看原报告</td><td>原技术报告《多条件中文声纹识别与噪声鲁棒性增强》</td><td>任务/数据/协议/TSE 结构/主 EER 大表；本补充不重复。</td></tr>
+<tr><td>看文字版</td><td>{link("分析报告.md", "分析报告.md")}</td><td>Markdown 版本，便于复制到论文/笔记。</td></tr>
+</table>
+
+<h3>6.2 我想听 wav</h3>
+<p>最快的方式是打开 {link("listen.html", "listen.html")}；每条样本都有 Clean / Noisy / FullSubNet+ / TSE 四个播放器。也可以进入下表文件夹，四个文件就是四路音频。试听副本在 <span class="mono">wav_listen/</span>（统一到 −23 dBFS RMS，避免原 FullSubNet+ 峰值归一化导致“听起来更响”的错觉）；原始响度在 <span class="mono">wav/</span>。</p>
+<table class="tight">
+<tr><th>#</th><th>样本</th><th>试听文件夹</th><th>四个文件名</th></tr>
+<tr><td>1</td><td>06975_005</td><td>{link("wav_listen/3D_SPK_06975_005_Device03_Distance03_Dialect04_3s", "wav_listen/…06975_005…")}</td><td>clean.wav / noisy_0db.wav / fullsubnetplus.wav / tse.wav</td></tr>
+<tr><td>2</td><td>06868_001</td><td>{link("wav_listen/3D_SPK_06868_001_Device04_Distance00_Dialect00_3s", "wav_listen/…06868_001…")}</td><td>同上 + enroll_1.wav</td></tr>
+<tr><td>3</td><td>06979_001</td><td>{link("wav_listen/3D_SPK_06979_001_Device02_Distance07_Dialect06_3s", "wav_listen/…06979_001…")}</td><td>同上 + enroll_1.wav</td></tr>
+<tr><td>4</td><td>06811_006</td><td>{link("wav_listen/3D_SPK_06811_006_Device04_Distance00_Dialect00_3s", "wav_listen/…06811_006…")}</td><td>同上 + enroll_1/2.wav</td></tr>
+<tr><td>5</td><td>06182_009</td><td>{link("wav_listen/3D_SPK_06182_009_Device03_Distance00_Dialect00_3s", "wav_listen/…06182_009…")}</td><td>同上 + enroll_1/2.wav</td></tr>
+</table>
+
+<h3>6.3 我想看某张图</h3>
+<table class="tight">
+<tr><th>图</th><th>文件</th><th>看什么</th></tr>
+<tr><td>四联总图</td><td>{link("figs/metrics_summary.png", "metrics_summary.png")}</td><td>EER、target、gap、d′ 一页看完。</td></tr>
+<tr><td>target 分布</td><td>{link("figs/target_score_distributions.png", "target_score_distributions.png")}</td><td>8,507 条逐句 target 分数；原方法整体左移。</td></tr>
+<tr><td>embedding 漂移</td><td>{link("figs/cos_to_clean_distributions.png", "cos_to_clean_distributions.png")}</td><td>同句 clean vs 各条件 embedding 的余弦；原方法 0.714。</td></tr>
+<tr><td>5 条样本分数</td><td>{link("figs/target_scores_selected.png", "target_scores_selected.png")}</td><td>5 条样本四路 target 分数。</td></tr>
+<tr><td>SI-SDR/PESQ/STOI</td><td>{link("figs/intrusive_metrics.png", "intrusive_metrics.png")}</td><td>120 条随机样本的三项均值±标准差。</td></tr>
+<tr><td>PESQ vs SNR</td><td>{link("figs/pesq_vs_snr.png", "pesq_vs_snr.png")}</td><td>解释 0 dB 下 PESQ 为什么只有 ~1.3。</td></tr>
+<tr><td>降噪后全局 SNR</td><td>{link("figs/global_snr_inputmatched.png", "global_snr_inputmatched.png")}</td><td>0/−5 dB 下 Noisy/原方法/TSE 的全局 SNR。</td></tr>
+<tr><td>时频图（样本 1）</td><td>{link("figs/spectrogram_3D_SPK_06975_005_Device03_Distance03_Dialect04_3s.png", "spectrogram_…06975_005….png")}</td><td>四路 log-mel 对比。</td></tr>
+<tr><td>时频差（样本 1）</td><td>{link("figs/spectrogram_diff_3D_SPK_06975_005_Device03_Distance03_Dialect04_3s.png", "spectrogram_diff_…06975_005….png")}</td><td>Noisy/原方法/TSE 分别减 clean。</td></tr>
+<tr><td>频带差</td><td>{link("figs/mel_band_diff.png", "mel_band_diff.png")}</td><td>120 条样本的平均频带差；原方法低频抬升、高频压低。</td></tr>
+<tr><td>embedding 轨迹</td><td>{link("figs/embedding_pca.png", "embedding_pca.png")}</td><td>PCA 轨迹；原方法红三角偏离，TSE 蓝星靠近。</td></tr>
+<tr><td>其余 4 条时频图</td><td>{link("figs", "figs/ 文件夹")}</td><td><span class="mono">spectrogram_3D_SPK_06182… / 06811… / 06868… / 06979…</span></td></tr>
+</table>
+
+<h3>6.4 我想看更多数字</h3>
+<table class="tight">
+<tr><th>文件</th><th>规模</th><th>内容</th></tr>
+<tr><td>{link("data/per_utt_scores.csv", "data/per_utt_scores.csv")}</td><td>8,507 行</td><td>逐句 clean/noisy/原方法/TSE 的 target 分数、漂移、注册 ID。</td></tr>
+<tr><td>{link("data/intrusive_metrics.csv", "data/intrusive_metrics.csv")}</td><td>120×3 行</td><td>SI-SDR、VAD-SNR、PESQ、STOI 及相对 Noisy 的提升。</td></tr>
+<tr><td>{link("data/global_snr_inputmatched.csv", "data/global_snr_inputmatched.csv")}</td><td>120×3×2 行</td><td>0/−5 dB 下与输入同电平的全局 SNR 与 ΔSNR。</td></tr>
+<tr><td>{link("data/audio_features.csv", "data/audio_features.csv")}</td><td>120×3 行</td><td>频带占比、谱倾斜、RMS 增益、shape RMSE、SI-SDR。</td></tr>
+<tr><td>{link("data/selected_intrusive_metrics.csv", "data/selected_intrusive_metrics.csv")}</td><td>5×3 行</td><td>5 条展示样本的逐句信号/感知指标。</td></tr>
+<tr><td>{link("data/summary.json", "data/summary.json")}</td><td>—</td><td>8507 条全局指标、阈值、选样信息。</td></tr>
+<tr><td>{link("data/intrusive_metrics_summary.json", "data/intrusive_metrics_summary.json")}</td><td>—</td><td>SI-SDR/SNR/PESQ/STOI 的均值/中位数/改善比例。</td></tr>
+<tr><td>{link("data/global_snr_inputmatched_summary.json", "data/global_snr_inputmatched_summary.json")}</td><td>—</td><td>0/−5 dB 全局 SNR 的均值/中位数/标准差。</td></tr>
+<tr><td>{link("data/pesq_snr_sweep.csv", "data/pesq_snr_sweep.csv")}</td><td>20×6 行</td><td>20/10/5/0/−5 dB 的 PESQ/STOI 扫描。</td></tr>
+<tr><td>{link("data/selected_embeddings.npz", "data/selected_embeddings.npz")}</td><td>5×4×512</td><td>5 条样本四路 embedding + 注册均值（numpy npz）。</td></tr>
+</table>
+
+<h3>6.5 复现脚本与服务器路径</h3>
+<table class="tight">
+<tr><th>脚本</th><th>作用</th></tr>
+<tr><td>{link("sv_analyze.py", "sv_analyze.py")}</td><td>1,378,206 trial 分数、EER、target/gap/d′、embedding 漂移、选样。</td></tr>
+<tr><td>{link("sv_figs.py", "sv_figs.py")}</td><td>样本 wav、时频图、差异图、PCA、分数分布图。</td></tr>
+<tr><td>{link("sv_audio_features.py", "sv_audio_features.py")}</td><td>120 条随机样本的频带/谱倾斜/shape RMSE/相关性。</td></tr>
+<tr><td>{link("sv_intrusive_metrics.py", "sv_intrusive_metrics.py")}</td><td>120 条随机样本的 SI-SDR / VAD-SNR / PESQ / STOI。</td></tr>
+<tr><td>{link("global_snr_denoised.py", "global_snr_denoised.py")}</td><td>降噪后全局 SNR（raw / active-RMS / SI-SDR 三种口径）。</td></tr>
+<tr><td>{link("global_snr_inputmatched.py", "global_snr_inputmatched.py")}</td><td>降噪后全局 SNR（与输入同电平，主表口径）。</td></tr>
+<tr><td>{link("snr_definitions.py", "snr_definitions.py")}</td><td>0/−5 dB 数据的全局 SNR、SI-SDR、VAD-SNR 对照。</td></tr>
+<tr><td>{link("pesq_snr_sweep.py", "pesq_snr_sweep.py")}</td><td>PESQ/STOI 随输入 SNR 的扫描。</td></tr>
+</table>
+<p class="left">服务器端：<span class="mono">ligangrui@10.20.1.95:/home/ligangrui/china_mobile/AI/10.17/</span>；Python 环境 <span class="mono">/home/ligangrui/china_mobile/zhangqiyuan/bin/python</span>。原方法 checkpoint <span class="mono">AI/8.17/models/best_model.tar</span>；TSE checkpoint <span class="mono">AI/8.27/exp/tse_v3_ns05duraug_r5/checkpoint_best.tar</span>。所有指标都直接从原始增强 wav 与官方 embedding 计算，没有重训。</p>
+</div>
+""")
+
+# ---------------- 7. Interview ----------------
+parts.append(f"""
+<div class="section">
+<h2>7　面试速答与口径建议</h2>
+<h3>7.1 三句话版本</h3>
+<div class="callout">
+<b>① 现象：</b>通用 FullSubNet+ 把 0 dB EER 从 8.39% 推到 10.11%，比不处理还差；注册条件化 TSE 把它降到 4.89%。<br>
+<b>② 证据：</b>原方法的 SI-SDR/SNR/STOI 其实更好，但它把 ERes2Net embedding 到 clean 的余弦从 0.820 拉到 0.714，target 从 0.422 降到 0.391，高频能量占比从 0.166 压到 0.018。<br>
+<b>③ 机理：</b>通用降噪优化“像 clean”，不优化“像这个人”；TSE 用注册 embedding 经 FiLM 注入 + 说话人保持损失 + 难负原型抑制，优化“增强后仍像注册者”，所以信号指标不占优，声纹指标全面更好。
+</div>
+
+<h3>7.2 常见追问</h3>
+<table>
+<tr><th>问题</th><th>建议回答（带数字/口径）</th></tr>
+<tr><td><b>为什么通用降噪后 EER 反而变差？</b></td><td>它优化 cIRM/信号重建，不是说话人身份。0 dB 下 SI-SDRi +8.59 dB、STOI +0.096，确实更干净；但同句 embedding 到 clean 的余弦只有 0.714（Noisy 0.820），target 0.391（0.422），gap 0.332（0.371），d′ 2.544（2.752）。波形更接近 clean，embedding 却被推离了说话人流形。</td></tr>
+<tr><td><b>怎么证明是声纹特征被破坏，而不是噪声没降干净？</b></td><td>① 它的 SI-SDR/VAD-SNR/STOI 都比 Noisy 和 TSE 高（或部分更高），不是“没降噪”；② 谱形畸变（shape RMSE 7.19 dB）与 embedding 漂移的相关系数是 −0.54（360 个语句×条件点），而 SI-SDR 与漂移只有 +0.13。坏的中间量是谱形/embedding，不是残余噪声。</td></tr>
+<tr><td><b>TSE 为什么能改善？</b></td><td>注册 embedding 经 FiLM 注入，让增强知道保留谁；说话人保持损失约束增强前后 embedding 余弦；难负原型抑制增大 target 与 hard negative 的间隔。结果 target 0.471、gap 0.418、d′ 3.416、EER 4.89%，都优于原方法和 Noisy。它不是复刻 clean：cos 到 clean 0.816 与 Noisy 0.820 接近，但 cos 到注册语音更高。</td></tr>
+<tr><td><b>SNR 提升了多少？</b></td><td>先说口径。① 全局 SNR（输出缩放到与输入同 RMS）：0 dB 下原方法 0.16→3.96（+3.80 dB），TSE 0.16→3.48（+3.32 dB）；−5 dB 下 −4.53→−1.37（+3.16）/ −1.96（+2.57）。② SI-SDRi（尺度不变）：+8.59 / +7.62 dB（0 dB），−5 dB +11.47 / +9.59 dB。③ VAD-SNRi（分段噪声底）：+15.67 / +8.40 dB（0 dB）。三个不是同一个量，不能相加或互换。</td></tr>
+<tr><td><b>PESQ 为什么只有 1.9？</b></td><td>测试是 0 dB，PESQ 是全参考、非线性指标，4.644 只对 clean-vs-clean 成立。用实际噪声扫 SNR：20 dB→3.18、10 dB→2.15、5 dB→1.69、0 dB→1.32、−5 dB→1.19；实际 noisy PESQ 1.333，与 0 dB 点吻合。1.9 已经是 0 dB 下的合理提升，不能和 clean 的 4.6 做百分比。</td></tr>
+<tr><td><b>claim 口径怎么样？</b></td><td>本报告和交付主表是 oracle 口径（真实说话人注册），4.89% 是验收上限；claim 口径（冒认句用声称者注册条件）存在条件信息泄漏，EER 会反弹，不能直接外推到部署。完整分析见原报告附录 C（部署口径与局限性）。</td></tr>
+</table>
+
+<h3>7.3 容易踩的坑</h3>
+<div class="callout"><span class="label">建议的报法：</span>主结果（EER/minDCF/claim）引用原报告；本补充报告报 <b>SI-SDRi + PESQ/STOI + 全局 SNR Δ</b>，并明确每个 SNR 的定义。不要把 VAD-SNRi 当输出 SNR，也不要在 0 dB 下拿 PESQ 绝对值和 clean 的 4.644 比。</div>
+<ul>
+<li>只说“降噪把声纹抹掉了”：太笼统。要加证据：embedding 漂移 0.714、target 0.391、高频占比 0.018、shape RMSE 7.19。</li>
+<li>把 VAD-SNR 的提升直接说成“输出 SNR”：+15.67 dB 是 VAD-SNRi，不是“0 dB → 15.67 dB”；全局 SNR 提升是 +3.80 dB（0 dB 数据，输入同电平口径）。</li>
+<li>拿 PESQ 1.9 和 clean 4.6 做百分比：PESQ 非线性，0 dB 下 1.3 是正常起点；要说“相对 Noisy 提升 +0.584 / +0.653”。</li>
+<li>把 oracle 的 4.89% 说成部署性能：claim 口径会反弹；主动说明边界。</li>
+<li>说“通用降噪一定有害”：更准确的说法是“在本项目数据/协议上，无条件通用降噪与声纹目标错位；身份条件化更合适”。</li>
+</ul>
+</div>
+""")
+
+# ---------------- Appendix A/B + assembly ----------------
+parts.append(f"""
+<div class="section">
+<h2>附录 A　产物、参数与复现</h2>
+<h3>A.1 本补充报告使用的原始产物</h3>
+<table class="tight">
+<tr><th>用途</th><th>路径</th></tr>
+<tr><td>原方法 checkpoint</td><td><span class="mono">AI/8.17/models/best_model.tar</span></td></tr>
+<tr><td>原方法增强 wav（0 dB）</td><td><span class="mono">.../sv-ecapa/data/data_for_test/denoised/noise_0db/enhanced_0194/</span></td></tr>
+<tr><td>原方法 embedding（0 dB）</td><td><span class="mono">.../sv-ecapa/exp/clean_bench/denoised_noise_0db/eres2net/embeddings_3s/</span></td></tr>
+<tr><td>TSE checkpoint</td><td><span class="mono">AI/8.27/exp/tse_v3_ns05duraug_r5/checkpoint_best.tar</span></td></tr>
+<tr><td>TSE 增强 wav（0 dB / −5 dB）</td><td><span class="mono">AI/8.27/exp/tse_v3_ns05duraug_r5/enhanced_official/noise_0db|noise_m5db/</span></td></tr>
+<tr><td>TSE embedding / EER（0 dB / −5 dB）</td><td><span class="mono">AI/8.28/final_eval_r5/r5_eres_noise_0db_3s|r5_eres_noise_m5db_3s/</span></td></tr>
+</table>
+
+<h3>A.2 本补充新增的参数与口径</h3>
+<table class="tight">
+<tr><th>项目</th><th>设置</th></tr>
+<tr><td>随机子集</td><td>120 条测试语音，随机种子 2026</td></tr>
+<tr><td>展示样本</td><td>5 条：06975_005、06868_001、06979_001、06811_006、06182_009</td></tr>
+<tr><td>VAD 分段</td><td>帧长 512、帧移 256；clean 能量最高 60% 为语音帧、最低 20% 为噪声帧</td></tr>
+<tr><td>SI-SDR / 全局 SNR</td><td>先对齐（cross-correlation，最大 800 样点）；SI-SDR 用最优 α；全局 SNR 用输入整体 RMS 匹配</td></tr>
+<tr><td>PESQ / STOI</td><td>官方 <span class="mono">pesq</span> 0.0.4（wb，16 kHz）；<span class="mono">pystoi</span> 0.4.1（extended=False）</td></tr>
+</table>
+<p>原报告的 3D-Speaker 数据、clean 注册、1,378,206 条 trial、ERes2Net-large 后端与 EER/minDCF 定义不在本附录重复，见原报告第 2–3 章。</p>
+
+<h3>A.3 一致性检查</h3>
+<ul>
+<li>复算 EER 与官方 <span class="mono">result.metrics</span> 对账：clean 5.2928 / noisy 8.3912 / 原方法 10.1132 / TSE 4.8921（差异仅来自四舍五入）。</li>
+<li>用官方 ERes2Net 重新抽取 5 条样本的 embedding，与落盘 embedding 余弦 0.96–0.997，确认听的 wav 与算的 embedding 是同一批。</li>
+<li>clean-vs-clean PESQ 4.644、STOI 1.000；实际 noisy 的 PESQ 1.333，与 0 dB 扫描点 1.323 吻合。</li>
+<li>原方法 raw 全局 SNR −18.1 dB 来自峰值归一化增益；匹配到输入 RMS 后为 3.96 dB。</li>
+</ul>
+
+<p class="note">复现：服务器 <span class="mono">ligangrui@10.20.1.95:/home/ligangrui/china_mobile/AI/10.17/</span>；Python <span class="mono">/home/ligangrui/china_mobile/zhangqiyuan/bin/python</span>；脚本见 6.5；本 PDF 由 <span class="mono">build_supplement_report.py</span> 生成。</p>
+</div>
+
+<div class="section">
+<h2>附录 B　新增参考</h2>
+<ol class="small">
+<li>Le Roux J., et al. SDR — Half-Baked or Well Done? ICASSP, 2019.（SI-SDR）</li>
+<li>ITU-T Recommendation P.862. Perceptual Evaluation of Speech Quality (PESQ), 2001；P.862.2 Wideband extension, 2005.</li>
+<li>Taal C. H., et al. An Algorithm for Intelligibility Prediction of Time-Frequency Weighted Noisy Speech. IEEE TASLP, 2011.（STOI）</li>
+<li>Garcia-Romero D., et al. How Good is Enhancement for Speaker Verification? Odyssey, 2020.</li>
+<li>Sadiku S., et al. Investigation of Speech Enhancement and Recognition-Based Front-Ends for Robust Speaker Verification. Interspeech, 2022.</li>
+</ol>
+<p class="note">原报告的 3D-Speaker、ERes2Net、FullSubNet+、FiLM 与 TSE 相关工作引用见原报告参考文献；本附录只列本补充新增的指标/机理参考。</p>
+</div>
+""")
+
+# assemble
+doc = f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>通用降噪与注册条件化 TSE 的声纹特征对比（补充报告）</title>
+<style>{CSS}</style>
+</head>
+<body>
+{''.join(parts)}
+</body>
+</html>
+"""
+OUT_HTML.write_text(doc, encoding="utf-8")
+print("wrote", OUT_HTML, len(doc), "chars")
+
+cmd = [
+    CHROME, "--headless=new", "--disable-gpu", "--no-sandbox",
+    "--allow-file-access-from-files", "--no-pdf-header-footer",
+    "--run-all-compositor-stages-before-draw", "--virtual-time-budget=15000",
+    f"--print-to-pdf={OUT_PDF}", OUT_HTML.as_uri(),
+]
+print("running chrome ...")
+subprocess.run(cmd, check=True)
+print("pdf written", OUT_PDF)
+
+import pymupdf
+pdf = pymupdf.open(OUT_PDF)
+n = pdf.page_count
+font = r"C:\Windows\Fonts\simhei.ttf"
+for i in range(1, n):
+    page = pdf[i]
+    page.insert_font(fontname="F0", fontfile=font)
+    page.insert_textbox(pymupdf.Rect(0, page.rect.height - 28, page.rect.width, page.rect.height - 12),
+                        str(i + 1), fontsize=9, fontname="F0", align=1,
+                        color=(0.25, 0.25, 0.25))
+pdf.set_metadata({
+    "title": "通用降噪与注册条件化 TSE 的声纹特征对比（补充报告）",
+    "author": "张启元",
+    "subject": "中国移动研究项目 · 子课题一：声纹前端补充分析",
+    "keywords": "speaker verification, FullSubNet+, TSE, SI-SDR, PESQ, STOI, EER",
+})
+tmp = str(OUT_PDF) + ".tmp"
+pdf.save(tmp, garbage=3, deflate=True)
+pdf.close()
+os.replace(tmp, OUT_PDF)
+print("stamped pages:", n, "->", OUT_PDF)
